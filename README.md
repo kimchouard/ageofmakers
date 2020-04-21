@@ -1,3 +1,5 @@
+![Age of Makers Logo](https://raw.githubusercontent.com/salesforce/ageofmakers/master/images/Age_of_Makers_full_m.png?token=AAVZPWYZWN2LP52QOKS4N626VB62E)
+
 # Age of Makers (AoM)
 
 Become an independent learner, solving the world’s biggest challenges using 3D printing, coding & electronics.
