@@ -1,0 +1,94 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+@import '~compass-mixins/lib/compass';
+@import 'vars';
+
+/* ================================
+            Profile
+================================ */
+
+.fullpage {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 105%;
+    left: 0;
+    padding-top: 50px;
+    transition: top 600ms ease-in-out;
+    overflow-y: scroll;
+    background: $beige;
+    z-index: 1;
+    
+    &.open {
+      top: 0;
+    }
+    
+    .wrapper {
+      background: $beige;
+      height: 100%;
+      width: 100%;
+    }
+  }
+.upnext {
+  color: grey;
+}
+.img-upnext {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+}
+.closingbutton{
+  position: absolute;
+  right: 3%;
+  top: 5%;
+}
+
+$progress-bar-stroke-width: 1.8;
+$progress-bar-size: 140px;
+
+.progress-bar {
+  height: $progress-bar-size;
+  transform: rotate(-90deg);
+  width: $progress-bar-size;
+}
+
+.progress-bar__background {
+  fill: none;
+  stroke: #e2eff0;
+  stroke-width: $progress-bar-stroke-width;
+}
+
+.progress-bar__progress {
+  fill: none;
+  stroke-dasharray: 100 100;
+  stroke-dashoffset: 100;
+  stroke-linecap: round;
+  stroke-width: $progress-bar-stroke-width;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.badge {
+  width: $progress-bar-size;
+  height: $progress-bar-size;
+  position: relative;
+}
+
+.content {
+  width: ($progress-bar-size - 4);
+  height: ($progress-bar-size - 4);
+  border-radius: 150px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  overflow: hidden;
+  background: center center no-repeat;
+  background-size: auto 100%;
+}
+
+.badgeContainer {
+  height: 300px;
+}

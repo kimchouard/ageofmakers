@@ -1,0 +1,421 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+@import 'vars';
+
+/* ================================
+          Help Bubble
+================================ */
+
+.aom-bubble {
+  @import "~normalize-scss/sass/normalize/import-now";
+
+	margin: auto;
+	width: 400px;
+  font-size: 16px;
+	height: calc(100% - 140px);
+	transition: all 0.5s ease-in-out;
+	border-radius: 20px;
+  background: $grey;
+	overflow: auto;
+	position: fixed;
+  z-index: 9999;
+	bottom: 20px;
+	right: 20px;
+	padding: 50px 0;
+
+	& * {
+		-webkit-font-smoothing: antialiased;
+		font-family: $font-family-base !important;
+		color: $grey;
+	}
+
+	a {
+		color: $red;
+	}
+	
+	&.bubbleClosed {
+		width: 50px;
+		height: 50px;
+		overflow: hidden;
+		border-radius: 50px;
+		padding: 0;
+	}
+	
+	input {
+		display: none;
+	}
+
+	.action {
+		text-align: center;
+		width: 100%;
+		margin: 20px 0 10px;
+	}
+
+	button, .button {
+		padding: 10px 20px;
+		border-radius: 10px;
+		color: white;
+		display: inline-block;
+		cursor: pointer;
+		
+		&.inProgress {
+			background: $orange;
+			border: 1px solid darken($orange, 10%);
+		}
+		&.complete {
+			background: $green;
+			border: 1px solid darken($green, 10%);
+		}
+		&.new {
+			background: $red;
+			border: 1px solid darken($red, 10%);
+		}
+		&.disabled {
+			cursor: default;
+			background: $grey-light;
+			border: 1px solid darken($grey-light, 10%);
+		}
+	}
+	
+	.box-header, .box-footer {
+		position: absolute;
+		left: 0;
+		background: $grey;
+		line-height: 50px;
+		display: inline-block;
+		height: 50px;
+		cursor: pointer;
+		width: 100%;
+		
+		.box-title {
+			display: block;
+			margin: 0;
+			font-weight: normal;
+			line-height: inherit;
+			font-weight: inherit;
+			margin: inherit;
+			height: 50px;
+			font-size: 16px;
+			color: white;
+			cursor: pointer;
+		}
+	}
+  
+	
+	.box-header {
+    top: 0;
+    z-index: 100;
+		text-indent: 50px;
+		text-align: left;
+		
+		&:before {
+			box-shadow: none;
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 45px;
+			background-repeat: no-repeat;
+			background-position: 12px 12px;
+			background-size: 25px 25px;
+		}
+
+		&:hover:before { background-image: url('https://ageofmakers.herokuapp.com/images/minimize.svg'); }
+		
+		&.Coding:before { background-image: url('https://ageofmakers.herokuapp.com/images/Coding.svg'); }
+		&.Electronics:before { background-image: url('https://ageofmakers.herokuapp.com/images/Electronics.svg'); }
+		&.ThreeD:before { background-image: url('https://ageofmakers.herokuapp.com/images/3D.svg'); }
+		&.MakerMount:before { background-image: url('https://ageofmakers.herokuapp.com/images/MakerMount.svg'); }
+	}
+	
+	.box-footer {
+    bottom: 0;
+		width: 100%;
+		text-align: center;
+
+		&:hover {
+			.close {
+				background-size: 27px 27px;
+			}
+		}
+
+		.box-title {
+			font-size: 26px;
+			line-height: 49px;
+			cursor: pointer;
+
+			img {
+				height: 27px;
+    		margin: 0 0 0;
+			}
+
+			.makerFont, .moonFlowerFont {
+				color: white;
+			}
+
+			.makerFont {
+				font-family: 'Oil-Makes-You-Run-Faster' !important;
+			}
+
+			.moonFlowerFont {
+				font-family: 'Moon-Flower-Bold' !important;
+			}
+		}
+			
+		.close {
+			position: absolute;
+			color: white;
+			right: 0;
+			top: 0;
+			width: 50px;
+			height: 50px;
+			background: url('https://ageofmakers.herokuapp.com/images/minimize.svg') no-repeat center center;
+			background-size: 30px 30px;
+    	transition: background-size 80ms ease-in-out;
+		}
+	}
+			
+  .exit-btn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 355px;
+    z-index: 50;
+    bottom: 10px;
+    border-radius: 4px;
+    background-image: url('https://ageofmakers.herokuapp.com/images/exit.svg');
+    background-repeat: no-repeat;
+    background-position: 1px 3px;
+    background-size: 25px 25px;
+		background-color: $red;
+		transform: scaleX(-1);
+		cursor: pointer;
+  }
+	
+	input:checked + .box-accordion {
+		height: auto;
+	/* 	margin: 16px 0; */
+	/*     box-shadow: 0 0 6px rgba(0,0,0,.16),0 6px 12px rgba(0,0,0,.32); */
+	}
+	input:checked + .box-accordion .box-title {
+		border-bottom: 1px solid rgba(0,0,0,.1);
+	}
+	input:checked + .box-accordion .box-content,
+	input:checked + .box-accordion .box-close {
+		display: inline-block;
+	}
+	
+	.boxAccordionWrapper {
+		position: relative;
+		height: calc(100%);
+		overflow: auto;
+		background: $beige;
+		transition: all 1s ease-in-out;
+
+		.boxAccordion {
+			height: 100%;
+		}
+
+		.aom-warning, .aom-info {
+			p { display: inline; }
+		}
+
+		.aom-warning {
+			padding: 10px;
+			color: $red;
+			border-left: 5px solid $red;
+
+			&:before {
+				content: "⚠️ : ";
+				font-weight: bold;
+			}
+		}
+
+		.aom-info {
+			padding: 10px;
+			color: $grey;
+			border-left: 5px solid $grey;
+
+			&:before {
+				content: "💡 	: ";
+				font-weight: bold;
+			}
+		}
+
+		.congrats {
+			position: relative;
+			padding: 20px 0 260px;
+			height: 100%;
+
+			.action {
+				width: 100%;
+				text-align: center;
+				margin: 10px 0;
+			}
+
+			.title {
+				font-size: 20px;
+				text-align: center;
+			}
+
+			img {
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+			}
+		}
+		
+		.box-accordion {
+			position: relative;
+			height: 64px;
+
+			&:before {
+				content: '';
+				position: absolute;
+				display: block;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				pointer-events: none;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+			}
+
+			.box-title {
+				width: calc(100% - 64px);
+				height: 64px;
+				line-height: 64px;
+				font-weight: inherit;
+				margin: inherit;
+				padding: 0 20px 0 44px;
+				display: block;
+				cursor: pointer;
+				user-select: none;
+				font-size: 14px;
+
+				&:after {
+					position: absolute;
+					display: block;
+					content: '\203a';
+					font-size: 14px;
+					right: 20px;
+					height: 20px;
+					line-height: 20px;
+					top: 22px;
+					transition: transform .15s ease-in-out;
+					color: rgba(0,0,0,.54);
+				}
+
+				&:before {
+					position: absolute;
+					display: block;
+					content: attr(data-number);
+					font-size: 16px;
+					left: 20px;
+					top: 0px;
+					color: $grey;
+				}
+			}
+
+			.box-content {
+				width: calc(100% - 40px);
+				padding: 30px 20px;
+				font-size: 11pt;
+				color: rgba(0,0,0,.54);
+				display: none;
+
+				ul {
+					padding-left: 30px;
+					margin-bottom: 10px;
+					list-style-type: disc;
+				}
+
+				img {
+					margin: 0 auto;
+					display: block;
+					max-width: 100%;
+				}
+
+				hr {
+					border: 1px solid rgba(0, 0, 0, 0.1);
+				}
+			}
+
+			.box-close {
+				position: absolute;
+				height: 64px;
+				width: 100%;
+				top: 0;
+				left: 0;
+				cursor: pointer;
+				display: none;
+			}
+
+			ul,ol {
+				list-style: inherit;
+				padding-left: 40px; 
+			}
+
+			ol {
+				list-style: decimal;
+			}
+		}
+
+		input:checked + .box-accordion .box-title:after {
+			transform: rotate(90deg);
+		}
+	}
+}
+
+/* ================================
+        Bubble Description
+================================ */
+
+.bubble-description {
+	padding: 10px 20px;
+	text-align: left;
+
+	img {
+		max-width: 100%;
+	}
+
+	.prereqWrapper {
+		padding: 0 0 10px;
+		cursor: pointer;
+
+		.pinWrapper .pulse:after {
+			margin-left: -14px;
+		}
+
+		.questName {
+			text-indent: 70px;
+			line-height: 60px;
+		}
+	}
+
+	.cta {
+		border-radius: 10px;
+		padding: 10px;
+    margin-bottom: 10px;
+		
+		.title {
+			text-align: center;
+			font-weight: bold;
+		}
+
+		&.next { 
+			& .title { color: $green; }
+			border: 2px solid $green;
+			background: transparentize($green, 0.8)
+		}
+		&.before {
+			& .title { color: $grey; }
+		}
+	}
+}

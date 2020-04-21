@@ -1,0 +1,50 @@
+
+// Import fontawesome
+@import "~font-awesome/scss/font-awesome";
+// // ============= Bootstrap =============
+// // Core variables and mixins
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+// Reset and dependencies
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/normalize";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/print";
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
+// Core CSS
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/type";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/code";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/grid";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/tables";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/forms";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/buttons";
+// ============= /Bootstrap =============
+
+@import 'vars';
+
+html, body {
+  background: #000;
+  color: $grey;
+  height: 100%;
+  font-family: $font-family-base;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: $beige;
+}
+
+@import 'controls';
+@import 'tuto';
+@import 'bubble';
+@import 'profile';
+@import 'welcome';
+@import 'walkthrough';
+@import 'leafletMap';
+@import 'ageTree';
+@import 'ageTreePin';

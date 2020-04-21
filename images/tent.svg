@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="73px" height="39px" viewBox="0 0 73 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Tent</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Map" transform="translate(-537.000000, -475.000000)">
+            <g id="Tent" transform="translate(537.000000, 477.000000)">
+                <polygon id="Triangle-2" fill="#AF8158" points="36.5 3.49056604 73 37 35.7713428 37"></polygon>
+                <polygon id="Triangle-2" fill="#464646" points="35.9504649 19.5471698 44.9230769 37 35.7713428 37"></polygon>
+                <path d="M36.8509615,5.23584906 L31.9249816,0.336606157" id="Line" stroke="#AF8158" stroke-width="2" stroke-linecap="square"></path>
+                <path d="M35.4471154,5.23584906 L40.3730953,0.336606157" id="Line" stroke="#8B572A" stroke-width="2" stroke-linecap="square"></path>
+                <polygon id="Triangle-2" fill="#8B572A" points="36.5 3.49056604 35.7713428 37 0 37"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

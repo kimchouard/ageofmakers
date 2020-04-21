@@ -1,0 +1,53 @@
+{
+  "name": "Age of Makers",
+  "description": "Become an independent learner, solving the world’s biggest challenges using 3D printing, coding & electronics.",
+  "version": "1.3.0.3",
+  "background": {
+    "scripts": [
+      "event.js"
+    ],
+    "persistent": true
+  },
+
+  "browser_action": {
+    "default_icon": "images/age-of-makers_ts.png",
+    "default_title": "Age of Makers",
+    "default_popup": "popup.html"
+  },
+
+  "content_security_policy": "script-src 'self' https://unpkg.com/leaflet@1.3.0/dist/leaflet.js; object-src 'self'",
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://tinkercad.com/*",
+        "https://www.tinkercad.com/*",
+        "https://instructables.com/*",
+        "https://www.instructables.com/*",
+        "https://accounts.autodesk.com/*",
+        "https://autodesk.com/*",
+        "https://www.autodesk.com/*",
+        "https://makecode.microbit.org/*",
+        "https://projects.raspberrypi.org/*",
+        "https://scratch.mit.edu/*",
+        "https://spark.adobe.com/*"
+      ],
+      "css": [],
+      "js": ["content.js"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    "images/*",
+    "data/quests.yaml"
+  ],
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "identity",
+    "identity.email"
+  ],
+
+  "manifest_version": 2  
+}

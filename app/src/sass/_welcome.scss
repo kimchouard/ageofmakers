@@ -1,0 +1,94 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+@import '~compass-mixins/lib/compass';
+@import 'vars';
+
+/* ================================
+            Welcome Screen
+================================ */
+.welcomeWrapper {
+    font-size: 1vw;
+    .overlay {
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 200;
+        background: black;
+        display: none;
+    }
+
+    &.open {
+        .overlay {
+            display: block;
+        }
+
+        .welcome {
+            top: 25%;
+        }
+    }
+
+    .welcome {
+        width: 50%;
+        height: 50%;
+        background-color: #EEE7C8;
+        left: 25%;
+        top: 100%;
+        text-align: center;
+        position: fixed;
+        z-index: 999;
+        border-radius: 20px;
+
+        
+    }
+
+    .welcomeButton{
+        padding: 10px 20px;
+		border-radius: 10px;
+		color: white;
+        display: inline-block;
+        background: $red;
+        border: 1px solid darken($red, 10%);
+        
+    }
+
+    .goButton{
+        padding-top: 5px;
+        padding-right:10px;
+		border-radius: 10px;
+		color: white;
+        display: inline-block;
+        background: $red;
+        border: 1px solid darken($red, 10%);
+        
+    }
+    .spacers {
+        margin-top: 25px;
+    }
+   
+
+    .welcomeTitleSize {
+        font-size: 3vw;
+        margin-top: 80px;
+        margin-bottom: 200px;
+    }
+
+    .welcomeBox {
+        height: 100%;
+    }
+
+    .welcomeRow {
+        //border-width: 5px;
+        border-color: black;
+        height: 33%;
+       // color: rgb(105, 53, 107);
+    }
+
+}

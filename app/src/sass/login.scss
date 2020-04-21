@@ -1,0 +1,144 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+@import 'vars';
+
+html, body {
+  min-width: 350px;
+  background: $beige;
+  color: $grey;
+  font-family: Arial;
+  text-align: center;
+}
+
+.login-page {
+  width: 360px;
+  padding: 20px 0 0;
+  margin: auto;
+
+  .form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 30px 0;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    
+    input {
+      font-family: "Roboto", sans-serif;
+      outline: 0;
+      background: #f2f2f2;
+      width: 100%;
+      border: 0;
+      margin: 0 0 15px;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    .instructionLogin {
+      font-style: italic;
+      margin: 0 0 5px;
+      font-size: 12px;
+    }
+
+    .userList {
+      position: relative;
+      padding: 20px 30px;
+      border-bottom: 1px solid #ddd;
+
+      &:first-child {
+        border-top: 1px solid #ddd;
+      }
+
+      &:last-child {
+        border: none;
+      }
+
+      .userName {
+        font-weight: bold;
+        font-size: 20px;
+        float: left;
+        margin: 0;
+        padding: 0;
+      }
+
+      &:hover {
+        background: #eee;
+        cursor: pointer;
+      }
+
+      .clear {
+        clear: both;
+      }
+    }
+
+    .btn-login, .btn-delete {
+      display: block;
+      position: relative;
+      font-family: "Roboto", sans-serif;
+      text-transform: uppercase;
+      outline: 0;
+      background: #464646;
+      border: 0;
+      font-weight: bold;
+      color: #FFFFFF;
+      background: #CC4B41;
+      font-size: 14px;
+      -webkit-transition: all 0.3 ease;
+      transition: all 0.3 ease;
+      cursor: pointer;
+      text-decoration: none;
+
+      &.btn-login {
+        margin: 20px 0 10px;
+        padding: 15px 0px;
+      }
+
+      &.btn-delete {
+        float: right;
+        padding: 5px 10px;
+        margin: 0;
+      }
+      
+      &:hover,&:active,&:focus {
+        background: darken(#CC4B41, 5);
+      }
+
+      &.btn-google-login::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 10px;
+        height: 100%;
+        width: 50px;
+        background: url('https://ageofmakers.herokuapp.com/images/google-plus-icon-logo.png') top left;
+        background-size: 50px;
+      }
+    }
+
+    .logo {
+      text-align: center;
+      width: 80%;
+      
+      img {
+        width: 280px;
+        margin: 0px 40px 30px; 
+      }
+    }
+
+    .separator {
+      margin: -5px 0 5px;
+      padding: 0;
+      font-size: 14px;
+      color: #b3b3b3;
+    }
+  }
+}

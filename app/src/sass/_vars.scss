@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Moon-Flower-Bold';
+  src: url('../fonts/Moon-Flower-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Oil-Makes-You-Run-Faster';
+  src: url('../fonts/Oil-Makes-You-Run-Faster.ttf') format('truetype');
+}
+
+.makerFont {
+  font-family: 'Oil-Makes-You-Run-Faster' !important;
+}
+
+.moonFlowerFont {
+  font-family: 'Moon-Flower-Bold' !important;
+}
+
+@import url(//fonts.googleapis.com/css?family=Raleway:400,700,300);
+$font-family-base: 'Raleway', sans-serif; // 'Proxima Nova', Arial, sans-serif;
+
+// Age of Makers Colors
+$red: #FF5335;
+$green: #61B136;
+$beige: #EEE7C8;
+$grey: #464646;
+$grey-light: #ACACAC;
+$orange: #E6931E;

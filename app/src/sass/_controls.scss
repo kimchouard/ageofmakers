@@ -1,0 +1,163 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+@import 'vars';
+
+/* ================================
+        Controls (header)
+================================ */
+
+.controls {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: $grey;
+  z-index: 100;
+  height: 50px;
+
+  .score {
+    background: $beige;
+    font-size: 12px;
+    line-height: 18px;
+    margin: 10px 0px 0 0;
+    box-sizing:border-box;
+    border-right: 10px $grey solid;
+
+    .icon {
+      background-color: $grey;
+      height: 20px;
+      width: 20px;
+      float: left;
+      margin: 5px 0 0 -10px;
+
+      &.all {
+        color: white;
+        font-size: 8px;
+        text-indent: 2px;
+        padding-top: 2px;
+      }
+
+      &.ThreeD {
+        background-image: url('/images/3D.svg');
+        background-repeat: no-repeat;
+        background-position: 3px 3px;
+        background-size: 13px 13px;
+      }
+
+      &.Coding {
+        background-image: url('/images/Coding.svg');
+        background-repeat: no-repeat;
+        background-position: 3px 3px;
+        background-size: 14px 14px;
+      }
+
+      &.Electronics {
+        background-image: url('/images/Electronics.svg');
+        background-repeat: no-repeat;
+        background-position: 3px 3px;
+        background-size: 14px 14px;
+      }
+
+      &.MakerMount {
+        background-image: url('/images/makerMount.svg');
+        background-repeat: no-repeat;
+        background-position: 3px 3px;
+        background-size: 14px 14px;
+      }
+    }
+
+    .value {
+      margin: 6px 0 4px;
+      text-align: right;
+    }
+  }
+
+  .age {
+    background: $beige;
+    color: $grey;
+    font-size: 30px;
+    text-align: center;
+    height: 50px;
+    box-sizing:border-box;
+    border-right: 6px $red solid;
+
+    .roman {
+      float: left;
+      background: $red;
+      padding: 0 10px;
+      margin: 0 10px 0 -15px;
+      height: 100%;
+      width: 60px;
+      text-align: center;
+      color: white;
+
+      .age-text {
+        font-size: 10px;
+        margin-top: 3px;
+      }
+      .number {
+        line-height: 25px;
+        font-family: 'Oil-Makes-You-Run-Faster';
+        font-size: 25px;
+      }
+    }
+
+    .name {
+      font-size: 18px;
+      line-height: 50px;
+      text-align: center;
+    }
+  }
+
+  .user {
+    background: $beige;
+    margin-top: 10px;
+
+    .name {
+      margin: 4px 0 7px;
+      float: left;
+    }
+
+    .action {
+      background-color: $red;
+      height: 20px;
+      width: 20px;
+      margin: 5px -10px 0 0;
+      float: right;
+      position: relative;
+
+      &:hover {
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      &.logout {
+        background-image: url('/images/logout.svg');
+        background-repeat: no-repeat;
+        background-position: 3px 3px;
+        background-size: 14px 14px;
+      }
+
+      &.refresh {
+        background-image: url('/images/reload.svg');
+        background-repeat: no-repeat;
+        background-position: 3px 3px;
+        background-size: 14px 14px;
+        right: 15px;
+      }
+      
+      &.help {
+        color: white;
+        text-align: center;
+        margin-right: 10px;
+        margin-left: -10px;
+        float: left;
+      }
+    }
+  }
+}

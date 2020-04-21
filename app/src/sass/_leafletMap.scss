@@ -1,0 +1,199 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+@import 'vars';
+.gameWrapper {
+  height: 100%;
+}
+
+.leaflet-container {
+  height: 90%;
+  width: 100%;
+  margin: 50px auto 0;
+  z-index: 1;
+  background-color: #000
+}
+
+.leafletMap {
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+  text-align: center;
+}
+
+.leaflet-div-icon {
+  background: none;
+  border: none;
+}
+
+.pinWrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: 65px;
+  margin: 5px;
+
+  &.inProgress {
+    .pin { background: $orange; }
+    .pulse {
+      background: darken($orange, 20%);
+      &:after { box-shadow: 0 0 1px 2px darken($orange, 20%); }
+    }
+  }
+
+  &.complete {
+    .pin { background: $green; }
+    .pulse {
+      background: darken($green, 20%);
+      &:after { animation: 0; }
+    }
+  }
+
+  &.locked {
+    .pin { background: $grey-light; }
+    .pulse {
+      background: darken($grey-light, 20%);
+      &:after { animation: 0; }
+    }
+  }
+
+  &.noPulsate {
+    .pulse {
+      &:after { animation: 0; }
+    }
+  }
+
+  .pin {
+    transform: rotate(-45deg);
+    width: 40px;
+    height: 40px;
+    border-radius: 50% 50% 50% 0;
+    background: $red;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 5px;
+
+    &:hover {
+      width: 43px;
+      height: 43px;
+      left: 3px;
+      top: -3px;
+
+      .inner {
+        width: 30px;
+        height: 30px;
+        background-size: 17px 17px;
+      }
+    }
+
+    .inner {
+      transform: rotate(45deg);
+      width: 28px;
+      height: 28px;
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-position: 7px 6px;
+      background-size: 15px 15px;
+      position: absolute;
+      border-radius: 50%;
+
+      &.MakerMount { background-image: url('/images/MakerMount_grey.svg'); }
+      &.ThreeD { background-image: url('/images/3D_grey.svg'); }
+      &.Electronics { background-image: url('/images/Electronics_grey.svg'); }
+      &.Coding { background-image: url('/images/Coding_grey.svg'); }
+      &.Locked { background-image: url('/images/Locked_grey.svg'); }
+    }
+  }
+
+  .pulse {
+    background: darken($red, 20%);
+    border-radius: 50%;
+    height: 8px;
+    width: 14px;
+    position: absolute;
+    left: 18px;
+    top: 46px;
+    z-index: 1;
+
+    &:after {
+      content: "";
+      border-radius: 50%;
+      height: 20px;
+      width: 40px;
+      position: absolute;
+      margin: -5px 0 0 -19px;
+      animation: pulsate 1s ease-out;
+      animation-iteration-count: infinite;
+      opacity: 0;
+      box-shadow: 0 0 1px 2px $red;
+      animation-delay: 1.1s;
+      z-index: 0;
+    }
+  }
+}
+
+.bounce {
+  animation-name: bounce;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(0.1, 0.1);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.2, 1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(-45deg);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(-45deg);
+  }
+
+  80% {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(-45deg);
+  }
+}
+
+@keyframes render {
+  0% {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}

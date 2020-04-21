@@ -1,0 +1,63 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+
+// Import fontawesome
+@import "~font-awesome/scss/font-awesome";
+// // ============= Bootstrap =============
+// // Core variables and mixins
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+// Reset and dependencies
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/normalize";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/print";
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
+// Core CSS
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/type";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/code";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/grid";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/tables";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/forms";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/buttons";
+// ============= /Bootstrap =============
+
+@import 'vars';
+
+.contentListWrapper {
+  max-width: 600px;
+  overflow-wrap: break-word;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  padding-top: 20px;
+  margin-top: 30px;
+  border-top: 2px solid black;
+}
+
+.stagesTitle {
+  text-decoration: underline;
+}
+
+.description {
+  &::before {
+    content: 'Description:';
+    display: block;
+    font-weight: bold;
+  }
+}
+
+img {
+  max-width: 90%;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}

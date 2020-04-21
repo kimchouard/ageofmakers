@@ -1,0 +1,344 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+@import '~compass-mixins/lib/compass';
+@import 'vars';
+
+/* ================================
+            Tuto
+================================ */
+
+.tutoWrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background: $beige;
+  z-index: 1;
+  top: 100%;
+  transition: top 0.3s ease-out;
+  text-align: center;
+
+  &.active {
+    top: 50px;
+  }
+
+  .tuto {
+    margin-bottom: 20px;
+
+    &:before {
+      content: "";
+      display: block;
+      height: 6px;
+      width: 100%;
+      background: $red;
+    }
+
+    .title {
+      .icon, .action {
+        height: 50px;
+        width: 50px;
+        margin: 20px 20px 0 20px;
+      }
+
+      .icon {
+        background-color: $grey;
+        float: left;
+        background-repeat: no-repeat;
+        background-position: 10px 10px;
+        background-size: 30px 30px;
+
+        &.MakerMount { background-image: url('/images/MakerMount.svg'); }
+        &.ThreeD { background-image: url('/images/3D.svg'); }
+        &.Coding { background-image: url('/images/Coding.svg'); }
+        &.Electronics { background-image: url('/images/Electronics.svg'); }
+      }
+
+      .action {
+        background-color: $red;
+        float: right;
+
+        &.exit {
+          background-image: url('/images/exit.svg');
+          background-repeat: no-repeat;
+          background-position: 4px 7px;
+          background-size: 38px 38px;
+        }
+      }
+
+      h1 {
+        text-transform: uppercase;
+        font-size: 30px;
+        line-height: 50px;
+        float: left;
+      }
+    }
+  }
+
+  $size:50px;
+
+  .breadcrumb {
+    // background: #fff;
+    width: 100%;
+    height: 70px;
+
+    ul {
+      margin-left: $size;
+      display:inline-block;
+      list-style:none;
+
+      li {
+        float: right;
+        padding:3px;
+        background-color: #fff;
+        @include border-radius($size);
+        position:relative;
+        margin-left: -$size;
+        @include transition(all .2s);
+        margin-top: 3px;
+
+        a {
+          overflow: hidden;
+          @include border-radius($size);
+          @include transition(all .3s);
+          text-decoration: none;
+          height: $size;
+          color: #fff;
+          text-align: center;
+          min-width: $size;
+          width: $size;
+          display: block;
+          line-height: $size;
+          padding-left: $size + 2;
+          padding-right: $size/2 +$size/6;
+
+          background-color: $red;
+          &.inProgress { background-color: $orange; }
+          &.completed { background-color: $green; }
+
+          icon {
+            display: inline-block;
+            font-size: 18px;
+            float: left;
+            margin: 17px 0 0 3px;
+          }
+
+          .text {
+            display:inline-block;
+            opacity: 0;
+            text-indent: 10px;
+          }
+
+          .number {
+            font-size: 20px;
+            padding: 0 5px;
+            float: left;
+          }
+
+          &:hover, &.active {
+            width: 320px;
+            .text{
+              opacity: 1;
+            }
+          }
+        }
+
+        &:last-child {
+          a {
+            padding:0;
+          }
+
+          &:hover {
+            padding: (($size/10) - 2px);
+            margin-top: 0;
+
+            a {
+              width: $size + 10;
+              height: $size + 10;
+              line-height: $size + 10;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    background: $grey;
+    padding: 0;
+    color: white;
+
+    .videoWrapper, .todo {
+      float: left;
+      width: 50%;
+      padding: 0;
+      margin: 0;
+    }
+    .video {
+      float: right;
+      border: none;
+      width:560px;
+      height:315px;
+    }
+
+    .todo {
+      float: left;
+      overflow: hidden;
+
+      h3 {
+        text-align: center;
+        font-family: 'Oil-Makes-You-Run-Faster';
+        color: white;
+        font-size: 30px;
+      }
+
+      .toggles {
+        height: 200px;
+
+        .toggle-button {
+          width: 100%;
+          margin: 0;
+          position: relative;
+          display: inline-block;
+          color: #fff;
+
+          .toggle-button__icon {
+            cursor: pointer;
+            pointer-events: none;
+
+            &:before, &:after {
+              content: "";
+              position: absolute;
+              top: 45%;
+              left: 35%;
+              transition: 0.2s ease-out;
+            }
+          }
+
+          label {
+            display: inline-block;
+            width: 100%;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-align: left;
+            height: 50px;
+            line-height: 50px;
+            transition: all 0.2s;
+            padding-left: 65px;
+
+            &:before {
+              content: "Good Job!";
+              color: #fff;
+              position: absolute;
+              left: 65px;
+              transition: all 0.2s .1s ease-out;
+            }
+          }
+
+          input { display: none; }
+
+          $checkedDuration: 1.3s;
+
+          input[type=checkbox] + label {
+            background: $red;
+          }
+          input[type=checkbox]:checked ~ label {
+            background: $green;
+          }
+
+          input[type=checkbox]:checked ~ label, input[type=checkbox]:checked ~ label a {
+            animation: hideLabel $checkedDuration 1;
+          }
+
+          input[type=checkbox] + label:before {
+            opacity: 0;
+            transform: translate(0, 20px);
+          }
+          input[type=checkbox]:checked ~ label:before {
+            animation: showSuccessMessage $checkedDuration 1;
+          }
+
+          input[type=checkbox]:checked ~ .toggle-button__icon:before {
+            transform: translate(-10%, 100%) rotate(45deg);
+            width: 16.66667px;
+          }
+
+          input[type=checkbox]:checked ~ .toggle-button__icon:after {
+            transform: translate(30%) rotate(-45deg);
+          }
+
+          .toggle-button__icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 50px;
+            width: 50px;
+          }
+
+          .toggle-button__icon:before, .toggle-button__icon:after {
+            height: 3px;
+            border-radius: 3px;
+            background: #fff;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+          }
+          .toggle-button__icon:before {
+            width: 25px;
+            transform: rotate(45deg);
+          }
+          .toggle-button__icon:after {
+            width: 25px;
+            transform: rotate(-45deg);
+          }
+        }
+
+        @keyframes showSuccessMessage {
+          0% {
+            opacity: 0;
+            transform: translate(0, 20px);
+          }
+          10% {
+            opacity: 1;
+            transform: translate(0, 0);
+          }
+          90% {
+            opacity: 1;
+            transform: translate(0, 0);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(0, 20px);
+          }
+        }
+
+        @keyframes hideLabel {
+          0% {
+            color: $green;
+          }
+          90% {
+            color: $green;
+          }
+        }
+      }
+
+      .next {
+        margin-top: 5px;
+        text-transform: uppercase;
+        border: none;
+        padding: 10px 15px;
+        background: $red;
+        @include transition(all .2s);
+
+        position: relative;
+        top: 50px;
+
+        &.enabled {
+          top: 0;
+        }
+      }
+    }
+  }
+}

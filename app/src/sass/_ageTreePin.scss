@@ -1,0 +1,39 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+@import 'vars';
+
+.pinLabelContainer {
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+    .pinLabelPin{
+        padding-left: 25%;
+        padding-top: 25%;
+    }
+    .pinLabelText{
+        background-color: $beige;
+        position: relative;
+        text-align: center;
+        top: 45%;
+    }
+}
+
+.pinLabelTent {
+    padding-left: 15%;
+    padding-top: 20%;
+    .tent {
+        animation: render .0001s ease-out;
+        max-width: 80px;
+        max-height: 80px;
+    }
+      
+    .tent-icon {
+        max-width: 80px;
+        max-height: 80px;
+    }
+}

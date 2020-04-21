@@ -1,0 +1,34 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+@import 'vars';
+
+/* ================================
+          Pop-up Style
+================================ */
+
+body {
+  background: $beige;
+  width: 200px;
+}
+
+.action {
+	text-align: center;
+  width: 100%;
+  margin: 20px 0 10px;
+
+  button, .button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+
+    background: $red;
+    border: 1px solid darken($red, 10%);
+  }
+}

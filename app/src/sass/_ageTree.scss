@@ -1,0 +1,63 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+@import '~compass-mixins/lib/compass';
+@import 'vars';
+
+/* ================================
+            Welcome Screen
+================================ */
+.ageWrapper{
+  .overlay{
+      width: 100%;
+      height: 100%;
+      opacity: 0.5;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 998;
+      background: black;
+      display: none;
+  }
+
+  &.open {
+      .overlay {
+        display: block;
+      }
+
+      .ageProgress {
+        top: 12.5%;
+      }
+  }
+
+  .ageBox {
+    height: 100%;
+    overflow-x: scroll;
+    overflow-y: none;
+  }
+  .ageProgress {
+    width: 75%;
+    height: 75%;
+    background-color: #EEE7C8;
+    left: 12.5%;
+    top: 100%;
+    text-align: center;
+    position: fixed;
+    z-index: 999;
+    border-radius: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .ageRow {
+    height: 25%;
+    position: relative;
+  }
+}
+.treeContainer {
+  width: 2530px;
+  height: 100%;
+}
