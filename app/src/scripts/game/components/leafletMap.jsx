@@ -11,7 +11,7 @@ import { Map, Marker, ImageOverlay } from 'react-leaflet';
 import {CRS, Icon, divIcon} from 'leaflet';
 import { bindActionCreators } from 'redux';
 import { questUnlocked, getAge } from '../../_utils';
-import { selectQuest, toggleBubble, openProfile, openTree, getQuests } from '../../../actions/index';
+import { selectQuest, toggleBubble, openTree, getQuests } from '../../../actions/index';
 
 class Leaflet extends Component {
     constructor(props) {
@@ -108,7 +108,7 @@ const mapStateToProps = (state) => {
   }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectQuest, toggleBubble, openProfile, openTree, getQuests }, dispatch);
+  return bindActionCreators({ selectQuest, toggleBubble, openTree, getQuests }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Leaflet);

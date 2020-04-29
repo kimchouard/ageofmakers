@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { questUnlocked, addComplete, getAge } from '../../_utils';
-import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree, openProfile } from '../../../actions/index';
+import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Header extends Component {
@@ -115,7 +115,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree, openProfile }, dispatch);
+  return bindActionCreators({ getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree }, dispatch);
 }
 
 

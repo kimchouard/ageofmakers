@@ -8,7 +8,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { closeProfile, getQuests, selectQuest, toggleBubble,  } from '../../../actions/index';
+// import { closeProfile, getQuests, selectQuest, toggleBubble,  } from '../../../actions/index';
 import { questUnlocked, addComplete} from '../../_utils';
 
 
@@ -153,7 +153,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ closeProfile, getQuests, selectQuest, toggleBubble }, dispatch);
+return bindActionCreators({ /* closeProfile, getQuests, selectQuest, toggleBubble */ }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

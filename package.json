@@ -9,7 +9,7 @@
   "author": "Kim Chouard",
   "dependencies": {
     "@types/react-joyride": "^1.11.0",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.1.0",
     "js-yaml": "^3.13.1",
     "leaflet": "^1.6.0",
     "normalize-scss": "^6.0.0",
@@ -26,13 +26,14 @@
     "redux-promise-middleware": "^4.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
     "@babel/preset-es2015": "^7.0.0-beta.53",
-    "@babel/preset-react": "^7.8.3",
-    "@babel/register": "^7.8.6",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/register": "^7.9.0",
     "autoprefixer-loader": "^3.1.0",
     "axios": "^0.19.2",
+    "babel-register": "^6.26.0",
     "bootstrap-sass": "^3.3.7",
     "compass-mixins": "^0.12.10",
     "css-loader": "^3.4.2",
@@ -40,15 +41,15 @@
     "file-loader": "^5.1.0",
     "font-awesome": "^4.7.0",
     "gulp": "^4.0.2",
-    "gulp-load-plugins": "^2.0.2",
+    "gulp-load-plugins": "^2.0.3",
     "gulp-remove-files": "0.0.3",
-    "gulp-rename": "^1.2.2",
-    "gulp-util": "^3.0.7",
-    "node-sass": "^4.13.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-util": "^3.0.8",
+    "node-sass": "^4.14.0",
     "resolve-url-loader": "^2.0.2",
     "sass-loader": "^8.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^3.0.0",
-    "webpack": "^4.42.0"
+    "webpack": "^4.43.0"
   }
 }

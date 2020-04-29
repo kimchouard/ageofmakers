@@ -8,7 +8,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getCookie, getParamsFromSearch, apiUrl } from '../../_utils';
 import { logIn, unselectQuest } from '../../../actions/index';
 
 import Bubble from '../../game/components/bubble';

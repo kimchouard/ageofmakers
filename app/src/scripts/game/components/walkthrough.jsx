@@ -7,10 +7,10 @@
 
 import React, {Component} from 'react';
 import Joyride from 'react-joyride';
-import { ACTIONS, EVENTS } from 'react-joyride/lib/constants.js';
+import { ACTIONS, EVENTS } from 'react-joyride/lib/index.js';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {stopWalkthrough, openProfile, toggleBubble, selectQuest, closeProfile, setOnboarding } from '../../../actions/index';
+import {stopWalkthrough, toggleBubble, selectQuest, setOnboarding } from '../../../actions/index';
 
 class Walkthrough extends Component {
     constructor(props) {
@@ -354,7 +354,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({stopWalkthrough, openProfile, toggleBubble, selectQuest, closeProfile, setOnboarding}, dispatch);
+    return bindActionCreators({stopWalkthrough, toggleBubble, selectQuest, setOnboarding}, dispatch);
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(Walkthrough);
