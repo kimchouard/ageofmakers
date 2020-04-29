@@ -126,6 +126,6 @@ gulp.task('watch', gulp.series('default', () => {
   gulp.watch('manifest.json', gulp.series('copy-manifest'));
   gulp.watch('images/**/*', gulp.series('copy-images'));
   gulp.watch('data/*.yaml', gulp.series('copy-yaml'));
-  gulp.watch(['app/src/actions/**/*', 'app/src/aliases/**/*', 'app/src/fonts/**/*', 'app/src/reducers/**/*', 'app/src/sass/**/*', 'app/src/libs/**/*', 'app/src/index.js'], gulp.series('event-js', 'content-js', 'popup-js', 'game-js', 'list-js'));
+  gulp.watch(['app/src/actions/**/*', 'app/src/aliases/**/*', 'app/src/fonts/**/*', 'app/src/reducers/**/*', 'app/src/sass/**/*', 'app/src/scripts/**/*', 'app/src/index.js'], gulp.series('event-js', 'content-js', 'popup-js', 'game-js', 'list-js'));
   gulp.watch(['app/src/*.html'], gulp.series('popup-html', 'game-html', 'list-html'));
 }));
