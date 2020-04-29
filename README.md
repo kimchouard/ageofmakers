@@ -6,7 +6,7 @@ Become an independent learner, solving the world’s biggest challenges using 3D
 
 ## Building the Age of Makers game locally
 
-After running a `npm install`, simply use gulp to compile the game into the `build` folder:
+After running a `yarn install`, simply use gulp to compile the game into the `build` folder:
 ```bash
 gulp build # one time build
 gulp watch # re-run the build as you're developing on the game and saving file changes

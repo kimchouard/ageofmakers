@@ -40,3 +40,4 @@ package-lock.json
 .node_repl_history
 
 build
+yarn.lock
