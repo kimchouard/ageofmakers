@@ -544,197 +544,303 @@ stages:
 
 
 # -------------------------------------------------------
-# Build Your First Website
-# a00410000058yIWAAY / website_first
+# Get Started with Scratch
+# scratch_get_started
 
 ---
-id: website_first
-name: Build Your First Website
+id: scratch_get_started
+name: Get Started with Scratch
 valley: Coding
 content: |-
-  In this tutorial, you'll learn how to use HTML and CSS to create a custom webpage.
+  In this tutorial, you'll learn the basics of coding with Scratch, so you can make your own stories, games and animations!
 
-  ![Learn_to_code_HTML__CSS__and_JavaScript_with_Dash.png](https://i.imgur.com/dQL0sI3.png)
-
-  You can use it to present yourself, send a wish-card, or talk about anything.
+  ![Get Started with Scratch](https://ageofmakers.s3.amazonaws.com/getting-started-illustration.png)
 
   Excited? Let's get started.
-startUrl: https://dash.generalassemb.ly/
+startUrl: https://scratch.mit.edu/projects/editor/?tutorial=getStarted
 positionLeft: 56
 positionTop: 44
 stages:
-- name: Create your Dash account
+- name: Follow the tutorial
   content: |-
-    You are on the [Dash](https://dash.generalassemb.ly/) website, where you will learn how to build your first wesbite!  
+    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=getStarted) website, where you will learn how to build your animation!  
 
-    1\. You first need to create an account. To do so, click on "Start Learning" to access the [signup page](https://accounts.generalassemb.ly/users/sign_up):  
-      
-    ![Start Learning Button](https://i.imgur.com/EWCNzTj.png)  
-      
-    2\. In the page, enter your name and email and choose a password. Click **Sign Up**.  
-      
-    3\. Then, choose a username and click **Continue**.  
-      
-    4\. You are now ready to build your first website! Click Done to see the next instructions.
+    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
+
+    Click **I DID IT!** once you're done with the tutorial.
   order: 0
-- name: 'Part 1: Show your content'
-  content: |-
-    To complete the [Headlines and inputs](https://dash.generalassemb.ly/projects/annas-website-1) tutorial, click the first item for Project 1:  
-
-    ![project 1 button](https://i.imgur.com/4BQfrMM.png)  
-      
-    You can now get started by clicking on "**Start Slideshow**".  
-      
-    ![User-added image](https://i.imgur.com/5tLgr9U.png)  
-      
-    Click **Next Slide** and follow the instructions.  
-      
-    Once your see "You're done", click "**Next Lessons**" to access the next tutorial about controling your style!
-  order: 1
-- name: 'Part 2: Control your style'
-  content: |-
-    To learn about [styling a webpage](https://dash.generalassemb.ly/projects/annas-website-2), you will use a language called CSS.  
-      
-    Like before, click **Start slideshow** and **Next Slide** and follow the instructions.  
-      
-    Once your see "You're done", click "**Next Lessons**" to access the next tutorial about adding images on a page!
-  order: 2
-- name: 'Part 3 : Images and form styling'
-  content: |-
-    You are now going to learn about [adding images and form styling](http://dash.generalassemb.ly/projects/annas-website-3).  
-
-    Like before, click **Start slideshow** and **Next Slide** and follow the instructions.  
-      
-    Once your see "You're done", click "**Next Lessons**" to access the next tutorial about creating your own page! #finally
-  order: 3
-- name: Create your own page
-  content: |-
-    You can now [build your own personal website](https://dash.generalassemb.ly/projects/build-your-own-personal-website)! and change the page title and punchline with your name.  
-      
-    Follow the instructions in the slideshow and:
-
-    *   Add your name instead of Anna and a brief description.
-    *   Change the background
-    *   Change your icon
-
-    You now have your own website and can access it directly using the link:  
-      
-    ![website](https://i.imgur.com/ck0hDX3.png)
-  order: 4
 prerequisites: []
 following:
-- website_blog
+- scratch_imagine
+- scratch_chase_game
+- scratch_name
+- scratch_music
+- scratch_video_sensing
 
 
 # -------------------------------------------------------
-# Build a Responsive Blog Theme
-# a004100000FJrZpAAL / website_blog
+# Animate a Name
+# scratch_name
 
 ---
-id: website_blog
-name: Build a Responsive Blog Theme
+id: scratch_name
+name: Animate a Name
 valley: Coding
 content: |-
-  In this tutorial, you'll learn how to create a blog theme that works both on your computer and your phone.
-startUrl: https://dash.generalassemb.ly/projects/jeffs-blog-1
+  Animate the letters of your name, initials, or favorite word.
+
+  ![Quest Image](https://ageofmakers.s3.amazonaws.com/animate-a-name-modal.jpg)
+startUrl: https://scratch.mit.edu/projects/editor/?tutorial=name
+positionLeft: 67
+positionTop: 43
+stages:
+- name: Follow the tutorial
+  content: |-
+    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=name) website, where you will learn how to build your animation!  
+
+    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
+
+    Click **I DID IT!** once you're done with the tutorial.
+  order: 0
+prerequisites:
+- scratch_get_started
+following: []
+
+
+# -------------------------------------------------------
+# Make Music
+# scratch_music
+
+---
+id: scratch_music
+name: Make Music
+valley: Coding
+content: |-
+  Choose instruments, add sounds, and press keys to play music.
+
+  ![Quest Image](https://ageofmakers.s3.amazonaws.com/make-music-modal.jpg)
+startUrl: https://scratch.mit.edu/projects/editor/?tutorial=music
+positionLeft: 62
+positionTop: 31
+stages:
+- name: Follow the tutorial
+  content: |-
+    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=music) website, where you will learn how to build your animation!  
+
+    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
+
+    Click **I DID IT!** once you're done with the tutorial.
+  order: 0
+prerequisites:
+- scratch_get_started
+following: []
+
+
+# -------------------------------------------------------
+# Video Sensing
+# scratch_video_sensing
+
+---
+id: scratch_video_sensing
+name: Video Sensing
+valley: Coding
+content: |-
+  Interact with a project using the Video Sensing extension.
+
+  ![Quest Image](https://ageofmakers.s3.amazonaws.com/video-sensing-modal.jpg)
+startUrl: https://scratch.mit.edu/projects/editor/?tutorial=video-sensing
+positionLeft: 60
+positionTop: 23
+stages:
+- name: Follow the tutorial
+  content: |-
+    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=video-sensing) website, where you will learn how to build your animation!  
+
+    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
+
+    Click **I DID IT!** once you're done with the tutorial.
+  order: 0
+prerequisites:
+- scratch_get_started
+following: []
+
+
+# -------------------------------------------------------
+# Imagine a World
+# scratch_imagine
+
+---
+id: scratch_imagine
+name: Imagine a World
+valley: Coding
+content: |-
+  In this tutorial, you'll be able to imagine a world where anything is possible!
+
+  ![Quest Image](https://ageofmakers.s3.amazonaws.com/imagine-modal.jpg)
+startUrl: https://scratch.mit.edu/projects/editor/?tutorial=imagine
 positionLeft: 63
 positionTop: 39
 stages:
-- name: 'Part 1: Header HTML'
+- name: Follow the tutorial
   content: |-
-    Once you are log in the [Dash website](https://dash.generalassemb.ly/projects), you can access [Part 1](https://dash.generalassemb.ly/projects/jeffs-blog-1) of this quest.  
+    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=imagine) website, where you will learn how to build your animation!  
 
-    You can now get started by clicking on "**Start Slideshow**". 
-      
-    ![User-added image](https://i.imgur.com/5tLgr9U.png)  
-      
-    Click **Next Slide** and follow the instructions.  
-      
-    Once your see "You're done", click "**Next Lessons**" to access the next tutorial about controling your style!
+    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
+
+    Click **I DID IT!** once you're done with the tutorial.
   order: 0
-- name: 'Part 2: Header CSS'
-  content: |-
-    In [Part 2](https://dash.generalassemb.ly/projects/jeffs-blog-2) of this quest, you're editing the style of the header you just created.  
-      
-    You can now get started by clicking on "**Start Slideshow**".   
-      
-    ![User-added image](https://i.imgur.com/5tLgr9U.png)  
-      
-    Click **Next Slide** and follow the instructions.  
-      
-    Once your see "You're done", click "**Next Lessons**" to access the next tutorial about controling your style!
-  order: 1
-- name: 'Part 3: Responsive & Javascript'
-  content: |-
-    In [Part 3](https://dash.generalassemb.ly/projects/jeffs-blog-3) of this quest, you're editing the style of the blog and make it fit in your phone. You will also create a like button in Javascript.  
-      
-    You can now get started by clicking on "**Start Slideshow**". 
-      
-    ![User-added image](https://i.imgur.com/5tLgr9U.png)  
-      
-    Click **Next Slide** and follow the instructions.  
-      
-    Once your see "You're done", click "**Next Lessons**" to access the next tutorial about controling your style!
-  order: 2
-- name: Create your own blog theme
-  content: |-
-    You can now [build your own blog theme](https://dash.generalassemb.ly/projects/build-your-own-blog-theme)!  
-      
-    Follow the instructions in the slideshow and go crazy to customize it!  
-      
-    You now have your own website and can access it directly using the link:  
-    ![website link](https://i.imgur.com/ck0hDX3.png)"
-  order: 3
 prerequisites:
-- website_first
+- scratch_get_started
 following:
-- website_business_site
+- scratch_story
 
 
 
 # -------------------------------------------------------
-# Build a Small Business Website
-# a004100000FJrzCAAT / website_business_site
+# Create a Story
+# scratch_story
 
 ---
-id: website_business_site
-name: Build a Small Business Website
+id: scratch_story
+name: Create a Story
 valley: Coding
 content: |-
-  In this tutorial, you'll learn how to build a small business website for a new restaurant.
+  Choose characters, add conversation, and bring your story to life.
 
-  You can reuse that skills then to create a website for you own project. Let's get started!
-startUrl: https://dash.generalassemb.ly/projects/eshas-restaurant-1
-positionLeft: 69
-positionTop: 35
+  ![Quest Image](https://ageofmakers.s3.amazonaws.com/create-a-story-modal.jpg)
+startUrl: https://scratch.mit.edu/projects/editor/?tutorial=tell-a-story
+positionLeft: 71
+positionTop: 33
 stages:
-- name: Create your 1st business website
+- name: Follow the tutorial
   content: |-
-    You know how go through the tutorials now: start with "**Start Slideshow**".  
+    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=tell-a-story) website, where you will learn how to build your animation!  
 
-    ![User-added image](https://i.imgur.com/5tLgr9U.png)  
-      
-    Click **Next Slide** and follow the instructions.  
-      
-    Make sure you complete:
+    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
 
-    1.  [Position images & text](https://dash.generalassemb.ly/projects/eshas-restaurant-1)
-    2.  [Add webfonts and color fades](https://dash.generalassemb.ly/projects/eshas-restaurant-2)
-    3.  [Make it mobile and interactive](https://dash.generalassemb.ly/projects/eshas-restaurant-3)
-
-    Once you have done those parts, you can create your own!
+    Click **I DID IT!** once you're done with the tutorial.
   order: 0
-- name: Create your own business website
-  content: |-
-    You can now [build your own](https://dash.generalassemb.ly/projects/build-your-own-personal-website) [business website](https://dash.generalassemb.ly/projects/build-your-own-business-website)!  
-      
-    Follow the instructions in the slideshow and go crazy to customize it!  
-      
-    You now have your own website and can access it directly using the link:  
-    ![website link](https://i.imgur.com/ck0hDX3.png)
-  order: 1
 prerequisites:
-- website_blog
+- scratch_imagine
+following: 
+- scratch_animate
+
+
+# -------------------------------------------------------
+# Animate a Character
+# scratch_animate
+
+---
+id: scratch_animate
+name: Animate a Character
+valley: Coding
+content: |-
+  Bring characters to life with animation.
+
+  ![Quest Image](https://ageofmakers.s3.amazonaws.com/animate-a-character-modal.jpg)
+startUrl: https://scratch.mit.edu/projects/editor/?tutorial=animate-a-character
+positionLeft: 76
+positionTop: 26
+stages:
+- name: Follow the tutorial
+  content: |-
+    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=animate-a-character) website, where you will learn how to build your animation!  
+
+    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
+
+    Click **I DID IT!** once you're done with the tutorial.
+  order: 0
+prerequisites:
+- scratch_story
+following: []
+
+
+# -------------------------------------------------------
+# Make a Chase Game
+# scratch_chase_game
+
+---
+id: scratch_chase_game
+name: Make a Chase Game
+valley: Coding
+content: |-
+  Make a game where you chase a character to score points.
+
+  ![Quest Image](https://ageofmakers.s3.amazonaws.com/chase-game-modal.jpg)
+startUrl: https://scratch.mit.edu/projects/editor/?tutorial=chase-game
+positionLeft: 63
+positionTop: 49
+stages:
+- name: Follow the tutorial
+  content: |-
+    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=chase-game) website, where you will learn how to build your animation!  
+
+    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
+
+    Click **I DID IT!** once you're done with the tutorial.
+  order: 0
+prerequisites:
+- scratch_get_started
+following:
+- scratch_fly
+
+
+# -------------------------------------------------------
+# Make It Fly
+# scratch_fly
+
+---
+id: scratch_fly
+name: Make It Fly
+valley: Coding
+content: |-
+  Choose any character and make it fly!
+
+  ![Quest Image](https://ageofmakers.s3.amazonaws.com/fly-modal.jpg)
+startUrl: https://scratch.mit.edu/projects/editor/?tutorial=make-it-fly
+positionLeft: 74
+positionTop: 46
+stages:
+- name: Follow the tutorial
+  content: |-
+    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=make-it-fly) website, where you will learn how to build your animation!  
+
+    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
+
+    Click **I DID IT!** once you're done with the tutorial.
+  order: 0
+prerequisites:
+- scratch_chase_game
+following:
+- scratch_pong
+
+
+# -------------------------------------------------------
+# Make It Fly
+# scratch_pong
+
+---
+id: scratch_pong
+name: Pong Game
+valley: Coding
+content: |-
+  Make a bouncing ball game with sounds, points, and other effects.
+
+  ![Quest Image](https://ageofmakers.s3.amazonaws.com/pong-modal.jpg)
+startUrl: https://scratch.mit.edu/projects/editor/?tutorial=pong
+positionLeft: 81
+positionTop: 34
+stages:
+- name: Follow the tutorial
+  content: |-
+    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=pong) website, where you will learn how to build your animation!  
+
+    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
+
+    Click **I DID IT!** once you're done with the tutorial.
+  order: 0
+prerequisites:
+- scratch_fly
 following: []
 
 
