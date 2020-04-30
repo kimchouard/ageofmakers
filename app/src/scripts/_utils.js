@@ -17,24 +17,28 @@ export const questUnlocked = (quest, quests) => {
   }
   else if (quest) {
     for(let i = 0; i < quest.prerequisites.length; i++) {
-      let questNeeded = quests[quest.prerequisites[i]];
-      if (questNeeded) {
-        if (questNeeded.age) {
-          let currentAge = getAge(quests);
-          if (currentAge.index < questNeeded.age) {
-            return false;
-          }
-        }
-        
-        if (!questUnlocked(questNeeded, quests)) {
-          return false; // one of the INDIRECT prerequisites not completed
-        }
-        if (questNeeded.status !== 'complete') {
-          return false; // one of the DIRECT prerequisites not completed
+      let questPreReq = quest.prerequisites[i];
+
+      if (questPreReq.age) {
+        let currentAge = getAge(quests);
+        if (currentAge.index < questPreReq.age) {
+          return false;
         }
       }
       else {
-        return false; // one of the prerequisites not available... Kind of a bug if it ever happen
+        let questNeeded = quests[questPreReq];
+        if (questNeeded) {
+
+          if (!questUnlocked(questNeeded, quests)) {
+            return false; // one of the INDIRECT prerequisites not completed
+          }
+          if (questNeeded.status !== 'complete') {
+            return false; // one of the DIRECT prerequisites not completed
+          }
+        }
+        else {
+          return false; // one of the prerequisites not available... Kind of a bug if it ever happen
+        }
       }
     };
   }
