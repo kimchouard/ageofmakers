@@ -115,6 +115,13 @@ const getFullQuestWithAchievements = (callback) => {
             }
           });
 
+          // Changing Quests status based on achievements
+          for(let questId in quests) {
+            if(quests[questId] && !quests[questId].status) {
+              quests[questId].status = stageStatus.STATUS_NEW;
+            }
+          }
+
           callback(quests);
         }); 
       }
