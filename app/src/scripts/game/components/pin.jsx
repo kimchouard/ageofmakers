@@ -33,9 +33,9 @@ class Pin extends Component {
 
     return (
       <div
-          key={pinQuest.sfid}
-          onClick={() => this.openQuest(pinQuest.sfid)}
-          className={`pinWrapper ${(this.isUnlocked(pinQuest)) ? `${pinQuest.status} ${pinQuest.sfid}` : `locked ${pinQuest.sfid}`}  ${(this.props.noPulse) ? `noPulsate` : ``} `}>
+          key={pinQuest.id}
+          onClick={() => this.openQuest(pinQuest.id)}
+          className={`pinWrapper ${(this.isUnlocked(pinQuest)) ? `${pinQuest.status} ${pinQuest.id}` : `locked ${pinQuest.id}`}  ${(this.props.noPulse) ? `noPulsate` : ``} `}>
           <div className={`pin ${(this.isUnlocked(pinQuest) && pinQuest.status !== 'complete' && !this.props.noBounce) ? 'bounce' : ''}`}>
             <div className={`inner ${(this.isUnlocked(pinQuest)) ? pinQuest.valley : 'Locked'}`}></div>
           </div>

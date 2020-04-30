@@ -60,13 +60,13 @@ class Profile extends Component {
       'strokeDashoffset' : strokeDashOffsetValue,
     }
     let badgeImg = {
-      // 'backgroundImage': `url(/images/badges-${this.props.quests[questId].sfid}.png)`,
+      // 'backgroundImage': `url(/images/badges-${this.props.quests[questId].id}.png)`,
       'filter' : `grayscale(${Math.floor(percentComplete*100)}%)`,
       'Webkitfilter' : `grayscale(${100 - (Math.floor(percentComplete*100))}%)`,
     }
     if (this.props.quests[questId].positionLeft > 0){
     return (
-      <div className="col-sm-2 badgeContainer" key={this.props.quests[questId].sfid}>
+      <div className="col-sm-2 badgeContainer" key={this.props.quests[questId].id}>
         <div className="badge" onClick={() => this.openQuest(questId)}>
           <div className={ (isUpNext) ? `content img-upnext` : "content"} onClick={() => this.openQuest(questId)} style={badgeImg}></div>
           <svg className="progress-bar" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 34 34">

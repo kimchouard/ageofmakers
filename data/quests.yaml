@@ -33,7 +33,7 @@
 # a00410000058yIbAAI
 
 --- 
-id: 3d_keychain
+id: threeD_keychain
 name: Customize your 3D Printed Keychain
 valley: ThreeD
 content: |-
@@ -48,11 +48,11 @@ positionLeft: 38
 positionTop: 55
 prerequisites: []
 following:
-- 3d_penguin
-- 3d_diamond_ring
-- 3d_bat_button
-- 3d_bookmark
-- 3d_house
+- threeD_penguin
+- threeD_diamond_ring
+- threeD_bat_button
+- threeD_bookmark
+- threeD_house
 stages:
 - name: Login into Tinkercad
   order: 0
@@ -94,7 +94,7 @@ stages:
     2. Click **.STL** to download it in the right format
     3. Save it on your computer
 
-    ![Export 3D designs](https://ageofmakers.s3.amazonaws.com/Export_3D_design.jpg)
+    ![Export 3D designs](https://ageofmakers.s3.amazonaws.com/Export_threeD_design.jpg)
     
     Voilà! **You now have your design that can be 3D printed. 🎉**
 
@@ -113,7 +113,7 @@ stages:
 # a001K00000sNkVFQA0
 
 --- 
-id: 3d_bookmark
+id: threeD_bookmark
 name: 3D Printed Bookmark
 valley: ThreeD
 content: |-
@@ -126,7 +126,7 @@ startUrl: https://tinkercad.com
 positionLeft: 30
 positionTop: 60
 prerequisites:
-- 3d_keychain
+- threeD_keychain
 following: []
 stages:
 - name: Create Bookmark Base
@@ -185,7 +185,7 @@ stages:
 # a001K00000sNkRmQAK
 
 --- 
-id: 3d_penguin
+id: threeD_penguin
 name: Create a Glowing Penguin
 valley: ThreeD
 content: |-
@@ -196,10 +196,10 @@ startUrl: https://www.tinkercad.com/things/newv2?lessonid=EW74NBCJ48POGA7&projec
 positionLeft: 33
 positionTop: 66
 prerequisites:
-- 3d_keychain
+- threeD_keychain
 following:
-- 3d_bee # a001K00000sNlFVQA0
-- 3d_monkey # a001K00000sNlFpQAK
+- threeD_bee # a001K00000sNlFVQA0
+- threeD_monkey # a001K00000sNlFpQAK
 stages:
 - name: Make your Penguin Glow
   order: 0
@@ -231,7 +231,7 @@ stages:
 # a001K00000sNkRDQA0
 
 --- 
-id: 3d_diamond_ring
+id: threeD_diamond_ring
 name: Design a diamond ring
 valley: ThreeD
 content: |-
@@ -242,7 +242,7 @@ startUrl: https://www.tinkercad.com/things/newv2?lessonid=ES2EDWQIYGFVN0X&projec
 positionLeft: 25
 positionTop: 54
 prerequisites:
-- 3d_keychain
+- threeD_keychain
 following: []
 stages:
 - name: Follow the instructions on the left
@@ -266,7 +266,7 @@ stages:
     2. Click **.STL** to download it in the right format
     3. Save it on your computer
 
-    ![Export 3D designs](https://ageofmakers.s3.amazonaws.com/Export_3D_design.jpg)
+    ![Export 3D designs](https://ageofmakers.s3.amazonaws.com/Export_threeD_design.jpg)
 
     Voilà! **You now have your design that can be 3D printed. 🎉**
 
@@ -280,7 +280,7 @@ stages:
 # a001K00000sNkUMQA0
 
 --- 
-id: 3d_bat_button
+id: threeD_bat_button
 name: Create a "Bat-Button"
 valley: ThreeD
 content: |-
@@ -291,7 +291,7 @@ startUrl: https://www.tinkercad.com/things/newv2?lessonid=E7VA5QDIYEQ7EBE&projec
 positionLeft: 24
 positionTop: 62
 prerequisites:
-- 3d_keychain
+- threeD_keychain
 following: []
 stages:
 - name: Follow the instructions on the left
@@ -314,7 +314,7 @@ stages:
     2. Click **.STL** to download it in the right format
     3. Save it on your computer
 
-    ![Export 3D designs](https://ageofmakers.s3.amazonaws.com/Export_3D_design.jpg)
+    ![Export 3D designs](https://ageofmakers.s3.amazonaws.com/Export_threeD_design.jpg)
 
     Voilà! **You now have your design that can be 3D printed. 🎉**
 
@@ -328,7 +328,7 @@ stages:
 # a001K00000sNlDTQA0
 
 --- 
-id: 3d_house
+id: threeD_house
 name: Make a simple 1-story house
 valley: ThreeD
 content: |-
@@ -343,7 +343,7 @@ startUrl: https://tinkercad.com
 positionLeft: 17
 positionTop: 50
 prerequisites:
-- 3d_keychain
+- threeD_keychain
 following: []
 stages:
 - name: 'Add a Cube: Floor Plan and Everything!'
@@ -442,7 +442,7 @@ stages:
 # a001K00000sNlFVQA0
 
 --- 
-id: 3d_bee
+id: threeD_bee
 name: Make a Moving Bee
 valley: ThreeD
 content: |-
@@ -453,7 +453,7 @@ startUrl: https://www.tinkercad.com/things/newv2?lessonid=EAMT8MOJ48POG8B&projec
 positionLeft: 40
 positionTop: 78
 prerequisites:
-- 3d_penguin
+- threeD_penguin
 following: []
 stages:
 - name: Design and assemble your monkey
@@ -490,7 +490,7 @@ stages:
 # a001K00000sNlFpQAK
 
 --- 
-id: 3d_monkey
+id: threeD_monkey
 name: Make a Waving Monkey
 valley: ThreeD
 content: |-
@@ -501,7 +501,7 @@ startUrl: https://www.tinkercad.com/things/newv2?lessonid=EN3EWHIJ6CG7CR0&projec
 positionLeft: 33
 positionTop: 72
 prerequisites:
-- 3d_penguin
+- threeD_penguin
 following: []
 stages:
 - name: Design and assemble your monkey

@@ -17,7 +17,8 @@ class Walkthrough extends Component {
       super(props);
       this.state = {
         steps: [],
-        stepIndex: 0
+        stepIndex: 0,
+        demoQuest: 'threeD_keychain'
       }
     }
 
@@ -27,13 +28,13 @@ class Walkthrough extends Component {
         this.setState({stepIndex: 0});
         this.props.setOnboarding(true)
       } else if (action === ACTIONS.START) {
-          this.props.closeProfile();
+          // this.props.closeProfile();
           this.setWalkthrough()
       } else if (type === EVENTS.STEP_AFTER) {
         if (this.props.walkthrough.start === 1) {
           if (index === 6) {
             this.props.toggleBubble(false);
-            this.props.selectQuest('a004100000qR83OAAS');
+            this.props.selectQuest(this.state.demoQuest);
             setTimeout(() => {
               this.setState({stepIndex: this.state.stepIndex + 1});
             }, 500);
@@ -42,10 +43,10 @@ class Walkthrough extends Component {
           }
         } else if (this.props.walkthrough.start === 2) {
           if (index === 0) {
-            this.props.openProfile()
+            // this.props.openProfile()
             this.setState({stepIndex: this.state.stepIndex + 1});
           } else if (index === 7) {
-            this.props.closeProfile()
+            // this.props.closeProfile()
             this.setState({stepIndex: this.state.stepIndex + 1});
           } else {
             this.setState({stepIndex: this.state.stepIndex + 1});
@@ -53,7 +54,7 @@ class Walkthrough extends Component {
         } else if (this.props.walkthrough.start === 3) {
           if (index === 2) {
             this.props.toggleBubble(false);
-            this.props.selectQuest('a004100000qR83OAAS');
+            this.props.selectQuest(this.state.demoQuest);
             setTimeout(() => {
               this.setState({stepIndex: this.state.stepIndex + 1});
             }, 400);
@@ -145,7 +146,7 @@ class Walkthrough extends Component {
             styles: stepStyles,
             disableBeacon: true,
             spotlightClicks: true,
-            target: ".a004100000qR83OAAS"
+            target: "."+this.state.demoQuest
           },
           {
             content: <p>This is the quest bubble, it shows information for a quest like...</p>,

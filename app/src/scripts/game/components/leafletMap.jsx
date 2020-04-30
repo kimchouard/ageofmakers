@@ -46,7 +46,7 @@ class Leaflet extends Component {
           let iconImg = new divIcon({
             iconSize: [50, 65],
             iconAnchor: position,
-            html: `<div class='pinWrapper ${quest.status} ${this.isUnlocked(quest) ? `${quest.valley}` : `locked`} ${quest.sfid}'>
+            html: `<div class='pinWrapper ${quest.status} ${this.isUnlocked(quest) ? `${quest.valley}` : `locked`} ${quest.id}'>
                     <div class='pin bounce'>
                       <div class='inner ${this.isUnlocked(quest) ? `${quest.valley}` : `Locked`}'></div>
                     </div>

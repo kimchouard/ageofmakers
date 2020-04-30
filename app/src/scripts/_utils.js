@@ -12,10 +12,10 @@ export const stageStatus = {
 };
 
 export const questUnlocked = (quest, quests) => {
-  if (quest.prerequisites === []) {
+  if (quest && quest.prerequisites === []) {
     return true; // no prerequisites
   }
-  else {
+  else if (quest) {
     for(let i = 0; i < quest.prerequisites.length; i++) {
       let questNeeded = quests[quest.prerequisites[i]];
       if (questNeeded) {
@@ -30,6 +30,10 @@ export const questUnlocked = (quest, quests) => {
         return false; // one of the prerequisites not available... Kind of a bug if it ever happen
       }
     };
+  }
+  else {
+    console.error('Invalid quest passsed for questUnlock(...)', quest, quests);
+    return false;
   }
 
   return true; // all prerequisites completed

@@ -30,7 +30,7 @@ class d3Tree extends Component {
       "children": []
     };
     questData.following.forEach((follower) => {
-      let followerD3 = this.questsToD3Format(follower, quests, questData.sfid);
+      let followerD3 = this.questsToD3Format(follower, quests, questData.id);
       questD3.children.push(followerD3);
     });
     return questD3;
