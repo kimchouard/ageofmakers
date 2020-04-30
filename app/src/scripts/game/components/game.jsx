@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
-import { questUnlocked, agesData, getRomanAge } from '../../_utils';
+import { questUnlocked, agesData, getRomanAge, getAge } from '../../_utils';
 import { mdRenderers } from '../../_reactUtils';
 import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, getOnboarding, openWelcome, setOnboarding, changeStage, startWalkthrough } from '../../../actions/index';
 
@@ -79,8 +79,10 @@ class Game extends Component {
           // If the pin is actually an Age requirements!
           if (pin.age) {
             let agePrereq = agesData[pin.age];
+            let currentAge = getAge(this.props.quests);
+            
             return <div className="prereqWrapper">
-                <div className="agePrereq">
+                <div className={ `agePrereq ${(currentAge.index < agePrereq.index) ? 'locked' : 'complete'}` }>
                   { getRomanAge(agePrereq.index) }
                 </div>
                 <div
