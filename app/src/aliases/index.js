@@ -117,6 +117,11 @@ const getFullQuestWithAchievements = (callback) => {
 
           // Changing Quests status based on achievements
           for(let questId in quests) {
+            // Enforce the default "website" Quest type
+            if(quests[questId] && !quests[questId].type) {
+              quests[questId].type = 'website';
+            }
+
             if(quests[questId] && !quests[questId].status) {
               quests[questId].status = stageStatus.STATUS_NEW;
             }

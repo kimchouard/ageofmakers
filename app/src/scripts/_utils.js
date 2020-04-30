@@ -125,20 +125,21 @@ export const getRomanAge = (ageIndex) => {
 export const agesData = [
   {
     index: 0,
+    name: "Discovery",
+    image: null,
+    requirements: {
+      MakerMount: 2
+    }
+  },
+  {
+    index: 1,
     name: "Exploration",
     image: null,
     requirements: {
       Coding: 1,
       Electronics: 1,
-      ThreeD: 1
-    }
-  },
-  {
-    index: 1,
-    name: "Discovery",
-    image: null,
-    requirements: {
-      total: 5
+      ThreeD: 1,
+      total: 7
     }
   },
   {
@@ -167,23 +168,34 @@ export const agesData = [
 
 export const getAge = (quests) => {
   for (let i = 0; i < agesData.length; i++) {
-    let newArray = Object.keys(agesData[i].requirements).map( (valleyName) => {
+    let currentReqs = agesData[i].requirements;
+    let currentValues = Object.keys(currentReqs).map( (valleyName) => {
       if (valleyName === "total") {
-        if (typeof(agesData[i].requirements[valleyName]) === "string" && addComplete(quests, null, null) === addComplete(quests)){
+        if (typeof(currentReqs[valleyName]) === "string" && addComplete(quests, null, null) === addComplete(quests)){
           return "all";
         } else {
           return addComplete(quests);
         }
       } else {
-        if (typeof(agesData[i].requirements[valleyName]) === "string" && addComplete(quests, valleyName, null) === addComplete(quests, valleyName)){
+        if (typeof(currentReqs[valleyName]) === "string" && addComplete(quests, valleyName, null) === addComplete(quests, valleyName)){
           return "all";
         } else {
           return addComplete(quests, valleyName)
         }
       }
     });
-    if ( (newArray >= Object.values(agesData[i].requirements) && Object.values(agesData[i].requirements) !== -1) || newArray === Object.values(agesData[i].requirements)) {
-      // console.log("Passed Age:", agesData[i].name)
+    // console.log('Age check for', i, newArray, Object.values(currentReqs), (newArray >= Object.values(currentReqs) && Object.values(currentReqs) !== -1), newArray === Object.values(currentReqs));
+    let requirementsMet = true;
+    for(let j = 0; j < currentValues.length; j++) {
+      let currentReq = currentReqs[Object.keys(currentReqs)[j]];
+      let currentValue = currentValues[j];
+      if ((currentReq === 'all' && currentValue !== 'all') || (currentReq !== 'all' && currentValue < currentReq)) {
+        requirementsMet = false;
+      }
+    }
+
+    if (requirementsMet) {
+      console.log("Passed Age:", agesData[i].name)
       if (agesData[i].index + 1 === agesData.length) {
         // console.log("Returned Final Index!!!:", agesData[i].index)
         return(agesData[i])
@@ -192,7 +204,6 @@ export const getAge = (quests) => {
       // console.log("Failed Age:", agesData[i].name)
       // console.log("Returned Index:", agesData[i].index) Save above 4 lines of commented code to use for reference on a later feature
       return(agesData[i])
-      i = agesData.length
     }
   };
 };

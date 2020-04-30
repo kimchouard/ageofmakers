@@ -42,23 +42,26 @@ class Leaflet extends Component {
       if(this.props.quests) {
         return Object.keys(this.props.quests).map((questKey) => {
           let quest = this.props.quests[questKey];
-          let position = [100-quest.positionTop, quest.positionLeft];
-          let iconImg = new divIcon({
-            iconSize: [50, 65],
-            iconAnchor: position,
-            html: `<div class='pinWrapper ${quest.status} ${this.isUnlocked(quest) ? `${quest.valley}` : `locked`} ${quest.id}'>
-                    <div class='pin bounce'>
-                      <div class='inner ${this.isUnlocked(quest) ? `${quest.valley}` : `Locked`}'></div>
-                    </div>
-                    <div class='pulse'></div>
-                  </div>`
-          });
-          return <Marker
-            key={questKey}
-            icon={iconImg}
-            position={position} 
-            onClick={() => this.openQuest(questKey)}
-            />
+
+          if (getAge(this.props.quests).index >= quest.visibleAtAge) {
+            let position = [100-quest.positionTop, quest.positionLeft];
+            let iconImg = new divIcon({
+              iconSize: [50, 65],
+              iconAnchor: position,
+              html: `<div class='pinWrapper ${quest.status} ${this.isUnlocked(quest) ? `${quest.valley}` : `locked`} ${quest.id}'>
+                      <div class='pin bounce'>
+                        <div class='inner ${this.isUnlocked(quest) ? `${quest.valley}` : `Locked`}'></div>
+                      </div>
+                      <div class='pulse'></div>
+                    </div>`
+            });
+            return <Marker
+              key={questKey}
+              icon={iconImg}
+              position={position} 
+              onClick={() => this.openQuest(questKey)}
+              />
+          }
         });
       }
     }
@@ -80,7 +83,7 @@ class Leaflet extends Component {
             zoomDelta='0.25'>
             <ImageOverlay
               bounds={[[0,0], [100,100]]}
-              url='images/map.jpg'
+              url={`images/map-${(ageData.index < 2) ? ageData.index : 'all'}.jpg`}
             />
             <Marker
              class='tent'

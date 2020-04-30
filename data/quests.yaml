@@ -14,15 +14,17 @@
 # content: |-
 #   Description of the quest here
 # startUrl: 
+# type: website (default) | portfolio
 # positionLeft: 
 # positionTop: 
-# prerequisites: []
-# following: []
 # stages:
 # - name: 
 #   order: 0
 #   content: |-
 #     Stage instructions here
+# prerequisites: []
+# following: []
+# visibleAtAge: 0 # age at which the quest is visible
 
 # =======================================================
 #                 3D Quests
@@ -46,13 +48,6 @@ content: |-
 startUrl: https://www.tinkercad.com/login 
 positionLeft: 38
 positionTop: 55
-prerequisites: []
-following:
-- threeD_penguin
-- threeD_diamond_ring
-- threeD_bat_button
-- threeD_bookmark
-- threeD_house
 stages:
 - name: Login into Tinkercad
   order: 0
@@ -106,6 +101,15 @@ stages:
   order: 2
   type: Content
   status: new
+visibleAtAge: 0
+prerequisites: 
+- age: 1
+following:
+- threeD_penguin
+- threeD_diamond_ring
+- threeD_bat_button
+- threeD_bookmark
+- threeD_house
 
 
 # -------------------------------------------------------
@@ -128,6 +132,7 @@ positionTop: 60
 prerequisites:
 - threeD_keychain
 following: []
+visibleAtAge: 1
 stages:
 - name: Create Bookmark Base
   order: 0
@@ -200,6 +205,7 @@ prerequisites:
 following:
 - threeD_bee # a001K00000sNlFVQA0
 - threeD_monkey # a001K00000sNlFpQAK
+visibleAtAge: 1
 stages:
 - name: Make your Penguin Glow
   order: 0
@@ -244,6 +250,7 @@ positionTop: 54
 prerequisites:
 - threeD_keychain
 following: []
+visibleAtAge: 1
 stages:
 - name: Follow the instructions on the left
   order: 0
@@ -293,6 +300,7 @@ positionTop: 62
 prerequisites:
 - threeD_keychain
 following: []
+visibleAtAge: 1
 stages:
 - name: Follow the instructions on the left
   order: 0
@@ -345,6 +353,7 @@ positionTop: 50
 prerequisites:
 - threeD_keychain
 following: []
+visibleAtAge: 1
 stages:
 - name: 'Add a Cube: Floor Plan and Everything!'
   order: 0
@@ -455,6 +464,7 @@ positionTop: 78
 prerequisites:
 - threeD_penguin
 following: []
+visibleAtAge: 1
 stages:
 - name: Design and assemble your monkey
   order: 0
@@ -503,6 +513,7 @@ positionTop: 72
 prerequisites:
 - threeD_penguin
 following: []
+visibleAtAge: 1
 stages:
 - name: Design and assemble your monkey
   order: 0
@@ -569,13 +580,15 @@ stages:
 
     Click **I DID IT!** once you're done with the tutorial.
   order: 0
-prerequisites: []
+prerequisites: 
+- age: 1
 following:
 - scratch_imagine
 - scratch_chase_game
 - scratch_name
 - scratch_music
 - scratch_video_sensing
+visibleAtAge: 0
 
 
 # -------------------------------------------------------
@@ -605,6 +618,7 @@ stages:
 prerequisites:
 - scratch_get_started
 following: []
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -634,6 +648,7 @@ stages:
 prerequisites:
 - scratch_get_started
 following: []
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -663,6 +678,7 @@ stages:
 prerequisites:
 - scratch_get_started
 following: []
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -693,6 +709,7 @@ prerequisites:
 - scratch_get_started
 following:
 - scratch_story
+visibleAtAge: 1
 
 
 
@@ -724,6 +741,7 @@ prerequisites:
 - scratch_imagine
 following: 
 - scratch_animate
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -753,6 +771,7 @@ stages:
 prerequisites:
 - scratch_story
 following: []
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -783,6 +802,7 @@ prerequisites:
 - scratch_get_started
 following:
 - scratch_fly
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -813,10 +833,11 @@ prerequisites:
 - scratch_chase_game
 following:
 - scratch_pong
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
-# Make It Fly
+# Pong Game
 # scratch_pong
 
 ---
@@ -842,6 +863,7 @@ stages:
 prerequisites:
 - scratch_fly
 following: []
+visibleAtAge: 1
 
 
 # =======================================================
@@ -888,12 +910,14 @@ stages:
     Don't forget to upload your code to your micro:bit to try it out
     ```
   order: 1
-prerequisites: []
+prerequisites: 
+- age: 1
 following:
 - elec_smiley
 - elec_microchat
 - elec_acceleration
 - elec_light
+visibleAtAge: 0
 
 
 # -------------------------------------------------------
@@ -935,7 +959,7 @@ stages:
     ![Smiley Animation](https://ageofmakers.s3.amazonaws.com/smiley-animation.gif)
     
     ```info
-    Open this <a href="https://projects.raspberrypi.org/en/projects/interactive-badge" >tutorial</a> in a new page for a hint</div>
+    Open this [tutorial](https://projects.raspberrypi.org/en/projects/interactive-badge) in a new page for a hint</div>
     ```
   order: 1
 prerequisites:
@@ -945,6 +969,7 @@ following:
 - elec_stopwatch
 - elec_flipcoin
 - elec_highfive
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -989,6 +1014,7 @@ stages:
 prerequisites:
 - elec_smiley
 following: []
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -1059,6 +1085,7 @@ stages:
 prerequisites:
 - elec_smiley
 following: []
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -1109,6 +1136,7 @@ stages:
 prerequisites:
 - elec_smiley
 following: []
+visibleAtAge: 1
 
 # -------------------------------------------------------
 # Create an High-Five machine
@@ -1203,6 +1231,7 @@ stages:
 prerequisites:
 - elec_smiley
 following: []
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -1234,6 +1263,7 @@ stages:
 prerequisites:
 - elec_nametag
 following: []
+visibleAtAge: 1
 
 
 
@@ -1288,6 +1318,7 @@ prerequisites:
 - elec_nametag
 following:
 - elec_rock_paper_game
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -1322,6 +1353,7 @@ stages:
 prerequisites:
 - elec_acceleration
 following: []
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -1365,6 +1397,7 @@ prerequisites:
 - elec_nametag
 following:
 - elec_headphones
+visibleAtAge: 1
 
 
 # -------------------------------------------------------
@@ -1404,11 +1437,46 @@ stages:
 prerequisites:
 - elec_light
 following: []
+visibleAtAge: 1
 
 
 # =======================================================
 #                 Maker Quests
 # =======================================================
+
+
+# -------------------------------------------------------
+# What have other students done?
+# a004100000qR83OAAS / maker_students_showcase
+---
+id: maker_students_showcase
+name: What have other students done?
+valley: MakerMount
+content: |-
+  Welcome to the **Age of Makers**!  
+  
+  Based on which Global Goal(s) you're interested in, use the choice board to learn more about it.  
+    
+  ![Choice Board](https://ageofmakers.s3.amazonaws.com/Global%20Goal%20Choice%20Board%20-%20Google%20Docs%202019-04-03%2011-15-50.png)  
+    
+  Click **Get Started** below.
+# startUrl: https://docs.google.com/document/d/1D-yuD0ABFLaaa_J3s2YLOHNkNAi09UTcgf9sfZR3_9E/edit?usp=sharing
+startUrl: https://scratch.mit.edu
+type: portfolio
+positionLeft: 39
+positionTop: 40
+stages:
+- name: How to use the Choice Board?
+  content: |-
+    Open the [Choice Board](https://docs.google.com/document/d/1D-yuD0ABFLaaa_J3s2YLOHNkNAi09UTcgf9sfZR3_9E/edit?usp=sharing)
+
+    1.  Click on the links to learn about how students have created solutions to challenges in their communities
+    2.  Answers the questions on your handout for each project you explore!
+  order: 0
+prerequisites: []
+following:
+- maker_global_goals
+visibleAtAge: 0
 
 
 # -------------------------------------------------------
@@ -1422,9 +1490,10 @@ content: |-
   Now that you've explored what other have done, time for you to advocate for your goal!
 
   ![User-added image](http://i.imgur.com/7q16rid.jpg)
-startUrl: https://docs.google.com/presentation/d/1909vR4OEwt0j7VRtkKkvPYt4PNZVlupA_DUZeeaACms/copy
-positionLeft: 40
-positionTop: 29
+# startUrl: https://docs.google.com/presentation/d/1909vR4OEwt0j7VRtkKkvPYt4PNZVlupA_DUZeeaACms/copy
+startUrl: https://scratch.mit.edu
+positionLeft: 35
+positionTop: 35
 stages:
 - name: Start your presentation
   content: |-
@@ -1472,9 +1541,9 @@ stages:
     *   Why it is important to find solutions for the Goal
   order: 2
 prerequisites:
-- age: 2
 - maker_students_showcase
 following: []
+visibleAtAge: 0
 
 
 
@@ -1489,7 +1558,8 @@ content: |-
   Use this quest if you're the Project Manager of your team and you want to get started planning your team's Maker project.  
   
   ![Trello Screenshot](https://ageofmakers.s3.amazonaws.com/Project%20Management%20Tool%20-%20Future%20Trailblazers.jpg)
-startUrl: https://trello.com/b/4FaTdRJf/project-management-tool-future-trailblazers
+# startUrl: https://trello.com/b/4FaTdRJf/project-management-tool-future-trailblazers
+startUrl: https://scratch.mit.edu
 positionLeft: 27
 positionTop: 33
 stages:
@@ -1545,39 +1615,7 @@ stages:
       
     ![TODO Get Started](https://ageofmakers.s3.amazonaws.com/How%20to%20use%20this%20on%20Project%20Management%20Tool.jpg)
   order: 3
-prerequisites:
+prerequisites: 
 - age: 2
 following: []
-
-
-
-# -------------------------------------------------------
-# What have other students done?
-# a004100000qR83OAAS / maker_students_showcase
----
-id: maker_students_showcase
-name: What have other students done?
-valley: MakerMount
-content: |-
-  Welcome to the **Age of Makers**!  
-  
-  Based on which Global Goal(s) you're interested in, use the choice board to learn more about it.  
-    
-  ![Choice Board](https://ageofmakers.s3.amazonaws.com/Global%20Goal%20Choice%20Board%20-%20Google%20Docs%202019-04-03%2011-15-50.png)  
-    
-  Click **Get Started** below.
-startUrl: https://docs.google.com/document/d/1D-yuD0ABFLaaa_J3s2YLOHNkNAi09UTcgf9sfZR3_9E/edit?usp=sharing
-positionLeft: 38
-positionTop: 37
-stages:
-- name: How to use the Choice Board?
-  content: |-
-    Open the [Choice Board](https://docs.google.com/document/d/1D-yuD0ABFLaaa_J3s2YLOHNkNAi09UTcgf9sfZR3_9E/edit?usp=sharing)
-
-    1.  Click on the links to learn about how students have created solutions to challenges in their communities
-    2.  Answers the questions on your handout for each project you explore!
-  order: 0
-prerequisites:
-- age: 2
-following:
-- maker_global_goals
+visibleAtAge: 2

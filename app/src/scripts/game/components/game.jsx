@@ -87,7 +87,7 @@ class Game extends Component {
                 </div>
                 <div
                   className="questName">
-                  To be in age { agePrereq.index + 1 }, the Age of { agePrereq.name }.
+                  To be in age { agePrereq.index + 1 }: Age of { agePrereq.name }.
                 </div>
               </div>
           }
