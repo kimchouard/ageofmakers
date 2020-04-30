@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { questUnlocked, addComplete, getAge } from '../../_utils';
+import { questUnlocked, addComplete, getAge, getRomanAge } from '../../_utils';
 import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
@@ -64,17 +64,6 @@ class Header extends Component {
       return this.getRequirementsDisplay(ageData, valleyName);
     });
   }
-
-
-
-  getRomanAge(ageData) {
-    if(ageData.index === 0) { return "I"; }
-    else if(ageData.index === 1) { return "II"; }
-    else if(ageData.index === 2) { return "III"; }
-    else if(ageData.index === 3) { return "IV"; }
-    else if(ageData.index === 4) { return "V" }
-    else { return "" }
-  }
   
   render() {
     let ageData = getAge(this.props.quests);
@@ -87,7 +76,7 @@ class Header extends Component {
           <div className="col-sm-2 col-sm-offset-1 age" onClick={this.props.openTree}>
             <div className="roman">
               <div className="age-text">AGE</div>
-              <div className="number">{this.getRomanAge(ageData)}</div>
+              <div className="number">{getRomanAge(ageData.index)}</div>
             </div>
             <div className="name">{ageData.name}</div>
           </div>

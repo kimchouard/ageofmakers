@@ -19,6 +19,13 @@ export const questUnlocked = (quest, quests) => {
     for(let i = 0; i < quest.prerequisites.length; i++) {
       let questNeeded = quests[quest.prerequisites[i]];
       if (questNeeded) {
+        if (questNeeded.age) {
+          let currentAge = getAge(quests);
+          if (currentAge.index < questNeeded.age) {
+            return false;
+          }
+        }
+        
         if (!questUnlocked(questNeeded, quests)) {
           return false; // one of the INDIRECT prerequisites not completed
         }
@@ -101,6 +108,15 @@ export const addComplete = (quests, valleyName, statusName = 'complete') => {
     return 0;
   }
 };
+
+export const getRomanAge = (ageIndex) => {
+  if(ageIndex === 0) { return "I"; }
+  else if(ageIndex === 1) { return "II"; }
+  else if(ageIndex === 2) { return "III"; }
+  else if(ageIndex === 3) { return "IV"; }
+  else if(ageIndex === 4) { return "V" }
+  else { return "" }
+}
 
 export const agesData = [
   {

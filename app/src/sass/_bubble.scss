@@ -397,6 +397,21 @@
 			text-indent: 70px;
 			line-height: 60px;
 		}
+
+		.agePrereq {
+			position: absolute;
+      background: $red;
+      padding: 0 10px;
+			margin: 5px 0 5px;
+      height: 50px;
+			width: 50px;
+			border-radius: 10px;
+      text-align: center;
+      color: white; 
+			line-height: 50px;
+			font-family: 'Oil-Makes-You-Run-Faster' !important;
+			font-size: 25px;
+    }
 	}
 
 	.cta {

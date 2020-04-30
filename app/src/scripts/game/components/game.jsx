@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
-import { questUnlocked, apiUrl } from '../../_utils';
+import { questUnlocked, agesData, getRomanAge } from '../../_utils';
 import { mdRenderers } from '../../_reactUtils';
 import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, getOnboarding, openWelcome, setOnboarding, changeStage, startWalkthrough } from '../../../actions/index';
 
@@ -76,15 +76,30 @@ class Game extends Component {
     if (pins && pins.length) {
       return <div>
         {pins.map((pin) => {
-          let questNeeded = this.props.quests[pin];
-          return <div className="prereqWrapper"
-                onClick={() => this.openQuest(pin)}>
-              <Pin quest={questNeeded} embedded={true} />
-              <div
-                className="questName">
-                {questNeeded.name}
+          // If the pin is actually an Age requirements!
+          if (pin.age) {
+            let agePrereq = agesData[pin.age];
+            return <div className="prereqWrapper">
+                <div className="agePrereq">
+                  { getRomanAge(agePrereq.index) }
+                </div>
+                <div
+                  className="questName">
+                  To be in age { agePrereq.index + 1 }, the Age of { agePrereq.name }.
+                </div>
               </div>
-            </div>
+          }
+          else {
+            let questNeeded = this.props.quests[pin];
+            return <div className="prereqWrapper"
+                  onClick={() => this.openQuest(pin)}>
+                <Pin quest={questNeeded} embedded={true} />
+                <div
+                  className="questName">
+                  {questNeeded.name}
+                </div>
+              </div>
+          }
         })}
       </div>
     }
@@ -102,7 +117,7 @@ class Game extends Component {
   renderPrerequesites() {
     if (!questUnlocked(this.props.activeQuestData, this.props.quests)) {
       return <div className="cta before">
-        <div className="title">Before, you need to complete:</div>
+        <div className="title">To unlock this quest, you need:</div>
         { this.renderPinsList(this.props.activeQuestData.prerequisites) }
       </div>
     }

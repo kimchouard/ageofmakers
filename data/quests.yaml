@@ -34,7 +34,7 @@
 
 --- 
 id: threeD_keychain
-name: Customize your 3D Printed Keychain
+name: Create a 3D Printed Keychain
 valley: ThreeD
 content: |-
   Learn the basics of [Tinkercad](https://tinkercad.com), an online 3D designing tool.
@@ -1472,6 +1472,7 @@ stages:
     *   Why it is important to find solutions for the Goal
   order: 2
 prerequisites:
+- age: 2
 - maker_students_showcase
 following: []
 
@@ -1544,7 +1545,8 @@ stages:
       
     ![TODO Get Started](https://ageofmakers.s3.amazonaws.com/How%20to%20use%20this%20on%20Project%20Management%20Tool.jpg)
   order: 3
-prerequisites: []
+prerequisites:
+- age: 2
 following: []
 
 
@@ -1575,6 +1577,7 @@ stages:
     1.  Click on the links to learn about how students have created solutions to challenges in their communities
     2.  Answers the questions on your handout for each project you explore!
   order: 0
-prerequisites: []
+prerequisites:
+- age: 2
 following:
 - maker_global_goals
