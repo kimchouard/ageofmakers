@@ -30,6 +30,8 @@ export const WELCOME_OPENED = 'WELCOME_OPENED';
 export const WELCOME_CLOSED = 'WELCOME_CLOSED';
 export const TREE_OPENED = 'TREE_OPENED';
 export const TREE_CLOSED = 'TREE_CLOSED';
+export const SHOWCASE_OPENED = 'SHOWCASE_OPENED';
+export const SHOWCASE_CLOSED = 'SHOWCASE_CLOSED';
 export const WALKTHROUGH_START = 'WALKTHROUGH_START';
 export const WALKTHROUGH_STOP = 'WALKTHROUGH_STOP';
 export const GET_ONBOARDING = 'GET_ONBOARDING';
@@ -248,6 +250,30 @@ export function openTree() {
 export function closeTree() {
   return {
     type: TREE_CLOSED,
+    payload: {
+      open: false
+    },
+  };
+}
+
+// =========================================
+//         Showcase Page
+// =========================================
+
+// Open the profile page
+export function openShowcase() {
+  return {
+    type: SHOWCASE_OPENED,
+    payload: {
+      open: true,
+    },
+  };
+}
+
+// Close the profile page
+export function closeShowcase() {
+  return {
+    type: SHOWCASE_CLOSED,
     payload: {
       open: false
     },

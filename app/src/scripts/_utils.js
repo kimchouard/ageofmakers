@@ -11,6 +11,12 @@ export const stageStatus = {
   STATUS_NEW: 'new',
 };
 
+export const questTypes = {
+  WEBSITE: 'website',
+  SHOWCASE: 'showcase',
+  AGILE_BOARD: 'agileBoard',
+};
+
 export const questUnlocked = (quest, quests) => {
   if (quest && quest.prerequisites === []) {
     return true; // no prerequisites

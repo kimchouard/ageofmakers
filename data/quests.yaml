@@ -14,14 +14,28 @@
 # content: |-
 #   Description of the quest here
 # startUrl: 
-# type: website (default) | portfolio
+# type: website (default) | showcase | agileBoard
 # positionLeft: 
 # positionTop: 
+# # Website quest stage
 # stages:
 # - name: 
 #   order: 0
 #   content: |-
 #     Stage instructions here
+# # Showcase quest stage
+# project:
+# - name: 
+#   content: |-
+#     Project details here
+#   SDG: SDG number here
+#   from: Location here
+#   using:
+#     - microbit
+#     - toybox
+#     - arduino
+#     - mobile
+#   order: 0
 # prerequisites: []
 # following: []
 # visibleAtAge: 0 # age at which the quest is visible
@@ -1440,6 +1454,8 @@ following: []
 visibleAtAge: 1
 
 
+
+
 # =======================================================
 #                 Maker Quests
 # =======================================================
@@ -1453,26 +1469,134 @@ id: maker_students_showcase
 name: What have other students done?
 valley: MakerMount
 content: |-
-  Welcome to the **Age of Makers**!  
+  Welcome to the **Age of Makers**. 👋🏻 
   
-  Based on which Global Goal(s) you're interested in, use the choice board to learn more about it.  
+  You're about to hop on an exciting adventure. 🎒😎🚀✨
     
-  ![Choice Board](https://ageofmakers.s3.amazonaws.com/Global%20Goal%20Choice%20Board%20-%20Google%20Docs%202019-04-03%2011-15-50.png)  
-    
-  Click **Get Started** below.
+  ![FTC Winners Celebrating](https://ageofmakers.s3.amazonaws.com/Future%20Trailblazer%20Challenge%20-%20Students%20Celebrate_min.jpg)
+  
+  In this game, you'll learn how to use new technologies to solve the world's biggest problems, also known as the [Global Goals](https://www.globalgoals.org/).
+
+  Wonder what that means? Click **Get Started** to see what other students have built with the game!
 # startUrl: https://docs.google.com/document/d/1D-yuD0ABFLaaa_J3s2YLOHNkNAi09UTcgf9sfZR3_9E/edit?usp=sharing
 startUrl: https://scratch.mit.edu
-type: portfolio
+type: showcase
 positionLeft: 39
 positionTop: 40
-stages:
-- name: How to use the Choice Board?
+projects:
+- name: Self-Watering Community Garden
   content: |-
-    Open the [Choice Board](https://docs.google.com/document/d/1D-yuD0ABFLaaa_J3s2YLOHNkNAi09UTcgf9sfZR3_9E/edit?usp=sharing)
+    For homeless people to grow their food and have a project to be a part-of.
 
-    1.  Click on the links to learn about how students have created solutions to challenges in their communities
-    2.  Answers the questions on your handout for each project you explore!
+    ![Project Image](https://ageofmakers.s3.amazonaws.com/self-watering-garden.png)
+  SDG: 2
+  from: San Francisco, USA
+  using:
+    - microbit
+    - toybox
   order: 0
+- name: Pet Plan
+  content: |-
+    Provide the pet experience to allergic kids with carnivore plant box and its food.
+
+    ![Project Image](https://ageofmakers.s3.amazonaws.com/pet-plant.jpeg)
+  SDG: 3
+  from: Paris, FR
+  using: []
+  order: 1
+- name: The Aluminum Curtain
+  content: |-
+    An innovative bullet-proof door to keep students safe from school shootings.
+
+    ![Project Image](https://ageofmakers.s3.amazonaws.com/aluminium-curtain.png)
+  SDG: 4
+  from: Oakland, USA
+  using:
+    - toybox
+  order: 2
+- name: LGBTQ Community Devices & SWAG
+  content: |-
+    For community building and to create a support system.
+
+    ![Project Image](https://ageofmakers.s3.amazonaws.com/LGBTQ-device.png)
+  SDG: 5
+  from: Oakland, USA
+  using:
+    - microbit
+    - toybox
+  order: 3
+- name: Water Filtration System
+  content: |-
+    3D-Printed for countries that lacks access to clean water, distributed by partnered nonprofits.
+
+    ![Project Image](https://ageofmakers.s3.amazonaws.com/portable-water-filter.png)
+  SDG: 6
+  from: San Francisco, USA
+  using:
+    - toybox
+  order: 4
+- name: WIIZUM
+  content: |-
+    Electronic devices to to help blind, deaf and disabled people, like an electronic blind-cane, a vibrating whistle & more!
+
+    ![Project Image](https://ageofmakers.s3.amazonaws.com/WIIZUM.png)
+  SDG: 10
+  from: Paris, FR
+  using:
+    - arduino
+    - toybox
+  order: 5
+- name: Gamified Recycling Kiosk
+  content: |-
+    Mrs Hot Dog let’s you win points as you recycle item through the kiosk.
+
+    ![Project Image](https://ageofmakers.s3.amazonaws.com/mrs-hot-dog.png)
+  SDG: 12
+  from: San Francisco, USA
+  using:
+    - microbit
+  order: 6
+- name: Air Pollution Filter
+  content: |-
+    With air filters aimed to reduce global warming.
+
+    ![Project Image](https://ageofmakers.s3.amazonaws.com/air-pollution-filter.png)
+  SDG: 13
+  from: San Francisco, USA
+  using:
+    - toybox
+  order: 7
+- name: Ocean De-Polluting Boats
+  content: |-
+    Autonomous boats navigating on their own and communicating to each other to de-pollute our oceans.
+
+    ![Project Image](https://ageofmakers.s3.amazonaws.com/ocean-depolluting-boat.png)
+  SDG: 14
+  from: San Francisco, USA
+  using:
+    - microbit
+    - toybox
+  order: 8
+- name: SOS (Save Our Sea)
+  content: |-
+    Gamified remote drone piloting game to collect pollution in the ocean from the “7th continent”, made of just trashes.
+
+    ![Project Image](https://ageofmakers.s3.amazonaws.com/save-our-seas.png)
+  SDG: 10
+  from: Paris, FR
+  using:
+    - mobile
+  order: 9
+- name: E2GAME
+  content: |-
+    A Board game around Sustainable Goals and an app to create bridge between generation.
+
+    ![Project Image](https://ageofmakers.s3.amazonaws.com/e2game.png)
+  SDG: 17
+  from: Paris, FR
+  using:
+    - mobile
+  order: 10
 prerequisites: []
 following:
 - maker_global_goals

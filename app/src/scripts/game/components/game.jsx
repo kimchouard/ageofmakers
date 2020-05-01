@@ -9,14 +9,14 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
-import { questUnlocked, agesData, getRomanAge, getAge } from '../../_utils';
+import { questUnlocked, agesData, getRomanAge, getAge, questTypes } from '../../_utils';
 import { mdRenderers } from '../../_reactUtils';
-import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, getOnboarding, openWelcome, setOnboarding, changeStage, startWalkthrough } from '../../../actions/index';
+import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, getOnboarding, openWelcome, setOnboarding, changeStage, startWalkthrough, openShowcase } from '../../../actions/index';
 
 import Pin from './pin';
 import Header from './header';
 import Bubble from './bubble';
-import Profile from './profile';
+import Showcase from './showcase';
 import Walkthrough from './walkthrough';
 import Welcome from './welcome';
 import LeafletMap from './leafletMap';
@@ -39,8 +39,13 @@ class Game extends Component {
   }
 
   startQuestBt() {
-    this.props.startQuest(this.props.activeQuest.quest, this.props.currentTab.id);
-    window.location = this.props.activeQuestData.lastUrl || this.props.activeQuestData.startUrl;
+    if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.WEBSITE) {
+      this.props.startQuest(this.props.activeQuest.quest, this.props.currentTab.id);
+      window.location = this.props.activeQuestData.lastUrl || this.props.activeQuestData.startUrl;
+    }
+    else if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.SHOWCASE) {
+      this.props.openShowcase();
+    }
   }
 
   startButton() {
@@ -49,6 +54,7 @@ class Game extends Component {
           LOCKED
         </button>
     }
+
     if (this.props.activeQuestData.status === 'inProgress') {
       return <button
         className="inProgress"
@@ -87,7 +93,7 @@ class Game extends Component {
                 </div>
                 <div
                   className="questName">
-                  To be in age { agePrereq.index + 1 }: Age of { agePrereq.name }.
+                  Age { agePrereq.index + 1 } required: Age of { agePrereq.name }.
                 </div>
               </div>
           }
@@ -157,7 +163,7 @@ class Game extends Component {
         <div className="gameWrapper">
           <Header />
           <LeafletMap />
-          {/* <Profile /> */}
+          <Showcase />
           <Welcome />
           <AgeTree />
           { (this.props.activeQuest) ? <Bubble embed={false}>{ this.getContent() }</Bubble> : null }
@@ -181,11 +187,12 @@ const mapStateToProps = (state) => {
     currentTab: state.currentTab,
     walkthrough: state.walkthrough,
     onboarding: state.isOnboarded,
+    showcase: state.showcase,
   };
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, openWelcome, getOnboarding, setOnboarding, changeStage, startWalkthrough }, dispatch);
+  return bindActionCreators({ reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, openWelcome, getOnboarding, setOnboarding, changeStage, startWalkthrough, openShowcase }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

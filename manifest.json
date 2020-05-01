@@ -30,7 +30,9 @@
         "https://makecode.microbit.org/*",
         "https://projects.raspberrypi.org/*",
         "https://scratch.mit.edu/*",
-        "https://spark.adobe.com/*"
+        "https://spark.adobe.com/*",
+        "https://www.globalgoals.org/",
+        "https://worldslargestlesson.globalgoals.org/"
       ],
       "css": [],
       "js": ["content.js"]

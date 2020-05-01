@@ -76,7 +76,7 @@ gulp.task('clean-images', () => {
 });
 
 gulp.task('copy-images', gulp.series('clean-images', () => {
-  return gulp.src('images/*')
+  return gulp.src('images/**/*')
     .pipe(gulp.dest('./build/images/'));
 }));
 
