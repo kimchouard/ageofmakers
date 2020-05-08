@@ -15,6 +15,7 @@ export const GET_ACTIVE_PLAYER = 'GET_ACTIVE_PLAYER';
 export const SET_NEW_PLAYER = 'SET_NEW_PLAYER';
 export const GET_PLAYERS = 'GET_PLAYERS';
 export const REMOVE_PLAYER = 'REMOVE_PLAYER';
+export const SET_PLAYER_SDG = 'SET_PLAYER_SDG';
 export const GET_CURRENT_TAB = 'GET_CURRENT_TAB';
 export const QUESTS_RELOAD = 'QUESTS_RELOAD';
 export const QUESTS_PULLED = 'QUESTS_PULLED';
@@ -62,6 +63,14 @@ export function getActivePlayer() {
   return {
     type: GET_ACTIVE_PLAYER,
     payload: { mock: true },
+  };
+}
+
+// Mock action. Full in alias
+export function setActivePlayerSDG(sdgNumber) {
+  return {
+    type: SET_PLAYER_SDG,
+    payload: { mock: true, sdgNumber },
   };
 }
 

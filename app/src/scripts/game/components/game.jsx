@@ -73,7 +73,7 @@ class Game extends Component {
       return <button
         className="new"
         onClick={ () => { this.startQuestBt() } }>
-          Get Started!
+          { this.props.activeQuestData.CTA || 'Get Started!' }
         </button>
     }
   }

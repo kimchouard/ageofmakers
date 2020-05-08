@@ -134,7 +134,7 @@ export const agesData = [
     name: "Discovery",
     image: null,
     requirements: {
-      MakerMount: 2
+      MakerMount: 1
     }
   },
   {

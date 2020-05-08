@@ -9,7 +9,7 @@
 @import 'vars';
 
 /* ================================
-            Profile
+            Showcase
 ================================ */
 
 .fullpage {
@@ -38,13 +38,35 @@
     height: 100%;
     width: 100%;
   }
+
+  .btn-close {
+    position: absolute;
+    right: 3%;
+    top: 80px;
+    background-color: $red;
+  }
+  
+  .btn-next {
+    position: fixed;
+    bottom: 3%;
+    left: 50%;
+    padding: 10px 20px;
+    font-size: 20px;
+    margin-left: -40px;
+    background-color: $red;
+  }
 }
 
-.closingbutton{
-  position: absolute;
-  right: 3%;
-  top: 80px;
-  background-color: $red;
+.sdgPickerWrapper {
+
+  .SDG-selector {
+    margin-top: 15px; 
+    cursor: pointer;
+
+    .SDG-icon {
+      width: 100%;
+    }
+  }
 }
 
 .project {

@@ -64,6 +64,12 @@ class Header extends Component {
       return this.getRequirementsDisplay(ageData, valleyName);
     });
   }
+
+  getPlayerSDG() {
+    if (this.props.activePlayerData.sdg) {
+      return `, SDG ${this.props.activePlayerData.sdg}`
+    }
+  }
   
   render() {
     let ageData = getAge(this.props.quests);
@@ -83,7 +89,7 @@ class Header extends Component {
 
           <div className="col-sm-2 col-sm-offset-3 user">
             <a className="action help" onClick={this.props.openWelcome}>?</a> 
-            <p className="name">{this.props.activePlayerData.name}</p>
+            <p className="name">{this.props.activePlayerData.name} { this.getPlayerSDG() }</p>
             <a className="action logout" onClick={ this.props.logOut }></a>
             <a className="action refresh" onClick={ this.props.reloadQuests }></a>
           </div>

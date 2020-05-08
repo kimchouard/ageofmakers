@@ -5,7 +5,7 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { SET_NEW_PLAYER, GET_PLAYERS, REMOVE_PLAYER } from '../actions/index';
+import { SET_NEW_PLAYER, GET_PLAYERS, REMOVE_PLAYER, SET_PLAYER_SDG } from '../actions/index';
 
 export default (state = null, action) => {
   switch (action.type) {
@@ -13,8 +13,10 @@ export default (state = null, action) => {
       return action.payload;
     case GET_PLAYERS:
       return action.payload;
+    case SET_PLAYER_SDG:
+      return action.payload;
     case REMOVE_PLAYER:
-    return action.payload;
+      return action.payload;
     default:
       return state;
   }

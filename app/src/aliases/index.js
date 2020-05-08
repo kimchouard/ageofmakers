@@ -269,6 +269,34 @@ const removePlayer = (originalAction) => {
   }));
 };
 
+// originalAction.payload params: sdgNumber
+const setActivePlayerSDG = (originalAction) => {
+  // TODO: API to update the user records
+  return middlewarePromise(originalAction, new Promise((resolve, reject) => {
+    if (originalAction.payload && originalAction.payload.mock) {
+      chrome.storage.sync.get(['players', 'activePlayer'], (storage) => {
+        if (storage && storage.players && storage.activePlayer) {
+          let players = storage.players;
+          let activePlayerId = storage.activePlayer;
+
+          console.log(`Updating ${originalAction.payload.activePlayerId} with SDG: ${originalAction.payload.sdgNumber}`);
+
+          players[activePlayerId].sdg = originalAction.payload.sdgNumber;
+
+          chrome.storage.sync.set({ players }, () => {
+            getFullQuestWithAchievements((quests) => {
+              resolve(players);
+            })
+          });
+        }
+        else {
+          console.error('Players not found or no played logged in.', storage);
+        }
+      });
+    }
+  }));
+}
+
 const getPlayers = (originalAction) => {
   return getChromeSyncStorage(originalAction, 'players');
 };
@@ -369,6 +397,7 @@ export default {
   GET_ACTIVE_PLAYER: getActivePlayer,
   SET_NEW_PLAYER: setNewPlayer,
   GET_PLAYERS: getPlayers,
+  SET_PLAYER_SDG: setActivePlayerSDG,
   REMOVE_PLAYER: removePlayer,
   STAGE_CHANGE: changeStage,
   GET_ONBOARDING: getOnboarding,

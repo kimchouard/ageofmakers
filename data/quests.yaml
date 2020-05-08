@@ -38,7 +38,8 @@
 #   order: 0
 # prerequisites: []
 # following: []
-# visibleAtAge: 0 # age at which the quest is visible
+# visibleAtAge: 0 # age at which the quest is visible, optional. Default: 0
+# CTA: # Optional. Set the wording of the quest start button
 
 # =======================================================
 #                 3D Quests
@@ -118,6 +119,7 @@ stages:
 visibleAtAge: 0
 prerequisites: 
 - age: 1
+- maker_students_showcase
 following:
 - threeD_penguin
 - threeD_diamond_ring
@@ -596,6 +598,7 @@ stages:
   order: 0
 prerequisites: 
 - age: 1
+- maker_students_showcase
 following:
 - scratch_imagine
 - scratch_chase_game
@@ -926,6 +929,7 @@ stages:
   order: 1
 prerequisites: 
 - age: 1
+- maker_students_showcase
 following:
 - elec_smiley
 - elec_microchat
@@ -1477,12 +1481,18 @@ content: |-
   
   In this game, you'll learn how to use new technologies to solve the world's biggest problems, also known as the [Global Goals](https://www.globalgoals.org/).
 
-  Wonder what that means? Click **Get Started** to see what other students have built with the game!
+  Wonder what that means? Click **Start Your Journey** below to get started and get inspired by what other students have built with this game already!
 # startUrl: https://docs.google.com/document/d/1D-yuD0ABFLaaa_J3s2YLOHNkNAi09UTcgf9sfZR3_9E/edit?usp=sharing
 startUrl: https://scratch.mit.edu
 type: showcase
-positionLeft: 39
-positionTop: 40
+CTA: Start Your Journey
+positionLeft: 38
+positionTop: 36
+stages:
+- name: Hidden stage
+  content: |-
+    
+  order: 0
 projects:
 - name: Self-Watering Community Garden
   content: |-
@@ -1599,7 +1609,9 @@ projects:
   order: 10
 prerequisites: []
 following:
-- maker_global_goals
+- threeD_keychain
+- elec_nametag
+- scratch_get_started
 visibleAtAge: 0
 
 
@@ -1665,9 +1677,9 @@ stages:
     *   Why it is important to find solutions for the Goal
   order: 2
 prerequisites:
-- maker_students_showcase
+- age: 2
 following: []
-visibleAtAge: 0
+visibleAtAge: 2
 
 
 
