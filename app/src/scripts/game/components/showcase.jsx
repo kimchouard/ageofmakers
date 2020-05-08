@@ -127,7 +127,7 @@ class Showcase extends Component {
                     { this.renderContent() }
                 </div>
                 <a className="btn btn-danger btn-close" onClick={() => this.props.closeShowcase()}>CLOSE</a>
-                {(!this.state.chooseSDG) ? <div className="btn btn-danger btn-next" onClick={() => { this.startSDGChooser() }}>NEXT</div> : '' }
+                {(!this.state.chooseSDG) ? <div className={`btn btn-danger ${ (this.props.showcase.open) ? 'btn-next' : ''}`} onClick={() => { this.startSDGChooser() }}>NEXT</div> : '' }
             </div>
         </div>
       );
