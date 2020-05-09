@@ -9,38 +9,44 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { closeEmbeddedQuest } from '../../../actions/index';
-import { questTypes } from '../../_utils';
-import Showcase from './showcase';
-import Kanban from './kanban';
+import Board from '@lourenci/react-kanban'
+import ReactMarkdown from 'react-markdown';
+import { mdRenderers } from '../../_reactUtils';
+/* <ReactMarkdown
+    source={contentVariableHere}
+    renderers={ mdRenderers }
+  /> */
 
-class EmbeddedQuest extends Component {
+
+class Kanban extends Component {
   constructor(props) {
       super(props);
 
       this.state = {}
   }
 
-  renderEmbbededQuestContent() {
-    if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.SHOWCASE) {
-      return <Showcase />;
+  renderKanban() {
+    if (this.props.activeQuestData.boards) {
+      return <Board initialBoard={ { columns: this.props.activeQuestData.boards }} disableColumnDrag allowAddCard />
     }
-    else if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.KANBAN) {
-      return <Kanban />
+    else {
+      console.error('No boards to show on the kanban.');
     }
   }
 
   render() {
     if (this.props.embeddedQuest && this.props.activeQuestData) {
-      return (
-        <div className={ (this.props.embeddedQuest.open) ? 'fullpage open' : 'fullpage'}>
-            <div className="wrapper">
-                <div className="container">
-                    { this.renderEmbbededQuestContent() }
-                </div>
-                <a className="btn btn-danger btn-close" onClick={() => this.props.closeEmbeddedQuest()}>CLOSE</a>
+      return <div className="row">
+          <div className="row">
+            <div className="col-sm-10 col-sm-offset-1">
+              <h1>{this.props.activeQuestData.name}</h1>
+              <h4>Explaination here.</h4>
             </div>
-        </div>
-      );
+          </div>
+          <div className="row">
+            { this.renderKanban() }
+          </div>
+      </div>
     }
     else {
       return <div>Loading</div>
@@ -60,4 +66,4 @@ function mapDispatchToProps(dispatch) {
 return bindActionCreators({ closeEmbeddedQuest }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EmbeddedQuest);
+export default connect(mapStateToProps, mapDispatchToProps)(Kanban);

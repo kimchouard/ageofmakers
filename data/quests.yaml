@@ -35,6 +35,15 @@
 #     - toybox
 #     - arduino
 #     - mobile
+# # Boards for Kaban
+# boards:
+#   - id: 
+#     title: 
+#     cards:
+#       - id: 0
+#         title: 
+#         description: |-
+#          Desc. here
 #   order: 0
 # prerequisites: []
 # following: []
@@ -1698,20 +1707,21 @@ positionLeft: 35
 positionTop: 28
 boards:
   - id: todo
-    name: To Do 💡
+    title: To Do 💡
     cards:
-      - name: Let's get started!
+      - id: 0
+        title: Let's get started!
         description: |-
           Welcome to your Project Management tool on Trello! This is where your team will be able to manage your project.
 
           Start by filling your backlog with all the tasks you have to complete, and move this card to **Done! 😎🚀**.
-  # - name: Current Sprint = To Do
+  # - title: Current Sprint = To Do
   #   cards: []
   - id: doing
-    name: Doing 👩‍💻👨‍💻
+    title: Doing 👩‍💻👨‍💻
     cards: []
   - id: done
-    name: Done! 😎🚀
+    title: Done! 😎🚀
     cards: []
 prerequisites: 
 - age: 2
