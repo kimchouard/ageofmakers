@@ -23,7 +23,11 @@ export default (state = null, action) => {
       chrome.tabs.update({url: chrome.extension.getURL('game.html')});
       return action.payload;
     case QUEST_NEWTAB:
-      chrome.tabs.create({url: chrome.extension.getURL('game.html')});
+      const gameUrl = chrome.extension.getURL('game.html');
+      if (window.location&& window.location.href != gameUrl) {
+        chrome.tabs.create({url: gameUrl});
+      }
+
       return action.payload;
     default:
       return state;

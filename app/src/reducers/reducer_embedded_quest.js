@@ -5,13 +5,13 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { SHOWCASE_OPENED, SHOWCASE_CLOSED } from '../actions/index';
+import { EMBEDDED_QUEST_OPENED, EMBEDDED_QUEST_CLOSED } from '../actions/index';
 
 export default (state = { open: false }, action) => {
   switch (action.type) {
-    case SHOWCASE_OPENED:
+    case EMBEDDED_QUEST_OPENED:
       return action.payload;
-    case SHOWCASE_CLOSED:
+    case EMBEDDED_QUEST_CLOSED:
       return action.payload;
     default:
       return state;

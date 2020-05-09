@@ -11,12 +11,12 @@ import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
 import { questUnlocked, agesData, getRomanAge, getAge, questTypes } from '../../_utils';
 import { mdRenderers } from '../../_reactUtils';
-import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, getOnboarding, openWelcome, setOnboarding, changeStage, startWalkthrough, openShowcase } from '../../../actions/index';
+import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, getOnboarding, openWelcome, setOnboarding, changeStage, startWalkthrough, openEmbeddedQuest } from '../../../actions/index';
 
 import Pin from './pin';
 import Header from './header';
 import Bubble from './bubble';
-import Showcase from './showcase';
+import EmbeddedQuest from './embeddedQuest';
 import Walkthrough from './walkthrough';
 import Welcome from './welcome';
 import LeafletMap from './leafletMap';
@@ -43,8 +43,8 @@ class Game extends Component {
       this.props.startQuest(this.props.activeQuest.quest, this.props.currentTab.id);
       window.location = this.props.activeQuestData.lastUrl || this.props.activeQuestData.startUrl;
     }
-    else if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.SHOWCASE) {
-      this.props.openShowcase();
+    else if (this.props.activeQuestData && (this.props.activeQuestData.type === questTypes.SHOWCASE || this.props.activeQuestData.type === questTypes.KANBAN)) {
+      this.props.openEmbeddedQuest();
     }
   }
 
@@ -163,7 +163,7 @@ class Game extends Component {
         <div className="gameWrapper">
           <Header />
           <LeafletMap />
-          <Showcase />
+          <EmbeddedQuest />
           <Welcome />
           <AgeTree />
           { (this.props.activeQuest) ? <Bubble embed={false}>{ this.getContent() }</Bubble> : null }
@@ -192,7 +192,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, openWelcome, getOnboarding, setOnboarding, changeStage, startWalkthrough, openShowcase }, dispatch);
+  return bindActionCreators({ reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, openWelcome, getOnboarding, setOnboarding, changeStage, startWalkthrough, openEmbeddedQuest }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

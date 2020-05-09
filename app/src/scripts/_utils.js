@@ -14,7 +14,7 @@ export const stageStatus = {
 export const questTypes = {
   WEBSITE: 'website',
   SHOWCASE: 'showcase',
-  AGILE_BOARD: 'agileBoard',
+  KANBAN: 'kanban',
 };
 
 export const questUnlocked = (quest, quests) => {
@@ -145,7 +145,7 @@ export const agesData = [
       Coding: 1,
       Electronics: 1,
       ThreeD: 1,
-      total: 7
+      total: 8
     }
   },
   {

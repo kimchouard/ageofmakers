@@ -59,7 +59,7 @@ class Login extends Component {
         { Object.keys(this.props.players).map((playerId) => {
           let player = this.props.players[playerId];
           return <div className="userList" onClick={ (e) => { if (e.target.className == 'userList') { this.props.logIn(playerId) } } }>
-            <p class="userName">{player.name}</p>
+            <p className="userName">{player.name}</p>
             <button className="btn-delete" onClick={ () => { this.startRemovingPlayer(playerId) } }>X</button>
             <div className="clear"></div>
           </div>

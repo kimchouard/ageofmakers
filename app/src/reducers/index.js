@@ -15,7 +15,7 @@ import currentTab from './reducer_current_tab';
 import bubbleToggled from './reducer_bubble_toggled';
 import welcome from './reducer_welcome';
 import tree from './reducer_tree';
-import showcase from './reducer_showcase';
+import embeddedQuest from './reducer_embedded_quest';
 import walkthrough from './reducer_walkthrough';
 import isOnboarded from './reducer_is_onboarded';
 
@@ -28,7 +28,7 @@ export default combineReducers({
   players,
   welcome,
   tree,
-  showcase,
+  embeddedQuest,
   walkthrough,
   isOnboarded
 });

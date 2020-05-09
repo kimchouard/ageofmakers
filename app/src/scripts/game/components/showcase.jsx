@@ -8,7 +8,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { closeShowcase, setActivePlayerSDG, changeStage } from '../../../actions/index';
+import { closeEmbeddedQuest, setActivePlayerSDG, changeStage } from '../../../actions/index';
 import ReactMarkdown from 'react-markdown';
 import { mdRenderers } from '../../_reactUtils';
 
@@ -76,7 +76,7 @@ class Showcase extends Component {
     this.props.setActivePlayerSDG(sdgNumber);
     // Mark the quest as completed by getting to the next "stage", completing the only fake stage that are in there for projects. 
     this.props.changeStage(this.props.activeQuest.quest, 1);
-    this.props.closeShowcase();
+    this.props.closeEmbeddedQuest();
   }
 
   renderSDGs() {
@@ -89,48 +89,35 @@ class Showcase extends Component {
     </div>
   }
 
-  renderContent() {
-    if (this.state.chooseSDG) {
-      return <div className="row">
-        <div className="row">
-          <div className="col-sm-10 col-sm-offset-1">
-            <h1>What Global Goal do you care about?</h1>
-            <h4>Based on the projects you're seen, and what you can read on the Global Goals website, click on the global goal you care the most about:</h4>
-          </div>
-        </div>
-        <div className="row">
-          { this.renderSDGs() }
-        </div>
-      </div>
-    }
-    else {
-      return <div className="row">
+  render() {
+    if (this.props.embeddedQuest && this.props.activeQuestData) {
+      if (this.state.chooseSDG) {
+        return <div className="row">
           <div className="row">
             <div className="col-sm-10 col-sm-offset-1">
-              <h1>{this.props.activeQuestData.name}</h1>
-              <h4>Scroll through the list of what other students have built with the game, and see if there is anything that inspires you! Click "Next" at the bottom of the screen when you're done.</h4>
+              <h1>What Global Goal do you care about?</h1>
+              <h4>Based on the projects you're seen, and what you can read on the Global Goals website, click on the global goal you care the most about:</h4>
             </div>
           </div>
           <div className="row">
-            { this.renderProjects() }
+            { this.renderSDGs() }
           </div>
-      </div>
-    }
-  }
-
-  render() {
-    if (this.props.showcase && this.props.activeQuestData) {
-      return (
-        <div className={ (this.props.showcase.open) ? 'fullpage open' : 'fullpage'}>
-            <div className="wrapper">
-                <div className="container">
-                    { this.renderContent() }
-                </div>
-                <a className="btn btn-danger btn-close" onClick={() => this.props.closeShowcase()}>CLOSE</a>
-                {(!this.state.chooseSDG) ? <div className={`btn btn-danger ${ (this.props.showcase.open) ? 'btn-next' : ''}`} onClick={() => { this.startSDGChooser() }}>NEXT</div> : '' }
-            </div>
         </div>
-      );
+      }
+      else {
+        return <div className="row">
+            <div className="row">
+              <div className="col-sm-10 col-sm-offset-1">
+                <h1>{this.props.activeQuestData.name}</h1>
+                <h4>Scroll through the list of what other students have built with the game, and see if there is anything that inspires you! Click "Next" at the bottom of the screen when you're done.</h4>
+              </div>
+            </div>
+            <div className="row">
+              { this.renderProjects() }
+            </div>
+            {(!this.state.chooseSDG) ? <div className={`btn btn-danger ${ (this.props.embeddedQuest.open) ? 'btn-next' : ''}`} onClick={() => { this.startSDGChooser() }}>NEXT</div> : '' }
+        </div>
+      }
     }
     else {
       return <div>Loading</div>
@@ -140,14 +127,14 @@ class Showcase extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    showcase: state.showcase,
+    embeddedQuest: state.embeddedQuest,
     activeQuest: state.activeQuest,
     activeQuestData: (state.activeQuest) ? state.quests[state.activeQuest.quest] : null,
   };
 };
 
 function mapDispatchToProps(dispatch) {
-return bindActionCreators({ closeShowcase, setActivePlayerSDG, changeStage }, dispatch);
+return bindActionCreators({ closeEmbeddedQuest, setActivePlayerSDG, changeStage }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Showcase);

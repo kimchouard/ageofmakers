@@ -20,3 +20,12 @@ const storeWithMiddleware = createStoreWithMiddleware(rootReducer);
 wrapStore(storeWithMiddleware, {
   portName: 'ageofmakers',
 });
+
+// Clicking on the extension's icon opens the game.
+chrome.browserAction.onClicked.addListener((tab) => {
+  const gameUrl = chrome.extension.getURL('game.html');
+  // console.log('Icon clicked', gameUrl, tab, tab.url);
+  if (tab && tab.url != gameUrl) {
+    chrome.tabs.create({url: gameUrl});
+  }
+});

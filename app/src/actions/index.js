@@ -31,8 +31,10 @@ export const WELCOME_OPENED = 'WELCOME_OPENED';
 export const WELCOME_CLOSED = 'WELCOME_CLOSED';
 export const TREE_OPENED = 'TREE_OPENED';
 export const TREE_CLOSED = 'TREE_CLOSED';
-export const SHOWCASE_OPENED = 'SHOWCASE_OPENED';
-export const SHOWCASE_CLOSED = 'SHOWCASE_CLOSED';
+export const EMBEDDED_QUEST_OPENED = 'EMBEDDED_QUEST_OPENED';
+export const EMBEDDED_QUEST_CLOSED = 'EMBEDDED_QUEST_CLOSED';
+export const KANBAN_OPENED = 'KANBAN_OPENED';
+export const KANBAN_CLOSED = 'KANBAN_CLOSED';
 export const WALKTHROUGH_START = 'WALKTHROUGH_START';
 export const WALKTHROUGH_STOP = 'WALKTHROUGH_STOP';
 export const GET_ONBOARDING = 'GET_ONBOARDING';
@@ -270,9 +272,9 @@ export function closeTree() {
 // =========================================
 
 // Open the profile page
-export function openShowcase() {
+export function openEmbeddedQuest() {
   return {
-    type: SHOWCASE_OPENED,
+    type: EMBEDDED_QUEST_OPENED,
     payload: {
       open: true,
     },
@@ -280,9 +282,9 @@ export function openShowcase() {
 }
 
 // Close the profile page
-export function closeShowcase() {
+export function closeEmbeddedQuest() {
   return {
-    type: SHOWCASE_CLOSED,
+    type: EMBEDDED_QUEST_CLOSED,
     payload: {
       open: false
     },

@@ -14,7 +14,7 @@
 # content: |-
 #   Description of the quest here
 # startUrl: 
-# type: website (default) | showcase | agileBoard
+# type: website (default) | showcase | kanban
 # positionLeft: 
 # positionTop: 
 # # Website quest stage
@@ -1618,68 +1618,68 @@ visibleAtAge: 0
 # -------------------------------------------------------
 # Global Goal Advocacy Project
 # a004100000FL3pjAAD / maker_global_goals
----
-id: maker_global_goals
-name: Global Goal Advocacy Project
-valley: MakerMount
-content: |-
-  Now that you've explored what other have done, time for you to advocate for your goal!
+# ---
+# id: maker_global_goals
+# name: Global Goal Advocacy Project
+# valley: MakerMount
+# content: |-
+#   Now that you've explored what other have done, time for you to advocate for your goal!
 
-  ![User-added image](http://i.imgur.com/7q16rid.jpg)
-# startUrl: https://docs.google.com/presentation/d/1909vR4OEwt0j7VRtkKkvPYt4PNZVlupA_DUZeeaACms/copy
-startUrl: https://scratch.mit.edu
-positionLeft: 35
-positionTop: 35
-stages:
-- name: Start your presentation
-  content: |-
-    Here is a presentation template you can use to present your idea.  
+#   ![User-added image](http://i.imgur.com/7q16rid.jpg)
+# # startUrl: https://docs.google.com/presentation/d/1909vR4OEwt0j7VRtkKkvPYt4PNZVlupA_DUZeeaACms/copy
+# startUrl: https://scratch.mit.edu
+# positionLeft: 35
+# positionTop: 35
+# stages:
+# - name: Start your presentation
+#   content: |-
+#     Here is a presentation template you can use to present your idea.  
   
-    To use it, click **Make a copy**.  
+#     To use it, click **Make a copy**.  
       
-    ![User-added image](https://ageofmakers.s3.amazonaws.com/Global%20Goals%20Advocacy%20Template%20-%20Make%20a%20copy%202019-03-20%2011-06-45.png)
-  order: 0
-- name: Research about your goal
-  content: |-
-    There is so much you can advocate for! Remember the Global Goals you were the most interested in?  
+#     ![User-added image](https://ageofmakers.s3.amazonaws.com/Global%20Goals%20Advocacy%20Template%20-%20Make%20a%20copy%202019-03-20%2011-06-45.png)
+#   order: 0
+# - name: Research about your goal
+#   content: |-
+#     There is so much you can advocate for! Remember the Global Goals you were the most interested in?  
   
-    ![\"Global](\"https://ageofmakers.s3.amazonaws.com/global-goals_850x385_acf_cropped.png\)\\n
+#     ![Global](https://ageofmakers.s3.amazonaws.com/global-goals_850x385_acf_cropped.png)
 
-    1.  Choose a Global Goal that you would like to create a solution for. It should be something that matters to you and your community
-    2.  Learn more about your goal. Do some online research and find at least:\\n\\t
-        1.  3 important facts about your goal,
-        2.  Who it affects,
-        3.  Why it is important.
+#     1.  Choose a Global Goal that you would like to create a solution for. It should be something that matters to you and your community
+#     2.  Learn more about your goal. Do some online research and find at least:
+#         1.  3 important facts about your goal,
+#         2.  Who it affects,
+#         3.  Why it is important.
 
-    ```info
-    You can also use Google to search for information about you Goal
-    ```
-  order: 1
-- name: Advocate for your goal!
-  content: |-
-    Choose one of the options below to Advocate (share information and teach others) for your goal
+#     ```info
+#     You can also use Google to search for information about you Goal
+#     ```
+#   order: 1
+# - name: Advocate for your goal!
+#   content: |-
+#     Choose one of the options below to Advocate (share information and teach others) for your goal
     
-    **Option 1** **Google Slide**
+#     **Option 1** **Google Slide**
     
-    *   Use this new slide deck and modify/add slides to it
+#     *   Use this new slide deck and modify/add slides to it
     
-    **Option 2 Scratch Project:**
+#     **Option 2 Scratch Project:**
     
-    *   Click the [link to open the Scratch Starter Project](\"https://scratch.mit.edu/projects/281009379/\) ([tinyurl.com/globalgoalsscratch](\"http://tinyurl.com/globalgoalsscratch\))
+#     *   Click the [link to open the Scratch Starter Project](\"https://scratch.mit.edu/projects/281009379/\) ([tinyurl.com/globalgoalsscratch](\"http://tinyurl.com/globalgoalsscratch\))
         
-    **Option 3: Adobe Spark Page**
+#     **Option 3: Adobe Spark Page**
     
-    Make sure to include the following information to your project:
-    *   Name of Goal
-    *   Who it affects or where in the world people are affected
-    *   Facts about the Goal
-    *   Images related to the Goal
-    *   Why it is important to find solutions for the Goal
-  order: 2
-prerequisites:
-- age: 2
-following: []
-visibleAtAge: 2
+#     Make sure to include the following information to your project:
+#     *   Name of Goal
+#     *   Who it affects or where in the world people are affected
+#     *   Facts about the Goal
+#     *   Images related to the Goal
+#     *   Why it is important to find solutions for the Goal
+#   order: 2
+# prerequisites:
+# - age: 2
+# following: []
+# visibleAtAge: 2
 
 
 
@@ -1691,66 +1691,28 @@ id: maker_project_planning
 name: Start Planning Your Project
 valley: MakerMount
 content: |- 
-  Use this quest if you're the Project Manager of your team and you want to get started planning your team's Maker project.  
-  
-  ![Trello Screenshot](https://ageofmakers.s3.amazonaws.com/Project%20Management%20Tool%20-%20Future%20Trailblazers.jpg)
+  Use this quest if you're the Project Manager of your team and you want to get started planning your team's Maker project.
 # startUrl: https://trello.com/b/4FaTdRJf/project-management-tool-future-trailblazers
-startUrl: https://scratch.mit.edu
-positionLeft: 27
-positionTop: 33
-stages:
-- name: Login into Trello
-  content: |-
-    Welcome to your Future Trailblazer **Project Management Tool**! This is using a pretty neat tool called _Trello_. This tool will be very helpful for your team to manage your project.  
-  
-    First thing first, let's get you sign up.
+type: kanban
+positionLeft: 35
+positionTop: 28
+boards:
+  - id: todo
+    name: To Do 💡
+    cards:
+      - name: Let's get started!
+        description: |-
+          Welcome to your Project Management tool on Trello! This is where your team will be able to manage your project.
 
-    1.  Click **Sign Up** on the top right
-    2.  Don't bother entering all that manual information, just click **Sign Up with Google** and use your school google account
-    3.  Voilà! You're signed-in and can go to the next step
-
-    ![Trello Login](https://ageofmakers.s3.amazonaws.com/Trello%20-%20Login.gif)
-  order: 0
-- name: Copy the Trello Board
-  content: |-
-    The Trello Board you see [here](https://trello.com/b/4FaTdRJf/project-management-tool-future-trailblazers), is a template.  
-  
-    You'll need to make a copy to use it with your project.
-
-    1.  Click **Show More** on the top right
-    2.  Click **... More** in the right panel, that'll show you more option.
-    3.  Click **Copy Board** to create your own copy of this template.
-    4.  Put a tilte, like the name of your team or your project. Click **Create**.
-    5.  Boom! You just have your own Trello board now!
-
-    ![Trello Login](https://ageofmakers.s3.amazonaws.com/Trello%20-%20Clone%20Board.gif)  
-      
-    Good job 😎
-  order: 1
-- name: Share the board with your team!
-  content: |-
-    Good job! Now that you've copied the board, time to add your team to start collaborating on it!  
-  
-    ![Share Trello Baord](https://ageofmakers.s3.amazonaws.com/Project%20Management%20Tool%20-%20Share.png)
-
-    1.  Click **Invite** next to the board title on the top
-    2.  Add your teammates emails
-    3.  Make sure your teammates sign up for Trello with their google account too!
-  order: 2
-- name: Fill in the Backlog
-  content: |-
-    Now that you have your own board, you can start filling it!  
-  
-    To guide you:
-
-    1.  Open the "**How to use this?? 🤔**" card
-    2.  Work on the "**TO DO - Get Started**" items.
-    3.  You can tick each item once you've done it.
-    4.  Have fun!
-
-      
-    ![TODO Get Started](https://ageofmakers.s3.amazonaws.com/How%20to%20use%20this%20on%20Project%20Management%20Tool.jpg)
-  order: 3
+          Start by filling your backlog with all the tasks you have to complete, and move this card to **Done! 😎🚀**.
+  # - name: Current Sprint = To Do
+  #   cards: []
+  - id: doing
+    name: Doing 👩‍💻👨‍💻
+    cards: []
+  - id: done
+    name: Done! 😎🚀
+    cards: []
 prerequisites: 
 - age: 2
 following: []
