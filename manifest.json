@@ -1,7 +1,7 @@
 {
   "name": "Age of Makers",
   "description": "Become an independent learner, solving the world’s biggest challenges using 3D printing, coding & electronics.",
-  "version": "1.4.0.0beta",
+  "version": "1.4.0.0",
   "background": {
     "scripts": [
       "event.js"
@@ -45,9 +45,7 @@
   
   "permissions": [
     "activeTab",
-    "storage",
-    "identity",
-    "identity.email"
+    "storage"
   ],
 
   "manifest_version": 2  
