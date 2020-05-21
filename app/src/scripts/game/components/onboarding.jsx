@@ -28,10 +28,18 @@ class Onboarding extends Component {
       }
     }
 
-    startNewUserCreation() {
+    startNewUserCreation(e) {
       console.log('Creating new user:', this.state.userName);
+      e.preventDefault(); 
       this.props.setNewPlayer(this.state.userName);
       this.setState({ userName: '', newUserUi: false, userIdToLogin: Object.keys(this.props.players).length });
+      return false;
+    }
+
+    backToPlayerSelect(e) {
+      e.preventDefault();
+      this.setState({ userName: '', newUserUi: false });
+      return false;
     }
 
     startRemovingPlayer(playerId) {
@@ -45,6 +53,12 @@ class Onboarding extends Component {
     logIn(e, playerId) { 
       if (e.target.className == 'player-name') { 
         this.props.logIn(playerId);
+      }
+    }
+
+    renderCancelButton() {
+      if (this.props.players && Object.keys(this.props.players).length) {
+        return <input type="button" className="btn btn-cancel" value="Cancel" onClick={(e) => { return this.backToPlayerSelect(e); }}/>;
       }
     }
 
@@ -76,7 +90,8 @@ class Onboarding extends Component {
               value={ this.state.userName }
               onChange={ e => this.setState({ userName: e.target.value }) }
               className="player-name" />
-            <input type="submit" className="btn btn-login" value="Let's do it!" onClick={(e) => { e.preventDefault(); this.startNewUserCreation(); return false; }}/>
+              { this.renderCancelButton() }
+            <input type="submit" className="btn btn-login" value="Let's do it!" onClick={(e) => { return this.startNewUserCreation(e); }}/>
             <div className="clear-both"></div>
           </form>;
         }
