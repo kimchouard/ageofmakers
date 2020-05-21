@@ -43,7 +43,17 @@ body.game {
   left: 0;
   bottom: 0;
   right: 0;
-  background: $beige;
+  background: black;
+}
+
+.loading {
+  .leaflet-container {
+    filter: blur(5px);
+  }
+}
+
+.clear-both {
+  clear: both;
 }
 
 @import 'controls';
@@ -51,6 +61,7 @@ body.game {
 @import 'bubble';
 @import 'showcase';
 @import 'welcome';
+@import 'onboarding';
 @import 'walkthrough';
 @import 'leafletMap';
 @import 'ageTree';

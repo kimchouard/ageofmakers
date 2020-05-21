@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import { logOut, getQuests, getActivePlayer, openNewTab } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
-import Login from '../../game/components/login';
+// import Login from '../../game/components/login';
 
 class App extends Component {
   componentDidMount() {
@@ -31,12 +31,12 @@ class App extends Component {
 
   render() {
     if (!this.props.activePlayer || this.props.activePlayer === -1 ) {
-      return <Login />;
+      return <div></div>// <Login />;
     }
     // Logout if error
     else if (this.props.quests && this.props.quests.error) {
       this.props.logOut();
-      return <Login />;
+      return <div></div>// <Login />;
     }
     else {
       return (

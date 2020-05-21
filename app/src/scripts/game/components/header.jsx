@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { questUnlocked, addComplete, getAge, getRomanAge } from '../../_utils';
+import { questUnlocked, addComplete, getAge, getRomanAge, isLoggedInAndLoaded } from '../../_utils';
 import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
@@ -70,29 +70,44 @@ class Header extends Component {
       return `, SDG ${this.props.activePlayerData.sdg}`
     }
   }
+
+  renderContent() {
+    if (isLoggedInAndLoaded(this.props)) {
+      let ageData = getAge(this.props.quests);
+      return <div>
+        <div className="badgeTrackersHeader col-sm-4">
+          {this.renderRequirementsDisplay(ageData)}
+        </div>
+        <div className="col-sm-2 col-sm-offset-1 age" onClick={this.props.openTree}>
+          <div className="roman">
+            <div className="age-text">AGE</div>
+            <div className="number">{getRomanAge(ageData)}</div>
+          </div>
+          <div className="name">{ageData.name}</div>
+        </div>
+
+        <div className="col-sm-2 col-sm-offset-3 user">
+          <a className="action help" onClick={this.props.openWelcome}>?</a> 
+          <p className="name">{this.props.activePlayerData.name}</p>
+          <a className="action logout" onClick={ this.props.logOut }></a>
+          <a className="action refresh" onClick={ this.props.reloadQuests }></a>
+        </div>
+      </div>;
+    }
+    else {
+      return <div className="placeholder">
+        <div className="aom-logo-simple">
+          <img src="images/ageofmaker_name.png" alt="Age of Makers Logo"/>
+        </div>
+      </div>
+    }
+  }
   
   render() {
-    let ageData = getAge(this.props.quests);
     return (
     <header className="controls">
         <div className="container-fluid">
-          <div className="badgeTrackersHeader col-sm-4">
-            {this.renderRequirementsDisplay(ageData)}
-          </div>
-          <div className="col-sm-2 col-sm-offset-1 age" onClick={this.props.openTree}>
-            <div className="roman">
-              <div className="age-text">AGE</div>
-              <div className="number">{getRomanAge(ageData.index)}</div>
-            </div>
-            <div className="name">{ageData.name}</div>
-          </div>
-
-          <div className="col-sm-2 col-sm-offset-3 user">
-            <a className="action help" onClick={this.props.openWelcome}>?</a> 
-            <p className="name">{this.props.activePlayerData.name} { this.getPlayerSDG() }</p>
-            <a className="action logout" onClick={ this.props.logOut }></a>
-            <a className="action refresh" onClick={ this.props.reloadQuests }></a>
-          </div>
+          { this.renderContent() }
         </div>
       </header>
     );
@@ -103,7 +118,7 @@ const mapStateToProps = (state) => {
     sid: state.sid,
     quests: state.quests,
     activePlayer: state.activePlayer,
-    activePlayerData: (state.activePlayer) ? state.players[state.activePlayer] : null,
+    activePlayerData: (state.players && state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null,
     players: state.players,
     walkthrough: state.walkthrough,
   };

@@ -20,6 +20,21 @@
   z-index: 999;
   height: 50px;
 
+  .placeholder {
+    height: 50px;
+    margin: 0 auto;
+    width: fit-content;
+     
+    .aom-logo-simple {
+      height: 100%;
+      padding: 10px 0;
+
+      img {
+        height: 100%;
+      }
+    }
+  }
+
   .score {
     background: $beige;
     font-size: 12px;

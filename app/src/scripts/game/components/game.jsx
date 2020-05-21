@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
-import { questUnlocked, agesData, getRomanAge, getAge, questTypes } from '../../_utils';
+import { questUnlocked, agesData, getRomanAge, getAge, questTypes, isLoggedInAndLoaded } from '../../_utils';
 import { mdRenderers } from '../../_reactUtils';
 import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, getOnboarding, openWelcome, setOnboarding, changeStage, startWalkthrough, openEmbeddedQuest } from '../../../actions/index';
 
@@ -18,6 +18,7 @@ import Header from './header';
 import Bubble from './bubble';
 import EmbeddedQuest from './embeddedQuest';
 import Walkthrough from './walkthrough';
+import Onboarding from './onboarding';
 import Welcome from './welcome';
 import LeafletMap from './leafletMap';
 import AgeTree from './ageTree';
@@ -132,7 +133,7 @@ class Game extends Component {
   }
 
   getContent() {
-  return <div
+    return <div
       className="bubble-description"
     >
       { this.renderWhatsNext() }
@@ -151,29 +152,25 @@ class Game extends Component {
   }
 
   render() {
-    if (this.props.quests && !this.props.quests.error) {
-      require('../../../sass/game.scss');
+    require('../../../sass/game.scss');
 
-      this.props.getOnboarding();
-      if (this.props.onboarding === false || this.props.onboarding === undefined) {
-        this.props.startWalkthrough(1);
-        this.props.setOnboarding(true)
-      }
-      return (
-        <div className="gameWrapper">
-          <Header />
-          <LeafletMap />
-          <EmbeddedQuest />
-          <Welcome />
-          <AgeTree />
-          { (this.props.activeQuest) ? <Bubble embed={false}>{ this.getContent() }</Bubble> : null }
-          { (this.props.walkthrough.start) ? <Walkthrough/> : null }
-        </div>
-      );
-    }
-    else {
-      return <div></div>
-    }
+    // this.props.getOnboarding();
+    // if (this.props.onboarding === false || this.props.onboarding === undefined) {
+    //   this.props.startWalkthrough(1);
+    //   this.props.setOnboarding(true)
+    // }
+    return (
+      <div className={`gameWrapper ${ (isLoggedInAndLoaded(this.props)) ? '' : 'loading'}`}>
+        <Header />
+        <LeafletMap />
+        <EmbeddedQuest />
+        <Onboarding />
+        {/* <Welcome />
+        <AgeTree /> */}
+        { (this.props.activeQuest) ? <Bubble embed={false}>{ this.getContent() }</Bubble> : null }
+        { (isLoggedInAndLoaded(this.props) && this.props.walkthrough.start) ? <Walkthrough/> : null }
+      </div>
+    );
   }
 }
 
@@ -181,8 +178,10 @@ const mapStateToProps = (state) => {
   return {
     sid: state.sid,
     activePlayer: state.activePlayer,
+    activePlayerData: (state.players && state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null,
+    players: state.players,
     activeQuest: state.activeQuest,
-    activeQuestData: (state.activeQuest) ? state.quests[state.activeQuest.quest] : null,
+    activeQuestData: (state.quests && state.activeQuest) ? state.quests[state.activeQuest.quest] : null,
     quests: state.quests,
     currentTab: state.currentTab,
     walkthrough: state.walkthrough,

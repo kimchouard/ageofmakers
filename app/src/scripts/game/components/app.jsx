@@ -8,9 +8,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getActivePlayer } from '../../../actions/index';
+import { reloadQuests, getActivePlayer } from '../../../actions/index';
 
-import Login from './login';
 import Game from './game';
 
 class App extends Component {
@@ -20,22 +19,14 @@ class App extends Component {
     if (!this.props.activePlayer) {
       this.props.getActivePlayer();
     }
+
+    if (!this.props.quests) {
+      this.props.reloadQuests();
+    }
   }
 
   render() {
-    // ==================================
-    //          LOGIN
-    // ==================================
-    if (!this.props.activePlayer || this.props.activePlayer === -1 ) {
-      return <Login />
-    }
-
-    // ==================================
-    //          GAME
-    // ==================================
-    else {
-      return <Game />
-    }
+    return <Game />
   }
 }
 
@@ -46,7 +37,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getActivePlayer }, dispatch);
+  return bindActionCreators({ reloadQuests, getActivePlayer }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

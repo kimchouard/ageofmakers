@@ -17,6 +17,14 @@ export const questTypes = {
   KANBAN: 'kanban',
 };
 
+export const isQuestsLoadedNSelected = (quests) => {
+  return quests && Object.keys(quests).length && !quests.error
+}
+
+export const isLoggedInAndLoaded = (props) => {
+  return isQuestsLoadedNSelected(props.quests) && props.players && props.activePlayer && props.activePlayer !== -1;
+}
+
 export const questUnlocked = (quest, quests) => {
   if (quest && quest.prerequisites === []) {
     return true; // no prerequisites
@@ -119,12 +127,12 @@ export const addComplete = (quests, valleyName, statusName = 'complete') => {
   }
 };
 
-export const getRomanAge = (ageIndex) => {
-  if(ageIndex === 0) { return "I"; }
-  else if(ageIndex === 1) { return "II"; }
-  else if(ageIndex === 2) { return "III"; }
-  else if(ageIndex === 3) { return "IV"; }
-  else if(ageIndex === 4) { return "V" }
+export const getRomanAge = (age) => {
+  if(age.index === 0) { return "I"; }
+  else if(age.index === 1) { return "II"; }
+  else if(age.index === 2) { return "III"; }
+  else if(age.index === 3) { return "IV"; }
+  else if(age.index === 4) { return "V" }
   else { return "" }
 }
 
@@ -133,6 +141,7 @@ export const agesData = [
     index: 0,
     name: "Discovery",
     image: null,
+    position: [58, 41],
     requirements: {
       MakerMount: 1
     }

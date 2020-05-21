@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import { Map, Marker, ImageOverlay } from 'react-leaflet';
 import {CRS, Icon, divIcon} from 'leaflet';
 import { bindActionCreators } from 'redux';
-import { questUnlocked, getAge } from '../../_utils';
+import { questUnlocked, getAge, isLoggedInAndLoaded } from '../../_utils';
 import { selectQuest, toggleBubble, openTree, getQuests } from '../../../actions/index';
 
 class Leaflet extends Component {
@@ -24,9 +24,9 @@ class Leaflet extends Component {
     }
 
     componentDidMount() {
-      if(this.props.quests && (this.props.quests.length === 0 || this.props.quests.error)) {
-        console.log('Loading quests', this.props.getQuests());
-      }
+      // if(this.props.quests && (this.props.quests.length === 0 || this.props.quests.error)) {
+      //   console.log('Loading quests', this.props.getQuests());
+      // }
     }
 
     isUnlocked(quest) {
@@ -39,7 +39,7 @@ class Leaflet extends Component {
     }
 
     renderPins() {
-      if(this.props.quests) {
+      if (isLoggedInAndLoaded(this.props)) {
         return Object.keys(this.props.quests).map((questKey) => {
           let quest = this.props.quests[questKey];
 
@@ -66,12 +66,42 @@ class Leaflet extends Component {
       }
     }
 
-    render() {
+    renderTent() {
+      if (isLoggedInAndLoaded(this.props)) {
         let ageData = getAge(this.props.quests);
-        const position = [this.state.lat, this.state.lng];
+        return <Marker
+          class='tent'
+          icon={
+            new Icon({
+              className:'tent',
+              iconUrl: `/images/tent-${ ageData.index + 1 }.png`,
+              iconSize: [100,100],
+              iconAnchor: [57,35]
+            })
+          }
+          position={[57,35]}
+          onClick={this.props.openTree /*openProfile*/ }
+          />;
+      }
+    }
+
+    getMapImageUrl() {
+      if (isLoggedInAndLoaded(this.props)) {
+        let ageData = getAge(this.props.quests);
+        return (ageData.index < 2) ? ageData.index : 'all'
+      }
+      // Default is first age map #placeholder
+      else {
+        return '0';
+      }
+    }
+
+    render() {
+        const position = (isLoggedInAndLoaded(this.props)) ? getAge(this.props.quests).position : [this.state.lat, this.state.lng];
+        
         return (
           <Map
-            classname='leafletMap'
+            classname={`leafletMap`}
             style={ { height: `${100*((window.outerHeight - 50)/window.outerHeight)}%`, }}
             center={position}
             zoom={this.state.zoom}
@@ -81,24 +111,12 @@ class Leaflet extends Component {
             maxZoom='5.5'
             zoomSnap='0.25'
             zoomDelta='0.25'>
-            <ImageOverlay
-              bounds={[[0,0], [100,100]]}
-              url={`images/map-${(ageData.index < 2) ? ageData.index : 'all'}.jpg`}
-            />
-            <Marker
-             class='tent'
-             icon={
-              new Icon({
-                className:'tent',
-                iconUrl: `/images/tent-${ ageData.index + 1 }.png`,
-                iconSize: [100,100],
-                iconAnchor: [57,35]
-              })
-             }
-             position={[57,35]}
-             onClick={this.props.openTree /*openProfile*/ }
-            />
-            {this.renderPins()}
+              <ImageOverlay
+                bounds={[[0,0], [100,100]]}
+                url={`images/map-${ this.getMapImageUrl() }.jpg`}
+              />
+              { this.renderTent() }
+              { this.renderPins() }
           </Map>
         )
     }
@@ -107,6 +125,9 @@ class Leaflet extends Component {
 const mapStateToProps = (state) => {
     return {
       quests: state.quests,
+      activePlayer: state.activePlayer,
+      activePlayerData: (state.players && state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null,
+      players: state.players,
     };
   }
 
