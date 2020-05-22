@@ -99,7 +99,7 @@ gulp.task('clean-yaml', () => {
 });
 
 gulp.task('copy-yaml', gulp.series('clean-yaml', () => {
-  return gulp.src('data/*.yaml')
+  return gulp.src('data/**/*.yaml')
     .pipe(gulp.dest('./build/data/'));
 }));
 

@@ -8,7 +8,6 @@
 import { SET_NEW_PLAYER } from '../actions'
 import { stageStatus } from '../scripts/_utils';
 import yaml from 'js-yaml';
-const questsUrl = chrome.runtime.getURL('data/quests.yaml');
 
 // =============================================
 //            UTILS
@@ -134,14 +133,15 @@ const getFullQuestWithAchievements = (callback) => {
         // Log out!!
         console.log('Logging out deleted user');
         chrome.storage.sync.set({ activePlayer: -1 }, () => {
-          callback(quests);
+          callback();
         });
       }
     };
   });
 }
 
-const loadQuests = (resolve) => {
+const loadQuests = (journeyId, resolve) => {
+  const questsUrl = chrome.runtime.getURL(`data/${journeyId}/quests.yaml`);
   fetch(questsUrl)
     .then((response) => {
     if (response.status !== 200) {
@@ -168,6 +168,32 @@ const loadQuests = (resolve) => {
 
     });
   });
+}
+
+const updatePlayersData = (field, originalAction) => {
+  return middlewarePromise(originalAction, new Promise((resolve, reject) => {
+    if (originalAction.payload && originalAction.payload.mock) {
+      chrome.storage.sync.get(['players', 'activePlayer'], (storage) => {
+        if (storage && storage.players && storage.activePlayer) {
+          let players = storage.players;
+          let activePlayerId = storage.activePlayer;
+
+          let value = (field === 'sdg') ? originalAction.payload.sdgNumber : originalAction.payload.journeyId;
+
+          console.log(`Updating ${activePlayerId}.${field}: ${value}`);
+
+          players[activePlayerId][field] = value;
+
+          chrome.storage.sync.set({ players }, () => {
+            resolve(players);
+          });
+        }
+        else {
+          console.error('Players not found or no played logged in.', storage);
+        }
+      });
+    }
+  }));
 }
 
 
@@ -271,30 +297,12 @@ const removePlayer = (originalAction) => {
 
 // originalAction.payload params: sdgNumber
 const setActivePlayerSDG = (originalAction) => {
-  // TODO: API to update the user records
-  return middlewarePromise(originalAction, new Promise((resolve, reject) => {
-    if (originalAction.payload && originalAction.payload.mock) {
-      chrome.storage.sync.get(['players', 'activePlayer'], (storage) => {
-        if (storage && storage.players && storage.activePlayer) {
-          let players = storage.players;
-          let activePlayerId = storage.activePlayer;
+  return updatePlayersData('sdg', originalAction);
+}
 
-          console.log(`Updating ${originalAction.payload.activePlayerId} with SDG: ${originalAction.payload.sdgNumber}`);
-
-          players[activePlayerId].sdg = originalAction.payload.sdgNumber;
-
-          chrome.storage.sync.set({ players }, () => {
-            getFullQuestWithAchievements((quests) => {
-              resolve(players);
-            })
-          });
-        }
-        else {
-          console.error('Players not found or no played logged in.', storage);
-        }
-      });
-    }
-  }));
+// originalAction.payload params: journeyId
+const setActivePlayerJourney = (originalAction) => {
+  return updatePlayersData('journey', originalAction);
 }
 
 const getPlayers = (originalAction) => {
@@ -306,9 +314,10 @@ const getPlayers = (originalAction) => {
 //            QUESTS
 // =============================================
 
+// originalAction.payload params: journeyId
 const reloadQuests = (originalAction) => {
   return middlewarePromise(originalAction, new Promise((resolve, reject) => {
-    loadQuests(resolve);
+    loadQuests(originalAction.payload.journeyId, resolve);
   }));
 };
 
@@ -398,6 +407,7 @@ export default {
   SET_NEW_PLAYER: setNewPlayer,
   GET_PLAYERS: getPlayers,
   SET_PLAYER_SDG: setActivePlayerSDG,
+  SET_PLAYER_JOURNEY: setActivePlayerJourney,
   REMOVE_PLAYER: removePlayer,
   STAGE_CHANGE: changeStage,
   GET_ONBOARDING: getOnboarding,

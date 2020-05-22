@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reloadQuests, getActivePlayer } from '../../../actions/index';
+import { getActivePlayerData } from '../../_utils';
 
 import Game from './game';
 
@@ -21,7 +22,7 @@ class App extends Component {
     }
 
     if (!this.props.quests) {
-      this.props.reloadQuests();
+      this.props.reloadQuests(this.props.activePlayerData.journey);
     }
   }
 
@@ -33,6 +34,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     activePlayer: state.activePlayer,
+    activePlayerData: getActivePlayerData(state),
   };
 };
 

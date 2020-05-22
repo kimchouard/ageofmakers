@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { questUnlocked, addComplete, getAge, getRomanAge, isLoggedInAndLoaded } from '../../_utils';
+import { questUnlocked, addComplete, getAge, getRomanAge, isLoggedInAndLoaded, getActivePlayerData } from '../../_utils';
 import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
@@ -90,7 +90,7 @@ class Header extends Component {
           <a className="action help" onClick={this.props.openWelcome}>?</a> 
           <p className="name">{this.props.activePlayerData.name}</p>
           <a className="action logout" onClick={ this.props.logOut }></a>
-          <a className="action refresh" onClick={ this.props.reloadQuests }></a>
+          <a className="action refresh" onClick={ () => this.props.reloadQuests(this.props.activePlayerData.journey) }></a>
         </div>
       </div>;
     }
@@ -118,7 +118,7 @@ const mapStateToProps = (state) => {
     sid: state.sid,
     quests: state.quests,
     activePlayer: state.activePlayer,
-    activePlayerData: (state.players && state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null,
+    activePlayerData: getActivePlayerData(state),
     players: state.players,
     walkthrough: state.walkthrough,
   };

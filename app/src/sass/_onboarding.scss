@@ -70,12 +70,29 @@
             border: none;
           }
         }
-
-        .btn-login {
-          color: #333;
+        
+        .btn-login, .btn-cancel {
           font-size: 18px;
           padding: 10px 20px;
           text-transform: uppercase;
+        }
+
+        .btn-cancel {
+          color: white;
+          background: darken($red, 10);
+          margin-right: 25px;
+
+          &:hover {
+            background: darken($red, 20);
+          }
+        }
+
+        .btn-login {
+          color: #333;
+
+          &:hover {
+            background: darken(#FFF, 10);
+          }
         }
         
         .name-form {
@@ -93,6 +110,87 @@
 
             &:focus {
               outline: none;
+            }
+          }
+        }
+
+        .journeys {
+          position: relative;
+          margin: 0 auto;
+          width: fit-content; 
+
+          .journey {
+            position: relative;
+            margin: 20px;
+            cursor: pointer;
+
+            .journey-icon {
+              position: relative;
+              z-index: 50;
+              width: 200px;
+              height: 200px;
+
+              img { height: 100%; }
+            }
+
+            &:nth-child(1) {
+              float: left;
+
+              .journey-details {
+                left: -350px;
+                padding-right: 60px;
+              }
+            }
+
+            &:nth-child(2) {
+              float: right;
+
+              .journey-details {
+                right: -350px;
+                padding-left: 60px;
+              }
+            }
+
+            &.disabled {
+              cursor: no-drop;
+
+              .journey-icon::after {
+                content: "COMING SOON";
+                font-weight: bold;
+                color: white;
+                background: #D35446;
+                position: absolute;
+                top: 3px;
+                right: -18px;
+                transform: rotate(32deg);
+                border-radius: 9px;
+                padding: 9px 10px;
+              }
+
+              .journey-details {
+                background: $journey-grey;
+              }
+            }
+
+            .journey-details {
+              position: absolute;
+              z-index: 30;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 400px;
+              background: $journey-blue;
+              border-radius: 14px;
+              color: white;
+              padding: 10px 20px;
+
+              .journey-title {
+                font-weight: bold;
+                font-size: 20px;
+              }
+
+              .journey-description {
+                font-size: 16px;
+              }
             }
           }
         }

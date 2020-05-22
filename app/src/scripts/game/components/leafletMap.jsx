@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import { Map, Marker, ImageOverlay } from 'react-leaflet';
 import {CRS, Icon, divIcon} from 'leaflet';
 import { bindActionCreators } from 'redux';
-import { questUnlocked, getAge, isLoggedInAndLoaded } from '../../_utils';
+import { questUnlocked, getAge, isLoggedInAndLoaded, getActivePlayerData } from '../../_utils';
 import { selectQuest, toggleBubble, openTree, getQuests } from '../../../actions/index';
 
 class Leaflet extends Component {
@@ -126,7 +126,7 @@ const mapStateToProps = (state) => {
     return {
       quests: state.quests,
       activePlayer: state.activePlayer,
-      activePlayerData: (state.players && state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null,
+      activePlayerData: getActivePlayerData(state),
       players: state.players,
     };
   }

@@ -5,6 +5,11 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+export const journeyIds = {
+  JOURNEY_MUSIC: 'music',
+  JOURNEY_FTC: 'ftc',
+};
+
 export const stageStatus = {
   STATUS_COMPLETE: 'complete',
   STATUS_INPROGRESS: 'inProgress',
@@ -23,6 +28,10 @@ export const isQuestsLoadedNSelected = (quests) => {
 
 export const isLoggedInAndLoaded = (props) => {
   return isQuestsLoadedNSelected(props.quests) && props.players && props.activePlayer && props.activePlayer !== -1;
+}
+
+export const getActivePlayerData = (state) => {
+  return (state.players && state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null;
 }
 
 export const questUnlocked = (quest, quests) => {
@@ -135,7 +144,6 @@ export const getRomanAge = (age) => {
   else if(age.index === 4) { return "V" }
   else { return "" }
 }
-
 export const agesData = [
   {
     index: 0,
@@ -180,7 +188,6 @@ export const agesData = [
     requirements: {}
   }
 ];
-
 export const getAge = (quests) => {
   for (let i = 0; i < agesData.length; i++) {
     let currentReqs = agesData[i].requirements;

@@ -8,8 +8,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { isLoggedInAndLoaded } from '../../_utils';
-import { getPlayers, logIn, setNewPlayer, removePlayer } from '../../../actions/index';
+import { isLoggedInAndLoaded, journeyIds, getActivePlayerData } from '../../_utils';
+import { getPlayers, logIn, setNewPlayer, setActivePlayerJourney, removePlayer } from '../../../actions/index';
 
 
 class Onboarding extends Component {
@@ -62,6 +62,16 @@ class Onboarding extends Component {
       }
     }
 
+    selectPlayerJourney(journey) {
+      console.log('click', journey);
+      if (journey === 'music') {
+        this.props.setActivePlayerJourney(journeyIds.JOURNEY_MUSIC);
+      }
+      else if (journey === 'ftc') {
+        // this.props.setActivePlayerJourney(journeyIds.JOURNEY_FTC);
+      }
+    }
+
     renderOnboarding() {
       // If a user was just created, log him in once the user is saved.
       if (this.state.userIdToLogin !== null && this.state.userIdToLogin >= 0) {
@@ -95,6 +105,11 @@ class Onboarding extends Component {
             <div className="clear-both"></div>
           </form>;
         }
+        else if (this.props.activePlayerData && !this.props.activePlayerData.journey) {
+          return <div>
+            <h1>{ `Okay ${this.props.activePlayerData.name}, pick your journey! 👀` }</h1>
+          </div>
+        }
         else {
           return <div>
             <h1>Hi! 👋</h1>
@@ -113,8 +128,30 @@ class Onboarding extends Component {
       }
       else {
         return <div>
-          <h1>Okay Kim, time to select your journey! 👀</h1>
+          <h1>Okay Kim, time to select your journey! 🏞</h1>
           <h3>Click on an icon to get started.</h3>
+
+          <div className="journeys">
+            <div className="journey" onClick={ (e) => { this.selectPlayerJourney('music'); } }>
+              <div className="journey-icon">
+                <img src="images/music-for-the-sdg-logo.png" alt="Music for the SDGs"/>
+              </div>
+              <div className="journey-details">
+                <div className="journey-title">Music for the Global Goals</div>
+                <div className="journey-description">Write and produce your first song to advocate and help solve for the world’s biggest challenges.</div>
+              </div>
+            </div>
+            <div className="journey disabled" onClick={ (e) => { this.selectPlayerJourney('ftc'); } }>
+              <div className="journey-icon">
+                <img src="images/ftc-logo.png" alt="Future Trailblazer Challenge"/>
+              </div>
+              <div className="journey-details">
+                <div className="journey-title">Future Trailblazer Challenge</div>
+                <div className="journey-description">Use cutting edge technologies like 3D printing or Artificial Intelligence to find innovative solutions to the world’s biggest challenges.</div>
+              </div>
+            </div>
+            <div className="clear-both"></div>
+          </div>
         </div>
       }
     }
@@ -135,13 +172,13 @@ const mapStateToProps = (state) => {
     return {
       quests: state.quests,
       activePlayer: state.activePlayer,
-      activePlayerData: (state.players && state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null,
+      activePlayerData: getActivePlayerData(state),
       players: state.players,
     };
   };
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getPlayers, logIn, setNewPlayer, removePlayer}, dispatch);
+    return bindActionCreators({getPlayers, logIn, setNewPlayer, removePlayer, setActivePlayerJourney}, dispatch);
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(Onboarding);

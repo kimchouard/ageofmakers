@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
-import { questUnlocked, agesData, getRomanAge, getAge, questTypes, isLoggedInAndLoaded } from '../../_utils';
+import { questUnlocked, agesData, getRomanAge, getAge, questTypes, isLoggedInAndLoaded, getActivePlayerData } from '../../_utils';
 import { mdRenderers } from '../../_reactUtils';
 import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, getOnboarding, openWelcome, setOnboarding, changeStage, startWalkthrough, openEmbeddedQuest } from '../../../actions/index';
 
@@ -26,11 +26,8 @@ import AgeTree from './ageTree';
 class Game extends Component {
   constructor(props) {
     super(props);
-    if (!this.props.quests) {
-      this.props.reloadQuests();
-    }
-    else if (!this.props.activeQuest) {
-      this.props.reloadQuests();
+    if (!this.props.quests || !this.props.activeQuest) {
+      this.props.reloadQuests(this.props.activePlayerData.journey);
     }
   }
 
@@ -178,7 +175,7 @@ const mapStateToProps = (state) => {
   return {
     sid: state.sid,
     activePlayer: state.activePlayer,
-    activePlayerData: (state.players && state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null,
+    activePlayerData: getActivePlayerData(state),
     players: state.players,
     activeQuest: state.activeQuest,
     activeQuestData: (state.quests && state.activeQuest) ? state.quests[state.activeQuest.quest] : null,

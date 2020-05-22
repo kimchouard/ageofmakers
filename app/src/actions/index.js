@@ -16,6 +16,7 @@ export const SET_NEW_PLAYER = 'SET_NEW_PLAYER';
 export const GET_PLAYERS = 'GET_PLAYERS';
 export const REMOVE_PLAYER = 'REMOVE_PLAYER';
 export const SET_PLAYER_SDG = 'SET_PLAYER_SDG';
+export const SET_PLAYER_JOURNEY = 'SET_PLAYER_JOURNEY';
 export const GET_CURRENT_TAB = 'GET_CURRENT_TAB';
 export const QUESTS_RELOAD = 'QUESTS_RELOAD';
 export const QUESTS_PULLED = 'QUESTS_PULLED';
@@ -76,6 +77,14 @@ export function setActivePlayerSDG(sdgNumber) {
   };
 }
 
+// Mock action. Full in alias
+export function setActivePlayerJourney(journeyId) {
+  return {
+    type: SET_PLAYER_JOURNEY,
+    payload: { mock: true, journeyId },
+  };
+}
+
 
 // =========================================
 //         Players
@@ -133,10 +142,10 @@ export function getQuests() {
 }
 
 // Mock action. Promise in alias
-export function reloadQuests() {
+export function reloadQuests(journeyId) {
   return {
     type: QUESTS_RELOAD,
-    payload: { mock: true },
+    payload: { mock: true, journeyId },
   };
 }
 

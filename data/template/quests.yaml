@@ -1,0 +1,51 @@
+# Copyright (c) 2020, salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+
+# -------------------------------------------------------
+# TEMPLATE NAME
+# old_id_here / new_id
+
+# --- 
+# id: 
+# name: 
+# valley: ThreeD
+# content: |-
+#   Description of the quest here
+# startUrl: 
+# type: website (default) | showcase | kanban
+# positionLeft: 
+# positionTop: 
+# # Website quest stage
+# stages:
+# - name: 
+#   order: 0
+#   content: |-
+#     Stage instructions here
+# # Showcase quest stage
+# project:
+# - name: 
+#   content: |-
+#     Project details here
+#   SDG: SDG number here
+#   from: Location here
+#   using:
+#     - microbit
+#     - toybox
+#     - arduino
+#     - mobile
+# # Boards for Kaban
+# boards:
+#   - id: 
+#     title: 
+#     cards:
+#       - id: 0
+#         title: 
+#         description: |-
+#          Desc. here
+#   order: 0
+# prerequisites: []
+# following: []
+# visibleAtAge: 0 # age at which the quest is visible, optional. Default: 0
+# CTA: # Optional. Set the wording of the quest start button
