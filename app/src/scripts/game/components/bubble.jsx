@@ -9,6 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getCurrentTab, startQuest, updateQuestUrl, unselectQuest, toggleBubble } from '../../../actions/index';
+import { getActiveQuestData } from '../../_utils';
 
 class Bubble extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class Bubble extends Component {
             onClick={() =>  {
                 // Keep the actual url, if returning on the map from a quest
                 if (this.props.embed) {
-                  this.props.updateQuestUrl(this.props.quests, this.props.activeQuest.quest, window.location.href);
+                  this.props.updateQuestUrl(this.props.journey.quests, this.props.activeQuest.quest, window.location.href);
                 }
                 this.props.unselectQuest((this.props.embed) ? this.props.currentTab : null);
               }
@@ -82,8 +83,8 @@ const mapStateToProps = (state) => {
   return {
     bubbleToggled: state.bubbleToggled,
     currentTab: state.currentTab,
-    activeQuestData: state.quests[state.activeQuest.quest],
-    quests: state.quests,
+    activeQuestData: getActiveQuestData(state),
+    journey: state.journey,
     activeQuest: state.activeQuest,
   };
 };

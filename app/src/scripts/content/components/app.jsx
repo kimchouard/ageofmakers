@@ -9,6 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { logIn, unselectQuest } from '../../../actions/index';
+import { getActiveQuestData } from '../../_utils';
 
 import Bubble from '../../game/components/bubble';
 import Accordions from '../../game/components/accordions';
@@ -32,7 +33,7 @@ const mapStateToProps = (state) => {
   return {
     player: state.player,
     activeQuest: state.activeQuest,
-    activeQuestData: (state.activeQuest) ? state.quests[state.activeQuest.quest] : null,
+    activeQuestData: getActiveQuestData(state),
   };
 };
 

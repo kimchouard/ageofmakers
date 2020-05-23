@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { closeEmbeddedQuest } from '../../../actions/index';
-import { questTypes, isQuestsLoadedNSelected } from '../../_utils';
+import { questTypes, getActiveQuestData } from '../../_utils';
 import Showcase from './showcase';
 import Kanban from './kanban';
 
@@ -52,7 +52,7 @@ const mapStateToProps = (state) => {
   return {
     embeddedQuest: state.embeddedQuest,
     activeQuest: state.activeQuest,
-    activeQuestData: (isQuestsLoadedNSelected(state.quests) && state.activeQuest) ? state.quests[state.activeQuest.quest] : null,
+    activeQuestData: getActiveQuestData(state),
   };
 };
 

@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
-import { questUnlocked, agesData, getRomanAge, getAge, questTypes, isLoggedInAndLoaded, getActivePlayerData } from '../../_utils';
+import { questUnlocked, getRomanAge, getAge, questTypes, isLoggedInAndLoaded, getActivePlayerData, getActiveQuestData } from '../../_utils';
 import { mdRenderers } from '../../_reactUtils';
 import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, getOnboarding, openWelcome, setOnboarding, changeStage, startWalkthrough, openEmbeddedQuest } from '../../../actions/index';
 
@@ -26,7 +26,7 @@ import AgeTree from './ageTree';
 class Game extends Component {
   constructor(props) {
     super(props);
-    if (!this.props.quests || !this.props.activeQuest) {
+    if ((!this.props.journey.quests || !this.props.activeQuest) && this.props.activePlayerData && this.props.activePlayerData.journey) {
       this.props.reloadQuests(this.props.activePlayerData.journey);
     }
   }
@@ -47,7 +47,7 @@ class Game extends Component {
   }
 
   startButton() {
-    if (!questUnlocked(this.props.activeQuestData, this.props.quests)) {
+    if (!questUnlocked(this.props.activeQuestData, this.props.journey)) {
       return <button className="disabled">
           LOCKED
         </button>
@@ -82,8 +82,8 @@ class Game extends Component {
         {pins.map((pin) => {
           // If the pin is actually an Age requirements!
           if (pin.age) {
-            let agePrereq = agesData[pin.age];
-            let currentAge = getAge(this.props.quests);
+            let agePrereq = this.props.journey.ages[pin.age];
+            let currentAge = getAge(this.props.journey);
             
             return <div className="prereqWrapper">
                 <div className={ `agePrereq ${(currentAge.index < agePrereq.index) ? 'locked' : 'complete'}` }>
@@ -96,7 +96,7 @@ class Game extends Component {
               </div>
           }
           else {
-            let questNeeded = this.props.quests[pin];
+            let questNeeded = this.props.journey.quests[pin];
             return <div className="prereqWrapper"
                   onClick={() => this.openQuest(pin)}>
                 <Pin quest={questNeeded} embedded={true} />
@@ -112,7 +112,7 @@ class Game extends Component {
   }
 
   renderWhatsNext() {
-    if (questUnlocked(this.props.activeQuestData, this.props.quests) && this.props.activeQuestData.status === 'complete') {
+    if (questUnlocked(this.props.activeQuestData, this.props.journey) && this.props.activeQuestData.status === 'complete') {
       return <div className="cta next">
         <div className="title">Done! { (this.props.activeQuestData.following.length) ? `So, what's next?` : `Good job.` } </div>
         { this.renderPinsList(this.props.activeQuestData.following) }
@@ -121,7 +121,7 @@ class Game extends Component {
   }
 
   renderPrerequesites() {
-    if (!questUnlocked(this.props.activeQuestData, this.props.quests)) {
+    if (!questUnlocked(this.props.activeQuestData, this.props.journey)) {
       return <div className="cta before">
         <div className="title">To unlock this quest, you need:</div>
         { this.renderPinsList(this.props.activeQuestData.prerequisites) }
@@ -178,8 +178,8 @@ const mapStateToProps = (state) => {
     activePlayerData: getActivePlayerData(state),
     players: state.players,
     activeQuest: state.activeQuest,
-    activeQuestData: (state.quests && state.activeQuest) ? state.quests[state.activeQuest.quest] : null,
-    quests: state.quests,
+    activeQuestData: getActiveQuestData(state),
+    journey: state.journey,
     currentTab: state.currentTab,
     walkthrough: state.walkthrough,
     onboarding: state.isOnboarded,

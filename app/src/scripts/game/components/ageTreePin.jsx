@@ -18,7 +18,7 @@ class AgeTreePin extends Component {
 
     render() {
         if(this.props.nodeData.name === "Tent"){
-            let ageData = getAge(this.props.quests);
+            let ageData = getAge(this.props.journey);
             return (
                 <div className="pinLabelTent">
                     <div className="tent">
@@ -41,7 +41,7 @@ class AgeTreePin extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        quests: state.quests
+        journey: state.journey
     };
 };
 

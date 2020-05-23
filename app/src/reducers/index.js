@@ -9,7 +9,7 @@ import {combineReducers} from 'redux';
 
 import activePlayer from './reducer_active_player';
 import players from './reducer_players';
-import quests from './reducer_quests';
+import journey from './reducer_journey';
 import activeQuest from './reducer_active_quest';
 import currentTab from './reducer_current_tab';
 import bubbleToggled from './reducer_bubble_toggled';
@@ -20,7 +20,7 @@ import walkthrough from './reducer_walkthrough';
 import isOnboarded from './reducer_is_onboarded';
 
 export default combineReducers({
-  quests,
+  journey,
   activeQuest,
   bubbleToggled,
   currentTab,

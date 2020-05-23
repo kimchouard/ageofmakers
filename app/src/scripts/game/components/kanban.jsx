@@ -9,6 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { closeEmbeddedQuest } from '../../../actions/index';
+import { getActiveQuestData } from '../../_utils';
 import Board from '@lourenci/react-kanban'
 import ReactMarkdown from 'react-markdown';
 import { mdRenderers } from '../../_reactUtils';
@@ -58,7 +59,7 @@ const mapStateToProps = (state) => {
   return {
     embeddedQuest: state.embeddedQuest,
     activeQuest: state.activeQuest,
-    activeQuestData: (state.activeQuest) ? state.quests[state.activeQuest.quest] : null,
+    activeQuestData: getActiveQuestData(state),
   };
 };
 

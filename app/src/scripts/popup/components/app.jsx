@@ -22,7 +22,7 @@ class App extends Component {
 
   activeQuest() {
     if (this.props.activeQuest) {
-      return `Active Quest: ${this.props.quests[this.props.activeQuest.quest].name}`;
+      return `Active Quest: ${this.props.journey.quests[this.props.activeQuest.quest].name}`;
     }
     else {
       return `No Active Quests`;
@@ -34,7 +34,7 @@ class App extends Component {
       return <div></div>// <Login />;
     }
     // Logout if error
-    else if (this.props.quests && this.props.quests.error) {
+    else if (this.props.journey.quests && this.props.journey.quests.error) {
       this.props.logOut();
       return <div></div>// <Login />;
     }
@@ -68,7 +68,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     activePlayer: state.activePlayer,
-    quests: state.quests,
+    journey: state.journey,
     activeQuest: state.activeQuest,
   };
 };

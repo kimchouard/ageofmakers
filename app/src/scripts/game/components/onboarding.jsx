@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { isLoggedInAndLoaded, journeyIds, getActivePlayerData } from '../../_utils';
-import { getPlayers, logIn, setNewPlayer, setActivePlayerJourney, removePlayer } from '../../../actions/index';
+import { getPlayers, logIn, logOut, setNewPlayer, setActivePlayerJourney, removePlayer } from '../../../actions/index';
 
 
 class Onboarding extends Component {
@@ -68,7 +68,7 @@ class Onboarding extends Component {
         this.props.setActivePlayerJourney(journeyIds.JOURNEY_MUSIC);
       }
       else if (journey === 'ftc') {
-        // this.props.setActivePlayerJourney(journeyIds.JOURNEY_FTC);
+        this.props.setActivePlayerJourney(journeyIds.JOURNEY_FTC);
       }
     }
 
@@ -152,6 +152,7 @@ class Onboarding extends Component {
             </div>
             <div className="clear-both"></div>
           </div>
+          <input type="button" className="btn btn-cancel" value="Cancel" onClick={ this.props.logOut }/>
         </div>
       }
     }
@@ -170,7 +171,7 @@ class Onboarding extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      quests: state.quests,
+      journey: state.journey,
       activePlayer: state.activePlayer,
       activePlayerData: getActivePlayerData(state),
       players: state.players,
@@ -178,7 +179,7 @@ const mapStateToProps = (state) => {
   };
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getPlayers, logIn, setNewPlayer, removePlayer, setActivePlayerJourney}, dispatch);
+    return bindActionCreators({getPlayers, logIn, logOut, setNewPlayer, removePlayer, setActivePlayerJourney}, dispatch);
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(Onboarding);

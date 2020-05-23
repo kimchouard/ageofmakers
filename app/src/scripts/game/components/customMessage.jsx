@@ -30,7 +30,7 @@ class CustomMessage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    quests: state.quests,
+    journey: state.journey,
   };
 };
 

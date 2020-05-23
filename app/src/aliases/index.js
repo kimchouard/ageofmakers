@@ -81,9 +81,10 @@ const getFullQuestWithAchievements = (callback) => {
       if (storage.players[storage.activePlayer]) {
         let achievements = storage.players[storage.activePlayer].achievements;
 
-        chrome.storage.local.get('quests', (items) => {
+        chrome.storage.local.get(['quests', 'ages'], (items) => {
           let quests = items.quests;
-          console.log('Achievements: ', achievements, quests);
+          let ages = items.ages;
+          console.log('Achievements: ', achievements, quests, ages);
 
           // Changing Quests status based on achievements
           Object.keys(achievements).forEach((achievedQuest) => {
@@ -126,7 +127,7 @@ const getFullQuestWithAchievements = (callback) => {
             }
           }
 
-          callback(quests);
+          callback({ quests, ages });
         }); 
       }
       else {
@@ -142,15 +143,16 @@ const getFullQuestWithAchievements = (callback) => {
 
 const loadQuests = (journeyId, resolve) => {
   const questsUrl = chrome.runtime.getURL(`data/${journeyId}/quests.yaml`);
+  const agesUrl = chrome.runtime.getURL(`data/${journeyId}/ages.yaml`);
   fetch(questsUrl)
-    .then((response) => {
-    if (response.status !== 200) {
+    .then((questsResponse) => {
+    if (questsResponse.status !== 200) {
       console.error('Error while changing quest state:', res);
-      return resolve({ error: response.status });
+      return resolve({ error: questsResponse.status });
     }
 
-    // // Examine the text in the response
-    response.text().then((questsData) => {
+    // Examine the text in the questsResponse
+    questsResponse.text().then((questsData) => {
       // console.log('Yaml data', questsData);
       let questsArray = yaml.safeLoadAll(questsData);
       let quests = {};
@@ -158,14 +160,27 @@ const loadQuests = (journeyId, resolve) => {
         quests[quest.id] = quest;
       }
 
-      chrome.storage.local.set({ quests }, () => {
-        console.log('Quests saved!', quests);
+      fetch(agesUrl)
+      .then((agesResponse) => {
+        if (agesResponse.status !== 200) {
+          console.error('Error while changing quest state:', res);
+          return resolve({ error: agesResponse.status });
+        }
+        
+        // Examine the text in the agesResponse
+        agesResponse.text().then((agesData) => {
+          // console.log('Yaml quest data', agesData);
+          let ages = yaml.safeLoadAll(agesData)[0];
 
-        getFullQuestWithAchievements((fullQuests) => {
-          resolve(fullQuests);
+          chrome.storage.local.set({ quests, ages }, () => {
+            console.log('Quests & Ages saved!', quests, ages);
+
+            getFullQuestWithAchievements((fullQuests) => {
+              resolve(fullQuests);
+            });
+          });
         });
       });
-
     });
   });
 }

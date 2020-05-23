@@ -22,7 +22,7 @@ class Pin extends Component {
   }
 
   isUnlocked(quest) {
-    return questUnlocked(quest, this.props.quests);
+    return questUnlocked(quest, this.props.journey);
   }
 
   render() {
@@ -48,7 +48,7 @@ class Pin extends Component {
 
 function mapStateToProps(state) {
   return {
-    quests: state.quests,
+    journey: state.journey,
   };
 }
 

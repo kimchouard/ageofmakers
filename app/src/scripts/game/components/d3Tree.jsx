@@ -59,7 +59,7 @@ class d3Tree extends Component {
   }
 
   render() {
-    let questD3 = this.migrateQuests(this.props.quests);
+    let questD3 = this.migrateQuests(this.props.journey.quests);
     return(
       <div className="treeContainer" ref={tc => this.treeContainer = tc}>
         <Tree data={questD3} 
@@ -96,7 +96,7 @@ class d3Tree extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        quests: state.quests
+        journey: state.journey
     };
 };
 

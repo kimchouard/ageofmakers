@@ -24,13 +24,13 @@ class Leaflet extends Component {
     }
 
     componentDidMount() {
-      // if(this.props.quests && (this.props.quests.length === 0 || this.props.quests.error)) {
+      // if(this.props.journey.quests && (this.props.journey.quests.length === 0 || this.props.journey.quests.error)) {
       //   console.log('Loading quests', this.props.getQuests());
       // }
     }
 
     isUnlocked(quest) {
-      return questUnlocked(quest, this.props.quests);
+      return questUnlocked(quest, this.props.journey);
     }
 
     openQuest(questKey) {
@@ -40,10 +40,10 @@ class Leaflet extends Component {
 
     renderPins() {
       if (isLoggedInAndLoaded(this.props)) {
-        return Object.keys(this.props.quests).map((questKey) => {
-          let quest = this.props.quests[questKey];
+        return Object.keys(this.props.journey.quests).map((questKey) => {
+          let quest = this.props.journey.quests[questKey];
 
-          if (getAge(this.props.quests).index >= quest.visibleAtAge) {
+          if (getAge(this.props.journey).index >= quest.visibleAtAge) {
             let position = [100-quest.positionTop, quest.positionLeft];
             let iconImg = new divIcon({
               iconSize: [50, 65],
@@ -68,7 +68,7 @@ class Leaflet extends Component {
 
     renderTent() {
       if (isLoggedInAndLoaded(this.props)) {
-        let ageData = getAge(this.props.quests);
+        let ageData = getAge(this.props.journey);
         return <Marker
           class='tent'
           icon={
@@ -87,7 +87,7 @@ class Leaflet extends Component {
 
     getMapImageUrl() {
       if (isLoggedInAndLoaded(this.props)) {
-        let ageData = getAge(this.props.quests);
+        let ageData = getAge(this.props.journey);
         return (ageData.index < 2) ? ageData.index : 'all'
       }
       // Default is first age map #placeholder
@@ -97,7 +97,7 @@ class Leaflet extends Component {
     }
 
     render() {
-        const position = (isLoggedInAndLoaded(this.props)) ? getAge(this.props.quests).position : [this.state.lat, this.state.lng];
+        const position = (isLoggedInAndLoaded(this.props)) ? getAge(this.props.journey).position : [this.state.lat, this.state.lng];
         
         return (
           <Map
@@ -124,7 +124,7 @@ class Leaflet extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      quests: state.quests,
+      journey: state.journey,
       activePlayer: state.activePlayer,
       activePlayerData: getActivePlayerData(state),
       players: state.players,

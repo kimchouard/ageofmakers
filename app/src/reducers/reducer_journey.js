@@ -7,7 +7,7 @@
 
 import { QUESTS_PULLED, QUESTS_RELOAD, STAGE_CHANGE, QUESTS_NEWURL } from '../actions/index';
 
-export default (state = [], action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case QUESTS_PULLED:
       return action.payload;

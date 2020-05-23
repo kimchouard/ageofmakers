@@ -28,7 +28,7 @@ class AgeTree extends Component {
             <div className="container">
               <div className="row">
                 <h3 className="col-sm-12 profileName">Hello {this.props.activePlayerData.name}!</h3>
-                <h4 className="col-sm-12 questsBeat">You beat {addComplete(this.props.quests, null)} quest(s)!</h4>
+                <h4 className="col-sm-12 questsBeat">You beat {addComplete(this.props.journey.quests, null)} quest(s)!</h4>
                 <a className="btn btn-danger closingbutton" onClick={() => this.props.closeTree()}>CLOSE</a>
               </div>
             </div>
@@ -52,7 +52,7 @@ const mapStateToProps = (state) => {
     activePlayer: state.activePlayer,
     activePlayerData: (state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null,
     players: state.players,
-    quests: state.quests,
+    journey: state.journey,
   };
 };
 

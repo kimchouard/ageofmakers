@@ -146,7 +146,7 @@ class Accordions extends Component {
   }
 
   render() {
-    if (this.props.quests && this.props.quests.error) {
+    if (this.props.journey.quests && this.props.journey.quests.error) {
       debugger;
       this.props.logOut();
       this.props.unselectQuest(this.props.currentTab);
@@ -161,7 +161,7 @@ class Accordions extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    quests: state.quests,
+    journey: state.journey,
     activeQuest: state.activeQuest,
     currentTab: state.currentTab,
   };

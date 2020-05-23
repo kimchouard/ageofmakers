@@ -17,7 +17,7 @@ class Header extends Component {
   }
   
   isUnlocked(quest) {
-    return questUnlocked(quest, this.props.quests);
+    return questUnlocked(quest, this.props.journey);
   }
 
   startWalkthrough() {
@@ -30,10 +30,10 @@ class Header extends Component {
     let rawNumber = ageData.requirements[valleyName];
     if (rawNumber === 'all') {
       if (valleyName === "total") {
-        return addComplete(this.props.quests,'','');
+        return addComplete(this.props.journey.quests,'','');
       }
       else {
-        return addComplete(this.props.quests,valleyName,'');
+        return addComplete(this.props.journey.quests,valleyName,'');
       }
     }
     else {
@@ -46,14 +46,14 @@ class Header extends Component {
       return (
           <div className="col-sm-3 score" key={valleyName}>
             <div className="icon all">ANY</div>
-            <p className="value">{addComplete(this.props.quests)} / { this.getQuestsNumber(ageData, valleyName) }</p>
+            <p className="value">{addComplete(this.props.journey.quests)} / { this.getQuestsNumber(ageData, valleyName) }</p>
           </div>      
       )
     } else {
         return (
           <div className="col-sm-3 score" key={valleyName}>
             <div className={"icon " + valleyName}></div>
-            <p className="value">{addComplete(this.props.quests, valleyName)} / { this.getQuestsNumber(ageData, valleyName) }</p>
+            <p className="value">{addComplete(this.props.journey.quests, valleyName)} / { this.getQuestsNumber(ageData, valleyName) }</p>
           </div> 
         )
     }
@@ -73,7 +73,7 @@ class Header extends Component {
 
   renderContent() {
     if (isLoggedInAndLoaded(this.props)) {
-      let ageData = getAge(this.props.quests);
+      let ageData = getAge(this.props.journey);
       return <div>
         <div className="badgeTrackersHeader col-sm-4">
           {this.renderRequirementsDisplay(ageData)}
@@ -116,7 +116,7 @@ class Header extends Component {
 const mapStateToProps = (state) => { 
   return {
     sid: state.sid,
-    quests: state.quests,
+    journey: state.journey,
     activePlayer: state.activePlayer,
     activePlayerData: getActivePlayerData(state),
     players: state.players,

@@ -27,14 +27,20 @@ export const isQuestsLoadedNSelected = (quests) => {
 }
 
 export const isLoggedInAndLoaded = (props) => {
-  return isQuestsLoadedNSelected(props.quests) && props.players && props.activePlayer && props.activePlayer !== -1;
+  return isQuestsLoadedNSelected(props.journey.quests) && props.players && props.activePlayer && props.activePlayer !== -1;
 }
 
 export const getActivePlayerData = (state) => {
   return (state.players && state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null;
 }
 
-export const questUnlocked = (quest, quests) => {
+export const getActiveQuestData = (state) => {
+  // (isQuestsLoadedNSelected(state.quests) && state.activeQuest) ? state.quests[state.activeQuest.quest] : null,
+  // (state.quests && state.activeQuest) ? state.quests[state.activeQuest.quest] : null
+  return (isQuestsLoadedNSelected(state.journey.quests) && state.activeQuest) ? state.journey.quests[state.activeQuest.quest] : null;
+}
+
+export const questUnlocked = (quest, journey) => {
   if (quest && quest.prerequisites === []) {
     return true; // no prerequisites
   }
@@ -43,16 +49,16 @@ export const questUnlocked = (quest, quests) => {
       let questPreReq = quest.prerequisites[i];
 
       if (questPreReq.age) {
-        let currentAge = getAge(quests);
+        let currentAge = getAge(journey);
         if (currentAge.index < questPreReq.age) {
           return false;
         }
       }
       else {
-        let questNeeded = quests[questPreReq];
+        let questNeeded = journey.quests[questPreReq];
         if (questNeeded) {
 
-          if (!questUnlocked(questNeeded, quests)) {
+          if (!questUnlocked(questNeeded, journey)) {
             return false; // one of the INDIRECT prerequisites not completed
           }
           if (questNeeded.status !== 'complete') {
@@ -66,7 +72,7 @@ export const questUnlocked = (quest, quests) => {
     };
   }
   else {
-    console.error('Invalid quest passsed for questUnlock(...)', quest, quests);
+    console.error('Invalid quest passsed for questUnlock(...)', quest, journey);
     return false;
   }
 
@@ -144,65 +150,22 @@ export const getRomanAge = (age) => {
   else if(age.index === 4) { return "V" }
   else { return "" }
 }
-export const agesData = [
-  {
-    index: 0,
-    name: "Discovery",
-    image: null,
-    position: [58, 41],
-    requirements: {
-      MakerMount: 1
-    }
-  },
-  {
-    index: 1,
-    name: "Exploration",
-    image: null,
-    requirements: {
-      Coding: 1,
-      Electronics: 1,
-      ThreeD: 1,
-      total: 8
-    }
-  },
-  {
-    index: 2,
-    name: "Making",
-    image: null,
-    requirements: {
-      MakerMount: "all"
-    }
-  },
-  {
-    index: 3,
-    name: "Sharing",
-    image: null,
-    requirements: {
-      total: 'all'
-    }
-  },
-  {
-    index: 4,
-    name: "Independent",
-    image: null,
-    requirements: {}
-  }
-];
-export const getAge = (quests) => {
-  for (let i = 0; i < agesData.length; i++) {
-    let currentReqs = agesData[i].requirements;
+
+export const getAge = (journey) => {
+  for (let i = 0; i < journey.ages.length; i++) {
+    let currentReqs = journey.ages[i].requirements;
     let currentValues = Object.keys(currentReqs).map( (valleyName) => {
       if (valleyName === "total") {
-        if (typeof(currentReqs[valleyName]) === "string" && addComplete(quests, null, null) === addComplete(quests)){
+        if (typeof(currentReqs[valleyName]) === "string" && addComplete(journey.quests, null, null) === addComplete(journey.quests)){
           return "all";
         } else {
-          return addComplete(quests);
+          return addComplete(journey.quests);
         }
       } else {
-        if (typeof(currentReqs[valleyName]) === "string" && addComplete(quests, valleyName, null) === addComplete(quests, valleyName)){
+        if (typeof(currentReqs[valleyName]) === "string" && addComplete(journey.quests, valleyName, null) === addComplete(journey.quests, valleyName)){
           return "all";
         } else {
-          return addComplete(quests, valleyName)
+          return addComplete(journey.quests, valleyName)
         }
       }
     });
@@ -217,15 +180,15 @@ export const getAge = (quests) => {
     }
 
     if (requirementsMet) {
-      console.log("Passed Age:", agesData[i].name)
-      if (agesData[i].index + 1 === agesData.length) {
-        // console.log("Returned Final Index!!!:", agesData[i].index)
-        return(agesData[i])
+      console.log("Passed Age:", journey.ages[i].name)
+      if (journey.ages[i].index + 1 === journey.ages.length) {
+        // console.log("Returned Final Index!!!:", journey.ages[i].index)
+        return(journey.ages[i])
       }
     } else {
-      // console.log("Failed Age:", agesData[i].name)
-      // console.log("Returned Index:", agesData[i].index) Save above 4 lines of commented code to use for reference on a later feature
-      return(agesData[i])
+      // console.log("Failed Age:", journey.ages[i].name)
+      // console.log("Returned Index:", journey.ages[i].index) Save above 4 lines of commented code to use for reference on a later feature
+      return(journey.ages[i])
     }
   };
 };
