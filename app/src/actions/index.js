@@ -19,6 +19,7 @@ export const SET_PLAYER_SDG = 'SET_PLAYER_SDG';
 export const SET_PLAYER_JOURNEY = 'SET_PLAYER_JOURNEY';
 export const GET_CURRENT_TAB = 'GET_CURRENT_TAB';
 export const QUESTS_RELOAD = 'QUESTS_RELOAD';
+export const QUESTS_RESET = 'QUESTS_RESET';
 export const QUESTS_PULLED = 'QUESTS_PULLED';
 export const QUESTS_NEWURL = 'QUESTS_NEWURL';
 export const QUEST_STARTED = 'QUEST_STARTED';
@@ -146,6 +147,14 @@ export function reloadQuests(journeyId) {
   return {
     type: QUESTS_RELOAD,
     payload: { mock: true, journeyId },
+  };
+}
+
+// Mock action. Promise in alias
+export function resetQuests() {
+  return {
+    type: QUESTS_RESET,
+    payload: { mock: true },
   };
 }
 

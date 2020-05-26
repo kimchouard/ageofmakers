@@ -86,48 +86,53 @@ const getFullQuestWithAchievements = (callback) => {
           let ages = items.ages;
           console.log('Achievements: ', achievements, quests, ages);
 
-          // Changing Quests status based on achievements
-          Object.keys(achievements).forEach((achievedQuest) => {
-            let completedStageOrder = achievements[achievedQuest];
-            if (quests[achievedQuest]) {
-              quests[achievedQuest].stages.forEach((stage) => {
-                // If the completed stage or before -> complete
-                if (stage.order <= completedStageOrder) {
-                  stage.status = stageStatus.STATUS_COMPLETE;
+          if (quests && ages) {
+            // Changing Quests status based on achievements
+            Object.keys(achievements).forEach((achievedQuest) => {
+              let completedStageOrder = achievements[achievedQuest];
+              if (quests[achievedQuest]) {
+                quests[achievedQuest].stages.forEach((stage) => {
+                  // If the completed stage or before -> complete
+                  if (stage.order <= completedStageOrder) {
+                    stage.status = stageStatus.STATUS_COMPLETE;
+                  }
+                  // If RIGHT after completed stage -> inProgress
+                  else if (stage.order === completedStageOrder+1) {
+                    stage.status = stageStatus.STATUS_INPROGRESS;
+                  }
+                  // If at least 2nd after completeed stage -> new
+                  else {
+                    stage.status = stageStatus.STATUS_NEW;
+                  }
+                });
+
+                // If last stage completed, the quest is completed too!
+                if (completedStageOrder >= quests[achievedQuest].stages[quests[achievedQuest].stages.length - 1].order) {
+                  quests[achievedQuest].status = stageStatus.STATUS_COMPLETE;
                 }
-                // If RIGHT after completed stage -> inProgress
-                else if (stage.order === completedStageOrder+1) {
-                  stage.status = stageStatus.STATUS_INPROGRESS;
-                }
-                // If at least 2nd after completeed stage -> new
                 else {
-                  stage.status = stageStatus.STATUS_NEW;
+                  quests[achievedQuest].status = stageStatus.STATUS_INPROGRESS;
                 }
-              });
-
-              // If last stage completed, the quest is completed too!
-              if (completedStageOrder >= quests[achievedQuest].stages[quests[achievedQuest].stages.length - 1].order) {
-                quests[achievedQuest].status = stageStatus.STATUS_COMPLETE;
               }
-              else {
-                quests[achievedQuest].status = stageStatus.STATUS_INPROGRESS;
+            });
+
+            // Changing Quests status based on achievements
+            for(let questId in quests) {
+              // Enforce the default "website" Quest type
+              if(quests[questId] && !quests[questId].type) {
+                quests[questId].type = 'website';
+              }
+
+              if(quests[questId] && !quests[questId].status) {
+                quests[questId].status = stageStatus.STATUS_NEW;
               }
             }
-          });
 
-          // Changing Quests status based on achievements
-          for(let questId in quests) {
-            // Enforce the default "website" Quest type
-            if(quests[questId] && !quests[questId].type) {
-              quests[questId].type = 'website';
-            }
-
-            if(quests[questId] && !quests[questId].status) {
-              quests[questId].status = stageStatus.STATUS_NEW;
-            }
+            callback({ quests, ages });
           }
-
-          callback({ quests, ages });
+          else {
+            console.error('Error while loading the full quests', quests, ages);
+          }
         }); 
       }
       else {
@@ -189,7 +194,7 @@ const updatePlayersData = (field, originalAction) => {
   return middlewarePromise(originalAction, new Promise((resolve, reject) => {
     if (originalAction.payload && originalAction.payload.mock) {
       chrome.storage.sync.get(['players', 'activePlayer'], (storage) => {
-        if (storage && storage.players && storage.activePlayer) {
+        if (storage && storage.players && storage.activePlayer != null) {
           let players = storage.players;
           let activePlayerId = storage.activePlayer;
 
@@ -336,6 +341,15 @@ const reloadQuests = (originalAction) => {
   }));
 };
 
+const resetQuests = (originalAction) => {
+  return middlewarePromise(originalAction, new Promise((resolve, reject) => {
+    // Remove the current quests to force a reload
+    chrome.storage.local.remove(['quests', 'ages'], () => {
+      resolve({})
+    });
+  }));
+};
+
 const getQuests = (originalAction) => {
   return middlewarePromise(originalAction, new Promise((resolve, reject) => {
     getFullQuestWithAchievements((fullQuests) => {
@@ -416,6 +430,7 @@ export default {
   QUESTS_PULLED: getQuests,
   GET_CURRENT_TAB: getCurrentTab,
   QUESTS_RELOAD: reloadQuests,
+  QUESTS_RESET: resetQuests,
   LOG_IN: logIn,
   LOG_OUT: logOut,
   GET_ACTIVE_PLAYER: getActivePlayer,

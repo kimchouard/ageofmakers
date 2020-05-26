@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { questUnlocked, addComplete, getAge, getRomanAge, isLoggedInAndLoaded, getActivePlayerData } from '../../_utils';
-import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree } from '../../../actions/index';
+import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree, unselectQuest, resetQuests } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Header extends Component {
@@ -24,6 +24,12 @@ class Header extends Component {
     return (
       this.props.startWalkthrough
     );
+  }
+
+  logOutActivePlayer() {
+    this.props.unselectQuest();
+    this.props.logOut();
+    this.props.resetQuests();
   }
 
   getQuestsNumber(ageData, valleyName) {
@@ -89,7 +95,7 @@ class Header extends Component {
         <div className="col-sm-2 col-sm-offset-3 user">
           <a className="action help" onClick={this.props.openWelcome}>?</a> 
           <p className="name">{this.props.activePlayerData.name}</p>
-          <a className="action logout" onClick={ this.props.logOut }></a>
+          <a className="action logout" onClick={ () => this.logOutActivePlayer() }></a>
           <a className="action refresh" onClick={ () => this.props.reloadQuests(this.props.activePlayerData.journey) }></a>
         </div>
       </div>;
@@ -125,7 +131,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree }, dispatch);
+  return bindActionCreators({ getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree, unselectQuest, resetQuests }, dispatch);
 }
 
 

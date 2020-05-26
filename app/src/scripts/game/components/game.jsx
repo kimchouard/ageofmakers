@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
-import { questUnlocked, getRomanAge, getAge, questTypes, isLoggedInAndLoaded, getActivePlayerData, getActiveQuestData } from '../../_utils';
+import { questUnlocked, getRomanAge, getAge, questTypes, isLoggedInAndLoaded, isQuestsLoaded, isLoggedIn, getActivePlayerData, getActiveQuestData } from '../../_utils';
 import { mdRenderers } from '../../_reactUtils';
 import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, getOnboarding, openWelcome, setOnboarding, changeStage, startWalkthrough, openEmbeddedQuest } from '../../../actions/index';
 
@@ -26,7 +26,16 @@ import AgeTree from './ageTree';
 class Game extends Component {
   constructor(props) {
     super(props);
-    if ((!this.props.journey.quests || !this.props.activeQuest) && this.props.activePlayerData && this.props.activePlayerData.journey) {
+    this.reloadQuestsIfNeeded();
+  }
+  
+  componentDidUpdate() {
+    this.reloadQuestsIfNeeded();
+  }
+
+  reloadQuestsIfNeeded() { 
+    // Reload the quests if you just logged in but the quests aren't loaded yet
+    if (isLoggedIn(this.props) && !isQuestsLoaded(this.props)) {
       this.props.reloadQuests(this.props.activePlayerData.journey);
     }
   }
@@ -85,7 +94,7 @@ class Game extends Component {
             let agePrereq = this.props.journey.ages[pin.age];
             let currentAge = getAge(this.props.journey);
             
-            return <div className="prereqWrapper">
+            return <div className="prereqWrapper" key={pin.id}>
                 <div className={ `agePrereq ${(currentAge.index < agePrereq.index) ? 'locked' : 'complete'}` }>
                   { getRomanAge(agePrereq.index) }
                 </div>

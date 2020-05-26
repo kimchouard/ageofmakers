@@ -26,7 +26,7 @@ class Showcase extends Component {
   renderTools(project) {
     if (project.using.length) {
       return project.using.map((tool) => {
-        return <div className={`col-sm-${12/project.using.length} tool`}>
+        return <div className={`col-sm-${12/project.using.length} tool`} key={tool}>
           <img src={`images/tool-${tool}.png`} alt={tool}/>
         </div>
       })
@@ -39,7 +39,7 @@ class Showcase extends Component {
   renderProjects() {
     if (this.props.activeQuestData.projects) {
       return this.props.activeQuestData.projects.map((project) => {
-        return <div className="col-md-4">
+        return <div className="col-md-4" key={project.order}>
           <div className="project">
             <div className="row title">
               <img className="SDG" src={`images/SDGs/TheGlobalGoals_Icons_Color_Goal_${project.SDG}.png`} alt={`SDG ${project.SDG}`}/>
@@ -83,7 +83,7 @@ class Showcase extends Component {
   renderSDGs() {
     return <div className="col-sm-10 col-sm-offset-1 sdgPickerWrapper">
       { [...Array(16).keys()].map((sdgNumber) => {
-        return <div className="SDG-selector col-sm-2" onClick={ () => { this.setUserSDG(sdgNumber + 1) } }>
+        return <div className="SDG-selector col-sm-2" key={sdgNumber} onClick={ () => { this.setUserSDG(sdgNumber + 1) } }>
           <img className="SDG-icon" src={`images/SDGs/TheGlobalGoals_Icons_Color_Goal_${sdgNumber+1}.png`} alt={`SDG ${sdgNumber+1}`} />
         </div>
       }) }

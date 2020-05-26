@@ -97,7 +97,13 @@ class Leaflet extends Component {
     }
 
     render() {
-        const position = (isLoggedInAndLoaded(this.props)) ? getAge(this.props.journey).position : [this.state.lat, this.state.lng];
+        let position = [this.state.lat, this.state.lng];
+        if(isLoggedInAndLoaded(this.props)) {
+          let currentAge = getAge(this.props.journey);
+          if (currentAge.position) {
+            position = currentAge.position
+          }
+        }
         
         return (
           <Map

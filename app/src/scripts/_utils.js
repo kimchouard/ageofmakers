@@ -22,12 +22,16 @@ export const questTypes = {
   KANBAN: 'kanban',
 };
 
-export const isQuestsLoadedNSelected = (quests) => {
-  return quests && Object.keys(quests).length && !quests.error
+export const isQuestsLoaded = (props) => {
+  return props && props.journey.quests && Object.keys(props.journey.quests).length && !props.journey.quests.error
+}
+
+export const isLoggedIn = (props) => {
+  return props.players && props.activePlayer && props.activePlayer !== -1 && props.activePlayerData && props.activePlayerData.journey;
 }
 
 export const isLoggedInAndLoaded = (props) => {
-  return isQuestsLoadedNSelected(props.journey.quests) && props.players && props.activePlayer && props.activePlayer !== -1;
+  return isQuestsLoaded(props) && isLoggedIn(props);
 }
 
 export const getActivePlayerData = (state) => {
@@ -35,9 +39,9 @@ export const getActivePlayerData = (state) => {
 }
 
 export const getActiveQuestData = (state) => {
-  // (isQuestsLoadedNSelected(state.quests) && state.activeQuest) ? state.quests[state.activeQuest.quest] : null,
+  // (isQuestsLoaded(state.quests) && state.activeQuest) ? state.quests[state.activeQuest.quest] : null,
   // (state.quests && state.activeQuest) ? state.quests[state.activeQuest.quest] : null
-  return (isQuestsLoadedNSelected(state.journey.quests) && state.activeQuest) ? state.journey.quests[state.activeQuest.quest] : null;
+  return (isQuestsLoaded(state) && state.activeQuest) ? state.journey.quests[state.activeQuest.quest] : null;
 }
 
 export const questUnlocked = (quest, journey) => {

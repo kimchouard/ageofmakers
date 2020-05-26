@@ -8,7 +8,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { isLoggedInAndLoaded, journeyIds, getActivePlayerData } from '../../_utils';
+import { isLoggedIn, journeyIds, getActivePlayerData } from '../../_utils';
 import { getPlayers, logIn, logOut, setNewPlayer, setActivePlayerJourney, removePlayer } from '../../../actions/index';
 
 
@@ -117,7 +117,7 @@ class Onboarding extends Component {
             {Object.keys(this.props.players).map((playerId) => {
               let player = this.props.players[playerId];
 
-              return <div className="player" onClick={ (e) => { this.logIn(e, playerId); } }>
+              return <div className="player" key={playerId} onClick={ (e) => { this.logIn(e, playerId); } }>
                 <div className="player-name">{ player.name }</div>
                 <button className="btn-delete" onClick={() => { this.startRemovingPlayer(playerId) }}>X</button>
               </div>
@@ -158,14 +158,19 @@ class Onboarding extends Component {
     }
 
     render() {
+      if (!isLoggedIn(this.props)) {
         return(
-            <div className={ (isLoggedInAndLoaded(this.props)) ? "onboardingWrapper" : "onboardingWrapper open"}>
+            <div className={"onboardingWrapper open"}>
                 <div className="overlay"></div>
                 <div className="onboarding">
                   { this.renderOnboarding() }
                 </div>
             </div>
         );
+      }
+      else {
+        return <div className={"onboardingWrapper"}></div>
+      }
     }
 }
 
