@@ -20,10 +20,6 @@ class App extends Component {
     if (!this.props.activePlayer) {
       this.props.getActivePlayer();
     }
-
-    if (this.props.journey && !this.props.journey.quests && this.props.activePlayerData && this.props.activePlayerData.journey) {
-      this.props.reloadQuests(this.props.activePlayerData.journey);
-    }
   }
 
   render() {

@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { closeEmbeddedQuest, setActivePlayerSDG, changeStage } from '../../../actions/index';
-import { getActiveQuestData } from '../../_utils';
+import { getActiveQuestData, getActivePlayerData } from '../../_utils';
 import ReactMarkdown from 'react-markdown';
 import { mdRenderers } from '../../_reactUtils';
 
@@ -20,7 +20,19 @@ class Showcase extends Component {
 
       this.state = {
         chooseSDG: false,
+        finishSDGQuest: false,
       }
+  }
+
+  componentDidUpdate() {
+    if (this.state.finishSDGQuest && this.props.activePlayerData && this.props.activePlayerData.sdg) {
+      // Mark the quest as completed by getting to the next "stage", completing the only fake stage that are in there for projects. 
+      this.props.changeStage(this.props.activeQuest.quest, 1);
+      this.props.closeEmbeddedQuest();
+      this.setState({
+        finishSDGQuest: false,
+      })
+    }
   }
 
   renderTools(project) {
@@ -75,9 +87,11 @@ class Showcase extends Component {
     console.log('User picked SDG #', sdgNumber);
     // Update the active player with the right SDG #
     this.props.setActivePlayerSDG(sdgNumber);
-    // Mark the quest as completed by getting to the next "stage", completing the only fake stage that are in there for projects. 
-    this.props.changeStage(this.props.activeQuest.quest, 1);
-    this.props.closeEmbeddedQuest();
+    // Flagging that we need to finish the quest once the user has been tagged with the right sdg
+    this.setState({
+      finishSDGQuest: true,
+    })
+
   }
 
   renderSDGs() {
@@ -131,6 +145,7 @@ const mapStateToProps = (state) => {
     embeddedQuest: state.embeddedQuest,
     activeQuest: state.activeQuest,
     activeQuestData: getActiveQuestData(state),
+    activePlayerData: getActivePlayerData(state),
   };
 };
 

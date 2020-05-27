@@ -81,7 +81,7 @@ stages:
 visibleAtAge: 0
 prerequisites: 
 - age: 1
-- maker_students_showcase
+- music_get_started
 following:
 - threeD_penguin
 - threeD_diamond_ring
@@ -560,7 +560,7 @@ stages:
   order: 0
 prerequisites: 
 - age: 1
-- maker_students_showcase
+- music_get_started
 following:
 - scratch_imagine
 - scratch_chase_game
@@ -891,7 +891,7 @@ stages:
   order: 1
 prerequisites: 
 - age: 1
-- maker_students_showcase
+- music_get_started
 following:
 - elec_smiley
 - elec_microchat
@@ -1429,9 +1429,9 @@ visibleAtAge: 1
 
 # -------------------------------------------------------
 # What have other students done?
-# a004100000qR83OAAS / maker_students_showcase
+# a004100000qR83OAAS / music_get_started
 ---
-id: maker_students_showcase
+id: music_get_started
 name: Create your first beat!
 valley: MakerMount
 content: |-

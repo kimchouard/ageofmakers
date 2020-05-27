@@ -7,13 +7,39 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { questUnlocked, addComplete, getAge, getRomanAge, isLoggedInAndLoaded, getActivePlayerData } from '../../_utils';
-import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree, unselectQuest, resetQuests } from '../../../actions/index';
+import { questUnlocked, addComplete, getAge, getRomanAge, isLoggedInAndLoaded, getActivePlayerData, isLoggedIn, isQuestsLoaded } from '../../_utils';
+import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree, unselectQuest, resetQuests, resetActivePlayerJourney } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Header extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      settings: false,
+      reset: false,
+    }
+    this.reloadQuestsIfNeeded();
+  }
+  
+  componentDidUpdate() {
+    this.reloadQuestsIfNeeded();
+  }
+
+  reloadQuestsIfNeeded() { 
+    // Reload the quests if you just logged in but the quests aren't loaded yet
+    if (this.state && this.state.reset) {
+      if (isQuestsLoaded(this.props) && !isLoggedIn(this.props)) {
+        this.props.unselectQuest();
+        this.props.resetQuests();
+        this.setState({
+          reset: false,
+        });
+      }
+    }
+    else if (isLoggedIn(this.props) && !isQuestsLoaded(this.props)) {
+      this.props.reloadQuests(this.props.activePlayerData.journey);
+    }
   }
   
   isUnlocked(quest) {
@@ -26,10 +52,21 @@ class Header extends Component {
     );
   }
 
+  resetQuests() {
+    this.setState({
+      reset: true,
+      settings: false,
+    })
+  }
+
   logOutActivePlayer() {
-    this.props.unselectQuest();
     this.props.logOut();
-    this.props.resetQuests();
+    this.resetQuests();
+  }
+
+  resetActivePlayerJourney() {
+    this.props.resetActivePlayerJourney();
+    this.resetQuests();
   }
 
   getQuestsNumber(ageData, valleyName) {
@@ -73,7 +110,10 @@ class Header extends Component {
 
   getPlayerSDG() {
     if (this.props.activePlayerData.sdg) {
-      return `, SDG ${this.props.activePlayerData.sdg}`
+      return `${this.props.activePlayerData.sdg}`
+    }
+    else {
+      return '?';
     }
   }
 
@@ -93,10 +133,18 @@ class Header extends Component {
         </div>
 
         <div className="col-sm-2 col-sm-offset-3 user">
-          <a className="action help" onClick={this.props.openWelcome}>?</a> 
+          <a className={`action user-sdg sdg${this.props.activePlayerData.sdg}`} onClick={this.props.openWelcome}>{this.getPlayerSDG()}</a> 
           <p className="name">{this.props.activePlayerData.name}</p>
-          <a className="action logout" onClick={ () => this.logOutActivePlayer() }></a>
-          <a className="action refresh" onClick={ () => this.props.reloadQuests(this.props.activePlayerData.journey) }></a>
+          <a className="action settings" onClick={ () => this.setState({ settings: !this.state.settings }) }></a>
+        </div>
+        <div className={`col-sm-2 dropdown ${(this.state.settings) ? 'visible': ''}`}>
+          <div className="section-title">Settings</div>
+          <div className="dropdown-action journey" onClick={ () => this.resetActivePlayerJourney() }>Change Your Journey</div>
+          <div className="dropdown-action logout" onClick={ () => this.logOutActivePlayer() }>Log Out</div>
+          <div className="dropdown-action reload" onClick={ () => this.props.reloadQuests(this.props.activePlayerData.journey) }>Reload Quests</div>
+          <div className="section-title">Help</div>
+          <div className="dropdown-action help disabled">Getting Started</div>
+          <div className="dropdown-action help disabled">FAQs</div>
         </div>
       </div>;
     }
@@ -131,7 +179,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree, unselectQuest, resetQuests }, dispatch);
+  return bindActionCreators({ getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree, unselectQuest, resetQuests, resetActivePlayerJourney }, dispatch);
 }
 
 

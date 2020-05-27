@@ -26,18 +26,6 @@ import AgeTree from './ageTree';
 class Game extends Component {
   constructor(props) {
     super(props);
-    this.reloadQuestsIfNeeded();
-  }
-  
-  componentDidUpdate() {
-    this.reloadQuestsIfNeeded();
-  }
-
-  reloadQuestsIfNeeded() { 
-    // Reload the quests if you just logged in but the quests aren't loaded yet
-    if (isLoggedIn(this.props) && !isQuestsLoaded(this.props)) {
-      this.props.reloadQuests(this.props.activePlayerData.journey);
-    }
   }
 
   openQuest(questKey) {

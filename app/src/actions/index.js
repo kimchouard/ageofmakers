@@ -17,6 +17,7 @@ export const GET_PLAYERS = 'GET_PLAYERS';
 export const REMOVE_PLAYER = 'REMOVE_PLAYER';
 export const SET_PLAYER_SDG = 'SET_PLAYER_SDG';
 export const SET_PLAYER_JOURNEY = 'SET_PLAYER_JOURNEY';
+export const RESET_PLAYER_JOURNEY = 'RESET_PLAYER_JOURNEY';
 export const GET_CURRENT_TAB = 'GET_CURRENT_TAB';
 export const QUESTS_RELOAD = 'QUESTS_RELOAD';
 export const QUESTS_RESET = 'QUESTS_RESET';
@@ -86,6 +87,14 @@ export function setActivePlayerJourney(journeyId) {
   };
 }
 
+// Mock action. Full in alias
+export function resetActivePlayerJourney() {
+  return {
+    type: RESET_PLAYER_JOURNEY,
+    payload: { mock: true },
+  };
+}
+
 
 // =========================================
 //         Players
@@ -144,10 +153,19 @@ export function getQuests() {
 
 // Mock action. Promise in alias
 export function reloadQuests(journeyId) {
-  return {
-    type: QUESTS_RELOAD,
-    payload: { mock: true, journeyId },
-  };
+  if (journeyId) {
+    return {
+      type: QUESTS_RELOAD,
+      payload: { mock: true, journeyId },
+    };
+  }
+  else {
+    console.log('No journey specified for quest reload, returning empty quests');
+    return {
+      type: QUESTS_RELOAD,
+      payload: { },
+    };
+  }
 }
 
 // Mock action. Promise in alias

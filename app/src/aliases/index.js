@@ -190,19 +190,23 @@ const loadQuests = (journeyId, resolve) => {
   });
 }
 
-const updatePlayersData = (field, originalAction) => {
+const updatePlayersData = (field, originalAction, reset) => {
   return middlewarePromise(originalAction, new Promise((resolve, reject) => {
     if (originalAction.payload && originalAction.payload.mock) {
       chrome.storage.sync.get(['players', 'activePlayer'], (storage) => {
         if (storage && storage.players && storage.activePlayer != null) {
           let players = storage.players;
           let activePlayerId = storage.activePlayer;
+          let activePlayer = players[activePlayerId];
 
-          let value = (field === 'sdg') ? originalAction.payload.sdgNumber : originalAction.payload.journeyId;
-
-          console.log(`Updating ${activePlayerId}.${field}: ${value}`);
-
-          players[activePlayerId][field] = value;
+          if (reset) {
+            delete activePlayer[field];
+          }
+          else {
+            let value = (field === 'sdg') ? originalAction.payload.sdgNumber : originalAction.payload.journeyId;
+            console.log(`Updating ${activePlayerId}.${field}: ${value}`);
+            activePlayer[field] = value;
+          }
 
           chrome.storage.sync.set({ players }, () => {
             resolve(players);
@@ -325,6 +329,11 @@ const setActivePlayerJourney = (originalAction) => {
   return updatePlayersData('journey', originalAction);
 }
 
+// originalAction.payload params: journeyId
+const resetActivePlayerJourney = (originalAction) => {
+  return updatePlayersData('journey', originalAction, true);
+}
+
 const getPlayers = (originalAction) => {
   return getChromeSyncStorage(originalAction, 'players');
 };
@@ -336,12 +345,18 @@ const getPlayers = (originalAction) => {
 
 // originalAction.payload params: journeyId
 const reloadQuests = (originalAction) => {
-  return middlewarePromise(originalAction, new Promise((resolve, reject) => {
-    loadQuests(originalAction.payload.journeyId, resolve);
-  }));
+  if (originalAction.payload) {
+    return middlewarePromise(originalAction, new Promise((resolve, reject) => {
+      loadQuests(originalAction.payload.journeyId, resolve);
+    }));
+  }
+  else {
+    return originalAction;
+  }
 };
 
 const resetQuests = (originalAction) => {
+  console.log('Resetting Quests & ages data');
   return middlewarePromise(originalAction, new Promise((resolve, reject) => {
     // Remove the current quests to force a reload
     chrome.storage.local.remove(['quests', 'ages'], () => {
@@ -438,6 +453,7 @@ export default {
   GET_PLAYERS: getPlayers,
   SET_PLAYER_SDG: setActivePlayerSDG,
   SET_PLAYER_JOURNEY: setActivePlayerJourney,
+  RESET_PLAYER_JOURNEY: resetActivePlayerJourney,
   REMOVE_PLAYER: removePlayer,
   STAGE_CHANGE: changeStage,
   GET_ONBOARDING: getOnboarding,
