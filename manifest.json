@@ -31,7 +31,8 @@
         "https://scratch.mit.edu/*",
         "https://spark.adobe.com/*",
         "https://www.globalgoals.org/*",
-        "https://worldslargestlesson.globalgoals.org/*"
+        "https://worldslargestlesson.globalgoals.org/*",
+        "https://www.bandlab.com/*"
       ],
       "css": [],
       "js": ["content.js"]

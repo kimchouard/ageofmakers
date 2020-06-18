@@ -137,8 +137,8 @@ class Onboarding extends Component {
                 <img src="images/music-for-the-sdg-logo.png" alt="Music for the SDGs"/>
               </div>
               <div className="journey-details">
-                <div className="journey-title">Music for the Global Goals</div>
-                <div className="journey-description">Write and produce your first song to advocate and help solve for the world’s biggest challenges.</div>
+                <div className="journey-title">Music for Change</div>
+                <div className="journey-description">Write and produce your first song to advocate for a more equitable and diverse world.</div>
               </div>
             </div>
             <div className="journey disabled" onClick={ (e) => { this.selectPlayerJourney('ftc'); } }>

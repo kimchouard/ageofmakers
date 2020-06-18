@@ -88,11 +88,12 @@ class Leaflet extends Component {
     getMapImageUrl() {
       if (isLoggedInAndLoaded(this.props)) {
         let ageData = getAge(this.props.journey);
-        return (ageData.index < 2) ? ageData.index : 'all'
+        let index = (ageData.index < 2) ? ageData.index : 'all';
+        return `${this.props.activePlayerData.journey}-${index}`;
       }
       // Default is first age map #placeholder
       else {
-        return '0';
+        return 'ftc-0';
       }
     }
 
@@ -121,7 +122,7 @@ class Leaflet extends Component {
                 bounds={[[0,0], [100,100]]}
                 url={`images/map-${ this.getMapImageUrl() }.jpg`}
               />
-              { this.renderTent() }
+              {/* { this.renderTent() } */}
               { this.renderPins() }
           </Map>
         )
