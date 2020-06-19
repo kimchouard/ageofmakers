@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        { (this.props.activeQuest && this.props.activeQuestData) ? <Bubble embed={true}><Accordions stages={ this.props.activeQuestData.stages }/></Bubble> : null }
+        { (this.props.activeQuest && this.props.activeQuestData) ? <Bubble embed={true}><Accordions /></Bubble> : null }
       </div>
     );
     

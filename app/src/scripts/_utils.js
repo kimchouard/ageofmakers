@@ -18,6 +18,11 @@ export const stageStatus = {
 
 export const questTypes = {
   WEBSITE: 'website',
+  EMBEDDED: 'embedded',
+}
+
+export const stageTypes = {
+  VIDEO: 'video',
   SHOWCASE: 'showcase',
   KANBAN: 'kanban',
 };
@@ -42,6 +47,33 @@ export const getActiveQuestData = (state) => {
   // (isQuestsLoaded(state.quests) && state.activeQuest) ? state.quests[state.activeQuest.quest] : null,
   // (state.quests && state.activeQuest) ? state.quests[state.activeQuest.quest] : null
   return (isQuestsLoaded(state) && state.activeQuest) ? state.journey.quests[state.activeQuest.quest] : null;
+}
+
+export const getStageData = (activeQuest, stageOrder) => {
+  let activeStage = null;
+  activeQuest.stages.forEach((stage) => {
+    if (stage.order === stageOrder) {
+      activeStage = stage;
+    }
+  });
+
+  if (!activeStage) {
+    console.error(`Error: can't find active stage!`);
+  }
+  return activeStage;
+}
+
+export const getDefaultActiveStageOrder = (activeQuestData) => {
+  if(activeQuestData) {
+    let defaultActiveStageOrder = 0;
+    activeQuestData.stages.forEach((stage) => {
+      if (stage.status === 'inProgress') {
+        defaultActiveStageOrder = stage.order;
+      }
+    });
+
+    return defaultActiveStageOrder;
+  }
 }
 
 export const questUnlocked = (quest, journey) => {

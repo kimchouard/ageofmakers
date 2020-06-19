@@ -38,7 +38,7 @@ class Game extends Component {
       this.props.startQuest(this.props.activeQuest.quest, this.props.currentTab.id);
       window.location = this.props.activeQuestData.lastUrl || this.props.activeQuestData.startUrl;
     }
-    else if (this.props.activeQuestData && (this.props.activeQuestData.type === questTypes.SHOWCASE || this.props.activeQuestData.type === questTypes.KANBAN)) {
+    else if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.EMBEDDED) {
       this.props.openEmbeddedQuest();
     }
   }

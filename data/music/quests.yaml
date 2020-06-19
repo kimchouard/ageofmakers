@@ -121,12 +121,39 @@ prerequisites:
 - age: 2
 - music_get_started
 following: []
+visibleAtAge: 1
+
+
+# =======================================================
+#                 Music City Quests
+# =======================================================
+
+
+# -------------------------------------------------------
+# Welcome to the World of Music
+# welcome_music_world
+---
+id: welcome_music_world
+name: Welcome to the World of Music
+valley: MakerMount
+content: |-
+  Music structure (sections, etc.) & gendra overview
+type: embedded
+CTA: Learn About Music
+positionLeft: 47.5
+positionTop: 67
+stages:
+- name: How Music Is Written
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  content: |-
+    Music structure (sections, etc.) & gendra overview.
+  order: 0
+prerequisites: 
+- age: 1
+following: 
+- bandlab_start
 visibleAtAge: 0
-
-
-# =======================================================
-#                 Electronics Quests
-# =======================================================
 
 
 # -------------------------------------------------------
@@ -161,6 +188,7 @@ stages:
 prerequisites: 
 - age: 1
 - music_get_started
+- welcome_music_world
 following: []
 visibleAtAge: 0
 
@@ -172,11 +200,11 @@ visibleAtAge: 0
 
 
 # -------------------------------------------------------
-# What have other students done?
-# a004100000qR83OAAS / music_get_started
+# Global Goal Advocacy Project
+# welcome_music_for_change
 ---
-id: music_get_started
-name: How Music Shaped the World
+id: welcome_music_for_change
+name: Welcome to Your New Adventure!
 valley: MakerMount
 content: |-
   Welcome to the **Age of Makers**. 👋🏻 
@@ -185,204 +213,168 @@ content: |-
     
   ![FTC Winners Celebrating](https://ageofmakers.s3.amazonaws.com/Future%20Trailblazer%20Challenge%20-%20Students%20Celebrate_min.jpg)
   
-  In this game, you'll learn the importance of building an equitable and diverse world, and create your own song to advocate for a social issue you care about!
+  In this game, you'll learn produce their own song to examine injustice and imagine a better world.
 
-  Wonder what that means? Click **Start Your Journey** below to get started and get inspired by how music has changed the world already!
+  Wonder what that means? Click **Start Your Journey** below to get started!
+type: embedded
+CTA: Start Your Journey 🏞
+positionLeft: 46
+positionTop: 80.5
+stages:
+- name: Music for Change
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  content: |-
+    Look at this video to know what's coming up for you. 🧐
+  order: 0
+prerequisites: []
+following: 
+- music_get_started
+visibleAtAge: 0
+
+
+# -------------------------------------------------------
+# What have other students done?
+# a004100000qR83OAAS / music_get_started
+---
+id: music_get_started
+name: How Music Shaped the World
+valley: MakerMount
+content: |-
+  Students will explore *examples* of music by black (and women & other) artists - from the Civil Rights era to today - that:
+  
+  1. Shone light on injustice
+  2. Imagined a better world
 # startUrl: https://docs.google.com/document/d/1D-yuD0ABFLaaa_J3s2YLOHNkNAi09UTcgf9sfZR3_9E/edit?usp=sharing
 startUrl: https://scratch.mit.edu
-type: showcase
-CTA: Start Your Journey
-positionLeft: 48
-positionTop: 81
+type: embedded
+CTA: Find Out How 🧐
+positionLeft: 50.5
+positionTop: 78.5
 stages:
-- name: Hidden stage
+- name: Example of Music that changed the world
   content: |-
-    
+    Wow, so many examples!
+  type: showcase
   order: 0
-projects:
-- name: Self-Watering Community Garden
-  content: |-
-    For homeless people to grow their food and have a project to be a part-of.
+  projects:
+  - name: Self-Watering Community Garden
+    content: |-
+      For homeless people to grow their food and have a project to be a part-of.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/self-watering-garden.png)
-  SDG: 2
-  from: San Francisco, USA
-  using:
-    - microbit
-    - toybox
-  order: 0
-- name: Pet Plan
-  content: |-
-    Provide the pet experience to allergic kids with carnivore plant box and its food.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/self-watering-garden.png)
+    SDG: 2
+    from: San Francisco, USA
+    using:
+      - microbit
+      - toybox
+    order: 0
+  - name: Pet Plan
+    content: |-
+      Provide the pet experience to allergic kids with carnivore plant box and its food.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/pet-plant.jpeg)
-  SDG: 3
-  from: Paris, FR
-  using: []
-  order: 1
-- name: The Aluminum Curtain
-  content: |-
-    An innovative bullet-proof door to keep students safe from school shootings.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/pet-plant.jpeg)
+    SDG: 3
+    from: Paris, FR
+    using: []
+    order: 1
+  - name: The Aluminum Curtain
+    content: |-
+      An innovative bullet-proof door to keep students safe from school shootings.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/aluminium-curtain.png)
-  SDG: 4
-  from: Oakland, USA
-  using:
-    - toybox
-  order: 2
-- name: LGBTQ Community Devices & SWAG
-  content: |-
-    For community building and to create a support system.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/aluminium-curtain.png)
+    SDG: 4
+    from: Oakland, USA
+    using:
+      - toybox
+    order: 2
+  - name: LGBTQ Community Devices & SWAG
+    content: |-
+      For community building and to create a support system.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/LGBTQ-device.png)
-  SDG: 5
-  from: Oakland, USA
-  using:
-    - microbit
-    - toybox
-  order: 3
-- name: Water Filtration System
-  content: |-
-    3D-Printed for countries that lacks access to clean water, distributed by partnered nonprofits.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/LGBTQ-device.png)
+    SDG: 5
+    from: Oakland, USA
+    using:
+      - microbit
+      - toybox
+    order: 3
+  - name: Water Filtration System
+    content: |-
+      3D-Printed for countries that lacks access to clean water, distributed by partnered nonprofits.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/portable-water-filter.png)
-  SDG: 6
-  from: San Francisco, USA
-  using:
-    - toybox
-  order: 4
-- name: WIIZUM
-  content: |-
-    Electronic devices to to help blind, deaf and disabled people, like an electronic blind-cane, a vibrating whistle & more!
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/portable-water-filter.png)
+    SDG: 6
+    from: San Francisco, USA
+    using:
+      - toybox
+    order: 4
+  - name: WIIZUM
+    content: |-
+      Electronic devices to to help blind, deaf and disabled people, like an electronic blind-cane, a vibrating whistle & more!
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/WIIZUM.png)
-  SDG: 10
-  from: Paris, FR
-  using:
-    - arduino
-    - toybox
-  order: 5
-- name: Gamified Recycling Kiosk
-  content: |-
-    Mrs Hot Dog let’s you win points as you recycle item through the kiosk.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/WIIZUM.png)
+    SDG: 10
+    from: Paris, FR
+    using:
+      - arduino
+      - toybox
+    order: 5
+  - name: Gamified Recycling Kiosk
+    content: |-
+      Mrs Hot Dog let’s you win points as you recycle item through the kiosk.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/mrs-hot-dog.png)
-  SDG: 12
-  from: San Francisco, USA
-  using:
-    - microbit
-  order: 6
-- name: Air Pollution Filter
-  content: |-
-    With air filters aimed to reduce global warming.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/mrs-hot-dog.png)
+    SDG: 12
+    from: San Francisco, USA
+    using:
+      - microbit
+    order: 6
+  - name: Air Pollution Filter
+    content: |-
+      With air filters aimed to reduce global warming.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/air-pollution-filter.png)
-  SDG: 13
-  from: San Francisco, USA
-  using:
-    - toybox
-  order: 7
-- name: Ocean De-Polluting Boats
-  content: |-
-    Autonomous boats navigating on their own and communicating to each other to de-pollute our oceans.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/air-pollution-filter.png)
+    SDG: 13
+    from: San Francisco, USA
+    using:
+      - toybox
+    order: 7
+  - name: Ocean De-Polluting Boats
+    content: |-
+      Autonomous boats navigating on their own and communicating to each other to de-pollute our oceans.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/ocean-depolluting-boat.png)
-  SDG: 14
-  from: San Francisco, USA
-  using:
-    - microbit
-    - toybox
-  order: 8
-- name: SOS (Save Our Sea)
-  content: |-
-    Gamified remote drone piloting game to collect pollution in the ocean from the “7th continent”, made of just trashes.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/ocean-depolluting-boat.png)
+    SDG: 14
+    from: San Francisco, USA
+    using:
+      - microbit
+      - toybox
+    order: 8
+  - name: SOS (Save Our Sea)
+    content: |-
+      Gamified remote drone piloting game to collect pollution in the ocean from the “7th continent”, made of just trashes.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/save-our-seas.png)
-  SDG: 10
-  from: Paris, FR
-  using:
-    - mobile
-  order: 9
-- name: E2GAME
-  content: |-
-    A Board game around Sustainable Goals and an app to create bridge between generation.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/save-our-seas.png)
+    SDG: 10
+    from: Paris, FR
+    using:
+      - mobile
+    order: 9
+  - name: E2GAME
+    content: |-
+      A Board game around Sustainable Goals and an app to create bridge between generation.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/e2game.png)
-  SDG: 17
-  from: Paris, FR
-  using:
-    - mobile
-  order: 10
-prerequisites: []
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/e2game.png)
+    SDG: 17
+    from: Paris, FR
+    using:
+      - mobile
+    order: 10
+prerequisites: 
+- welcome_music_for_change
 following:
 - threeD_keychain
 - bandlab_start
 - scratch_get_started
 visibleAtAge: 0
-
-
-# -------------------------------------------------------
-# Global Goal Advocacy Project
-# a004100000FL3pjAAD / maker_global_goals
-# ---
-# id: maker_global_goals
-# name: Global Goal Advocacy Project
-# valley: MakerMount
-# content: |-
-#   Now that you've explored what other have done, time for you to advocate for your goal!
-
-#   ![User-added image](http://i.imgur.com/7q16rid.jpg)
-# # startUrl: https://docs.google.com/presentation/d/1909vR4OEwt0j7VRtkKkvPYt4PNZVlupA_DUZeeaACms/copy
-# startUrl: https://scratch.mit.edu
-# positionLeft: 35
-# positionTop: 35
-# stages:
-# - name: Start your presentation
-#   content: |-
-#     Here is a presentation template you can use to present your idea.  
-  
-#     To use it, click **Make a copy**.  
-      
-#     ![User-added image](https://ageofmakers.s3.amazonaws.com/Global%20Goals%20Advocacy%20Template%20-%20Make%20a%20copy%202019-03-20%2011-06-45.png)
-#   order: 0
-# - name: Research about your goal
-#   content: |-
-#     There is so much you can advocate for! Remember the Global Goals you were the most interested in?  
-  
-#     ![Global](https://ageofmakers.s3.amazonaws.com/global-goals_850x385_acf_cropped.png)
-
-#     1.  Choose a Global Goal that you would like to create a solution for. It should be something that matters to you and your community
-#     2.  Learn more about your goal. Do some online research and find at least:
-#         1.  3 important facts about your goal,
-#         2.  Who it affects,
-#         3.  Why it is important.
-
-#     ```info
-#     You can also use Google to search for information about you Goal
-#     ```
-#   order: 1
-# - name: Advocate for your goal!
-#   content: |-
-#     Choose one of the options below to Advocate (share information and teach others) for your goal
-    
-#     **Option 1** **Google Slide**
-    
-#     *   Use this new slide deck and modify/add slides to it
-    
-#     **Option 2 Scratch Project:**
-    
-#     *   Click the [link to open the Scratch Starter Project](\"https://scratch.mit.edu/projects/281009379/\) ([tinyurl.com/globalgoalsscratch](\"http://tinyurl.com/globalgoalsscratch\))
-        
-#     **Option 3: Adobe Spark Page**
-    
-#     Make sure to include the following information to your project:
-#     *   Name of Goal
-#     *   Who it affects or where in the world people are affected
-#     *   Facts about the Goal
-#     *   Images related to the Goal
-#     *   Why it is important to find solutions for the Goal
-#   order: 2
-# prerequisites:
-# - age: 2
-# following: []
-# visibleAtAge: 2

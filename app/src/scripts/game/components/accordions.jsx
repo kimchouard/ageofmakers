@@ -12,13 +12,14 @@ import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
 import { mdRenderers } from '../../_reactUtils';
 import { changeStage, unselectQuest, backToNewTab, logOut } from '../../../actions/index';
+import { getActiveQuestData, getStageData, getDefaultActiveStageOrder } from '../../_utils';
 
 class Accordions extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeStageOrder: this.getDefaultActiveStageOrder(),
+      activeStageOrder: getDefaultActiveStageOrder(this.props.activeQuestData),
     }
   }
 
@@ -30,34 +31,9 @@ class Accordions extends Component {
     ReactDOM.findDOMNode(this).parentNode.scrollTop = 64*stageOrder;
   }
 
-  getDefaultActiveStageOrder() {
-    let defaultActiveStageOrder = 0;
-    this.props.stages.forEach((stage) => {
-      if (stage.status === 'inProgress') {
-        defaultActiveStageOrder = stage.order;
-      }
-    });
-
-    return defaultActiveStageOrder;
-  }
-
-  getStageData(stageOrder) {
-    let activeStage = null;
-    this.props.stages.forEach((stage) => {
-      if (stage.order === stageOrder) {
-        activeStage = stage;
-      }
-    });
-
-    if (!activeStage) {
-      console.error(`Error: can't find stage!`);
-    }
-    return activeStage;
-  }
-
   setActiveStageOrder(activeStageOrder) {
     if(activeStageOrder !== 0 && !activeStageOrder) {
-      activeStageOrder = this.getDefaultActiveStageOrder();
+      activeStageOrder = getDefaultActiveStageOrder(this.props.activeQuestData);
     }
     this.scrollToStage(activeStageOrder);
 
@@ -79,7 +55,7 @@ class Accordions extends Component {
 
   renderAccordions() {
     // If the quest is done
-    if (this.props.stages[this.props.stages.length-1].status === 'complete') {
+    if (this.props.activeQuestData.stages[this.props.activeQuestData.stages.length-1].status === 'complete') {
       return <div className="congrats">
         <div className="title">Quest Completed!</div>
 
@@ -103,7 +79,7 @@ class Accordions extends Component {
       </div>
     }
     else {
-      return this.props.stages.map((stage) => {
+      return this.props.activeQuestData.stages.map((stage) => {
         return <div
           className="accordion"
           key={stage.order}
@@ -163,6 +139,7 @@ const mapStateToProps = (state) => {
   return {
     journey: state.journey,
     activeQuest: state.activeQuest,
+    activeQuestData: getActiveQuestData(state),
     currentTab: state.currentTab,
   };
 };
