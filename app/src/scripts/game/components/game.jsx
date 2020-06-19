@@ -85,7 +85,7 @@ class Game extends Component {
             
             return <div className="prereqWrapper" key={pin.id}>
                 <div className={ `agePrereq ${(currentAge.index < agePrereq.index) ? 'locked' : 'complete'}` }>
-                  { getRomanAge(agePrereq.index) }
+                  { getRomanAge(agePrereq) }
                 </div>
                 <div
                   className="questName">
