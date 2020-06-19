@@ -1,0 +1,111 @@
+/*
+* Copyright (c) 2020, salesforce.com, inc.
+* All rights reserved.
+* SPDX-License-Identifier: BSD-3-Clause
+* For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+*/
+
+@import '~compass-mixins/lib/compass';
+@import 'vars';
+
+/* ================================
+            Welcome Screen
+================================ */
+.celebrationWrapper {
+  font-size: 1vw;
+    
+  .overlay {
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background: black;
+    display: none;
+  }
+
+  &.open {
+    .overlay {
+      display: block;
+    }
+
+    .celebration, .metrics {
+      top: 61px;
+    }
+    .celebration {
+      transform: translateX(-50%);
+    }
+  }
+
+  .celebration, .metrics {
+    position: fixed;
+    top: 100%;
+    border-radius: 10px;
+    color: white;
+    z-index: 999;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 0; 
+      height: 0; 
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-bottom: 12px solid $red;
+      position: absolute;
+    }
+
+    &.celebration {
+      left: 50%;
+      margin: 0 auto;
+      margin-left: -94px;
+      text-align: center;
+      padding: 0px 30px 30px;
+
+      &::before {
+        top: -10px;
+        left: 50%;
+        margin-left: -5px;
+      }
+
+      .btn-select {
+        position: absolute;
+        width: 300px;
+        left: 50%;
+        margin: 15px 0 0 -150px;
+        bottom: -20px;
+      }
+    }
+
+    &.metrics {
+      left: 0px;
+      text-align: left;
+      background: $grey;
+      padding: 10px 30px 20px;
+
+      &::before {
+        top: -10px;
+        left: 50px;
+        border-bottom-color: $grey;
+      }
+
+      .btn-select {
+        margin-top: 10px;
+      }
+    }
+    
+    .btn-select {
+      font-size: 15px;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      color: white;
+      background: darken($red, 10);
+
+      &:hover {
+        background: darken($red, 20);
+      }
+    }
+  }
+}

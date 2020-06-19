@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
-import { questUnlocked, getRomanAge, getAge, questTypes, isLoggedInAndLoaded, isQuestsLoaded, isLoggedIn, getActivePlayerData, getActiveQuestData } from '../../_utils';
+import { questUnlocked, getRomanAge, getAge, questTypes, isLoggedInAndLoaded, isNewAge, getActivePlayerData, getActiveQuestData } from '../../_utils';
 import { mdRenderers } from '../../_reactUtils';
 import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, getOnboarding, openWelcome, setOnboarding, changeStage, startWalkthrough, openEmbeddedQuest } from '../../../actions/index';
 
@@ -19,6 +19,7 @@ import Bubble from './bubble';
 import EmbeddedQuest from './embeddedQuest';
 import Walkthrough from './walkthrough';
 import Onboarding from './onboarding';
+import Celebration from './celebration';
 import Welcome from './welcome';
 import LeafletMap from './leafletMap';
 import AgeTree from './ageTree';
@@ -154,11 +155,12 @@ class Game extends Component {
     //   this.props.setOnboarding(true)
     // }
     return (
-      <div className={`gameWrapper ${ (isLoggedInAndLoaded(this.props)) ? '' : 'loading'}`}>
+      <div className={`gameWrapper ${ (!isLoggedInAndLoaded(this.props) || isNewAge(this.props.activePlayerData,this.props.journey)) ? 'blurry' : ''}`}>
         <Header />
         <LeafletMap />
         <EmbeddedQuest />
         <Onboarding />
+        <Celebration />
         {/* <Welcome />
         <AgeTree /> */}
         { (this.props.activeQuest) ? <Bubble embed={false}>{ this.getContent() }</Bubble> : null }

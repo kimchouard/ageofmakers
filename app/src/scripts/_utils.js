@@ -39,6 +39,16 @@ export const isLoggedInAndLoaded = (props) => {
   return isQuestsLoaded(props) && isLoggedIn(props);
 }
 
+export const isNewAge = (activePlayerData, journey) => {
+  if (activePlayerData && activePlayerData.achievements && journey && journey.ages && journey.quests) {
+    let achievementAgeIndex = activePlayerData.achievements[`${activePlayerData.journey}-currentAge`];
+    let currentAgeIndex = getAge(journey).index;
+
+    // Either the saved aged is under the current one, or no ages are saved yet and we're after the first (0) age
+    return ( (achievementAgeIndex < currentAgeIndex) || (!achievementAgeIndex && currentAgeIndex !== 0) );
+  }
+}
+
 export const getActivePlayerData = (state) => {
   return (state.players && state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null;
 }
@@ -188,43 +198,45 @@ export const getRomanAge = (age) => {
 }
 
 export const getAge = (journey) => {
-  for (let i = 0; i < journey.ages.length; i++) {
-    let currentReqs = journey.ages[i].requirements;
-    let currentValues = Object.keys(currentReqs).map( (valleyName) => {
-      if (valleyName === "total") {
-        if (typeof(currentReqs[valleyName]) === "string" && addComplete(journey.quests, null, null) === addComplete(journey.quests)){
-          return "all";
+  if (journey && journey.ages && journey.quests) {
+    for (let i = 0; i < journey.ages.length; i++) {
+      let currentReqs = journey.ages[i].requirements;
+      let currentValues = Object.keys(currentReqs).map( (valleyName) => {
+        if (valleyName === "total") {
+          if (typeof(currentReqs[valleyName]) === "string" && addComplete(journey.quests, null, null) === addComplete(journey.quests)){
+            return "all";
+          } else {
+            return addComplete(journey.quests);
+          }
         } else {
-          return addComplete(journey.quests);
+          if (typeof(currentReqs[valleyName]) === "string" && addComplete(journey.quests, valleyName, null) === addComplete(journey.quests, valleyName)){
+            return "all";
+          } else {
+            return addComplete(journey.quests, valleyName)
+          }
+        }
+      });
+      // console.log('Age check for', i, newArray, Object.values(currentReqs), (newArray >= Object.values(currentReqs) && Object.values(currentReqs) !== -1), newArray === Object.values(currentReqs));
+      let requirementsMet = true;
+      for(let j = 0; j < currentValues.length; j++) {
+        let currentReq = currentReqs[Object.keys(currentReqs)[j]];
+        let currentValue = currentValues[j];
+        if ((currentReq === 'all' && currentValue !== 'all') || (currentReq !== 'all' && currentValue < currentReq)) {
+          requirementsMet = false;
+        }
+      }
+  
+      if (requirementsMet) {
+        // console.log("Passed Age:", journey.ages[i].name)
+        if (journey.ages[i].index + 1 === journey.ages.length) {
+          // console.log("Returned Final Index!!!:", journey.ages[i].index)
+          return(journey.ages[i])
         }
       } else {
-        if (typeof(currentReqs[valleyName]) === "string" && addComplete(journey.quests, valleyName, null) === addComplete(journey.quests, valleyName)){
-          return "all";
-        } else {
-          return addComplete(journey.quests, valleyName)
-        }
-      }
-    });
-    // console.log('Age check for', i, newArray, Object.values(currentReqs), (newArray >= Object.values(currentReqs) && Object.values(currentReqs) !== -1), newArray === Object.values(currentReqs));
-    let requirementsMet = true;
-    for(let j = 0; j < currentValues.length; j++) {
-      let currentReq = currentReqs[Object.keys(currentReqs)[j]];
-      let currentValue = currentValues[j];
-      if ((currentReq === 'all' && currentValue !== 'all') || (currentReq !== 'all' && currentValue < currentReq)) {
-        requirementsMet = false;
-      }
-    }
-
-    if (requirementsMet) {
-      console.log("Passed Age:", journey.ages[i].name)
-      if (journey.ages[i].index + 1 === journey.ages.length) {
-        // console.log("Returned Final Index!!!:", journey.ages[i].index)
+        // console.log("Failed Age:", journey.ages[i].name)
+        // console.log("Returned Index:", journey.ages[i].index) Save above 4 lines of commented code to use for reference on a later feature
         return(journey.ages[i])
       }
-    } else {
-      // console.log("Failed Age:", journey.ages[i].name)
-      // console.log("Returned Index:", journey.ages[i].index) Save above 4 lines of commented code to use for reference on a later feature
-      return(journey.ages[i])
-    }
-  };
+    };
+  }
 };

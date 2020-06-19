@@ -17,8 +17,8 @@ class Leaflet extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            lat: 50,
-            lng: 50,
+            lat: 18,
+            lng: 45,
             zoom: 4.25,
         }
     }
@@ -93,7 +93,7 @@ class Leaflet extends Component {
       }
       // Default is first age map #placeholder
       else {
-        return 'ftc-0';
+        return 'music-0';
       }
     }
 

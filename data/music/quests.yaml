@@ -3,207 +3,16 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 
-# =======================================================
-#                 3D Quests
-# =======================================================
-
-# -------------------------------------------------------
-# Keychain
-# a00410000058yIbAAI
-
---- 
-id: threeD_keychain
-name: Create your first beat!
-valley: ThreeD
-content: |-
-  Learn the basics of [Tinkercad](https://tinkercad.com), an online 3D designing tool.
-  
-  Use your new skills to 3D Design & Print a keychain with your name on it!
-  
-  ![User-added image](https://ageofmakers.s3.amazonaws.com/3D%20Print%20Nametag.jpeg)
-# Direct original link: https://www.tinkercad.com/things/newv2?lessonid=EABLWFTIQ2KHDSZ&projectid=O2C1PXBIQ2KHCOD&collectionid=O2C1PXBIQ2KHCOD&title=Learning%20the%20Moves
-startUrl: https://www.tinkercad.com/login 
-positionLeft: 35
-positionTop: 61.5
-stages:
-- name: Login into Tinkercad
-  order: 0
-  content: |-
-    Once you're on the [Tinkercad](https://tinkercad.com) website, click **Sign-in** on the top right, and then choose:
-    - **"Join your class"** if you have a class code from your teacher or volunteer.
-    - Sign in with Google or any other available option if you're on your own.
-
-    Click on the button below once you're logged in. 
-- name: Go through the Direct Starters lessons
-  content: |-
-    Start with the [Learning the Moves](https://www.tinkercad.com/things/newv2?lessonid=EABLWFTIQ2KHDSZ&amp;projectid=O2C1PXBIQ2KHCOD&amp;collectionid=O2C1PXBIQ2KHCOD&amp;title=Learning%20the%20Moves) lessons and **follow the instructions on the left**.
-    
-    ![Lessons Breakdown](https://ageofmakers.s3.amazonaws.com/Tinkercad-Lessons_breakdown.jpg)
-    
-    Click **Continue** at the end of each lesson, and you'll get to the next one.
-    
-    Make sure you go through all those tutorials:
-
-    1. [Learning the Moves](https://www.tinkercad.com/things/newv2?lessonid=EABLWFTIQ2KHDSZ&amp;projectid=O2C1PXBIQ2KHCOD&amp;collectionid=O2C1PXBIQ2KHCOD&amp;title=Learning%20the%20Moves): how to move objects in the scene
-    2. [Camera Controls](https://www.tinkercad.com/things/newv2?lessonid=EO84NMOIQ2KHKSW&amp;projectid=O2C1PXBIQ2KHCOD&amp;collectionid=O2C1PXBIQ2KHCOD&amp;title=Camera%20Controls): how to look around
-    3. [Creating Holes](https://www.tinkercad.com/things/newv2?lessonid=E1ZC96LIQ2KHRJO&amp;projectid=O2C1PXBIQ2KHCOD&amp;collectionid=O2C1PXBIQ2KHCOD&amp;title=Creating%20Holes): group to create holes!
-    4. [Scale, Copy &amp; Paste](https://www.tinkercad.com/things/newv2?lessonid=E337L76IQCBDZ9W&amp;projectid=O2C1PXBIQ2KHCOD&amp;collectionid=O2C1PXBIQ2KHCOD&amp;title=Scale,%20Copy%20&amp;%20Paste): arrange objects
-    5. [Key Ring, Letters!](https://www.tinkercad.com/things/newv2?lessonid=EOMIYQXIQCBE0DD&amp;projectid=O2C1PXBIQ2KHCOD&amp;collectionid=O2C1PXBIQ2KHCOD&amp;title=Key%20Ring,%20Letters!): create your personalized keyring
-
-    ```info
-    All the tutorials are available in the **Learn** section of Tinkercad, in the [Lessons Tab](https://www.tinkercad.com/learn/project-gallery;collectionId=O2C1PXBIQ2KHCOD)
-    ```
-  stageName: Go through the Direct Starters lessons
-  quest: a00410000058yIbAAI
-  order: 1
-  type: Content
-  status: new
-- name: Save your Keyring
-  content: |-
-    Once you're done with your keychain from the [Key Ring, Letters!](https://www.tinkercad.com/things/newv2?lessonid=EOMIYQXIQCBE0DD&projectid=O2C1PXBIQ2KHCOD&collectionid=O2C1PXBIQ2KHCOD&title=Key%20Ring,%20Letters!) tutorial:
-
-    1. Click **Export** on the top right
-    2. Click **.STL** to download it in the right format
-    3. Save it on your computer
-
-    ![Export 3D designs](https://ageofmakers.s3.amazonaws.com/Export_3D_design.jpg)
-    
-    Voilà! **You now have your design that can be 3D printed. 🎉**
-
-    ```info
-    Talk to a volunteer/teacher to get help to 3D print it.
-    ```
-  stageName: Save your Keyring
-  quest: a00410000058yIbAAI
-  order: 2
-  type: Content
-  status: new
-visibleAtAge: 0
-prerequisites: 
-- age: 2
-- music_get_started
-following: []
-
-
-# =======================================================
-#                 Coding Quests
-# =======================================================
-
-
-
-# -------------------------------------------------------
-# Get Started with Scratch
-# scratch_get_started
-
----
-id: scratch_get_started
-name: Get Started with Scratch
-valley: Coding
-content: |-
-  In this tutorial, you'll learn the basics of coding with Scratch, so you can make your own stories, games and animations!
-
-  ![Get Started with Scratch](https://ageofmakers.s3.amazonaws.com/getting-started-illustration.png)
-
-  Excited? Let's get started.
-startUrl: https://scratch.mit.edu/projects/editor/?tutorial=getStarted
-positionLeft: 57
-positionTop: 54
-stages:
-- name: Follow the tutorial
-  content: |-
-    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=getStarted) website, where you will learn how to build your animation!  
-
-    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
-
-    Click **I DID IT!** once you're done with the tutorial.
-  order: 0
-prerequisites: 
-- age: 2
-- music_get_started
-following: []
-visibleAtAge: 1
-
-
-# =======================================================
-#                 Music City Quests
-# =======================================================
-
-
-# -------------------------------------------------------
-# Welcome to the World of Music
-# welcome_music_world
----
-id: welcome_music_world
-name: Welcome to the World of Music
-valley: MakerMount
-content: |-
-  Music structure (sections, etc.) & gendra overview
-type: embedded
-CTA: Learn About Music
-positionLeft: 47.5
-positionTop: 67
-stages:
-- name: How Music Is Written
-  type: video
-  youtubeVideoId: sLmcbVMDWEo
-  content: |-
-    Music structure (sections, etc.) & gendra overview.
-  order: 0
-prerequisites: 
-- age: 1
-following: 
-- bandlab_start
-visibleAtAge: 0
-
-
-# -------------------------------------------------------
-# Electronic Nametag
-# a004100000crd9dAAA / elec_nametag
----
-id: bandlab_start
-name: Start Your First Track
-valley: Electronics
-content: |-
-  Get started on your first music track!
-startUrl: https://bandlab.com
-positionLeft: 47
-positionTop: 56
-stages:
-- name: Create a New Track
-  content: |-
-    After logging-in, click on **+ Create**.
-
-    ![Feed Create](https://ageofmakers.s3.amazonaws.com/Feed%202020-06-11%2017-19-32.png)
-
-    Select **Drum Machine** for your new track.
-
-    ![Drum Machine Select](https://ageofmakers.s3.amazonaws.com/New%20Project%20-%20Mix%20Editor%202020-06-11%2017-21-26.png)
-  order: 0
-- name: Enjoy!
-  content: |-
-    Press the space bar or the play button. You already have a beat!
-    
-    ![First Track](https://ageofmakers.s3.amazonaws.com/New%20Project%20-%20Mix%20Editor%202020-06-11%2017-23-04.png)
-  order: 1
-prerequisites: 
-- age: 1
-- music_get_started
-- welcome_music_world
-following: []
-visibleAtAge: 0
-
-
 
 # =======================================================
 #                 Maker Quests
 # =======================================================
 
-
 # -------------------------------------------------------
 # Global Goal Advocacy Project
-# welcome_music_for_change
+# welcome
 ---
-id: welcome_music_for_change
+id: welcome
 name: Welcome to Your New Adventure!
 valley: MakerMount
 content: |-
@@ -218,35 +27,30 @@ content: |-
   Wonder what that means? Click **Start Your Journey** below to get started!
 type: embedded
 CTA: Start Your Journey 🏞
-positionLeft: 46
-positionTop: 80.5
+positionLeft: 44.75
+positionTop: 82
 stages:
 - name: Music for Change
-  type: video
-  youtubeVideoId: sLmcbVMDWEo
   content: |-
     Look at this video to know what's coming up for you. 🧐
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
   order: 0
 prerequisites: []
-following: 
-- music_get_started
 visibleAtAge: 0
 
-
 # -------------------------------------------------------
-# What have other students done?
-# a004100000qR83OAAS / music_get_started
+# How Can Music Change The World
+# music_change_the_world
 ---
-id: music_get_started
-name: How Music Shaped the World
+id: music_change_the_world
+name: How Can Music Change The World
 valley: MakerMount
 content: |-
   Students will explore *examples* of music by black (and women & other) artists - from the Civil Rights era to today - that:
   
   1. Shone light on injustice
   2. Imagined a better world
-# startUrl: https://docs.google.com/document/d/1D-yuD0ABFLaaa_J3s2YLOHNkNAi09UTcgf9sfZR3_9E/edit?usp=sharing
-startUrl: https://scratch.mit.edu
 type: embedded
 CTA: Find Out How 🧐
 positionLeft: 50.5
@@ -269,112 +73,135 @@ stages:
       - microbit
       - toybox
     order: 0
-  - name: Pet Plan
-    content: |-
-      Provide the pet experience to allergic kids with carnivore plant box and its food.
-
-      ![Project Image](https://ageofmakers.s3.amazonaws.com/pet-plant.jpeg)
-    SDG: 3
-    from: Paris, FR
-    using: []
-    order: 1
-  - name: The Aluminum Curtain
-    content: |-
-      An innovative bullet-proof door to keep students safe from school shootings.
-
-      ![Project Image](https://ageofmakers.s3.amazonaws.com/aluminium-curtain.png)
-    SDG: 4
-    from: Oakland, USA
-    using:
-      - toybox
-    order: 2
-  - name: LGBTQ Community Devices & SWAG
-    content: |-
-      For community building and to create a support system.
-
-      ![Project Image](https://ageofmakers.s3.amazonaws.com/LGBTQ-device.png)
-    SDG: 5
-    from: Oakland, USA
-    using:
-      - microbit
-      - toybox
-    order: 3
-  - name: Water Filtration System
-    content: |-
-      3D-Printed for countries that lacks access to clean water, distributed by partnered nonprofits.
-
-      ![Project Image](https://ageofmakers.s3.amazonaws.com/portable-water-filter.png)
-    SDG: 6
-    from: San Francisco, USA
-    using:
-      - toybox
-    order: 4
-  - name: WIIZUM
-    content: |-
-      Electronic devices to to help blind, deaf and disabled people, like an electronic blind-cane, a vibrating whistle & more!
-
-      ![Project Image](https://ageofmakers.s3.amazonaws.com/WIIZUM.png)
-    SDG: 10
-    from: Paris, FR
-    using:
-      - arduino
-      - toybox
-    order: 5
-  - name: Gamified Recycling Kiosk
-    content: |-
-      Mrs Hot Dog let’s you win points as you recycle item through the kiosk.
-
-      ![Project Image](https://ageofmakers.s3.amazonaws.com/mrs-hot-dog.png)
-    SDG: 12
-    from: San Francisco, USA
-    using:
-      - microbit
-    order: 6
-  - name: Air Pollution Filter
-    content: |-
-      With air filters aimed to reduce global warming.
-
-      ![Project Image](https://ageofmakers.s3.amazonaws.com/air-pollution-filter.png)
-    SDG: 13
-    from: San Francisco, USA
-    using:
-      - toybox
-    order: 7
-  - name: Ocean De-Polluting Boats
-    content: |-
-      Autonomous boats navigating on their own and communicating to each other to de-pollute our oceans.
-
-      ![Project Image](https://ageofmakers.s3.amazonaws.com/ocean-depolluting-boat.png)
-    SDG: 14
-    from: San Francisco, USA
-    using:
-      - microbit
-      - toybox
-    order: 8
-  - name: SOS (Save Our Sea)
-    content: |-
-      Gamified remote drone piloting game to collect pollution in the ocean from the “7th continent”, made of just trashes.
-
-      ![Project Image](https://ageofmakers.s3.amazonaws.com/save-our-seas.png)
-    SDG: 10
-    from: Paris, FR
-    using:
-      - mobile
-    order: 9
-  - name: E2GAME
-    content: |-
-      A Board game around Sustainable Goals and an app to create bridge between generation.
-
-      ![Project Image](https://ageofmakers.s3.amazonaws.com/e2game.png)
-    SDG: 17
-    from: Paris, FR
-    using:
-      - mobile
-    order: 10
 prerequisites: 
-- welcome_music_for_change
-following:
-- threeD_keychain
-- bandlab_start
-- scratch_get_started
+- welcome
 visibleAtAge: 0
+
+
+
+# =======================================================
+#                 Music City Quests
+# =======================================================
+
+# -------------------------------------------------------
+# Welcome to the World of Music
+# welcome_music_world
+---
+id: welcome_music_world
+name: Welcome to the World of Music
+valley: MakerMount
+content: |-
+  Music structure (sections, etc.) & gendra overview
+type: embedded
+CTA: Learn About Music
+positionLeft: 47.5
+positionTop: 71
+stages:
+- name: How Music Is Written
+  content: |-
+    Music structure (sections, etc.) & gendra overview.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+prerequisites: 
+- age: 1
+- welcome
+visibleAtAge: 0
+
+
+# -------------------------------------------------------
+# Start Your First Track
+# bandlab_start
+---
+id: bandlab_start
+name: Start Your First Track
+valley: Electronics
+content: |-
+  Get started on your first music track!
+startUrl: https://edu.bandlab.com
+positionLeft: 47.5
+positionTop: 65.5
+stages:
+- name: Create a New Track
+  content: |-
+    After logging-in, click on **+ Create**.
+
+    ![Feed Create](https://ageofmakers.s3.amazonaws.com/Feed%202020-06-11%2017-19-32.png)
+
+    Select **Drum Machine** for your new track.
+
+    ![Drum Machine Select](https://ageofmakers.s3.amazonaws.com/New%20Project%20-%20Mix%20Editor%202020-06-11%2017-21-26.png)
+  order: 0
+- name: Enjoy!
+  content: |-
+    Press the space bar or the play button. You already have a beat!
+    
+    ![First Track](https://ageofmakers.s3.amazonaws.com/New%20Project%20-%20Mix%20Editor%202020-06-11%2017-23-04.png)
+  order: 1
+prerequisites: 
+- age: 1
+- music_change_the_world
+- welcome_music_world
+visibleAtAge: 1
+
+# -------------------------------------------------------
+# Get Started with Scratch
+# scratch_get_started
+---
+id: scratch_get_started
+name: Get Started with Scratch
+valley: Coding
+content: |-
+  In this tutorial, you'll learn the basics of coding with Scratch, so you can make your own stories, games and animations!
+
+  ![Get Started with Scratch](https://ageofmakers.s3.amazonaws.com/getting-started-illustration.png)
+
+  Excited? Let's get started.
+startUrl: https://scratch.mit.edu/projects/editor/?tutorial=getStarted
+positionLeft: 56.5
+positionTop: 54.5
+stages:
+- name: Follow the tutorial
+  content: |-
+    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=getStarted) website, where you will learn how to build your animation!  
+
+    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
+
+    Click **I DID IT!** once you're done with the tutorial.
+  order: 0
+prerequisites: 
+- age: 2
+- music_change_the_world
+visibleAtAge: 1
+
+
+
+# =======================================================
+#                 Lyrics Valley
+# =======================================================
+
+# -------------------------------------------------------
+# Intro to Writing Lyrics
+# lyrics_intro
+--- 
+id: lyrics_intro
+name: Intro to Writing Lyrics
+valley: ThreeD
+content: |-
+  TODO
+startUrl: https://www.tinkercad.com/login 
+positionLeft: 35.5
+positionTop: 61.5
+stages:
+- name: Login into Tinkercad
+  order: 0
+  content: |-
+    Once you're on the [Tinkercad](https://tinkercad.com) website, click **Sign-in** on the top right, and then choose:
+    - **"Join your class"** if you have a class code from your teacher or volunteer.
+    - Sign in with Google or any other available option if you're on your own.
+
+    Click on the button below once you're logged in. 
+visibleAtAge: 1
+prerequisites: 
+- age: 2
+- music_change_the_world

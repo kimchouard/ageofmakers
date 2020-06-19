@@ -30,6 +30,7 @@ export const QUEST_NEWTAB = 'QUEST_NEWTAB';
 export const QUEST_BACKNEWTAB = 'QUEST_BACKNEWTAB';
 export const TOGGLE_BUBBLE = 'TOGGLE_BUBBLE';
 export const STAGE_CHANGE = 'STAGE_CHANGE';
+export const AGE_CHANGE = 'AGE_CHANGE';
 export const WELCOME_OPENED = 'WELCOME_OPENED';
 export const WELCOME_CLOSED = 'WELCOME_CLOSED';
 export const TREE_OPENED = 'TREE_OPENED';
@@ -71,30 +72,6 @@ export function getActivePlayer() {
   };
 }
 
-// Mock action. Full in alias
-export function setActivePlayerSDG(sdgNumber) {
-  return {
-    type: SET_PLAYER_SDG,
-    payload: { mock: true, sdgNumber },
-  };
-}
-
-// Mock action. Full in alias
-export function setActivePlayerJourney(journeyId) {
-  return {
-    type: SET_PLAYER_JOURNEY,
-    payload: { mock: true, journeyId },
-  };
-}
-
-// Mock action. Full in alias
-export function resetActivePlayerJourney() {
-  return {
-    type: RESET_PLAYER_JOURNEY,
-    payload: { mock: true },
-  };
-}
-
 
 // =========================================
 //         Players
@@ -121,6 +98,38 @@ export function removePlayer(id) {
   return {
     type: REMOVE_PLAYER,
     payload: { mock: true, id },
+  };
+}
+
+// Mock action. Full in alias
+export function setActivePlayerSDG(sdgNumber) {
+  return {
+    type: SET_PLAYER_SDG,
+    payload: { mock: true, sdgNumber },
+  };
+}
+
+// Mock action. Full in alias
+export function setActivePlayerJourney(journeyId) {
+  return {
+    type: SET_PLAYER_JOURNEY,
+    payload: { mock: true, journeyId },
+  };
+}
+
+// Mock action. Full in alias
+export function resetActivePlayerJourney() {
+  return {
+    type: RESET_PLAYER_JOURNEY,
+    payload: { mock: true },
+  };
+}
+
+// Mock action. Full in alias
+export function changeAge(playerJourney, newAge) {
+  return {
+    type: AGE_CHANGE,
+    payload: { mock: true, playerJourney, newAge },
   };
 }
 
@@ -176,6 +185,7 @@ export function resetQuests() {
   };
 }
 
+//  TODO ==> update to be journey vs quests
 export function updateQuestUrl(quests, activeQuest, newUrl) {
   quests[activeQuest].startUrl = newUrl;
 

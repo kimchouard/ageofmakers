@@ -113,7 +113,7 @@ class Header extends Component {
       return `${this.props.activePlayerData.sdg}`
     }
     else {
-      return '?';
+      return '>';
     }
   }
 
@@ -159,7 +159,7 @@ class Header extends Component {
   
   render() {
     return (
-    <header className="controls">
+    <header className={`controls ${(isLoggedInAndLoaded(this.props)) ? '' : 'noBg'}`}>
         <div className="container-fluid">
           { this.renderContent() }
         </div>

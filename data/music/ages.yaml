@@ -15,7 +15,7 @@
   name: Exploration
   image: 
   position:
-  - 25
+  - 30
   - 45
   requirements:
     Coding: 1

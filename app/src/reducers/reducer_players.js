@@ -5,7 +5,7 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { SET_NEW_PLAYER, GET_PLAYERS, REMOVE_PLAYER, SET_PLAYER_SDG, SET_PLAYER_JOURNEY, RESET_PLAYER_JOURNEY } from '../actions/index';
+import { SET_NEW_PLAYER, GET_PLAYERS, REMOVE_PLAYER, SET_PLAYER_SDG, SET_PLAYER_JOURNEY, AGE_CHANGE, RESET_PLAYER_JOURNEY } from '../actions/index';
 
 export default (state = null, action) => {
   switch (action.type) {
@@ -20,6 +20,8 @@ export default (state = null, action) => {
     case RESET_PLAYER_JOURNEY:
       return action.payload;
     case REMOVE_PLAYER:
+      return action.payload;
+    case AGE_CHANGE:
       return action.payload;
     default:
       return state;

@@ -101,12 +101,12 @@
             width: 100%;
             background: rgba(0,0,0,0.3);
             border: none;
-            border-radius: 10px 10px 0 0;
+            border-radius: 10px 10px 5px 5px;
             border-bottom: 2px solid white;
             text-align: center;
             font-size: 24px;
             margin: 20px 0 15px;
-            padding-bottom: 3px;
+            padding: 8px 0 5px;
 
             &:focus {
               outline: none;

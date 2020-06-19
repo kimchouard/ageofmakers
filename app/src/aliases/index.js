@@ -116,18 +116,45 @@ const getFullQuestWithAchievements = (callback) => {
               }
             });
 
-            // Changing Quests status based on achievements
+            // Misc. Quests object manipulations
             for(let questId in quests) {
-              // Enforce the default "website" Quest type
-              if(quests[questId] && !quests[questId].type) {
-                quests[questId].type = 'website';
-              }
+              let currentQuest = quests[questId];
+              if(currentQuest) {
+                // Enforce the default "website" Quest type
+                if(!currentQuest.type) {
+                  quests[questId].type = 'website';
+                }
 
-              if(quests[questId] && !quests[questId].status) {
-                quests[questId].status = stageStatus.STATUS_NEW;
-              }
+                // Set status to NEW if not present
+                if(currentQuest && !currentQuest.status) {
+                  quests[questId].status = stageStatus.STATUS_NEW;
+                }
+
+                // Adding following
+                if(currentQuest.prerequisites) {
+                  currentQuest.prerequisites.forEach((prerequisiteId) => {
+                    // If the prerequesite is a questID (and not a age requirement, etc)
+                    if (typeof prerequisiteId === 'string') {
+                      let neededQuests = quests[prerequisiteId]
+
+                      if (neededQuests) {
+                        if(Array.isArray(neededQuests.following)) {
+                          quests[prerequisiteId].following.push(currentQuest.id);
+                        }
+                        else {
+                          quests[prerequisiteId].following = [currentQuest.id];
+                        }
+                      }
+                      else {
+                        console.error(`Innexistant quest ${prerequisiteId} from ${questId}`, currentQuest);
+                      }
+                    }
+                  })
+                }
+              } 
             }
 
+            console.log('Quests & Ages retrieved!', quests, ages);
             callback({ quests, ages });
           }
           else {
@@ -338,6 +365,37 @@ const getPlayers = (originalAction) => {
   return getChromeSyncStorage(originalAction, 'players');
 };
 
+// originalAction.payload params: playerJourney, newAge
+const changeAge = (originalAction) => {
+  // TODO: API to update the user records
+  return middlewarePromise(originalAction, new Promise((resolve, reject) => {
+    if (originalAction.payload && originalAction.payload.mock) {
+      console.log(`Updating player's journey ${originalAction.payload.playerJourney} with age: ${originalAction.payload.newAge}`);
+
+      chrome.storage.sync.get(['players', 'activePlayer'], (storage) => {
+        if (storage && storage.players && storage.activePlayer) {
+          let players = storage.players;
+          let activePlayerId = storage.activePlayer;
+
+          if (originalAction.payload.newAge === 0) {
+            delete players[activePlayerId].achievements[ originalAction.payload.playerJourney + '-currentAge' ];
+          }
+          else {
+            players[activePlayerId].achievements[ originalAction.payload.playerJourney + '-currentAge' ] = originalAction.payload.newAge;
+          }
+
+          chrome.storage.sync.set({ players }, () => {
+            resolve(players);
+          });
+        }
+        else {
+          console.error('Players not found or no played logged in.', storage);
+        }
+      });
+    }
+  }));
+}
+
 
 // =============================================
 //            QUESTS
@@ -456,6 +514,7 @@ export default {
   RESET_PLAYER_JOURNEY: resetActivePlayerJourney,
   REMOVE_PLAYER: removePlayer,
   STAGE_CHANGE: changeStage,
+  AGE_CHANGE: changeAge,
   GET_ONBOARDING: getOnboarding,
   SET_ONBOARDING: setOnboarding
 };

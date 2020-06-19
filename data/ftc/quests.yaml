@@ -83,12 +83,6 @@ visibleAtAge: 0
 prerequisites: 
 - age: 1
 - maker_students_showcase
-following:
-- threeD_penguin
-- threeD_diamond_ring
-- threeD_bat_button
-- threeD_bookmark
-- threeD_house
 
 
 # -------------------------------------------------------
@@ -110,7 +104,6 @@ positionLeft: 30
 positionTop: 60
 prerequisites:
 - threeD_keychain
-following: []
 visibleAtAge: 1
 stages:
 - name: Create Bookmark Base
@@ -181,9 +174,6 @@ positionLeft: 33
 positionTop: 66
 prerequisites:
 - threeD_keychain
-following:
-- threeD_bee # a001K00000sNlFVQA0
-- threeD_monkey # a001K00000sNlFpQAK
 visibleAtAge: 1
 stages:
 - name: Make your Penguin Glow
@@ -228,7 +218,6 @@ positionLeft: 25
 positionTop: 54
 prerequisites:
 - threeD_keychain
-following: []
 visibleAtAge: 1
 stages:
 - name: Follow the instructions on the left
@@ -278,7 +267,6 @@ positionLeft: 24
 positionTop: 62
 prerequisites:
 - threeD_keychain
-following: []
 visibleAtAge: 1
 stages:
 - name: Follow the instructions on the left
@@ -331,7 +319,6 @@ positionLeft: 17
 positionTop: 50
 prerequisites:
 - threeD_keychain
-following: []
 visibleAtAge: 1
 stages:
 - name: 'Add a Cube: Floor Plan and Everything!'
@@ -442,7 +429,6 @@ positionLeft: 40
 positionTop: 78
 prerequisites:
 - threeD_penguin
-following: []
 visibleAtAge: 1
 stages:
 - name: Design and assemble your monkey
@@ -491,7 +477,6 @@ positionLeft: 33
 positionTop: 72
 prerequisites:
 - threeD_penguin
-following: []
 visibleAtAge: 1
 stages:
 - name: Design and assemble your monkey
@@ -562,12 +547,6 @@ stages:
 prerequisites: 
 - age: 1
 - maker_students_showcase
-following:
-- scratch_imagine
-- scratch_chase_game
-- scratch_name
-- scratch_music
-- scratch_video_sensing
 visibleAtAge: 0
 
 
@@ -597,7 +576,6 @@ stages:
   order: 0
 prerequisites:
 - scratch_get_started
-following: []
 visibleAtAge: 1
 
 
@@ -627,7 +605,6 @@ stages:
   order: 0
 prerequisites:
 - scratch_get_started
-following: []
 visibleAtAge: 1
 
 
@@ -657,7 +634,6 @@ stages:
   order: 0
 prerequisites:
 - scratch_get_started
-following: []
 visibleAtAge: 1
 
 
@@ -687,8 +663,6 @@ stages:
   order: 0
 prerequisites:
 - scratch_get_started
-following:
-- scratch_story
 visibleAtAge: 1
 
 
@@ -719,8 +693,6 @@ stages:
   order: 0
 prerequisites:
 - scratch_imagine
-following: 
-- scratch_animate
 visibleAtAge: 1
 
 
@@ -750,7 +722,6 @@ stages:
   order: 0
 prerequisites:
 - scratch_story
-following: []
 visibleAtAge: 1
 
 
@@ -780,8 +751,6 @@ stages:
   order: 0
 prerequisites:
 - scratch_get_started
-following:
-- scratch_fly
 visibleAtAge: 1
 
 
@@ -811,8 +780,6 @@ stages:
   order: 0
 prerequisites:
 - scratch_chase_game
-following:
-- scratch_pong
 visibleAtAge: 1
 
 
@@ -842,7 +809,6 @@ stages:
   order: 0
 prerequisites:
 - scratch_fly
-following: []
 visibleAtAge: 1
 
 
@@ -893,11 +859,6 @@ stages:
 prerequisites: 
 - age: 1
 - maker_students_showcase
-following:
-- elec_smiley
-- elec_microchat
-- elec_acceleration
-- elec_light
 visibleAtAge: 0
 
 
@@ -945,11 +906,6 @@ stages:
   order: 1
 prerequisites:
 - elec_nametag
-following:
-- elec_reaction_time
-- elec_stopwatch
-- elec_flipcoin
-- elec_highfive
 visibleAtAge: 1
 
 
@@ -994,7 +950,6 @@ stages:
   order: 0
 prerequisites:
 - elec_smiley
-following: []
 visibleAtAge: 1
 
 
@@ -1065,7 +1020,6 @@ stages:
   order: 2
 prerequisites:
 - elec_smiley
-following: []
 visibleAtAge: 1
 
 
@@ -1116,7 +1070,6 @@ stages:
   order: 1
 prerequisites:
 - elec_smiley
-following: []
 visibleAtAge: 1
 
 # -------------------------------------------------------
@@ -1211,7 +1164,6 @@ stages:
   order: 5
 prerequisites:
 - elec_smiley
-following: []
 visibleAtAge: 1
 
 
@@ -1243,7 +1195,6 @@ stages:
   order: 0
 prerequisites:
 - elec_nametag
-following: []
 visibleAtAge: 1
 
 
@@ -1297,8 +1248,6 @@ stages:
   order: 1
 prerequisites:
 - elec_nametag
-following:
-- elec_rock_paper_game
 visibleAtAge: 1
 
 
@@ -1333,7 +1282,6 @@ stages:
   order: 0
 prerequisites:
 - elec_acceleration
-following: []
 visibleAtAge: 1
 
 
@@ -1376,8 +1324,6 @@ stages:
   order: 1
 prerequisites:
 - elec_nametag
-following:
-- elec_headphones
 visibleAtAge: 1
 
 
@@ -1417,7 +1363,6 @@ stages:
   order: 0
 prerequisites:
 - elec_light
-following: []
 visibleAtAge: 1
 
 
@@ -1571,10 +1516,6 @@ projects:
     - mobile
   order: 10
 prerequisites: []
-following:
-- threeD_keychain
-- elec_nametag
-- scratch_get_started
 visibleAtAge: 0
 
 
@@ -1641,7 +1582,7 @@ visibleAtAge: 0
 #   order: 2
 # prerequisites:
 # - age: 2
-# following: []
+#
 # visibleAtAge: 2
 
 
@@ -1679,5 +1620,4 @@ boards:
     cards: []
 prerequisites: 
 - age: 2
-following: []
 visibleAtAge: 2
