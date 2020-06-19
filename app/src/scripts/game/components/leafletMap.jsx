@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import { Map, Marker, ImageOverlay } from 'react-leaflet';
 import {CRS, Icon, divIcon} from 'leaflet';
 import { bindActionCreators } from 'redux';
-import { questUnlocked, getAge, isLoggedInAndLoaded, getActivePlayerData } from '../../_utils';
+import { questUnlocked, getAge, isLoggedInAndLoaded, getActivePlayerData, getAreaIconUrl } from '../../_utils';
 import { selectQuest, toggleBubble, openTree, getQuests } from '../../../actions/index';
 
 class Leaflet extends Component {
@@ -29,10 +29,6 @@ class Leaflet extends Component {
       // }
     }
 
-    isUnlocked(quest) {
-      return questUnlocked(quest, this.props.journey);
-    }
-
     openQuest(questKey) {
       this.props.toggleBubble(false);
       this.props.selectQuest(questKey);
@@ -48,9 +44,9 @@ class Leaflet extends Component {
             let iconImg = new divIcon({
               iconSize: [50, 65],
               iconAnchor: position,
-              html: `<div class='pinWrapper ${quest.status} ${this.isUnlocked(quest) ? `${quest.valley}` : `locked`} ${quest.id}'>
+              html: `<div class='pinWrapper ${quest.status} ${questUnlocked(quest, this.props.journey) ? `${quest.valley}` : `locked`} ${quest.id}'>
                       <div class='pin bounce'>
-                        <div class='inner ${this.isUnlocked(quest) ? `${quest.valley}` : `Locked`}'></div>
+                        <div class='inner'  style="background-image: url('${getAreaIconUrl(quest, this.props.journey)}');"></div>
                       </div>
                       <div class='pulse'></div>
                     </div>`

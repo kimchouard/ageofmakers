@@ -81,12 +81,13 @@ const getFullQuestWithAchievements = (callback) => {
       if (storage.players[storage.activePlayer]) {
         let achievements = storage.players[storage.activePlayer].achievements;
 
-        chrome.storage.local.get(['quests', 'ages'], (items) => {
+        chrome.storage.local.get(['quests', 'ages', 'areas'], (items) => {
           let quests = items.quests;
           let ages = items.ages;
-          console.log('Achievements: ', achievements, quests, ages);
+          let areas = items.areas;
+          console.log('Achievements: ', achievements, quests, ages, areas);
 
-          if (quests && ages) {
+          if (quests && ages && areas) {
             // Changing Quests status based on achievements
             Object.keys(achievements).forEach((achievedQuest) => {
               let completedStageOrder = achievements[achievedQuest];
@@ -154,11 +155,11 @@ const getFullQuestWithAchievements = (callback) => {
               } 
             }
 
-            console.log('Quests & Ages retrieved!', quests, ages);
-            callback({ quests, ages });
+            console.log('Quests & Ages retrieved!', quests, ages, areas);
+            callback({ quests, ages, areas });
           }
           else {
-            console.error('Error while loading the full quests', quests, ages);
+            console.error('Error while loading the full quests', quests, ages, areas);
           }
         }); 
       }
@@ -176,10 +177,11 @@ const getFullQuestWithAchievements = (callback) => {
 const loadQuests = (journeyId, resolve) => {
   const questsUrl = chrome.runtime.getURL(`data/${journeyId}/quests.yaml`);
   const agesUrl = chrome.runtime.getURL(`data/${journeyId}/ages.yaml`);
+  const areasUrl = chrome.runtime.getURL(`data/${journeyId}/areas.yaml`);
   fetch(questsUrl)
     .then((questsResponse) => {
     if (questsResponse.status !== 200) {
-      console.error('Error while changing quest state:', res);
+      console.error('Error while loading quests:', res);
       return resolve({ error: questsResponse.status });
     }
 
@@ -195,7 +197,7 @@ const loadQuests = (journeyId, resolve) => {
       fetch(agesUrl)
       .then((agesResponse) => {
         if (agesResponse.status !== 200) {
-          console.error('Error while changing quest state:', res);
+          console.error('Error while loading ages:', res);
           return resolve({ error: agesResponse.status });
         }
         
@@ -204,11 +206,25 @@ const loadQuests = (journeyId, resolve) => {
           // console.log('Yaml quest data', agesData);
           let ages = yaml.safeLoadAll(agesData)[0];
 
-          chrome.storage.local.set({ quests, ages }, () => {
-            console.log('Quests & Ages saved!', quests, ages);
+          fetch(areasUrl)
+          .then((areasResponse) => {
+            if (areasResponse.status !== 200) {
+              console.error('Error while loading areas:', res);
+              return resolve({ error: areasResponse.status });
+            }
+            
+            // Examine the text in the areasResponse
+            areasResponse.text().then((areasData) => {
+              // console.log('Yaml quest data', areasData);
+              let areas = yaml.safeLoadAll(areasData)[0];
 
-            getFullQuestWithAchievements((fullQuests) => {
-              resolve(fullQuests);
+              chrome.storage.local.set({ quests, ages, areas }, () => {
+                console.log('Quests, Ages & Areas saved!', quests, ages, areas);
+
+                getFullQuestWithAchievements((fullQuests) => {
+                  resolve(fullQuests);
+                });
+              });
             });
           });
         });
@@ -414,10 +430,10 @@ const reloadQuests = (originalAction) => {
 };
 
 const resetQuests = (originalAction) => {
-  console.log('Resetting Quests & ages data');
+  console.log('Resetting Quests, ages & areas data');
   return middlewarePromise(originalAction, new Promise((resolve, reject) => {
     // Remove the current quests to force a reload
-    chrome.storage.local.remove(['quests', 'ages'], () => {
+    chrome.storage.local.remove(['quests', 'ages', 'areas'], () => {
       resolve({})
     });
   }));
@@ -474,7 +490,12 @@ const getCurrentTab = (originalAction) => {
     // Async call to get current tab
     chrome.tabs.query({ active:true, windowType:"normal", currentWindow: true }, (tabs) => {
       console.log('Current tabs:', tabs);
-      resolve(tabs[0]);
+      if (tabs[0]) {
+        resolve(tabs[0]);
+      }
+      else {
+        resolve(null);
+      }
     });
   }));
 }

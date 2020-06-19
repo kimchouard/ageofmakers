@@ -14,7 +14,7 @@
 ---
 id: welcome
 name: Welcome to Your New Adventure!
-valley: MakerMount
+valley: changemaker
 content: |-
   Welcome to the **Age of Makers**. 👋🏻 
   
@@ -45,7 +45,7 @@ visibleAtAge: 0
 ---
 id: music_change_the_world
 name: How Can Music Change The World
-valley: MakerMount
+valley: changemaker
 content: |-
   Students will explore *examples* of music by black (and women & other) artists - from the Civil Rights era to today - that:
   
@@ -89,7 +89,7 @@ visibleAtAge: 0
 ---
 id: welcome_music_world
 name: Welcome to the World of Music
-valley: MakerMount
+valley: musiccity
 content: |-
   Music structure (sections, etc.) & gendra overview
 type: embedded
@@ -115,7 +115,7 @@ visibleAtAge: 0
 ---
 id: bandlab_start
 name: Start Your First Track
-valley: Electronics
+valley: musiccity
 content: |-
   Get started on your first music track!
 startUrl: https://edu.bandlab.com
@@ -150,7 +150,7 @@ visibleAtAge: 1
 ---
 id: scratch_get_started
 name: Get Started with Scratch
-valley: Coding
+valley: musiccity
 content: |-
   In this tutorial, you'll learn the basics of coding with Scratch, so you can make your own stories, games and animations!
 
@@ -186,7 +186,7 @@ visibleAtAge: 1
 --- 
 id: lyrics_intro
 name: Intro to Writing Lyrics
-valley: ThreeD
+valley: lyrics
 content: |-
   TODO
 startUrl: https://www.tinkercad.com/login 

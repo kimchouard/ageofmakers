@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { questUnlocked, addComplete, getAge, getRomanAge, isLoggedInAndLoaded, getActivePlayerData, isLoggedIn, isQuestsLoaded } from '../../_utils';
+import { questUnlocked, addComplete, getAge, getRomanAge, isLoggedInAndLoaded, getActivePlayerData, isLoggedIn, isQuestsLoaded, getAreaIconUrl } from '../../_utils';
 import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree, unselectQuest, resetQuests, resetActivePlayerJourney } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
@@ -87,18 +87,21 @@ class Header extends Component {
   getRequirementsDisplay(ageData, valleyName){
     if(valleyName === "total") {
       return (
-          <div className="col-sm-3 score" key={valleyName}>
-            <div className="icon all">ANY</div>
-            <p className="value">{addComplete(this.props.journey.quests)} / { this.getQuestsNumber(ageData, valleyName) }</p>
-          </div>      
+        <div className="col-sm-3 score" key={valleyName}>
+          <div className="icon all">ANY</div>
+          <p className="value">{addComplete(this.props.journey.quests)} / { this.getQuestsNumber(ageData, valleyName) }</p>
+        </div>      
       )
     } else {
-        return (
-          <div className="col-sm-3 score" key={valleyName}>
-            <div className={"icon " + valleyName}></div>
-            <p className="value">{addComplete(this.props.journey.quests, valleyName)} / { this.getQuestsNumber(ageData, valleyName) }</p>
-          </div> 
-        )
+      let areaData = this.props.journey.areas[valleyName];
+      return (
+        <div className="col-sm-3 score" key={valleyName}>
+          <div className={"icon"} style={ {
+            backgroundImage: `url('${ (areaData) ? areaData.image : '/images/Locked_grey.svg'}')`,
+          } }></div>
+          <p className="value">{addComplete(this.props.journey.quests, valleyName)} / { this.getQuestsNumber(ageData, valleyName) }</p>
+        </div> 
+      )
     }
   }
 

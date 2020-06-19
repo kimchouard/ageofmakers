@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectQuest, toggleBubble } from '../../../actions/index';
-import { questUnlocked, logOut } from '../../_utils';
+import { questUnlocked, getAreaIconUrl } from '../../_utils';
 import { bindActionCreators } from 'redux';
 
 class Pin extends Component {
@@ -21,10 +21,6 @@ class Pin extends Component {
     this.props.selectQuest(questKey);
   }
 
-  isUnlocked(quest) {
-    return questUnlocked(quest, this.props.journey);
-  }
-
   render() {
     let pinQuest = this.props.quest;
     if(this.props.nodeData) {
@@ -35,9 +31,11 @@ class Pin extends Component {
       <div
           key={pinQuest.id}
           onClick={() => this.openQuest(pinQuest.id)}
-          className={`pinWrapper ${(this.isUnlocked(pinQuest)) ? `${pinQuest.status} ${pinQuest.id}` : `locked ${pinQuest.id}`}  ${(this.props.noPulse) ? `noPulsate` : ``} `}>
-          <div className={`pin ${(this.isUnlocked(pinQuest) && pinQuest.status !== 'complete' && !this.props.noBounce) ? 'bounce' : ''}`}>
-            <div className={`inner ${(this.isUnlocked(pinQuest)) ? pinQuest.valley : 'Locked'}`}></div>
+          className={`pinWrapper ${(questUnlocked(pinQuest, this.props.journey)) ? `${pinQuest.status} ${pinQuest.id}` : `locked ${pinQuest.id}`}  ${(this.props.noPulse) ? `noPulsate` : ``} `}>
+          <div className={`pin ${(questUnlocked(pinQuest, this.props.journey) && pinQuest.status !== 'complete' && !this.props.noBounce) ? 'bounce' : ''}`}>
+            <div className={`inner`} style={ {
+              backgroundImage: `url('${getAreaIconUrl(pinQuest, this.props.journey)}')`,
+            } } ></div>
           </div>
 
           <div className="pulse"></div>

@@ -10,7 +10,7 @@
   - 18
   - 45
   requirements:
-    MakerMount: 1
+    changemaker: 1
 - index: 1
   name: Exploration
   image: 
@@ -18,15 +18,15 @@
   - 30
   - 45
   requirements:
-    Coding: 1
-    Electronics: 1
-    ThreeD: 1
+    musiccity: 1
+    lyrics: 1
+    beats: 1
     total: 8
 - index: 2
   name: Making
   image: 
   requirements:
-    MakerMount: all
+    changemaker: all
 - index: 3
   name: Sharing
   image: 

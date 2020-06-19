@@ -1,0 +1,25 @@
+# Copyright (c) 2020, salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+
+changemaker:
+  name: Changemaker Camp
+  image: data/music/icons/changemaker.svg
+  imageGrey: data/music/icons/changemaker_grey.svg
+musiccity:
+  name: Music City
+  image: data/music/icons/musiccity.svg
+  imageGrey: data/music/icons/musiccity_grey.svg
+lyrics:
+  name: Lyrics Valley
+  image: data/music/icons/lyrics.svg
+  imageGrey: data/music/icons/lyrics_grey.svg
+beats:
+  name: Beat Making Forest
+  image: data/music/icons/beats.svg
+  imageGrey: data/music/icons/beats_grey.svg
+mixing:
+  name: Mixing Mount
+  image: data/music/icons/mixing.svg
+  imageGrey: data/music/icons/mixing_grey.svg

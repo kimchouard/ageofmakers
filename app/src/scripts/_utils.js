@@ -49,6 +49,22 @@ export const isNewAge = (activePlayerData, journey) => {
   }
 }
 
+export const getAreaIconUrl = (pinQuest, journey) => {
+  if (questUnlocked(pinQuest, journey) && journey && journey.areas) {
+    let areaData = journey.areas[pinQuest.valley];
+
+    if (areaData) {
+      return areaData.imageGrey;
+    }
+    else {
+      console.error('Area Data not found for the quest', pinQuest);
+    }
+  }
+  else {
+    return '/images/Locked_grey.svg';
+  }
+}
+
 export const getActivePlayerData = (state) => {
   return (state.players && state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null;
 }

@@ -53,40 +53,15 @@
       width: 20px;
       float: left;
       margin: 5px 0 0 -10px;
+      background-repeat: no-repeat;
+      background-position: 3px 3px;
+      background-size: 14px 14px;
 
       &.all {
         color: white;
         font-size: 8px;
         text-indent: 2px;
         padding-top: 2px;
-      }
-
-      &.ThreeD {
-        background-image: url('/images/3D.svg');
-        background-repeat: no-repeat;
-        background-position: 3px 3px;
-        background-size: 13px 13px;
-      }
-
-      &.Coding {
-        background-image: url('/images/Coding.svg');
-        background-repeat: no-repeat;
-        background-position: 3px 3px;
-        background-size: 14px 14px;
-      }
-
-      &.Electronics {
-        background-image: url('/images/Electronics.svg');
-        background-repeat: no-repeat;
-        background-position: 3px 3px;
-        background-size: 14px 14px;
-      }
-
-      &.MakerMount {
-        background-image: url('/images/makerMount.svg');
-        background-repeat: no-repeat;
-        background-position: 3px 3px;
-        background-size: 14px 14px;
       }
     }
 
