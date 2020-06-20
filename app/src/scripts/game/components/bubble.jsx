@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getCurrentTab, startQuest, updateQuestUrl, unselectQuest, toggleBubble } from '../../../actions/index';
-import { getActiveQuestData } from '../../_utils';
+import { getActiveQuestData,getAreaIconUrl } from '../../_utils';
 
 class Bubble extends Component {
   constructor(props) {
@@ -42,8 +42,9 @@ class Bubble extends Component {
       return (
         <nav className={`aom-bubble ${(this.props.bubbleToggled) ? '' : 'bubbleClosed'}`}>
           <div
-            className={`box-header ${this.props.activeQuestData.valley}`}
+            className={`box-header`}
             onClick={() => this.props.toggleBubble(this.props.bubbleToggled)}>
+            <div className={`box-icon`} style={ { 'backgroundImage': `url('${getAreaIconUrl(this.props.activeQuestData, this.props.journey, true)}')`} }></div>
             <label htmlFor="acc-close" className="box-title">{this.props.activeQuestData.name}</label>
           </div>
           

@@ -20,5 +20,13 @@ export const mdRenderers = {
     const className = language && `language-${language}`
     const code = React.createElement('code', className ? { className: className } : null, value)
     return React.createElement('pre', {}, code)
+  },
+  image: ({ src, alt }) => {
+    return (
+      <img
+        alt={alt}
+        src={chrome.extension.getURL(src)}
+      />
+    );
   }
 }

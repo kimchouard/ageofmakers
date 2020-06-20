@@ -43,6 +43,7 @@
 
   "web_accessible_resources": [
     "images/*",
+    "data/*",
     "data/quests.yaml"
   ],
   

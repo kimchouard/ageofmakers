@@ -26,7 +26,7 @@
   z-index: 9999;
 	bottom: 20px;
 	right: 20px;
-	padding: 50px 0;
+	// padding: 50px 0;
 	z-index: 990;
 
 	& * {
@@ -45,7 +45,11 @@
 		overflow: hidden;
 		border-radius: 50px;
 		padding: 0;
+		
+		.box-header:hover .box-icon { background-image: url('https://ageofmakers.herokuapp.com/images/maximize.svg') !important; }
 	}
+
+	.box-header:hover .box-icon { background-image: url('https://ageofmakers.herokuapp.com/images/minimize.svg') !important; }
 	
 	input {
 		display: none;
@@ -92,6 +96,10 @@
 		height: 50px;
 		cursor: pointer;
 		width: 100%;
+
+		&.box-header .box-title {
+			height: 50px;
+		}
 		
 		.box-title {
 			display: block;
@@ -100,7 +108,6 @@
 			line-height: inherit;
 			font-weight: inherit;
 			margin: inherit;
-			height: 50px;
 			font-size: 16px;
 			color: white;
 			cursor: pointer;
@@ -113,10 +120,10 @@
     z-index: 100;
 		text-indent: 50px;
 		text-align: left;
+		position: relative;
 		
-		&:before {
+		.box-icon {
 			box-shadow: none;
-			content: '';
 			position: absolute;
 			left: 0;
 			top: 0;
@@ -126,17 +133,10 @@
 			background-position: 12px 12px;
 			background-size: 25px 25px;
 		}
-
-		&:hover:before { background-image: url('https://ageofmakers.herokuapp.com/images/minimize.svg'); }
-		
-		&.Coding:before { background-image: url('https://ageofmakers.herokuapp.com/images/Coding.svg'); }
-		&.Electronics:before { background-image: url('https://ageofmakers.herokuapp.com/images/Electronics.svg'); }
-		&.ThreeD:before { background-image: url('https://ageofmakers.herokuapp.com/images/3D.svg'); }
-		&.MakerMount:before { background-image: url('https://ageofmakers.herokuapp.com/images/MakerMount.svg'); }
 	}
 	
 	.box-footer {
-    bottom: 0;
+    bottom: 0;	
 		width: 100%;
 		text-align: center;
 
@@ -153,7 +153,7 @@
 
 			img {
 				height: 27px;
-    		margin: 0 0 0;
+    		margin: 10px auto 0;
 			}
 
 			.makerFont, .moonFlowerFont {
@@ -214,7 +214,7 @@
 	
 	.boxAccordionWrapper {
 		position: relative;
-		height: calc(100%);
+		height: calc(100% - 100px);
 		overflow: auto;
 		background: $beige;
 		transition: all 1s ease-in-out;
