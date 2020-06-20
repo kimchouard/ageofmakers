@@ -20,7 +20,7 @@
 }
 
 /* ================================
-            Showcase
+            Embedded
 ================================ */
 
 .fullpage {
@@ -66,47 +66,45 @@
     margin-left: -40px;
     background-color: $red;
   }
-}
 
-.sdgPickerWrapper {
+  .titles {
+    margin: 20px 0 30px;
+  }
 
-  .SDG-selector {
-    margin-top: 15px; 
-    cursor: pointer;
-
-    .SDG-icon {
-      width: 100%;
-    }
+  .instructions {
+    font-style: italic;
+    text-align: center;
+    padding: 10px 0 0;
+    border-top: 1px solid $grey;
   }
 }
 
-.project {
+
+/* ================================
+            Music Showcase
+================================ */
+
+.song {
   border-radius: 5px;
   border: 2px solid $grey;
   margin-top: 10px;
-  height: 530px;
   padding: 0 15px;
 
   .title {
     background: $grey;
     margin: 0 -15px;
-    border-radius: 5px 5px 0 0;
+    border-radius: 4px 4px 0 0;
     color: white;
     padding: 8px 15px;
-    font-weight: bold;
-    font-size: 16px;
-    height: 62px;
-    line-height: 45px;
-    text-indent: 60px;
     position: relative;
 
-    .SDG {
-      height: 60px;
-      width: 60px;
-      position: absolute;
-      left: 0;
-      top: 0;
-      border-radius: 5px 0 0 0;
+    .name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .artist {
+      font-size: 14px;
     }
   }
 
@@ -115,81 +113,35 @@
 
     img {
       max-width: 90%;
-      margin: 0 auto;
+      margin: 10px auto;
       display: block;
     }
   }
 
-  .using {
-    text-align: center;
+  .btn {
+    color: #fff;
+    display: block;
+    margin: 20px auto;
+    width: fit-content;
 
-    &::before {
-      content: "Using:";
-      text-indent: 15px;
-      font-weight: bold;
+    &.btn-done {
+      background-color: $green;
+      border-color: darken($green, 5);
+      
+      &:hover {
+        background-color: darken($green, 5);
+        border-color: darken($green, 10);
+      }
     }
 
-    .tool img {
-      max-width: 100%;
-      max-height: 80px;
+    &.btn-action {
+      background-color: $red;
+      border-color: darken($red, 5);
+      
+      &:hover {
+        background-color: darken($red, 5);
+        border-color: darken($red, 10);
+      }
     }
   }
-}
-
-
-
-
-
-.upnext {
-  color: grey;
-}
-.img-upnext {
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
-}
-
-$progress-bar-stroke-width: 1.8;
-$progress-bar-size: 140px;
-
-.progress-bar {
-  height: $progress-bar-size;
-  transform: rotate(-90deg);
-  width: $progress-bar-size;
-}
-
-.progress-bar__background {
-  fill: none;
-  stroke: #e2eff0;
-  stroke-width: $progress-bar-stroke-width;
-}
-
-.progress-bar__progress {
-  fill: none;
-  stroke-dasharray: 100 100;
-  stroke-dashoffset: 100;
-  stroke-linecap: round;
-  stroke-width: $progress-bar-stroke-width;
-  transition: stroke-dashoffset 1s ease-in-out;
-}
-
-.badge {
-  width: $progress-bar-size;
-  height: $progress-bar-size;
-  position: relative;
-}
-
-.content {
-  width: ($progress-bar-size - 4);
-  height: ($progress-bar-size - 4);
-  border-radius: 150px;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  overflow: hidden;
-  background: center center no-repeat;
-  background-size: auto 100%;
-}
-
-.badgeContainer {
-  height: 300px;
 }

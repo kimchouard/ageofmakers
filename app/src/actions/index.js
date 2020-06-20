@@ -126,10 +126,10 @@ export function resetActivePlayerJourney() {
 }
 
 // Mock action. Full in alias
-export function changeAge(playerJourney, newAge) {
+export function changeAge(newAge) {
   return {
     type: AGE_CHANGE,
-    payload: { mock: true, playerJourney, newAge },
+    payload: { mock: true, newAge },
   };
 }
 
@@ -196,10 +196,10 @@ export function updateQuestUrl(quests, activeQuest, newUrl) {
 }
 
 // Mock action. Full in alias
-export function changeStage(activeQuestKey, achievedStageNumber) {
+export function changeStage(activeQuestKey, achievedStageNumber, achievedShowcaseNumber) {
   return {
     type: STAGE_CHANGE,
-    payload: { mock: true, activeQuestKey, achievedStageNumber },
+    payload: { mock: true, activeQuestKey, achievedStageNumber, achievedShowcaseNumber },
   };
 }
 
@@ -217,12 +217,13 @@ export function selectQuest(questId) {
   };
 }
 
-export function startQuest(questId, tabId) {
+export function startQuest(questId, tabId, showcaseOrder) {
   return {
     type: QUEST_STARTED,
     payload: {
       quest: questId,
-      tab: tabId
+      tab: tabId,
+      showcase: showcaseOrder,
     },
   };
 }

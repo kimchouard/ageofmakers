@@ -23,7 +23,8 @@ export const questTypes = {
 
 export const stageTypes = {
   VIDEO: 'video',
-  SHOWCASE: 'showcase',
+  MUSIC_SHOWCASE: 'musicShowcase',
+  FTC_SHOWCASE: 'ftcShowcase',
   KANBAN: 'kanban',
 };
 
@@ -40,12 +41,12 @@ export const isLoggedInAndLoaded = (props) => {
 }
 
 export const isNewAge = (activePlayerData, journey) => {
-  if (activePlayerData && activePlayerData.achievements && journey && journey.ages && journey.quests) {
-    let achievementAgeIndex = activePlayerData.achievements[`${activePlayerData.journey}-currentAge`];
+  if (activePlayerData && activePlayerData.achievements  && activePlayerData.journey && journey && activePlayerData.achievements[activePlayerData.journey] && journey.ages && journey.quests) {
+    let achievementAgeIndex = activePlayerData.achievements[activePlayerData.journey].age;
     let currentAgeIndex = getAge(journey).index;
 
     // Either the saved aged is under the current one, or no ages are saved yet and we're after the first (0) age
-    return ( (achievementAgeIndex < currentAgeIndex) || (!achievementAgeIndex && currentAgeIndex !== 0) );
+    return ( (achievementAgeIndex < currentAgeIndex) );
   }
 }
 

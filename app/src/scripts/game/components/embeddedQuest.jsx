@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { closeEmbeddedQuest, changeStage } from '../../../actions/index';
 import { questTypes, stageTypes, getActiveQuestData, getStageData, getDefaultActiveStageOrder } from '../../_utils';
-import Showcase from './showcase';
+import MusicShowcase from './showcaseMusic';
 import Kanban from './kanban';
 import Video from './video';
 
@@ -33,8 +33,8 @@ class EmbeddedQuest extends Component {
         });
       }
 
-      if (activeStageData && activeStageData.type === stageTypes.SHOWCASE) {
-        return <Showcase activeStageData={activeStageData} goToNextStage={(stage) => { this.goToNextStage(stage) } } />;
+      if (activeStageData && activeStageData.type === stageTypes.MUSIC_SHOWCASE) {
+        return <MusicShowcase activeStageData={activeStageData} goToNextStage={(stage) => { this.goToNextStage(stage) } } />;
       }
       else if (activeStageData && activeStageData.type === stageTypes.KANBAN) {
         return <Kanban />

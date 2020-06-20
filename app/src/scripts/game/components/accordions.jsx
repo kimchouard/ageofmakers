@@ -12,7 +12,7 @@ import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
 import { mdRenderers } from '../../_reactUtils';
 import { changeStage, unselectQuest, backToNewTab, logOut } from '../../../actions/index';
-import { getActiveQuestData, getStageData, getDefaultActiveStageOrder } from '../../_utils';
+import { getActiveQuestData, getStageData, getDefaultActiveStageOrder, stageStatus } from '../../_utils';
 
 class Accordions extends Component {
   constructor(props) {
@@ -53,6 +53,11 @@ class Accordions extends Component {
     this.setActiveStageOrder(stage.order+1);
   }
 
+  backToShowcaseItems(stage, showcaseItem) {
+    this.props.changeStage(this.props.activeQuest.quest, stage.order, showcaseItem.order);
+    this.props.backToNewTab(this.props.activeQuest.quest);
+  }
+
   renderAccordions() {
     // If the quest is done
     if (this.props.activeQuestData.stages[this.props.activeQuestData.stages.length-1].status === 'complete') {
@@ -79,45 +84,90 @@ class Accordions extends Component {
       </div>
     }
     else {
-      return this.props.activeQuestData.stages.map((stage) => {
-        return <div
-          className="accordion"
-          key={stage.order}
-        >
-          <input
-            type="radio"
-            name="accordion"
-            id={stage.order}
-            checked={ (stage.order === this.state.activeStageOrder) }
-            onChange={ () => { /*this.setActiveStageOrder(stage)*/ } }
-          />
+      // If it's a showcase embedded quest
+      if (this.props.activeQuest.showcase >= 0) {
+        for(let stage of this.props.activeQuestData.stages) {
+          if (stage.status === stageStatus.STATUS_INPROGRESS && stage.type === 'musicShowcase') {
+            for(let showcaseItem of stage.showcaseItems) {
+              if (showcaseItem.order === this.props.activeQuest.showcase) {
+                return <div
+                  className="accordion"
+                  key={stage.order}
+                >
+                  <input
+                    type="radio"
+                    name="accordion"
+                    id={stage.order}
+                    checked={ true /*(stage.order === this.state.activeStageOrder)*/ }
+                    onChange={ () => { /*this.setActiveStageOrder(stage)*/ } }
+                  />
 
-          <div className="box-accordion">
-            <label
-              className="box-title"
-              onClick={ () => { this.setActiveStageOrder(stage.order) } }
-              data-number={ (stage.status === 'complete') ? '✔' : stage.order + 1 }
-            >
-              {stage.name}
-            </label>
-
-            <div className="box-content">
-              <ReactMarkdown
-                source={stage.content}
-                renderers={ mdRenderers }
-              />
-
-              <div className="action">
-                <div
-                  className="button complete"
-                  onClick={ () => { this.nextStage(stage) } }>
-                  I DID IT!
+                  <div className="box-accordion">
+                    <label className="box-title">{showcaseItem.name} by {showcaseItem.artist}</label>
+        
+                    <div className="box-content">
+                      <ReactMarkdown
+                        source={showcaseItem.instructions}
+                        renderers={ mdRenderers }
+                      />
+        
+                      <div className="action">
+                        <div
+                          className="button complete"
+                          onClick={ () => { this.backToShowcaseItems(stage, showcaseItem) } }>
+                          I READ IT!
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }
+            }
+          }
+        }
+      }
+      // Or if it's a regular website quest.
+      else {
+        return this.props.activeQuestData.stages.map((stage) => {
+          return <div
+            className="accordion"
+            key={stage.order}
+          >
+            <input
+              type="radio"
+              name="accordion"
+              id={stage.order}
+              checked={ (stage.order === this.state.activeStageOrder) }
+              onChange={ () => { /*this.setActiveStageOrder(stage)*/ } }
+            />
+  
+            <div className="box-accordion">
+              <label
+                className="box-title"
+                onClick={ () => { this.setActiveStageOrder(stage.order) } }
+                data-number={ (stage.status === 'complete') ? '✔' : stage.order + 1 }
+              >
+                {stage.name}
+              </label>
+  
+              <div className="box-content">
+                <ReactMarkdown
+                  source={stage.content}
+                  renderers={ mdRenderers }
+                />
+  
+                <div className="action">
+                  <div
+                    className="button complete"
+                    onClick={ () => { this.nextStage(stage) } }>
+                    I DID IT!
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>;
-      });
+          </div>;
+        });  
+      }
     }
   }
 

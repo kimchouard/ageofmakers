@@ -79,7 +79,7 @@ const getFullQuestWithAchievements = (callback) => {
   chrome.storage.sync.get(['players', 'activePlayer'], (storage) => {
     if (storage && storage.players && storage.activePlayer) {
       if (storage.players[storage.activePlayer]) {
-        let achievements = storage.players[storage.activePlayer].achievements;
+        let achievements = storage.players[storage.activePlayer].achievements[storage.players[storage.activePlayer].journey];
 
         chrome.storage.local.get(['quests', 'ages', 'areas'], (items) => {
           let quests = items.quests;
@@ -88,34 +88,46 @@ const getFullQuestWithAchievements = (callback) => {
           console.log('Achievements: ', achievements, quests, ages, areas);
 
           if (quests && ages && areas) {
-            // Changing Quests status based on achievements
-            Object.keys(achievements).forEach((achievedQuest) => {
-              let completedStageOrder = achievements[achievedQuest];
-              if (quests[achievedQuest]) {
-                quests[achievedQuest].stages.forEach((stage) => {
-                  // If the completed stage or before -> complete
-                  if (stage.order <= completedStageOrder) {
-                    stage.status = stageStatus.STATUS_COMPLETE;
-                  }
-                  // If RIGHT after completed stage -> inProgress
-                  else if (stage.order === completedStageOrder+1) {
-                    stage.status = stageStatus.STATUS_INPROGRESS;
-                  }
-                  // If at least 2nd after completeed stage -> new
-                  else {
-                    stage.status = stageStatus.STATUS_NEW;
-                  }
-                });
+            if (achievements && achievements.quests) {
+              // Changing Quests status based on achievements
+              Object.keys(achievements.quests).forEach((achievedQuest) => {
+                let achievement = achievements.quests[achievedQuest];
+                if (quests[achievedQuest]) {
+                  quests[achievedQuest].stages.forEach((stage) => {
+                    // If the completed stage or before -> complete
+                    if (stage.order <= achievement.stageNumber) {
+                      stage.status = stageStatus.STATUS_COMPLETE;
+                    }
+                    // If RIGHT after completed stage -> inProgress
+                    else if (stage.order === achievement.stageNumber+1) {
+                      stage.status = stageStatus.STATUS_INPROGRESS;
 
-                // If last stage completed, the quest is completed too!
-                if (completedStageOrder >= quests[achievedQuest].stages[quests[achievedQuest].stages.length - 1].order) {
-                  quests[achievedQuest].status = stageStatus.STATUS_COMPLETE;
+                      if(achievement.showcasesVisited && achievement.showcasesVisited !== {}) {
+                        Object.keys(achievement.showcasesVisited).forEach((visitedShowcaseOrder) => {
+                          for(let showcaseItem of stage.showcaseItems) {
+                            if (showcaseItem.order === parseInt(visitedShowcaseOrder)) {
+                              showcaseItem.status = stageStatus.STATUS_COMPLETE;
+                            }
+                          }
+                        })
+                      }
+                    }
+                    // If at least 2nd after completeed stage -> new
+                    else {
+                      stage.status = stageStatus.STATUS_NEW;
+                    }
+                  });
+
+                  // If last stage completed, the quest is completed too!
+                  if (achievement.stageNumber >= quests[achievedQuest].stages[quests[achievedQuest].stages.length - 1].order) {
+                    quests[achievedQuest].status = stageStatus.STATUS_COMPLETE;
+                  }
+                  else {
+                    quests[achievedQuest].status = stageStatus.STATUS_INPROGRESS;
+                  }
                 }
-                else {
-                  quests[achievedQuest].status = stageStatus.STATUS_INPROGRESS;
-                }
-              }
-            });
+              });
+            }
 
             // Misc. Quests object manipulations
             for(let questId in quests) {
@@ -175,54 +187,56 @@ const getFullQuestWithAchievements = (callback) => {
 }
 
 const loadQuests = (journeyId, resolve) => {
-  const questsUrl = chrome.runtime.getURL(`data/${journeyId}/quests.yaml`);
-  const agesUrl = chrome.runtime.getURL(`data/${journeyId}/ages.yaml`);
-  const areasUrl = chrome.runtime.getURL(`data/${journeyId}/areas.yaml`);
-  fetch(questsUrl)
-    .then((questsResponse) => {
-    if (questsResponse.status !== 200) {
-      console.error('Error while loading quests:', res);
-      return resolve({ error: questsResponse.status });
-    }
-
-    // Examine the text in the questsResponse
-    questsResponse.text().then((questsData) => {
-      // console.log('Yaml data', questsData);
-      let questsArray = yaml.safeLoadAll(questsData);
-      let quests = {};
-      for (const quest of questsArray) {
-        quests[quest.id] = quest;
+  if (journeyId) {
+    const questsUrl = chrome.runtime.getURL(`data/${journeyId}/quests.yaml`);
+    const agesUrl = chrome.runtime.getURL(`data/${journeyId}/ages.yaml`);
+    const areasUrl = chrome.runtime.getURL(`data/${journeyId}/areas.yaml`);
+    fetch(questsUrl)
+      .then((questsResponse) => {
+      if (questsResponse.status !== 200) {
+        console.error('Error while loading quests:', res);
+        return resolve({ error: questsResponse.status });
       }
 
-      fetch(agesUrl)
-      .then((agesResponse) => {
-        if (agesResponse.status !== 200) {
-          console.error('Error while loading ages:', res);
-          return resolve({ error: agesResponse.status });
+      // Examine the text in the questsResponse
+      questsResponse.text().then((questsData) => {
+        // console.log('Yaml data', questsData);
+        let questsArray = yaml.safeLoadAll(questsData);
+        let quests = {};
+        for (const quest of questsArray) {
+          quests[quest.id] = quest;
         }
-        
-        // Examine the text in the agesResponse
-        agesResponse.text().then((agesData) => {
-          // console.log('Yaml quest data', agesData);
-          let ages = yaml.safeLoadAll(agesData)[0];
 
-          fetch(areasUrl)
-          .then((areasResponse) => {
-            if (areasResponse.status !== 200) {
-              console.error('Error while loading areas:', res);
-              return resolve({ error: areasResponse.status });
-            }
-            
-            // Examine the text in the areasResponse
-            areasResponse.text().then((areasData) => {
-              // console.log('Yaml quest data', areasData);
-              let areas = yaml.safeLoadAll(areasData)[0];
+        fetch(agesUrl)
+        .then((agesResponse) => {
+          if (agesResponse.status !== 200) {
+            console.error('Error while loading ages:', res);
+            return resolve({ error: agesResponse.status });
+          }
+          
+          // Examine the text in the agesResponse
+          agesResponse.text().then((agesData) => {
+            // console.log('Yaml quest data', agesData);
+            let ages = yaml.safeLoadAll(agesData)[0];
 
-              chrome.storage.local.set({ quests, ages, areas }, () => {
-                console.log('Quests, Ages & Areas saved!', quests, ages, areas);
+            fetch(areasUrl)
+            .then((areasResponse) => {
+              if (areasResponse.status !== 200) {
+                console.error('Error while loading areas:', res);
+                return resolve({ error: areasResponse.status });
+              }
+              
+              // Examine the text in the areasResponse
+              areasResponse.text().then((areasData) => {
+                // console.log('Yaml quest data', areasData);
+                let areas = yaml.safeLoadAll(areasData)[0];
 
-                getFullQuestWithAchievements((fullQuests) => {
-                  resolve(fullQuests);
+                chrome.storage.local.set({ quests, ages, areas }, () => {
+                  console.log('Quests, Ages & Areas saved!', quests, ages, areas);
+
+                  getFullQuestWithAchievements((fullQuests) => {
+                    resolve(fullQuests);
+                  });
                 });
               });
             });
@@ -230,7 +244,7 @@ const loadQuests = (journeyId, resolve) => {
         });
       });
     });
-  });
+  }
 }
 
 const updatePlayersData = (field, originalAction, reset) => {
@@ -241,6 +255,7 @@ const updatePlayersData = (field, originalAction, reset) => {
           let players = storage.players;
           let activePlayerId = storage.activePlayer;
           let activePlayer = players[activePlayerId];
+          let playersJourney = players[activePlayerId].journey;
 
           if (reset) {
             delete activePlayer[field];
@@ -249,6 +264,15 @@ const updatePlayersData = (field, originalAction, reset) => {
             let value = (field === 'sdg') ? originalAction.payload.sdgNumber : originalAction.payload.journeyId;
             console.log(`Updating ${activePlayerId}.${field}: ${value}`);
             activePlayer[field] = value;
+          }
+
+          if(field === 'journey' && !reset) {
+            if (!players[activePlayerId].achievements[originalAction.payload.journeyId]) {
+              players[activePlayerId].achievements[originalAction.payload.journeyId] = {
+                age: 0,
+                quests: {},
+              }
+            }
           }
 
           chrome.storage.sync.set({ players }, () => {
@@ -392,12 +416,13 @@ const changeAge = (originalAction) => {
         if (storage && storage.players && storage.activePlayer) {
           let players = storage.players;
           let activePlayerId = storage.activePlayer;
+          let playersJourney = players[activePlayerId].journey;
 
-          if (originalAction.payload.newAge === 0) {
-            delete players[activePlayerId].achievements[ originalAction.payload.playerJourney + '-currentAge' ];
-          }
+          if (players[activePlayerId].achievements[playersJourney] && players[activePlayerId].achievements[playersJourney].age >= 0) {
+            players[activePlayerId].achievements[playersJourney].age = originalAction.payload.newAge;
+          } 
           else {
-            players[activePlayerId].achievements[ originalAction.payload.playerJourney + '-currentAge' ] = originalAction.payload.newAge;
+            console.error('Can not retrieve proper achievement object', players, activePlayerId, playersJourney);
           }
 
           chrome.storage.sync.set({ players }, () => {
@@ -447,23 +472,36 @@ const getQuests = (originalAction) => {
   }));
 };
 
-// originalAction.payload params: activeQuestKey, achievedStageNumber
+// originalAction.payload params: activeQuestKey, achievedStageNumber, achievedShowcaseNumber (optional)
 const changeStage = (originalAction) => {
   // TODO: API to update the user records
   return middlewarePromise(originalAction, new Promise((resolve, reject) => {
     if (originalAction.payload && originalAction.payload.mock) {
-      console.log(`Updating ${originalAction.payload.activeQuestKey} with achieved stage: ${originalAction.payload.achievedStageNumber}`);
+      console.log(`Updating ${originalAction.payload.activeQuestKey} with achieved stage: ${originalAction.payload.achievedStageNumber} or achieved showcase: ${originalAction.payload.achievedShowcaseNumber}`);
 
       chrome.storage.sync.get(['players', 'activePlayer'], (storage) => {
         if (storage && storage.players && storage.activePlayer) {
           let players = storage.players;
           let activePlayerId = storage.activePlayer;
+          let playersJourney = players[activePlayerId].journey;
 
           if (originalAction.payload.achievedStageNumber === 'none') {
-            delete players[activePlayerId].achievements[originalAction.payload.activeQuestKey];
+            delete players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey];
           }
           else {
-            players[activePlayerId].achievements[originalAction.payload.activeQuestKey] = originalAction.payload.achievedStageNumber;
+            // If a scaffolding of the achievements hasn't been created yet
+            if (!players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey]) {
+              players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey] = {
+                stageNumber: null,
+                showcasesVisited: {},
+              }
+            }
+            if (originalAction.payload.achievedShowcaseNumber >= 0) {
+              players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].showcasesVisited[originalAction.payload.achievedShowcaseNumber] = true;
+            }
+            else {
+              players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].stageNumber = originalAction.payload.achievedStageNumber;
+            }
           }
 
           chrome.storage.sync.set({ players }, () => {

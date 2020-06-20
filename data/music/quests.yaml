@@ -56,23 +56,62 @@ CTA: Find Out How 🧐
 positionLeft: 50.5
 positionTop: 78.5
 stages:
-- name: Example of Music that changed the world
+- name: Music for Change
   content: |-
-    Wow, so many examples!
-  type: showcase
+    Look at this video to know what's coming up for you. 🧐
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
   order: 0
-  projects:
-  - name: Self-Watering Community Garden
+- name: Example of Music That Impacted Social Movements
+  content: |-
+    Here's a list of music – from the Civil Rights era to today – that shone light on injustice and helped us imagined a better world.
+  type: musicShowcase
+  order: 1
+  requiredShowcaseViews: 2
+  showcaseItems:
+  - name: Alright
+    artist: Kendrick Lamar
+    startUrl: https://www.npr.org/2019/08/26/753511135/kendrick-lamar-alright-american-anthem-party-protest
     content: |-
-      For homeless people to grow their food and have a project to be a part-of.
+      Both Party And Protest, 'Alright' Is The Sound Of Black Life's Duality.
 
-      ![Project Image](https://ageofmakers.s3.amazonaws.com/self-watering-garden.png)
-    SDG: 2
-    from: San Francisco, USA
-    using:
-      - microbit
-      - toybox
+      ![Project Image](data/music/images/alright_kendrick_lamar.png)
+      
+      **📆 Historical Context:** Released on June 30, 2015.
+    instructions: |-
+      Listen or read this article.
+
+      ![Project Image](data/music/images/npr_player.png)
     order: 0
+  - name: Lift Every Voice and Sing
+    artist: Beyoncé
+    startUrl: https://www.npr.org/2018/08/16/638324920/american-anthem-lift-every-voice-and-sing-black-national-anthem
+    content: |-
+      Till Victory Is Won: The Staying Power Of 'Lift Every Voice And Sing'
+
+      ![Project Image](data/music/images/lift_every_voice_and_sing.png)
+      
+      **📆 Historical Context:** Originally written by James Weldon Johnson in 1905.
+      Covered by Beyonce at Coachela in 2018.
+    instructions: |-
+      Listen or read this article.
+
+      ![Project Image](data/music/images/npr_player.png)
+    order: 1
+  - name: The Times They 'A-Changin'
+    artist: Bob Dylan
+    startUrl: https://www.npr.org/2018/09/24/650548856/american-anthem-the-times-they-are-a-changin
+    content: |-
+      The Times They Are 'A-Changin'" Still Speaks To Our Changing Times
+
+      ![Project Image](data/music/images/times_are_a_changing.png)
+      
+      **📆 Historical Context:** Originally released in 1963, but sang many times since then.
+    instructions: |-
+      Listen or read this article.
+
+      ![Project Image](data/music/images/npr_player.png)
+    order: 2
 prerequisites: 
 - welcome
 visibleAtAge: 0

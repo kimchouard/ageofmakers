@@ -32,7 +32,9 @@
         "https://spark.adobe.com/*",
         "https://www.globalgoals.org/*",
         "https://worldslargestlesson.globalgoals.org/*",
-        "https://www.bandlab.com/*"
+        "https://www.bandlab.com/*",
+        "https://www.npr.org/*",
+        "https://*/*"
       ],
       "css": [],
       "js": ["content.js"]
