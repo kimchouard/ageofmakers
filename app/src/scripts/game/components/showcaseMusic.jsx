@@ -29,7 +29,7 @@ class MusicShowcase extends Component {
       return <div className="btn btn-done">COMPLETED</div>
     }
     else {
-      return <div className="btn btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>LEARN MORE</div>
+      return <div className="btn btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>Listen to the story</div>
     }
   }
 
