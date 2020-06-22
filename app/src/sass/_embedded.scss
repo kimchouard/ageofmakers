@@ -58,24 +58,32 @@
   }
   
   .btn-next {
-    position: fixed;
-    bottom: 3%;
-    left: 50%;
     padding: 10px 20px;
     font-size: 20px;
-    margin-left: -40px;
+    width: fit-content;
+    display: block;
+    margin: 10px auto;
     background-color: $red;
+
+    &.disabled {
+      background-color: $grey-light;
+      border-color: $grey;
+      cursor: not-allowed;
+    }
   }
 
   .titles {
     margin: 20px 0 30px;
   }
 
-  .instructions {
-    font-style: italic;
-    text-align: center;
-    padding: 10px 0 0;
+  .instructionsWrapper {
     border-top: 1px solid $grey;
+    padding: 10px 0 0;
+    
+    .instructions {
+      font-style: italic;
+      text-align: center;
+    }
   }
 }
 

@@ -12,30 +12,31 @@
   requirements:
     changemaker: 1
 - index: 1
-  name: Exploration
+  name: Learning
   image: 
   position:
   - 30
   - 45
   requirements:
     musiccity: 1
-    lyrics: 1
-    beats: 1
-    total: 8
+    changemaker: 2
 - index: 2
-  name: Making
+  name: Producing
   image: 
   requirements:
+    lyrics: 3
+    beats: 3
     changemaker: all
+    total: 8
 - index: 3
-  name: Sharing
+  name: Mixing
   image: 
   position:
   - 58
   - 41
   requirements:
-    total: all
+    mixing: all
 - index: 4
-  name: Independent
+  name: Sharing
   image: 
   requirements: {}

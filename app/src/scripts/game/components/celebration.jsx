@@ -42,7 +42,7 @@ class Celebration extends Component {
   renderCelebration() {
     if (this.state.showMetrics) {
       return <div className="metrics">
-        <h4>Here's what you need to complete in order to go to the next age.</h4>
+        <h4>Here's what you need to complete in order to get to the next age.</h4>
         <button className="btn btn-select" onClick={(e) => { return this.saveAgeAchievements(); }}>Let's do it!</button>
       </div>
     }

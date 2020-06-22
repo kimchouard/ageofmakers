@@ -26,7 +26,7 @@ class MusicShowcase extends Component {
 
   renderActionBtn(showcaseItem) {
     if (showcaseItem.status === stageStatus.STATUS_COMPLETE) {
-      return <div className="btn btn-done">COMPLETED</div>
+      return <div className="btn btn-done">✓ COMPLETED</div>
     }
     else {
       return <div className="btn btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>Listen to the story</div>
@@ -68,10 +68,8 @@ class MusicShowcase extends Component {
       }
     })
 
-    // Only render the next button if the player visited enough showcase items
-    if (countVisitedShowcaseItem >= this.props.activeStageData.requiredShowcaseViews) {
-      return <div className={`btn btn-danger ${ (this.props.embeddedQuest.open) ? 'btn-next' : ''}`} onClick={() => { this.props.goToNextStage(this.props.activeStageData) }}>NEXT</div>;
-    }
+    // Only disable the next button if the player visited enough showcase items
+    return <div className={`btn btn-danger ${ (this.props.embeddedQuest.open) ? 'btn-next' : ''} ${ (countVisitedShowcaseItem >= this.props.activeStageData.requiredShowcaseViews) ? '' : 'disabled'}`} onClick={() => { if((countVisitedShowcaseItem >= this.props.activeStageData.requiredShowcaseViews)) { this.props.goToNextStage(this.props.activeStageData) } } }>NEXT</div>;
   }
 
   render() {
@@ -82,14 +80,14 @@ class MusicShowcase extends Component {
             <h1>{this.props.activeStageData.name}</h1>
             <h4>{this.props.activeStageData.content}</h4>
           </div>
-          <div className="col-sm-12">
+          <div className="col-sm-12 instructionsWrapper">
+            { this.renderNextButton() }
             <p className="instructions">Explore at least {this.props.activeStageData.requiredShowcaseViews} examples below and click NEXT to continue the quest.</p>
           </div>
         </div>
         <div className="row">
           { this.renderShowcaseItems() }
         </div>
-        { this.renderNextButton() }
       </div>
     }
   }

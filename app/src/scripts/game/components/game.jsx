@@ -112,7 +112,7 @@ class Game extends Component {
   renderWhatsNext() {
     if (questUnlocked(this.props.activeQuestData, this.props.journey) && this.props.activeQuestData.status === 'complete') {
       return <div className="cta next">
-        <div className="title">Done! { (this.props.activeQuestData.following.length) ? `So, what's next?` : `Good job.` } </div>
+        <div className="title">Done! { (this.props.activeQuestData.following && this.props.activeQuestData.following.length) ? `So, what's next?` : `Good job.` } </div>
         { this.renderPinsList(this.props.activeQuestData.following) }
       </div>
     }

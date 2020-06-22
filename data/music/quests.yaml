@@ -22,7 +22,7 @@ content: |-
     
   ![FTC Winners Celebrating](data/music/images/Future%20Trailblazer%20Challenge%20-%20Students%20Celebrate_min.jpg)
   
-  In this game, you'll learn produce their own song to examine injustice and imagine a better world.
+  In this game, you'll learn produce your own song to examine injustice and imagine a better world.
 
   Wonder what that means? Click **Start Your Journey** below to get started!
 type: embedded
@@ -67,7 +67,7 @@ stages:
     Here's a list of music – from the Civil Rights era to today – that shone light on injustice and helped us imagined a better world.
   type: musicShowcase
   order: 1
-  requiredShowcaseViews: 4
+  requiredShowcaseViews: 3
   showcaseItems:
   - name: Alright
     artist: Kendrick Lamar
@@ -337,7 +337,7 @@ stages:
       ![Project Image](data/music/images/npr_player.png)
     order: 18
 prerequisites: 
-- welcome
+- welcome_quest
 visibleAtAge: 0
 
 
@@ -368,7 +368,7 @@ stages:
   order: 0
 prerequisites: 
 - age: 1
-- welcome
+- welcome_quest
 visibleAtAge: 0
 
 
