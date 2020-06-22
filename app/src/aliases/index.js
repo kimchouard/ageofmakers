@@ -261,11 +261,12 @@ const updatePlayersData = (field, originalAction, reset) => {
             delete activePlayer[field];
           }
           else {
-            let value = (field === 'sdg') ? originalAction.payload.sdgNumber : originalAction.payload.journeyId;
+            let value = (field === 'sdg') ? originalAction.payload.sdgNumber : (field === 'onboarded') ? originalAction.payload.onboarded : originalAction.payload.journeyId;
             console.log(`Updating ${activePlayerId}.${field}: ${value}`);
             activePlayer[field] = value;
           }
 
+          // If setting the players journey, make sure that the related achievements data structure is created, if not there already
           if(field === 'journey' && !reset) {
             if (!players[activePlayerId].achievements[originalAction.payload.journeyId]) {
               players[activePlayerId].achievements[originalAction.payload.journeyId] = {
@@ -385,6 +386,11 @@ const removePlayer = (originalAction) => {
     })
   }));
 };
+
+// originalAction.payload params: sdgNumber
+const setPlayerOnboarding = (originalAction) => {
+  return updatePlayersData('onboarded', originalAction);
+}
 
 // originalAction.payload params: sdgNumber
 const setActivePlayerSDG = (originalAction) => {
@@ -538,26 +544,6 @@ const getCurrentTab = (originalAction) => {
   }));
 }
 
-// =============================================
-//            ONBOARDING
-// =============================================
-
-const getOnboarding = (originalAction) => {
-  return getChromeStorage(originalAction, 'onboarding', (resolve) =>{
-    resolve(false);
-    console.log('Onboarding not found in local storage.')
-  });
-}
-
-const setOnboarding = (originalAction) => {
-  return middlewarePromise(originalAction, new Promise((resolve, reject) => {
-    chrome.storage.local.set({ onboarding: originalAction.payload.boolean }, () => {
-      console.log('Onboarding stored.')
-      resolve(originalAction.payload.boolean);
-    });
-  }));
-}
-
 export default {
   QUESTS_PULLED: getQuests,
   GET_CURRENT_TAB: getCurrentTab,
@@ -568,12 +554,11 @@ export default {
   GET_ACTIVE_PLAYER: getActivePlayer,
   SET_NEW_PLAYER: setNewPlayer,
   GET_PLAYERS: getPlayers,
+  SET_PLAYER_ONBOARDING: setPlayerOnboarding,
   SET_PLAYER_SDG: setActivePlayerSDG,
   SET_PLAYER_JOURNEY: setActivePlayerJourney,
   RESET_PLAYER_JOURNEY: resetActivePlayerJourney,
   REMOVE_PLAYER: removePlayer,
   STAGE_CHANGE: changeStage,
-  AGE_CHANGE: changeAge,
-  GET_ONBOARDING: getOnboarding,
-  SET_ONBOARDING: setOnboarding
+  AGE_CHANGE: changeAge
 };

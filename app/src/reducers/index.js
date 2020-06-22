@@ -17,7 +17,6 @@ import welcome from './reducer_welcome';
 import tree from './reducer_tree';
 import embeddedQuest from './reducer_embedded_quest';
 import walkthrough from './reducer_walkthrough';
-import isOnboarded from './reducer_is_onboarded';
 
 export default combineReducers({
   journey,
@@ -29,6 +28,5 @@ export default combineReducers({
   welcome,
   tree,
   embeddedQuest,
-  walkthrough,
-  isOnboarded
+  walkthrough
 });

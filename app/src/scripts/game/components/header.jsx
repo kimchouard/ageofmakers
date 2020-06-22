@@ -120,6 +120,11 @@ class Header extends Component {
     }
   }
 
+  startFirstWalkthrough() {
+    this.setState({ settings: false });
+    this.props.startWalkthrough(1);
+  }
+
   renderContent() {
     if (isLoggedInAndLoaded(this.props)) {
       let ageData = getAge(this.props.journey);
@@ -146,7 +151,7 @@ class Header extends Component {
           <div className="dropdown-action logout" onClick={ () => this.logOutActivePlayer() }>Log Out</div>
           <div className="dropdown-action reload" onClick={ () => this.props.reloadQuests(this.props.activePlayerData.journey) }>Reload Quests</div>
           <div className="section-title">Help</div>
-          <div className="dropdown-action help disabled">Getting Started</div>
+          <div className="dropdown-action help" onClick={ () => this.startFirstWalkthrough() }>Getting Started</div>
           <div className="dropdown-action help disabled">FAQs</div>
         </div>
       </div>;

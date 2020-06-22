@@ -10,7 +10,7 @@ import Joyride from 'react-joyride';
 import { ACTIONS, EVENTS } from 'react-joyride/lib/index.js';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {stopWalkthrough, toggleBubble, selectQuest, setOnboarding } from '../../../actions/index';
+import {stopWalkthrough, toggleBubble, selectQuest, setPlayerOnboarding } from '../../../actions/index';
 
 class Walkthrough extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class Walkthrough extends Component {
       this.state = {
         steps: [],
         stepIndex: 0,
-        demoQuest: 'threeD_keychain'
+        demoQuest: 'welcome_quest'
       }
     }
 
@@ -26,13 +26,13 @@ class Walkthrough extends Component {
       if (action === ACTIONS.STOP || action === ACTIONS.CLOSE || type === EVENTS.TOUR_END) {
         this.props.stopWalkthrough();
         this.setState({stepIndex: 0});
-        this.props.setOnboarding(true)
+        this.props.setPlayerOnboarding(true);
       } else if (action === ACTIONS.START) {
           // this.props.closeProfile();
           this.setWalkthrough()
       } else if (type === EVENTS.STEP_AFTER) {
         if (this.props.walkthrough.start === 1) {
-          if (index === 6) {
+          if (index === 7) {
             this.props.toggleBubble(false);
             this.props.selectQuest(this.state.demoQuest);
             setTimeout(() => {
@@ -88,27 +88,39 @@ class Walkthrough extends Component {
       if (this.props.walkthrough.start === 1) {
         this.setState({steps: [
           {
-            content: <div><h3>Welcome to<br/> the Age of Makers!</h3><p>In this game, you're on an adventure where you'll complete quests about 3D printing, coding and electronics. 🏆</p><p>Ultimately, you'll be able to create your dream object 🚀😎</p><p>So let's get started!</p></div>,
+            content: <div>
+              <h3>Welcome to<br/> the Age of Makers!</h3>
+              <p>In this game, you're leading your own adventure to create your very first song. 🏆🎧🤩</p>
+              <p>It might change the world, so no time to waste, let's get to it! 🚀😎</p>
+            </div>,
             placement: "center",
             styles: stepStyles,
             disableBeacon: true,
             target: "body"
           },
           {
-            content: <div>
-            <p>This is a pin, which represents a quest.<br />A quest is either:</p>
-            <ul style={ { 'text-center': 'left' } }>
-              <li>gray if locked,</li>
-              <li>red if ready to be tackled,</li>
-              <li>orange if you're working on it</li>
-              <li>and green for complete!</li>
-            </ul>
-            <p>You can access the quest via this pins. They are placed in 4 valleys, based on the skills you'll learn with it. 👨‍💻</p>
-            </div>,
+            content: <div>Click next.</div>,
             placement: "right",
             styles: stepStyles,
             disableBeacon: true,
-            target: ".a004100000qR83OAAS"
+            target: "."+this.state.demoQuest
+          },
+          {
+            content: <div style={ { textAlign: 'left' } }>
+              <p>This is a pin, which represents a quest.<br />A quest is either:</p>
+              <ul>
+                <li>red if ready to be tackled,</li>
+                <li>gray if locked,</li>
+                <li>orange if you're working on it</li>
+                <li>and green for complete!</li>
+              </ul>
+              <p>You can access the quest via this pins. They are placed in different areas, based on the skills you'll learn with it. 👨‍💻</p>
+            </div>,
+            placementBeacon: "top",
+            placement: "left",
+            styles: stepStyles,
+            disableBeacon: true,
+            target: "."+this.state.demoQuest
           },
           {
             content: <p>👀 Up here is the header, which tracks two things...</p>,
@@ -134,14 +146,21 @@ class Walkthrough extends Component {
             target: ".user"
           },
           {
-            content: <p>You can also access you profile page via your tent. ⛺️</p>,
+            content: <p>You can also click here to get help or change your settings. 🙃</p>,
             placement: "right",
             styles: stepStyles,
             disableBeacon: true,
-            target: ".tent"
+            target: ".settings"
           },
+          // {
+          //   content: <p>You can also access you profile page via your tent. ⛺️</p>,
+          //   placement: "right",
+          //   styles: stepStyles,
+          //   disableBeacon: true,
+          //   target: ".tent"
+          // },
           {
-            content: <p>But enough with the boring stuff, let's actually start the quest! Start by clicking the pin, then hit next.</p>,
+            content: <p>But enough with the boring stuff, let's get started! Start by clicking the pin, then hit next.</p>,
             placement: "right",
             styles: stepStyles,
             disableBeacon: true,
@@ -170,23 +189,16 @@ class Walkthrough extends Component {
             placement: "left",
             styles: stepStyles,
             disableBeacon: true,
-            target: ".bubble-description div"
+            target: ".bubble-description"
           },
           {
-              content: <p>Now it's all up to you! Click the "Get Started" button and complete your first quest by following the steps. 🚀</p>,
+              content: <p>Now it's all up to you! Click on the "Start Your Journey 🏞" button and complete your first quest by following the steps. 🚀</p>,
               placementBeacon: "top",
               placement: "left",
               styles: stepStyles,
               spotlightClicks: true,
               disableBeacon: true,
               target: ".bubble-description .action"
-          },
-          {
-            content: <p>Or... You can click here to view this and other tutorials at any time. 🙃</p>,
-            placement: "right",
-            styles: stepStyles,
-            disableBeacon: true,
-            target: ".help"
           },
         ]})
       } else if (this.props.walkthrough.start === 2) {
@@ -355,7 +367,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({stopWalkthrough, toggleBubble, selectQuest, setOnboarding}, dispatch);
+    return bindActionCreators({stopWalkthrough, toggleBubble, selectQuest, setPlayerOnboarding}, dispatch);
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(Walkthrough);

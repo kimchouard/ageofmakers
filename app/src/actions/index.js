@@ -15,6 +15,7 @@ export const GET_ACTIVE_PLAYER = 'GET_ACTIVE_PLAYER';
 export const SET_NEW_PLAYER = 'SET_NEW_PLAYER';
 export const GET_PLAYERS = 'GET_PLAYERS';
 export const REMOVE_PLAYER = 'REMOVE_PLAYER';
+export const SET_PLAYER_ONBOARDING = 'SET_PLAYER_ONBOARDING';
 export const SET_PLAYER_SDG = 'SET_PLAYER_SDG';
 export const SET_PLAYER_JOURNEY = 'SET_PLAYER_JOURNEY';
 export const RESET_PLAYER_JOURNEY = 'RESET_PLAYER_JOURNEY';
@@ -41,8 +42,6 @@ export const KANBAN_OPENED = 'KANBAN_OPENED';
 export const KANBAN_CLOSED = 'KANBAN_CLOSED';
 export const WALKTHROUGH_START = 'WALKTHROUGH_START';
 export const WALKTHROUGH_STOP = 'WALKTHROUGH_STOP';
-export const GET_ONBOARDING = 'GET_ONBOARDING';
-export const SET_ONBOARDING = 'SET_ONBOARDING';
 
 // =========================================
 //         Active Player
@@ -98,6 +97,13 @@ export function removePlayer(id) {
   return {
     type: REMOVE_PLAYER,
     payload: { mock: true, id },
+  };
+}
+
+export function setPlayerOnboarding(onboarded) {
+  return {
+    type: SET_PLAYER_ONBOARDING,
+    payload: { mock: true, onboarded},
   };
 }
 
@@ -361,24 +367,3 @@ export function stopWalkthrough() {
     },
   };
 }
-
-// =========================================
-//         Onboarding
-// =========================================
-
-export function getOnboarding() {
-  return {
-    type: GET_ONBOARDING,
-    payload: { mock: true },
-  };
-}
-
-export function setOnboarding(boolean) {
-  return {
-    type: SET_ONBOARDING,
-    payload: { mock: true, boolean},
-  };
-}
-
-
-
