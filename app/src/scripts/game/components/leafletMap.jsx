@@ -84,12 +84,17 @@ class Leaflet extends Component {
     getMapImageUrl() {
       if (isLoggedInAndLoaded(this.props)) {
         let ageData = getAge(this.props.journey);
-        let index = (ageData.index < 2) ? ageData.index : 'all';
-        return `${this.props.activePlayerData.journey}-${index}`;
+        if (ageData.image) {
+          return ageData.image;
+        }
+        else {
+          let index = (ageData.index < 4) ? ageData.index : 'all';
+          return `images/map-${this.props.activePlayerData.journey}-${index}.jpg`;
+        }
       }
       // Default is first age map #placeholder
       else {
-        return 'music-0';
+        return `data/music/images/map-music-0.jpg`;
       }
     }
 
@@ -116,7 +121,7 @@ class Leaflet extends Component {
             zoomDelta='0.25'>
               <ImageOverlay
                 bounds={[[0,0], [100,100]]}
-                url={`images/map-${ this.getMapImageUrl() }.jpg`}
+                url={ this.getMapImageUrl() }
               />
               {/* { this.renderTent() } */}
               { this.renderPins() }

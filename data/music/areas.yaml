@@ -19,6 +19,10 @@ beats:
   name: Beat Making Forest
   image: data/music/icons/beats.svg
   imageGrey: data/music/icons/beats_grey.svg
+effects:
+  name: Effects Lake
+  image: data/music/icons/effects.svg
+  imageGrey: data/music/icons/effects_grey.svg
 mixing:
   name: Mixing Mount
   image: data/music/icons/mixing.svg

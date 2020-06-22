@@ -382,8 +382,8 @@ valley: musiccity
 content: |-
   Get started on your first music track!
 startUrl: https://edu.bandlab.com
-positionLeft: 47.5
-positionTop: 65.5
+positionLeft: 47
+positionTop: 56
 stages:
 - name: Create a New Track
   content: |-
@@ -407,36 +407,365 @@ prerequisites:
 - welcome_music_world
 visibleAtAge: 1
 
+
 # -------------------------------------------------------
-# Get Started with Scratch
-# scratch_get_started
----
-id: scratch_get_started
-name: Get Started with Scratch
+# How does a melody work?
+# melody_basics
+--- 
+id: melody_basics
+name: How does a melody work?
 valley: musiccity
 content: |-
-  In this tutorial, you'll learn the basics of coding with Scratch, so you can make your own stories, games and animations!
-
-  ![Get Started with Scratch](https://ageofmakers.s3.amazonaws.com/getting-started-illustration.png)
-
-  Excited? Let's get started.
-startUrl: https://scratch.mit.edu/projects/editor/?tutorial=getStarted
-positionLeft: 56.5
-positionTop: 54.5
+  Overview and notes with their relations → practice with a famous song.
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 55.5
+positionTop: 52
+type: embedded
+# CTA:
 stages:
-- name: Follow the tutorial
+- name: TODO
   content: |-
-    You are on the [Scratch](https://scratch.mit.edu/projects/editor/?tutorial=getStarted) website, where you will learn how to build your animation!  
-
-    ![How to use the tutorial](https://ageofmakers.s3.amazonaws.com/Tutorial_Guide.png)
-
-    Click **I DID IT!** once you're done with the tutorial.
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
   order: 0
-prerequisites: 
-- age: 2
-- music_change_the_world
 visibleAtAge: 1
+prerequisites:
+- age: 2
+- bandlab_start
 
+
+# -------------------------------------------------------
+# Chords & Moods
+# chords_moods
+--- 
+id: chords_moods
+name: Chords & Moods
+valley: musiccity
+content: |-
+  Overview and notes with their relations → practice with a famous song.
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 35
+positionTop: 48
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- melody_basics
+
+
+# -------------------------------------------------------
+# Expand Your Instrumental
+# expand_instru
+--- 
+id: expand_instru
+name: Expand Your Instrumental
+valley: musiccity
+content: |-
+  Overview and notes with their relations → practice with a famous song.
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 56
+positionTop: 42.5
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- chords_moods
+
+
+# -------------------------------------------------------
+# Using Samples
+# samples_basics
+--- 
+id: samples_basics
+name: Using Samples
+valley: musiccity
+content: |-
+  How to use music samples to create a new sound.
+
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 61
+positionTop: 48
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- melody_basics
+
+
+# -------------------------------------------------------
+# Record Your Lyrics
+# lyrics_record
+--- 
+id: lyrics_record
+name: Record Your Lyrics
+valley: musiccity
+content: |-
+  Put your voice on top of your instrumental!
+
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 44.5
+positionTop: 39
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- lyrics_polish
+- rhythm_basics
+- melody_basics
+
+# =======================================================
+#                 Effects Lake
+# =======================================================
+
+# -------------------------------------------------------
+# The Magic of Effects
+# effects_basics
+--- 
+id: effects_basics
+name: The Magic of Effects
+valley: effects
+content: |-
+  Overview of main effects ==> spot it in a famous song.
+
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 71
+positionTop: 36.3
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- bandlab_start
+
+# -------------------------------------------------------
+# Add Volume with the Reverb
+# effects_reverb
+--- 
+id: effects_reverb
+name: Add Volume with the Reverb
+valley: effects
+content: |-
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 66.5
+positionTop: 34.3
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- effects_basics
+
+# -------------------------------------------------------
+# Make Sound Last with a Delay
+# effects_delay
+--- 
+id: effects_delay
+name: Make Sound Last with a Delay
+valley: effects
+content: |-
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 64.5
+positionTop: 30
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- effects_basics
+
+# -------------------------------------------------------
+# It Sounds More Full in Stereo
+# effects_stereo
+--- 
+id: effects_stereo
+name: It Sounds More Full in Stereo
+valley: effects
+content: |-
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 70
+positionTop: 29.3
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- effects_basics
+
+# =======================================================
+#                 Beats Forest
+# =======================================================
+
+# -------------------------------------------------------
+# Let's Stay in Tempo
+# rhythm_basics
+--- 
+id: rhythm_basics
+name: Let's Stay in Tempo
+valley: beats
+content: |-
+  Intro to time aspect of music theory + examples of different gendra 
+  → try tapping your hands on a song you like
+
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 70
+positionTop: 56.5
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 1
+prerequisites:
+- age: 2
+- bandlab_start
+
+# -------------------------------------------------------
+# The Main Rythm Elements
+# main_rhythms
+--- 
+id: main_rhythms
+name: The Main Rythm Elements
+valley: beats
+content: |-
+  Going over the basic elements: kick, snare, high-hat.
+  
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 74.5
+positionTop: 50.5
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- rhythm_basics
+
+# -------------------------------------------------------
+# Adding a Bass
+# main_rhythms
+--- 
+id: bass_basics
+name: Adding a Bass
+valley: beats
+content: |-
+  Add some depth to your beat!
+  
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 84
+positionTop: 54
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- main_rhythms
+
+# -------------------------------------------------------
+# The Main Rythm Elements
+# main_rhythms
+--- 
+id: advanced_beats
+name: Advanced Beat Tricks
+valley: beats
+content: |-
+  16th, Triplets...
+  
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 80.5
+positionTop: 43.5
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- bass_basics
 
 
 # =======================================================
@@ -451,20 +780,299 @@ id: lyrics_intro
 name: Intro to Writing Lyrics
 valley: lyrics
 content: |-
-  TODO
-startUrl: https://www.tinkercad.com/login 
+  Lyrics writing process & vocabulary considerations
+  
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
 positionLeft: 35.5
 positionTop: 61.5
+type: embedded
+# CTA:
 stages:
-- name: Login into Tinkercad
-  order: 0
+- name: TODO
   content: |-
-    Once you're on the [Tinkercad](https://tinkercad.com) website, click **Sign-in** on the top right, and then choose:
-    - **"Join your class"** if you have a class code from your teacher or volunteer.
-    - Sign in with Google or any other available option if you're on your own.
-
-    Click on the button below once you're logged in. 
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
 visibleAtAge: 1
 prerequisites: 
 - age: 2
-- music_change_the_world
+- welcome_music_world
+
+# -------------------------------------------------------
+# What's On Your Mind?
+# lyrics_free_writing
+--- 
+id: lyrics_free_writing
+name: What's On Your Mind?
+valley: lyrics
+content: |-
+  Start by writing what's on your mind. #guidedFreeWriting
+  
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 25
+positionTop: 54
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- lyrics_intro
+
+# -------------------------------------------------------
+# Write Your Chorus
+# lyrics_intro
+--- 
+id: lyrics_chorus
+name: Write Your Chorus
+valley: lyrics
+content: |-
+  Write a meaningful & catchy chorus
+  
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 17
+positionTop: 52
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- lyrics_free_writing
+
+# -------------------------------------------------------
+# Writing Your 1st Verse
+# lyrics_first_verse
+--- 
+id: lyrics_first_verse
+name: Writing Your 1st Verse
+valley: lyrics
+content: |-
+  Write the lyrics about your “hero”.
+  
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 15
+positionTop: 43
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- lyrics_chorus
+
+# -------------------------------------------------------
+# Writing Your 2nd Verse
+# lyrics_second_verse
+--- 
+id: lyrics_second_verse
+name: Writing Your 2nd Verse
+valley: lyrics
+content: |-
+  Writing Your 2nd Verse about your story.
+  
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 20
+positionTop: 40
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- lyrics_first_verse
+
+# -------------------------------------------------------
+# Putting It All Together
+# lyrics_polish
+--- 
+id: lyrics_polish
+name: Putting It All Together
+valley: lyrics
+content: |-
+  Final Touches
+  
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 30
+positionTop: 40
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- lyrics_free_writing
+
+
+
+# =======================================================
+#                 Lyrics Valley
+# =======================================================
+
+# -------------------------------------------------------
+# It’s Like Mixing a Recipe
+# mixing_basics
+--- 
+id: mixing_basics
+name: It’s Like Mixing a Recipe
+valley: mixing
+content: |-
+  What is mixing and why?
+
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 47
+positionTop: 29
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- age: 3
+- lyrics_record
+
+# -------------------------------------------------------
+# It All Starts With Volumes
+# mixing_volumes
+--- 
+id: mixing_volumes
+name: It All Starts With Volumes
+valley: mixing
+content: |-
+  Bring it back up 1 by 1.
+
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 37
+positionTop: 29
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 3
+prerequisites:
+- mixing_basics
+
+# -------------------------------------------------------
+# Cleaning with the EQs
+# mixing_eq
+--- 
+id: mixing_eq
+name: Cleaning with the EQs
+valley: mixing
+content: |-
+  Each parts has its own space. Not less, not more.
+
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 29
+positionTop: 24
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 3
+prerequisites:
+- mixing_volumes
+
+# -------------------------------------------------------
+# Export Your Track!
+# export_track
+--- 
+id: export_track
+name: Export Your Track!
+valley: mixing
+content: |-
+  Get ready to share your story with the world!
+
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 37.7
+positionTop: 10.7
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 3
+prerequisites:
+- mixing_eq
+
+# -------------------------------------------------------
+# Share Your Track!
+# share_track
+--- 
+id: share_track
+name: Share Your Track!
+valley: mixing
+content: |-
+  Time to share your story with the world!
+
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 46.7
+positionTop: 4.5
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+visibleAtAge: 3
+prerequisites:
+- export_track

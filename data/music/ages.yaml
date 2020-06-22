@@ -5,7 +5,7 @@
 
 - index: 0
   name: Discovery
-  image: 
+  image: data/music/images/map-music-0.jpg
   position:
   - 18
   - 45
@@ -13,30 +13,37 @@
     changemaker: 1
 - index: 1
   name: Learning
-  image: 
+  image: data/music/images/map-music-1.jpg
   position:
   - 30
   - 45
   requirements:
-    musiccity: 1
+    musiccity: 2
     changemaker: 2
 - index: 2
   name: Producing
-  image: 
+  image: data/music/images/map-music-2.jpg
+  position:
+  - 50
+  - 50
   requirements:
     lyrics: 3
-    beats: 3
+    beats: 1
+    musiccity: 4
     changemaker: all
-    total: 8
+    # total: 8
 - index: 3
   name: Mixing
-  image: 
+  image: data/music/images/map-music-all.jpg
   position:
-  - 58
+  - 76
   - 41
   requirements:
-    mixing: all
+    mixing: 4
 - index: 4
   name: Sharing
-  image: 
+  image: data/music/images/map-music-all.jpg
+  position:
+  - 80
+  - 41
   requirements: {}
