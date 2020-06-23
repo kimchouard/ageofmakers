@@ -5,7 +5,7 @@
 
 
 # =======================================================
-#                 Maker Quests
+#                 Changemaker Quests
 # =======================================================
 
 # -------------------------------------------------------
@@ -87,7 +87,7 @@ stages:
     artist: Beyoncé
     startUrl: https://www.npr.org/2018/08/16/638324920/american-anthem-lift-every-voice-and-sing-black-national-anthem
     content: |-
-      Till Victory Is Won: The Staying Power Of 'Lift Every Voice And Sing'
+      Till Victory Is Won: The Staying Power Of 'Lift Every Voice And Sing'.
 
       ![Project Image](data/music/images/npr_lift_every_voice_and_sing.png)
       
@@ -98,6 +98,20 @@ stages:
 
       ![Project Image](data/music/images/npr_player.png)
     order: 1
+  - name: Cold Fact
+    artist: Sixto Rodríguez
+    startUrl: https://www.npr.org/2013/02/06/171182973/how-detroits-sugar-man-became-south-africas-superstar
+    content: |-
+      How A Detroit Flop Became South Africa's Superstar.
+
+      ![Project Image](data/music/images/npr_cold_facts.png)
+      
+      **📆 Historical Context:** 1970, during the South Africa's social movements.
+    instructions: |-
+      Listen or read this article.
+
+      ![Project Image](data/music/images/npr_player.png)
+    order: 2
   - name: The Times They 'A-Changin'
     artist: Bob Dylan
     startUrl: https://www.npr.org/2018/09/24/650548856/american-anthem-the-times-they-are-a-changin
@@ -107,20 +121,6 @@ stages:
       ![Project Image](data/music/images/npr_times_are_a_changing.png)
       
       **📆 Historical Context:** Originally released in 1963, but sang many times since then.
-    instructions: |-
-      Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
-    order: 2
-  - name: Fight The Power & Public Enemy
-    artist: The Isley Brothers
-    startUrl: https://www.npr.org/2018/12/07/673845242/fight-the-power-american-anthem-public-enemy-isley-brothers
-    content: |-
-      A Tale Of 2 Anthems (With The Same Name).
-
-      ![Project Image](data/music/images/npr_fight_the_power.png)
-      
-      **📆 Historical Context:** The Isley Brothers (1975) & Public Enemy (1989)
     instructions: |-
       Listen or read this article.
 
@@ -336,6 +336,20 @@ stages:
 
       ![Project Image](data/music/images/npr_player.png)
     order: 18
+  - name: Fight The Power & Public Enemy
+    artist: The Isley Brothers
+    startUrl: https://www.npr.org/2018/12/07/673845242/fight-the-power-american-anthem-public-enemy-isley-brothers
+    content: |-
+      A Tale Of 2 Anthems (With The Same Name).
+
+      ![Project Image](data/music/images/npr_fight_the_power.png)
+      
+      **📆 Historical Context:** The Isley Brothers (1975) & Public Enemy (1989)
+    instructions: |-
+      Listen or read this article.
+
+      ![Project Image](data/music/images/npr_player.png)
+    order: 19
 prerequisites: 
 - welcome_quest
 visibleAtAge: 0
@@ -371,6 +385,30 @@ prerequisites:
 - welcome_quest
 visibleAtAge: 0
 
+# -------------------------------------------------------
+# Setting a Vision for Your Song
+# song_vision
+---
+id: song_vision
+name: Setting a Vision for Your Song
+valley: musiccity
+content: |-
+  What is the goal of your song? What is it about, and how is it going to change the world?
+type: embedded
+CTA: Learn About Music
+positionLeft: 47.5
+positionTop: 66
+stages:
+- name: How to Set a Vision for Your Song
+  content: |-
+    Focus on the why, the what and the how.
+  type: video
+  youtubeVideoId: sLmcbVMDWEo
+  order: 0
+prerequisites: 
+- welcome_music_world
+visibleAtAge: 1
+
 
 # -------------------------------------------------------
 # Start Your First Track
@@ -402,9 +440,8 @@ stages:
     ![First Track](https://ageofmakers.s3.amazonaws.com/New%20Project%20-%20Mix%20Editor%202020-06-11%2017-23-04.png)
   order: 1
 prerequisites: 
-- age: 1
-- music_change_the_world
-- welcome_music_world
+- age: 2
+- song_vision
 visibleAtAge: 1
 
 
@@ -793,12 +830,16 @@ stages:
   content: |-
     Description here.
   type: video
-  youtubeVideoId: sLmcbVMDWEo
+  youtubeVideoId: kk-K5J0c_qE
+  featuredChannel:
+    name: Music Notes Online
+    icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdmOMNJhoZaUFofT4D2jibw
   order: 0
 visibleAtAge: 1
 prerequisites: 
 - age: 2
-- welcome_music_world
+- bandlab_start
 
 # -------------------------------------------------------
 # What's On Your Mind?

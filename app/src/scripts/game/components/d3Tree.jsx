@@ -29,10 +29,12 @@ class d3Tree extends Component {
       "name" : questData.name,
       "children": []
     };
-    questData.following.forEach((follower) => {
-      let followerD3 = this.questsToD3Format(follower, quests, questData.id);
-      questD3.children.push(followerD3);
-    });
+    if (questData.following) { 
+      questData.following.forEach((follower) => {
+        let followerD3 = this.questsToD3Format(follower, quests, questData.id);
+        questD3.children.push(followerD3);
+      });
+    }
     return questD3;
   }
 
@@ -51,46 +53,53 @@ class d3Tree extends Component {
   }
 
   componentDidMount() {
+    if(this.treeContainer) {
       const dimensions = this.treeContainer.getBoundingClientRect();
       this.setState ({
           x: dimensions.width,
           y: dimensions.height,
       });
+    }
   }
 
   render() {
-    let questD3 = this.migrateQuests(this.props.journey.quests);
-    return(
-      <div className="treeContainer" ref={tc => this.treeContainer = tc}>
-        <Tree data={questD3} 
-          orientation="vertical" 
-          allowForeignObjects
-          nodeSvgShape={{shape: 'none'}} 
-          zoomable={false} 
-          zoom={10}
-          collapsible={false}
-          styles={{width:  '100%' }}
-          separation={{
-            siblings: 1,
-            nonSiblings: 2
-          }}
-          nodeLabelComponent={{
-            render: ( 
-                <AgeTreePin/>
-              ),
-            foreignObjectWrapper: {
-              x: -60,
-              y: -75,
-              width: 125,
-              height: 125
-            }
-          }} 
-          translate={{
-            x: this.state.x / 2,
-            y: this.state.y / 10
-          }}/>
-      </div>
-    );
+    if (this.props.journey && this.props.journey.quests) {
+      let questD3 = this.migrateQuests(this.props.journey.quests);
+      return(
+        <div className="treeContainer" ref={tc => this.treeContainer = tc}>
+          <Tree data={questD3} 
+            orientation="vertical" 
+            allowForeignObjects
+            nodeSvgShape={{shape: 'none'}} 
+            zoomable={false} 
+            zoom={10}
+            collapsible={false}
+            styles={{width:  '100%' }}
+            separation={{
+              siblings: 1,
+              nonSiblings: 2
+            }}
+            nodeLabelComponent={{
+              render: ( 
+                  <AgeTreePin/>
+                ),
+              foreignObjectWrapper: {
+                x: -60,
+                y: -75,
+                width: 125,
+                height: 125
+              }
+            }} 
+            translate={{
+              x: this.state.x / 2,
+              y: this.state.y / 10
+            }}/>
+        </div>
+      );
+    }
+    else {
+      return <div></div>;
+    }
   }
 }
 

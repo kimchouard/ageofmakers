@@ -9,17 +9,6 @@
 @import 'vars';
 
 /* ================================
-            Video
-================================ */
-
-.youtubeVideo {
-  margin: 10px auto;
-  display: block;
-  width:840px;
-  height:472px;
-}
-
-/* ================================
             Embedded
 ================================ */
 
@@ -87,6 +76,80 @@
   }
 }
 
+/* ================================
+            Youtube Video
+================================ */
+
+.videoWrapper {
+  .youtubeVideo {
+    margin: 10px auto 0;
+    display: block;
+    width:840px;
+    height:472px;
+  }
+
+  .featuredYoutubeChannel {
+    background: $grey;
+    width: 100%;
+    width: 820px;
+    margin: 0 auto;
+    height: 50px;
+    padding: 10px;
+    box-sizing: content-box;
+    color: white;
+
+    .channelIcon {
+      float: left;
+      width: 50px;
+      margin-right: 20px;
+    }
+
+    .channelName {
+      float: left;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 5px;
+
+      &::before {
+        content: 'Video tutorial created by:';
+        display: block;
+        font-size: 1rem;
+        font-style: italic;
+      }
+    }
+
+    .youtubeButton {
+      float: right;
+      background: #e62117;
+      margin-top: 5px;
+      padding: 10px 15px;
+      border-radius: 7px;
+      color: white;
+      text-decoration: none;
+      text-indent: 18px;
+
+      &:hover {
+        background: #cc181e;
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        width: 0; 
+        height: 0; 
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 10px solid white;
+        position: absolute;
+        margin-top: 1px;
+      }
+
+      &::after {
+        content: 'Go to the Youtube Channel';
+      }
+    }
+  }
+}
 
 /* ================================
             Music Showcase

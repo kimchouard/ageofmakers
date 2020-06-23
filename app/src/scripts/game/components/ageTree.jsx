@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import D3Tree from './d3Tree'
 import { startWalkthrough, closeTree } from '../../../actions/index';
-import { addComplete} from '../../_utils';
+import { addComplete, getActivePlayerData } from '../../_utils';
 
 
 class AgeTree extends Component {
@@ -20,7 +20,7 @@ class AgeTree extends Component {
   }
 
   render() {
-    if (this.props.tree) {
+    if (this.props.tree && this.props.activePlayerData && this.props.activePlayerData.name) {
       return (
         <div className={(this.props.tree.open) ? "ageWrapper open" : "ageWrapper"}>
           <div className="overlay" onClick={this.props.closeTree}></div>
@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
     tree: state.tree,
     sid: state.sid,
     activePlayer: state.activePlayer,
-    activePlayerData: (state.activePlayer && state.activePlayer !== -1) ? state.players[state.activePlayer] : null,
+    activePlayerData: getActivePlayerData(state),
     players: state.players,
     journey: state.journey,
   };

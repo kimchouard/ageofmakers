@@ -22,6 +22,16 @@ class Video extends Component {
       super(props);
   }
 
+  renderFeatured() {
+    if (this.props.activeStageData.featuredChannel) {
+      return <div className="featuredYoutubeChannel">
+        <img className="channelIcon" src={this.props.activeStageData.featuredChannel.icon} />
+        <div className="channelName">{this.props.activeStageData.featuredChannel.name}</div>
+        <a className="youtubeButton" href={`https://www.youtube.com/channel/${this.props.activeStageData.featuredChannel.youtubeChannelId}`} target="_blank"></a>
+      </div>
+    }
+  }
+
   renderVideo() {
     if (this.props.activeStageData.youtubeVideoId) {
       return <iframe 
@@ -47,6 +57,7 @@ class Video extends Component {
           </div>
           <div className="row videoWrapper">
             { this.renderVideo() }
+            { this.renderFeatured() }
           </div>
           <div className={`btn btn-danger btn-next`} onClick={() => { this.props.goToNextStage(this.props.activeStageData) }}>NEXT</div>
       </div>

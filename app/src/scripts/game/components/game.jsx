@@ -162,8 +162,8 @@ class Game extends Component {
         <EmbeddedQuest />
         <Onboarding />
         <Celebration />
-        {/* <Welcome />
-        <AgeTree /> */}
+        {/* <Welcome /> */}
+        <AgeTree />
         { (this.props.activeQuest) ? <Bubble embed={false}>{ this.getContent() }</Bubble> : null }
         { (isLoggedInAndLoaded(this.props) && this.props.walkthrough.start) ? <Walkthrough/> : null }
       </div>
