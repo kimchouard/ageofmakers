@@ -48,18 +48,10 @@ class Video extends Component {
 
   render() {
     if (this.props.activeStageData) {
-      return <div className="row">
-          <div className="row">
-            <div className="col-sm-10 col-sm-offset-1">
-              <h1>{this.props.activeStageData.name}</h1>
-              <h4>{this.props.activeStageData.content}</h4>
-            </div>
-          </div>
-          <div className="row videoWrapper">
-            { this.renderVideo() }
-            { this.renderFeatured() }
-          </div>
-          <div className={`btn btn-danger btn-next`} onClick={() => { this.props.goToNextStage(this.props.activeStageData) }}>NEXT</div>
+      return <div className="row videoWrapper">
+        { this.renderVideo() }
+        { this.renderFeatured() }
+        <div className={`btn btn-danger btn-next`} onClick={() => { this.props.goToNextStage(this.props.activeStageData) }}>NEXT</div>
       </div>
     }
     else {

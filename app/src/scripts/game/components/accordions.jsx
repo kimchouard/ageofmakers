@@ -13,6 +13,7 @@ import ReactMarkdown from 'react-markdown';
 import { mdRenderers } from '../../_reactUtils';
 import { changeQuestProgress, unselectQuest, backToNewTab, logOut } from '../../../actions/index';
 import { getActiveQuestData, getStageData, getDefaultActiveStageOrder, stageStatus } from '../../_utils';
+import Quiz from './quiz';
 
 class Accordions extends Component {
   constructor(props) {
@@ -53,9 +54,24 @@ class Accordions extends Component {
     this.setActiveStageOrder(stage.order+1);
   }
 
-  backToShowcaseItems(stage, showcaseItem) {
-    this.props.changeQuestProgress(this.props.activeQuest.quest, stage.order, showcaseItem.order);
+  backToShowcaseItems(stage, showcaseItem, questions) {
+    this.props.changeQuestProgress(this.props.activeQuest.quest, stage.order, showcaseItem.order, questions);
     this.props.backToNewTab(this.props.activeQuest.quest);
+  }
+
+  renderShowcaseAction(stage, showcaseItem) {
+    if (stage.quiz) {
+      return <Quiz quizData={stage.quiz} saveQuiz={(questions) => { this.backToShowcaseItems(stage, showcaseItem, questions) } } embedded={true} />
+    }
+    else {
+      <div className="action">
+        <div
+          className="button complete"
+          onClick={ () => { this.backToShowcaseItems(stage, showcaseItem) } }>
+          I READ IT!
+        </div>
+      </div>
+    }
   }
 
   renderAccordions() {
@@ -87,39 +103,20 @@ class Accordions extends Component {
       // If it's a showcase embedded quest
       if (this.props.activeQuest.showcase >= 0) {
         for(let stage of this.props.activeQuestData.stages) {
+          // If it's a music showcase stage and in progress
           if (stage.status === stageStatus.STATUS_INPROGRESS && stage.type === 'musicShowcase') {
             for(let showcaseItem of stage.showcaseItems) {
+              // If it's the showcase we are working on
               if (showcaseItem.order === this.props.activeQuest.showcase) {
-                return <div
-                  className="accordion"
-                  key={stage.order}
-                >
-                  <input
-                    type="radio"
-                    name="accordion"
-                    id={stage.order}
-                    checked={ true /*(stage.order === this.state.activeStageOrder)*/ }
-                    onChange={ () => { /*this.setActiveStageOrder(stage)*/ } }
-                  />
+                return <div className="accordion quizWrapper">
+                  <h3>{showcaseItem.name} by {showcaseItem.artist}</h3>
+                  
+                  <ReactMarkdown
+                    source={showcaseItem.instructions}
+                    renderers={ mdRenderers }
+                    />
 
-                  <div className="box-accordion">
-                    <label className="box-title">{showcaseItem.name} by {showcaseItem.artist}</label>
-        
-                    <div className="box-content">
-                      <ReactMarkdown
-                        source={showcaseItem.instructions}
-                        renderers={ mdRenderers }
-                      />
-        
-                      <div className="action">
-                        <div
-                          className="button complete"
-                          onClick={ () => { this.backToShowcaseItems(stage, showcaseItem) } }>
-                          I READ IT!
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  { this.renderShowcaseAction(stage, showcaseItem) }  
                 </div>
               }
             }

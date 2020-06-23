@@ -68,6 +68,23 @@ stages:
   type: musicShowcase
   order: 1
   requiredShowcaseViews: 3
+  quiz:
+    questions:
+      - id: themes
+        name: Identify 1 to 3 themes you want to explore in your song
+        placeholder: |-
+          Example: police brutality, identity, environment, education...
+        type: freetext
+      - id: message
+        name: What’s the take home message for your song?
+        placeholder: |-
+          Example: Despite how though it is and all the barriers, we’re going to be alright.
+        type: freetext
+      - id: action
+        name: What do you want somebody that listen to your song to go do?
+        placeholder: |-
+          Example: to keep faith in the future and keep fighting for a brighter future.
+        type: freetext
   showcaseItems:
   - name: Alright
     artist: Kendrick Lamar

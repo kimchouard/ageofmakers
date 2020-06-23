@@ -74,17 +74,10 @@ class MusicShowcase extends Component {
 
   render() {
     if (this.props.activeStageData) {
-      return <div className="row">
-        <div className="row">
-          <div className="col-sm-12 titles">
-            <h1>{this.props.activeStageData.name}</h1>
-            <h4>{this.props.activeStageData.content}</h4>
-          </div>
-          <div className="col-sm-12 instructionsWrapper">
-            { this.renderNextButton() }
-            <p className="instructions">Explore at least {this.props.activeStageData.requiredShowcaseViews} examples below and click NEXT to continue the quest.</p>
-          </div>
-        </div>
+      return <div className="col-sm-12 instructionsWrapper">
+        { this.renderNextButton() }
+        <p className="instructions">Explore at least {this.props.activeStageData.requiredShowcaseViews} examples below and click NEXT to continue the quest.</p>
+
         <div className="row">
           { this.renderShowcaseItems() }
         </div>

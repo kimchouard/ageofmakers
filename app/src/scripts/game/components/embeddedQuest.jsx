@@ -33,23 +33,35 @@ class EmbeddedQuest extends Component {
           activeStageOrder: getDefaultActiveStageOrder(this.props.activeQuestData),
         });
       }
-
-      if (activeStageData && activeStageData.type === stageTypes.MUSIC_SHOWCASE) {
-        return <MusicShowcase activeStageData={activeStageData} goToNextStage={(stage) => { this.goToNextStage(stage) } } />;
-      }
-      else if (activeStageData && activeStageData.type === stageTypes.KANBAN) {
-        return <Kanban />
-      }
-      else if (activeStageData && activeStageData.type === stageTypes.VIDEO) {
-        return <Video activeStageData={activeStageData} goToNextStage={(stage) => { this.goToNextStage(stage) } } />
-      }
-      // If the stage is a quiz
-      else if (activeStageData && activeStageData.questions) {
-        return <Quiz activeStageData={activeStageData} saveQuiz={(questions) => { this.saveQuiz(questions) } } />
-      }
       else {
-        // TODO: Errors on stage data type unknown
-        console.log('Unknown stage type.', activeStageData);
+        let stageDiv;
+        if (activeStageData && activeStageData.type === stageTypes.MUSIC_SHOWCASE) {
+          stageDiv = <MusicShowcase activeStageData={activeStageData} goToNextStage={(stage) => { this.goToNextStage(stage) } } />;
+        }
+        else if (activeStageData && activeStageData.type === stageTypes.KANBAN) {
+          stageDiv = <Kanban />
+        }
+        else if (activeStageData && activeStageData.type === stageTypes.VIDEO) {
+          stageDiv = <Video activeStageData={activeStageData} goToNextStage={(stage) => { this.goToNextStage(stage) } } />
+        }
+        // If the stage is a quiz
+        else if (activeStageData && activeStageData.questions) {
+          stageDiv = <Quiz quizData={activeStageData} saveQuiz={(questions) => { this.saveQuiz(questions) } } />
+        }
+        else {
+          // TODO: Errors on stage data type unknown
+          console.log('Unknown stage type.', activeStageData);
+        }
+
+        return <div className="row">
+          <div className="row">
+            <div className="col-sm-10 col-sm-offset-1">
+              <h1>{activeStageData.name}</h1>
+              <h4>{activeStageData.content}</h4>
+            </div>
+          </div>
+          { stageDiv }
+        </div>
       }
     }
     else if (this.props.activeQuestData && this.props.activeQuestData.type !== questTypes.WEBSITE) {

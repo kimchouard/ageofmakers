@@ -12,7 +12,7 @@
 ================================ */
 
 .aom-bubble {
-  @import "~normalize-scss/sass/normalize/import-now";
+	@import "~normalize-scss/sass/normalize/import-now";
 
 	margin: auto;
 	width: 400px;
@@ -235,6 +235,20 @@
 			&:before {
 				content: "⚠️ : ";
 				font-weight: bold;
+			}
+		}
+
+		.quizWrapper {
+			padding: 20px;
+
+			h3 {
+				font-weight: bold;
+				font-size: 20px;
+				margin: 0 0 15px 0;
+			}
+
+			.quiz {
+				margin-top: 10px;
 			}
 		}
 

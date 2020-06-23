@@ -34,7 +34,7 @@ class Quiz extends Component {
 
   renderQuestions() {
     const layout = {
-      labelCol: { span: 8 },
+      labelCol: { span: (this.props.embedded) ? 16 : 8 },
       wrapperCol: { span: 16 },
     };
 
@@ -42,9 +42,9 @@ class Quiz extends Component {
       required: 'This field is required!',
     }
 
-    if (this.props.activeStageData.questions) {
+    if (this.props.quizData.questions) {
       return <Form {...layout} name="nest-messages" onFinish={(values) => { this.submitQuestion(values) }} validateMessages={validateMessages}>
-        { this.props.activeStageData.questions.map((question) => {
+        { this.props.quizData.questions.map((question) => {
           if (question.type === quizAnswerTypes.FREETEXT) {
             return <Form.Item name={question.id} label={question.name} rules={[{ required: true }]}>
               <Input.TextArea placeholder={question.placeholder} />
@@ -60,23 +60,14 @@ class Quiz extends Component {
       </Form>
     }
     else {
-      console.error('No questions defined for quiz.', this.props.activeStageData);
+      console.error('No questions defined for quiz.', this.props.quizData);
     }
   }
 
   render() {
-    if (this.props.activeStageData) {
-      return <div className="row">
-          <div className="row">
-            <div className="col-sm-10 col-sm-offset-1">
-              <h1>{this.props.activeStageData.name}</h1>
-              <h4>{this.props.activeStageData.content}</h4>
-            </div>
-          </div>
-          <div className="row quiz">
-            { this.renderQuestions() }
-          </div>
-          {/* <div className={`btn btn-danger btn-next`} onClick={() => {  }}>NEXT</div> */}
+    if (this.props.quizData) {
+      return <div className="row quiz">
+        { this.renderQuestions() }
       </div>
     }
     else {

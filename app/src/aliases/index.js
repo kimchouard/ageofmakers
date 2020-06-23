@@ -110,6 +110,11 @@ const getFullQuestWithAchievements = (callback) => {
                           for(let showcaseItem of stage.showcaseItems) {
                             if (showcaseItem.order === parseInt(visitedShowcaseOrder)) {
                               showcaseItem.status = stageStatus.STATUS_COMPLETE;
+
+                              // If the achievement is an object
+                              if (typeof achievement.showcasesVisited[visitedShowcaseOrder] === "object") {
+                                showcaseItem.quizResults = achievement.showcasesVisited[visitedShowcaseOrder];
+                              }
                             }
                           }
                         })
@@ -127,6 +132,9 @@ const getFullQuestWithAchievements = (callback) => {
                   if ( achievement.stageNumber >= achievedQuest.stages[achievedQuest.stages.length - 1].order
                   && ( !achievedQuest.quiz || (achievedQuest.quiz && achievedQuest.quiz.questions && achievement.quiz && Object.keys(achievement.quiz).length === achievedQuest.quiz.questions.length) ) ) {
                       quests[achievedQuestId].status = stageStatus.STATUS_COMPLETE;
+                      if (achievedQuest.quiz) {
+                        quests[achievedQuestId].quiz.results = achievement.quiz;
+                      }
                   }
                   else {
                     quests[achievedQuestId].status = stageStatus.STATUS_INPROGRESS;
@@ -512,9 +520,9 @@ const changeQuestProgress = (originalAction) => {
 
             // If the progress change about a showcase
             if (originalAction.payload.achievedShowcaseNumber !== null && originalAction.payload.achievedShowcaseNumber >= 0) {
-              players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].showcasesVisited[originalAction.payload.achievedShowcaseNumber] = true;
+              players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].showcasesVisited[originalAction.payload.achievedShowcaseNumber] = originalAction.payload.quizResults || true;
             }
-            // If the progress change about 
+            // If the progress change about the quiz
             else if (originalAction.payload.quizResults) {
               players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].quiz = originalAction.payload.quizResults;
             }
