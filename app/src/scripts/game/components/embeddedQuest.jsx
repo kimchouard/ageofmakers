@@ -8,11 +8,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { closeEmbeddedQuest, changeStage } from '../../../actions/index';
+import { closeEmbeddedQuest, changeQuestProgress } from '../../../actions/index';
 import { questTypes, stageTypes, getActiveQuestData, getStageData, getDefaultActiveStageOrder } from '../../_utils';
 import MusicShowcase from './showcaseMusic';
 import Kanban from './kanban';
 import Video from './video';
+import Quiz from './quiz';
 
 class EmbeddedQuest extends Component {
   constructor(props) {
@@ -42,8 +43,13 @@ class EmbeddedQuest extends Component {
       else if (activeStageData && activeStageData.type === stageTypes.VIDEO) {
         return <Video activeStageData={activeStageData} goToNextStage={(stage) => { this.goToNextStage(stage) } } />
       }
+      // If the stage is a quiz
+      else if (activeStageData && activeStageData.questions) {
+        return <Quiz activeStageData={activeStageData} saveQuiz={(questions) => { this.saveQuiz(questions) } } />
+      }
       else {
         // TODO: Errors on stage data type unknown
+        console.log('Unknown stage type.', activeStageData);
       }
     }
     else if (this.props.activeQuestData && this.props.activeQuestData.type !== questTypes.WEBSITE) {
@@ -51,8 +57,13 @@ class EmbeddedQuest extends Component {
     }
   }
 
+  saveQuiz(questions) {
+    this.props.changeQuestProgress(this.props.activeQuest.quest, null, null, questions);
+    this.props.closeEmbeddedQuest();
+  }
+
   goToNextStage(stage) {
-    this.props.changeStage(this.props.activeQuest.quest, stage.order);
+    this.props.changeQuestProgress(this.props.activeQuest.quest, stage.order);
     this.setActiveStageOrder(stage.order+1);
   }
 
@@ -68,8 +79,8 @@ class EmbeddedQuest extends Component {
 
   render() {
     if (this.props.embeddedQuest && this.props.activeQuestData) {
-      // If the quest is done
-      if (this.props.activeQuestData.stages[this.props.activeQuestData.stages.length-1].status === 'complete') {
+      // If the quest is done, close the embedded UI
+      if (this.props.activeQuestData.status === 'complete') {
         this.props.closeEmbeddedQuest();
       }
 
@@ -99,7 +110,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-return bindActionCreators({ closeEmbeddedQuest, changeStage }, dispatch);
+return bindActionCreators({ closeEmbeddedQuest, changeQuestProgress }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmbeddedQuest);

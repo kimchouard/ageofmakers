@@ -8,7 +8,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { closeEmbeddedQuest, setActivePlayerSDG, changeStage, startQuest } from '../../../actions/index';
+import { closeEmbeddedQuest, setActivePlayerSDG, changeQuestProgress, startQuest } from '../../../actions/index';
 import { getActiveQuestData, getActivePlayerData, stageStatus } from '../../_utils';
 import ReactMarkdown from 'react-markdown';
 import { mdRenderers } from '../../_reactUtils';
@@ -104,7 +104,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-return bindActionCreators({ closeEmbeddedQuest, setActivePlayerSDG, changeStage, startQuest }, dispatch);
+return bindActionCreators({ closeEmbeddedQuest, setActivePlayerSDG, changeQuestProgress, startQuest }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MusicShowcase);

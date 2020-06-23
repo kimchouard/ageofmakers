@@ -90,10 +90,12 @@ const getFullQuestWithAchievements = (callback) => {
           if (quests && ages && areas) {
             if (achievements && achievements.quests) {
               // Changing Quests status based on achievements
-              Object.keys(achievements.quests).forEach((achievedQuest) => {
-                let achievement = achievements.quests[achievedQuest];
-                if (quests[achievedQuest]) {
-                  quests[achievedQuest].stages.forEach((stage) => {
+              Object.keys(achievements.quests).forEach((achievedQuestId) => {
+                let achievement = achievements.quests[achievedQuestId];
+                let achievedQuest = quests[achievedQuestId];
+
+                if (achievedQuest) {
+                  achievedQuest.stages.forEach((stage) => {
                     // If the completed stage or before -> complete
                     if (stage.order <= achievement.stageNumber) {
                       stage.status = stageStatus.STATUS_COMPLETE;
@@ -102,6 +104,7 @@ const getFullQuestWithAchievements = (callback) => {
                     else if (stage.order === achievement.stageNumber+1) {
                       stage.status = stageStatus.STATUS_INPROGRESS;
 
+                      // If some showcase items has been completed
                       if(achievement.showcasesVisited && achievement.showcasesVisited !== {}) {
                         Object.keys(achievement.showcasesVisited).forEach((visitedShowcaseOrder) => {
                           for(let showcaseItem of stage.showcaseItems) {
@@ -118,12 +121,15 @@ const getFullQuestWithAchievements = (callback) => {
                     }
                   });
 
-                  // If last stage completed, the quest is completed too!
-                  if (achievement.stageNumber >= quests[achievedQuest].stages[quests[achievedQuest].stages.length - 1].order) {
-                    quests[achievedQuest].status = stageStatus.STATUS_COMPLETE;
+                  // If last stage completed,:
+                  // - if the achieved quest doesn't have a quiz, completing all the stages is sufficient so the quest is completed too!
+                  // - if the quest have a quiz, we need to make sure the quiz is done too
+                  if ( achievement.stageNumber >= achievedQuest.stages[achievedQuest.stages.length - 1].order
+                  && ( !achievedQuest.quiz || (achievedQuest.quiz && achievedQuest.quiz.questions && achievement.quiz && Object.keys(achievement.quiz).length === achievedQuest.quiz.questions.length) ) ) {
+                      quests[achievedQuestId].status = stageStatus.STATUS_COMPLETE;
                   }
                   else {
-                    quests[achievedQuest].status = stageStatus.STATUS_INPROGRESS;
+                    quests[achievedQuestId].status = stageStatus.STATUS_INPROGRESS;
                   }
                 }
               });
@@ -478,12 +484,12 @@ const getQuests = (originalAction) => {
   }));
 };
 
-// originalAction.payload params: activeQuestKey, achievedStageNumber, achievedShowcaseNumber (optional)
-const changeStage = (originalAction) => {
+// originalAction.payload params: activeQuestKey, achievedStageNumber, achievedShowcaseNumber (optional), quizResults (optional)
+const changeQuestProgress = (originalAction) => {
   // TODO: API to update the user records
   return middlewarePromise(originalAction, new Promise((resolve, reject) => {
     if (originalAction.payload && originalAction.payload.mock) {
-      console.log(`Updating ${originalAction.payload.activeQuestKey} with achieved stage: ${originalAction.payload.achievedStageNumber} or achieved showcase: ${originalAction.payload.achievedShowcaseNumber}`);
+      console.log(`Updating ${originalAction.payload.activeQuestKey} with achieved stage: ${originalAction.payload.achievedStageNumber} or achieved showcase: ${originalAction.payload.achievedShowcaseNumber} with quiz results: ${originalAction.payload.quizResults}`);
 
       chrome.storage.sync.get(['players', 'activePlayer'], (storage) => {
         if (storage && storage.players && storage.activePlayer) {
@@ -499,11 +505,18 @@ const changeStage = (originalAction) => {
             if (!players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey]) {
               players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey] = {
                 stageNumber: null,
+                quiz: {},
                 showcasesVisited: {},
               }
             }
-            if (originalAction.payload.achievedShowcaseNumber >= 0) {
+
+            // If the progress change about a showcase
+            if (originalAction.payload.achievedShowcaseNumber !== null && originalAction.payload.achievedShowcaseNumber >= 0) {
               players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].showcasesVisited[originalAction.payload.achievedShowcaseNumber] = true;
+            }
+            // If the progress change about 
+            else if (originalAction.payload.quizResults) {
+              players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].quiz = originalAction.payload.quizResults;
             }
             else {
               players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].stageNumber = originalAction.payload.achievedStageNumber;
@@ -559,6 +572,6 @@ export default {
   SET_PLAYER_JOURNEY: setActivePlayerJourney,
   RESET_PLAYER_JOURNEY: resetActivePlayerJourney,
   REMOVE_PLAYER: removePlayer,
-  STAGE_CHANGE: changeStage,
+  STAGE_CHANGE: changeQuestProgress,
   AGE_CHANGE: changeAge
 };

@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
 import { mdRenderers } from '../../_reactUtils';
-import { changeStage, unselectQuest, backToNewTab, logOut } from '../../../actions/index';
+import { changeQuestProgress, unselectQuest, backToNewTab, logOut } from '../../../actions/index';
 import { getActiveQuestData, getStageData, getDefaultActiveStageOrder, stageStatus } from '../../_utils';
 
 class Accordions extends Component {
@@ -43,18 +43,18 @@ class Accordions extends Component {
   }
 
   resetStages() {
-    this.props.changeStage(this.props.activeQuest.quest, 'none');
+    this.props.changeQuestProgress(this.props.activeQuest.quest, 'none');
     this.setActiveStageOrder();
   }
 
   nextStage(stage) {
     this.scrollToStage(stage.order+1);
-    this.props.changeStage(this.props.activeQuest.quest, stage.order);
+    this.props.changeQuestProgress(this.props.activeQuest.quest, stage.order);
     this.setActiveStageOrder(stage.order+1);
   }
 
   backToShowcaseItems(stage, showcaseItem) {
-    this.props.changeStage(this.props.activeQuest.quest, stage.order, showcaseItem.order);
+    this.props.changeQuestProgress(this.props.activeQuest.quest, stage.order, showcaseItem.order);
     this.props.backToNewTab(this.props.activeQuest.quest);
   }
 
@@ -195,7 +195,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ changeStage, unselectQuest, backToNewTab, logOut }, dispatch);
+  return bindActionCreators({ changeQuestProgress, unselectQuest, backToNewTab, logOut }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Accordions);

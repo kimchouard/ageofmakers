@@ -11,7 +11,7 @@ import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
 import { questUnlocked, getRomanAge, getAge, questTypes, isLoggedInAndLoaded, isNewAge, getActivePlayerData, getActiveQuestData } from '../../_utils';
 import { mdRenderers } from '../../_reactUtils';
-import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, openWelcome, setPlayerOnboarding, changeStage, startWalkthrough, openEmbeddedQuest } from '../../../actions/index';
+import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, openWelcome, setPlayerOnboarding, changeQuestProgress, startWalkthrough, openEmbeddedQuest } from '../../../actions/index';
 
 import Pin from './pin';
 import Header from './header';
@@ -61,7 +61,7 @@ class Game extends Component {
     else if (this.props.activeQuestData.status === 'complete') {
       return <button
         className="complete"
-        onClick={ () => { this.props.changeStage(this.props.activeQuest.quest, 'none') } }>
+        onClick={ () => { this.props.changeQuestProgress(this.props.activeQuest.quest, 'none') } }>
           Restart the quest
         </button>
     }
@@ -187,7 +187,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, openWelcome, changeStage, startWalkthrough, openEmbeddedQuest, setPlayerOnboarding, }, dispatch);
+  return bindActionCreators({ reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, openWelcome, changeQuestProgress, startWalkthrough, openEmbeddedQuest, setPlayerOnboarding, }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

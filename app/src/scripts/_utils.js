@@ -28,6 +28,10 @@ export const stageTypes = {
   KANBAN: 'kanban',
 };
 
+export const quizAnswerTypes = {
+  FREETEXT: 'freetext',
+};
+
 export const isQuestsLoaded = (props) => {
   return props && props.journey.quests && Object.keys(props.journey.quests).length && !props.journey.quests.error
 }
@@ -91,12 +95,20 @@ export const getActiveQuestData = (state) => {
 
 export const getStageData = (activeQuest, stageOrder) => {
   let activeStage = null;
-  activeQuest.stages.forEach((stage) => {
-    if (stage.order === stageOrder) {
-      activeStage = stage;
-    }
-  });
-
+  
+  // If the requested stage is the quiz
+  if (stageOrder === -1) {
+    activeStage = activeQuest.quiz;
+  }
+  // If we're requesting a regular quest
+  else {
+    activeQuest.stages.forEach((stage) => {
+      if (stage.order === stageOrder) {
+        activeStage = stage;
+      }
+    });  
+  }
+  
   if (!activeStage) {
     console.error(`Error: can't find active stage!`);
   }
@@ -104,13 +116,19 @@ export const getStageData = (activeQuest, stageOrder) => {
 }
 
 export const getDefaultActiveStageOrder = (activeQuestData) => {
-  if(activeQuestData) {
+  if(activeQuestData && activeQuestData.stages) {
     let defaultActiveStageOrder = 0;
-    activeQuestData.stages.forEach((stage) => {
-      if (stage.status === 'inProgress') {
-        defaultActiveStageOrder = stage.order;
-      }
-    });
+    // defaultActiveStageOrder is -1 if we need to run the quiz!
+    if (activeQuestData.stages[activeQuestData.stages.length-1].status === 'complete' && activeQuestData.quiz) {
+      defaultActiveStageOrder = -1;
+    }
+    else {
+      activeQuestData.stages.forEach((stage) => {
+        if (stage.status === 'inProgress') {
+          defaultActiveStageOrder = stage.order;
+        }
+      });
+    }
 
     return defaultActiveStageOrder;
   }

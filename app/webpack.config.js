@@ -6,6 +6,8 @@
  */
 
 const path = require('path');
+const AntdScssThemePlugin = require('antd-scss-theme-plugin');
+const AntDesignThemePlugin = require('antd-theme-webpack-plugin');
 
 // scriptName values: content, game, list, popup, event (special case!)
 export default (scriptName, isBgScript) => {
@@ -42,6 +44,14 @@ export default (scriptName, isBgScript) => {
           },
         ]
       },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          AntdScssThemePlugin.themify('less-loader'),
+        ],
+      },
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=image/svg+xml'},
       {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?mimetype=application/font-woff"},
       {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?mimetype=application/font-woff"},
@@ -56,6 +66,13 @@ export default (scriptName, isBgScript) => {
 
     entry: [
       `./app/src/${(scriptName === 'event') ? 'index' : 'scripts/' + scriptName}.js`
+    ],
+
+    plugins: [
+      new AntDesignThemePlugin({
+        varFile: path.join(__dirname, './src/sass/variables.less'),
+      }),
+      new AntdScssThemePlugin('./src/sass/antdTheme.scss'),
     ],
 
     output: {

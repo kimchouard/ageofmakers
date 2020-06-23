@@ -202,10 +202,10 @@ export function updateQuestUrl(quests, activeQuest, newUrl) {
 }
 
 // Mock action. Full in alias
-export function changeStage(activeQuestKey, achievedStageNumber, achievedShowcaseNumber) {
+export function changeQuestProgress(activeQuestKey, achievedStageNumber, achievedShowcaseNumber, quizResults) {
   return {
     type: STAGE_CHANGE,
-    payload: { mock: true, activeQuestKey, achievedStageNumber, achievedShowcaseNumber },
+    payload: { mock: true, activeQuestKey, achievedStageNumber, achievedShowcaseNumber, quizResults },
   };
 }
 
