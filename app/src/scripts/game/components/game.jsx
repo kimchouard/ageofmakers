@@ -149,12 +149,6 @@ class Game extends Component {
   render() {
     require('../../../sass/game.scss');
 
-    // If the game is loaded, and that the player hasn't been onboarded, start the walkthrough, if not started already.
-    if (isLoggedInAndLoaded(this.props) && this.props.activePlayerData && !this.props.walkthrough.start && (this.props.activePlayerData.onboarded === false || this.props.activePlayerData.onboarded === undefined)) {
-      this.props.startWalkthrough(1);
-      // this.props.setPlayerOnboarding(true);
-    }
-
     return (
       <div className={`gameWrapper ${ (!isLoggedInAndLoaded(this.props) || isNewAge(this.props.activePlayerData,this.props.journey)) ? 'blurry' : ''}`}>
         <Header />
@@ -165,7 +159,7 @@ class Game extends Component {
         {/* <Welcome /> */}
         <AgeTree />
         { (this.props.activeQuest) ? <Bubble embed={false}>{ this.getContent() }</Bubble> : null }
-        { (isLoggedInAndLoaded(this.props) && this.props.walkthrough.start) ? <Walkthrough/> : null }
+        { (isLoggedInAndLoaded(this.props)) ? <Walkthrough/> : null }
       </div>
     );
   }

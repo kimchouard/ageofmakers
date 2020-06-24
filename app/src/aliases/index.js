@@ -349,16 +349,16 @@ const setNewPlayer = (originalAction) => {
           
           // Create a new id for the new player
           let playersKeys = Object.keys(players);
-          let newId;
           if (playersKeys.length > 0) {
-            newId = parseInt(playersKeys[playersKeys.length-1]) + 1;
+            let newId = parseInt(playersKeys[playersKeys.length-1]) + 1;
+            newPlayer.id = newId.toString();
           }
           else {
-            newId = 0;
+            newPlayer.id = "0";
           }
           
   
-          players[newId] = newPlayer;
+          players[newPlayer.id] = newPlayer;
         }
         // That means that it's the first player!
         else {

@@ -10,7 +10,8 @@ import Joyride from 'react-joyride';
 import { ACTIONS, EVENTS } from 'react-joyride/lib/index.js';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {stopWalkthrough, toggleBubble, selectQuest, setPlayerOnboarding } from '../../../actions/index';
+import { isLoggedInAndLoaded, getActivePlayerData } from '../../_utils';
+import {stopWalkthrough, startWalkthrough, toggleBubble, selectQuest, setPlayerOnboarding } from '../../../actions/index';
 
 class Walkthrough extends Component {
     constructor(props) {
@@ -19,6 +20,14 @@ class Walkthrough extends Component {
         steps: [],
         stepIndex: 0,
         demoQuest: 'welcome_quest'
+      }
+    }
+
+    componentDidMount() {
+      // If the game is loaded, and that the player hasn't been onboarded, start the walkthrough, if not started already.
+      if (isLoggedInAndLoaded(this.props) && this.props.activePlayerData && !this.props.walkthrough.start && (this.props.activePlayerData.onboarded === false || this.props.activePlayerData.onboarded === undefined)) {
+        this.props.startWalkthrough(1);
+        // this.props.setPlayerOnboarding(true);
       }
     }
 
@@ -342,20 +351,25 @@ class Walkthrough extends Component {
     }
 
     render() {
-      return (
-        <Joyride
-            run={true}
-            steps={this.state.steps}
-            stepIndex={this.state.stepIndex}
-            debug={true}
-            callback={(tour) => {
-              const { action, index, type} = tour;
-              this.walkthroughCb(action,index,type,tour);
-            } }
-            hideBackButton={true}
-            continuous={true}
-        />
-      );
+      if (this.props.walkthrough && this.props.walkthrough.start) {
+        return (
+          <Joyride
+              run={true}
+              steps={this.state.steps}
+              stepIndex={this.state.stepIndex}
+              debug={true}
+              callback={(tour) => {
+                const { action, index, type} = tour;
+                this.walkthroughCb(action,index,type,tour);
+              } }
+              hideBackButton={true}
+              continuous={true}
+          />
+        );
+      }
+      else {
+        return <div></div>;
+      }
     }
 }
 
@@ -363,11 +377,15 @@ class Walkthrough extends Component {
 const mapStateToProps = (state) => {
   return {
     walkthrough: state.walkthrough,
+    journey: state.journey,
+    activePlayer: state.activePlayer,
+    activePlayerData: getActivePlayerData(state),
+    players: state.players,
   };
 };
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({stopWalkthrough, toggleBubble, selectQuest, setPlayerOnboarding}, dispatch);
+    return bindActionCreators({stopWalkthrough, startWalkthrough, toggleBubble, selectQuest, setPlayerOnboarding}, dispatch);
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(Walkthrough);

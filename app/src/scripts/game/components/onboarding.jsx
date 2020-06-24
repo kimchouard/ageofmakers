@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { isLoggedIn, journeyIds, getActivePlayerData } from '../../_utils';
-import { getPlayers, logIn, logOut, setNewPlayer, setActivePlayerJourney, removePlayer } from '../../../actions/index';
+import { getPlayers, logIn, logOut, setNewPlayer, setActivePlayerJourney, startWalkthrough, removePlayer } from '../../../actions/index';
 
 
 class Onboarding extends Component {
@@ -23,7 +23,7 @@ class Onboarding extends Component {
     }
 
     componentDidMount() {
-      if (!this.props.players) {
+      if (!this.props.players || (this.props.players && Object.keys(this.props.players) && Object.keys(this.props.players).length === 0)) {
         this.props.getPlayers();
       }
     }
@@ -33,6 +33,7 @@ class Onboarding extends Component {
         console.log('Creating new user:', this.state.userName);
         e.preventDefault(); 
         this.props.setNewPlayer(this.state.userName);
+        this.props.startWalkthrough(1);
         this.setState({ userName: '', newUserUi: false, userIdToLogin: Object.keys(this.props.players).length });
         return false;
       }
@@ -55,9 +56,13 @@ class Onboarding extends Component {
       }
     }
 
-    logIn(e, playerId) { 
-      if (e.target.className == 'player-name') { 
-        this.props.logIn(playerId);
+    logIn(e, player) { 
+      if (e.target.className == 'player-name') {
+        if (player.onboarded === false || player.onboarded === undefined) {
+          this.props.startWalkthrough(1);
+        }
+
+        this.props.logIn(player.id);
       }
     }
 
@@ -122,7 +127,7 @@ class Onboarding extends Component {
             {Object.keys(this.props.players).map((playerId) => {
               let player = this.props.players[playerId];
 
-              return <div className="player" key={playerId} onClick={ (e) => { this.logIn(e, playerId); } }>
+              return <div className="player" key={playerId} onClick={ (e) => { this.logIn(e, player); } }>
                 <div className="player-name">{ player.name }</div>
                 <button className="btn-delete" onClick={() => { this.startRemovingPlayer(playerId) }}>X</button>
               </div>
@@ -189,7 +194,7 @@ const mapStateToProps = (state) => {
   };
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getPlayers, logIn, logOut, setNewPlayer, removePlayer, setActivePlayerJourney}, dispatch);
+    return bindActionCreators({getPlayers, logIn, logOut, setNewPlayer, removePlayer, startWalkthrough, setActivePlayerJourney}, dispatch);
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(Onboarding);

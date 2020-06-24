@@ -33,7 +33,7 @@ export const quizAnswerTypes = {
 };
 
 export const isQuestsLoaded = (props) => {
-  return props && props.journey.quests && Object.keys(props.journey.quests).length && !props.journey.quests.error
+  return props && props.journey && props.journey.quests && Object.keys(props.journey.quests).length && !props.journey.quests.error
 }
 
 export const isLoggedIn = (props) => {
