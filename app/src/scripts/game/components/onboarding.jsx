@@ -29,11 +29,16 @@ class Onboarding extends Component {
     }
 
     startNewUserCreation(e) {
-      console.log('Creating new user:', this.state.userName);
-      e.preventDefault(); 
-      this.props.setNewPlayer(this.state.userName);
-      this.setState({ userName: '', newUserUi: false, userIdToLogin: Object.keys(this.props.players).length });
-      return false;
+      if (this.props.players) {
+        console.log('Creating new user:', this.state.userName);
+        e.preventDefault(); 
+        this.props.setNewPlayer(this.state.userName);
+        this.setState({ userName: '', newUserUi: false, userIdToLogin: Object.keys(this.props.players).length });
+        return false;
+      }
+      else {
+        console.error('Players data not initialized.');
+      }
     }
 
     backToPlayerSelect(e) {
@@ -57,7 +62,7 @@ class Onboarding extends Component {
     }
 
     renderCancelButton() {
-      if (this.props.players && Object.keys(this.props.players).length) {
+      if (this.props.players && Object.keys(this.props.players) && Object.keys(this.props.players).length) {
         return <input type="button" className="btn btn-cancel" value="Cancel" onClick={(e) => { return this.backToPlayerSelect(e); }}/>;
       }
     }

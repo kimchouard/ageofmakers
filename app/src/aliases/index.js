@@ -422,7 +422,10 @@ const resetActivePlayerJourney = (originalAction) => {
 }
 
 const getPlayers = (originalAction) => {
-  return getChromeSyncStorage(originalAction, 'players');
+  return getChromeSyncStorage(originalAction, 'players', (resolve) => {
+    console.error('Error while loading the player list');
+    resolve({});
+  });
 };
 
 // originalAction.payload params: playerJourney, newAge

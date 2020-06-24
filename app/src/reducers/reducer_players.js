@@ -7,7 +7,7 @@
 
 import { SET_NEW_PLAYER, GET_PLAYERS, REMOVE_PLAYER, SET_PLAYER_ONBOARDING, SET_PLAYER_SDG, SET_PLAYER_JOURNEY, AGE_CHANGE, RESET_PLAYER_JOURNEY } from '../actions/index';
 
-export default (state = null, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case SET_NEW_PLAYER:
       return action.payload;
