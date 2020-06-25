@@ -29,7 +29,9 @@ class Accordions extends Component {
   }
 
   scrollToStage(stageOrder) {
-    ReactDOM.findDOMNode(this).parentNode.scrollTop = 64*stageOrder;
+    if (this.props.activeQuest && this.props.activeQuest.showcase === undefined) {
+      ReactDOM.findDOMNode(this).parentNode.scrollTop = 64*stageOrder;
+    }
   }
 
   setActiveStageOrder(activeStageOrder) {
@@ -61,7 +63,7 @@ class Accordions extends Component {
 
   renderShowcaseAction(stage, showcaseItem) {
     if (stage.quiz) {
-      return <Quiz quizData={stage.quiz} saveQuiz={(questions) => { this.backToShowcaseItems(stage, showcaseItem, questions) } } embedded={true} />
+      return <Quiz quizData={stage.quiz} saveQuiz={(questions) => { this.backToShowcaseItems(stage, showcaseItem, questions) } } embedded={true} inline={true} />
     }
     else {
       <div className="action">
@@ -108,14 +110,14 @@ class Accordions extends Component {
             for(let showcaseItem of stage.showcaseItems) {
               // If it's the showcase we are working on
               if (showcaseItem.order === this.props.activeQuest.showcase) {
-                return <div className="accordion quizWrapper">
+                return <div className="accordion quizAccordion">
                   <h3>{showcaseItem.name} by {showcaseItem.artist}</h3>
                   
                   <ReactMarkdown
                     source={showcaseItem.instructions}
                     renderers={ mdRenderers }
                     />
-
+                
                   { this.renderShowcaseAction(stage, showcaseItem) }  
                 </div>
               }

@@ -30,6 +30,7 @@ export const stageTypes = {
 
 export const quizAnswerTypes = {
   FREETEXT: 'freetext',
+  SMALLTEXT: 'smalltext',
 };
 
 export const isQuestsLoaded = (props) => {
@@ -119,7 +120,7 @@ export const getDefaultActiveStageOrder = (activeQuestData) => {
   if(activeQuestData && activeQuestData.stages) {
     let defaultActiveStageOrder = 0;
     // defaultActiveStageOrder is -1 if we need to run the quiz!
-    if (activeQuestData.stages[activeQuestData.stages.length-1].status === 'complete' && activeQuestData.quiz) {
+    if ((!activeQuestData.stages.length || activeQuestData.stages[activeQuestData.stages.length-1].status === 'complete') && activeQuestData.quiz) {
       defaultActiveStageOrder = -1;
     }
     else {

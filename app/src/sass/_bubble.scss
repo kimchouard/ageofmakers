@@ -13,6 +13,13 @@
 
 .aom-bubble {
 	@import "~normalize-scss/sass/normalize/import-now";
+	// Bootstrap imports
+	@import "~bootstrap-sass/assets/stylesheets/bootstrap/variables";
+	@import "~bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+	@import "~bootstrap-sass/assets/stylesheets/bootstrap/normalize";
+	@import "~bootstrap-sass/assets/stylesheets/bootstrap/print";
+	@import "~bootstrap-sass/assets/stylesheets/bootstrap/forms";
+	@import "~bootstrap-sass/assets/stylesheets/bootstrap/buttons";
 
 	margin: auto;
 	width: 400px;
@@ -238,7 +245,7 @@
 			}
 		}
 
-		.quizWrapper {
+		.quizAccordion {
 			padding: 20px;
 
 			h3 {
@@ -386,6 +393,11 @@
 			transform: rotate(90deg);
 		}
 	}
+
+	// ===================================
+	// 			QUIZ
+
+	@import "quiz";
 }
 
 /* ================================

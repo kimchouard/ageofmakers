@@ -132,7 +132,7 @@ class Header extends Component {
         <div className="badgeTrackersHeader col-sm-4">
           {this.renderRequirementsDisplay(ageData)}
         </div>
-        <div className="col-sm-2 col-sm-offset-1 age" onClick={this.props.openTree}>
+        <div className="col-sm-2 col-sm-offset-1 age"> { /* onClick={ this.props.openTree  } */ }
           <div className="roman">
             <div className="age-text">AGE</div>
             <div className="number">{getRomanAge(ageData)}</div>
@@ -153,6 +153,7 @@ class Header extends Component {
           <div className="section-title">Help</div>
           <div className="dropdown-action help" onClick={ () => this.startFirstWalkthrough() }>Getting Started</div>
           <div className="dropdown-action help disabled">FAQs</div>
+          <div className="dropdown-action help disabled">Download Quests in PDF</div>
         </div>
       </div>;
     }

@@ -1,0 +1,69 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+ @import '~compass-mixins/lib/compass';
+ @import 'vars';
+
+.quizWrapper {
+  border-top: 1px solid $grey-light;
+  padding-top: 20px;
+  margin-top: 20px;
+  
+  .quizHeader {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .submitWrapper {
+    text-align: center;
+  }
+
+  &.inline {
+    .quizForm label {
+      text-align: left;
+    }
+  }
+ 
+  /* ================================
+              Form
+  ================================ */
+  
+  .quizForm {
+    margin-top: 10px;
+
+    label {
+      white-space: pre-wrap;
+      font-size: 14px;
+      text-align: right;
+
+      p {
+        display: inline; // Revert the markdown effect
+      }
+
+      &::after {
+        content: ':';
+        position: relative;
+        top: -0.5px;
+        margin: 0 8px 0 2px;
+      }
+
+      &.required::before {
+        content: "*";
+        display: inline-block;
+        margin-right: 4px;
+        color: $red;
+        font-size: 14px;
+        line-height: 1;
+      }
+    }
+
+    small { 
+      margin-top: 10px;
+      display: inline-block;
+    }
+  }
+}

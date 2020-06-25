@@ -129,8 +129,8 @@ const getFullQuestWithAchievements = (callback) => {
                   // If last stage completed,:
                   // - if the achieved quest doesn't have a quiz, completing all the stages is sufficient so the quest is completed too!
                   // - if the quest have a quiz, we need to make sure the quiz is done too
-                  if ( achievement.stageNumber >= achievedQuest.stages[achievedQuest.stages.length - 1].order
-                  && ( !achievedQuest.quiz || (achievedQuest.quiz && achievedQuest.quiz.questions && achievement.quiz && Object.keys(achievement.quiz).length === achievedQuest.quiz.questions.length) ) ) {
+                  if (( achievedQuest.stages.length === 0 || achievement.stageNumber >= achievedQuest.stages[achievedQuest.stages.length - 1].order)
+                   && ( !achievedQuest.quiz || (achievedQuest.quiz && achievedQuest.quiz.questions && achievement.quiz && Object.keys(achievement.quiz).length === achievedQuest.quiz.questions.length) ) ) {
                       quests[achievedQuestId].status = stageStatus.STATUS_COMPLETE;
                       if (achievedQuest.quiz) {
                         quests[achievedQuestId].quiz.results = achievement.quiz;

@@ -10,14 +10,8 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { closeEmbeddedQuest } from '../../../actions/index';
 import { quizAnswerTypes } from '../../_utils';
-import { Form, Input, Button } from 'antd';
 import ReactMarkdown from 'react-markdown';
 import { mdRenderers } from '../../_reactUtils';
-/* <ReactMarkdown
-    source={contentVariableHere}
-    renderers={ mdRenderers }
-  /> */
-
 
 class Quiz extends Component {
   constructor(props) {
@@ -28,36 +22,79 @@ class Quiz extends Component {
       }
   }
 
-  submitQuestion(values) {
-    this.props.saveQuiz(values);
+  submitQuestion(event) {
+    this.props.saveQuiz(this.state.questions);
+    event.preventDefault();
+  }
+
+  handleFormChange(e) {
+    if (e && e.target && e.target.id) {
+      let newQuestions = this.state.questions;
+      newQuestions[e.target.id] = e.target.value;
+      this.setState({
+        questions: newQuestions
+      });
+    }
+    else {
+      console.error('Invalid event for onChange form', e);
+    }
   }
 
   renderQuestions() {
-    const layout = {
-      labelCol: { span: (this.props.embedded) ? 16 : 8 },
-      wrapperCol: { span: 16 },
-    };
-
     const validateMessages = {
       required: 'This field is required!',
     }
 
     if (this.props.quizData.questions) {
-      return <Form {...layout} name="nest-messages" onFinish={(values) => { this.submitQuestion(values) }} validateMessages={validateMessages}>
+      return <form name="quiz" className="form-group quizForm" onSubmit={(e) => { this.submitQuestion(e); }}>
         { this.props.quizData.questions.map((question) => {
+          let inputHtml;
           if (question.type === quizAnswerTypes.FREETEXT) {
-            return <Form.Item name={question.id} label={question.name} rules={[{ required: true }]}>
-              <Input.TextArea placeholder={question.placeholder} />
-            </Form.Item>;
+            inputHtml = <textarea 
+              placeholder={question.placeholder}
+              id={question.id}
+              className="form-control"
+              required
+              value={this.state.questions[question.id]} 
+              onChange={ (e) => { this.handleFormChange(e); } }
+              rows={ (this.props.inline) ? "3" : "5" }
+            />
           }
+          else if (question.type === quizAnswerTypes.SMALLTEXT) {
+            inputHtml = <input 
+              placeholder={question.placeholder}
+              id={question.id}
+              className="form-control"
+              required
+              value={this.state.questions[question.id]} 
+              onChange={ (e) => { this.handleFormChange(e); } }
+              type="text"
+            />
+          }
+
+          return <div className="form-group row question" key={question.id}>
+            <label htmlFor={question.id} className="col-md-3 col-form-label required" title={question.name}>
+              <ReactMarkdown
+                source={question.name}
+                renderers={ mdRenderers }
+              />
+            </label>
+            <div className="col-md-9">
+              { inputHtml }
+              { (!question.examples) ? '' : <small className={ `form-text` /* text-muted */ }>
+                <ReactMarkdown
+                  source={question.examples}
+                  renderers={ mdRenderers }
+                /> 
+              </small> }
+            </div>
+          </div>
         }) }
 
-        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
+        <div className="col-md-offset-3 submitWrapper">
+          <input type="submit" className="btn btn-primary" value="Submit" />
+        </div>
+      </form>
     }
     else {
       console.error('No questions defined for quiz.', this.props.quizData);
@@ -66,7 +103,8 @@ class Quiz extends Component {
 
   render() {
     if (this.props.quizData) {
-      return <div className="row quiz">
+      return <div className={ `row quizWrapper ${(this.props.inline) ? 'inline': 'embedded'}`}>
+        { (this.props.inline) ? <div className="quizHeader">Answer these questions to complete the quest.</div> : ''}
         { this.renderQuestions() }
       </div>
     }

@@ -6,6 +6,7 @@
  */
 
 
+ @import 'vars';
 // Import fontawesome
 @import "~font-awesome/scss/font-awesome";
 // // ============= Bootstrap =============
@@ -25,10 +26,6 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/forms";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/buttons";
 // ============= /Bootstrap =============
-
-@import "~antd/dist/antd.css";
-
-@import 'vars';
 
 html, body {
   background: #000;
@@ -63,6 +60,7 @@ body.game {
 @import 'bubble';
 @import 'embedded';
 @import 'welcome';
+@import 'quiz';
 @import 'onboarding';
 @import 'celebration';
 @import 'walkthrough';

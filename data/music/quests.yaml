@@ -67,23 +67,23 @@ stages:
     Here's a list of music – from the Civil Rights era to today – that shone light on injustice and helped us imagined a better world.
   type: musicShowcase
   order: 1
-  requiredShowcaseViews: 3
+  requiredShowcaseViews: 1
   quiz:
     questions:
       - id: themes
-        name: Identify 1 to 3 themes you want to explore in your song
+        name: What are 1-3 topics that the artist explored in this song?
         placeholder: |-
-          Example: police brutality, identity, environment, education...
+          Examples: Racial Injustice, Police Brutality, Environmental Justice, Education...
         type: freetext
       - id: message
-        name: What’s the take home message for your song?
+        name: What is one “take home message” you think the artist wanted people to understand from this song?
         placeholder: |-
           Example: Despite how though it is and all the barriers, we’re going to be alright.
         type: freetext
       - id: action
-        name: What do you want somebody that listen to your song to go do?
+        name: What *feeling(s)* do you think the artist wanted the audience to have?
         placeholder: |-
-          Example: to keep faith in the future and keep fighting for a brighter future.
+          Examples: Anger, Happiness, Hopeful...
         type: freetext
   showcaseItems:
   - name: Alright
@@ -415,30 +415,33 @@ type: embedded
 # CTA: Learn About Music
 positionLeft: 47.5
 positionTop: 66
-stages:
-- name: How to Set a Vision for Your Song
-  content: |-
-    Focus on the why, the what and the how.
-  type: video
-  youtubeVideoId: sLmcbVMDWEo
-  order: 0
+stages: []
 quiz:
   name: Finding the Purpose of Your Song
   content: |-
     Answer those questions to help you find what is the purpose of your song.
   questions:
     - id: themes
-      name: Identify 1 to 3 themes you want to explore in your song
+      name: What are 1-3 topics that impact your life, your community, or the world around you?
       placeholder: |-
         Example: police brutality, identity, environment, education...
-      type: freetext
+      examples: |-
+        These are the themes you’ll explore in your song.
+      type: smalltext
     - id: message
-      name: What’s the take home message for your song?
+      name: What is the one “take-home message” you want your audience to understand after hearing your song?
       placeholder: |-
-        Example: Despite how though it is and all the barriers, we’re going to be alright.
+        Enter your answer here.
+      examples: |-
+        *Examples to help you identify your take-home message:*
+        - People should not be treated differently based on their race/gender/sexuality/income/age (STATING YOUR VALUES)
+        - Social media is changing the the nature of protest (THE TOOLS OF YOUR GENERATION)
+        - “Red-lining” still has a lasting impact in my community (IMPACT OF HISTORY)
+        - Racism has a deeper implication that you think. (DIGGING DEEPER)
+        - Being an ally sometimes means speaking up, and sometimes means stepping back (EXPLORING YOUR ROLE)
       type: freetext
     - id: action
-      name: What do you want somebody that listen to your song to go do?
+      name: What do you want your audience to *feel* while listening to your song?
       placeholder: |-
         Example: to keep faith in the future and keep fighting for a brighter future.
       type: freetext
