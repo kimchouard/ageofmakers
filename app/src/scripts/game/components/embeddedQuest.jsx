@@ -54,13 +54,13 @@ class EmbeddedQuest extends Component {
         }
 
         return <div className="row">
-          <div className="row">
-            <div className="col-sm-10 col-sm-offset-1">
-              <h1>{activeStageData.name}</h1>
-              <h4>{activeStageData.content}</h4>
-            </div>
+          <div className="col-sm-10 offset-sm-1">
+            <h1>{activeStageData.name}</h1>
+            <h4>{activeStageData.content}</h4>
           </div>
-          { stageDiv }
+          <div className="col-12">
+            { stageDiv }
+          </div>
         </div>
       }
     }

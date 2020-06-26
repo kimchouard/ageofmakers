@@ -87,7 +87,7 @@ class Header extends Component {
   getRequirementsDisplay(ageData, valleyName){
     if(valleyName === "total") {
       return (
-        <div className="col-sm-3 score" key={valleyName}>
+        <div className="col-md-2 col-sm-3 score" key={valleyName}>
           <div className="icon all">ANY</div>
           <p className="value">{addComplete(this.props.journey.quests)} / { this.getQuestsNumber(ageData, valleyName) }</p>
         </div>      
@@ -95,7 +95,7 @@ class Header extends Component {
     } else {
       let areaData = this.props.journey.areas[valleyName];
       return (
-        <div className="col-sm-3 score" key={valleyName}>
+        <div className="col-md-2 col-sm-3 score" key={valleyName}>
           <div className={"icon"} style={ {
             backgroundImage: `url('${ (areaData) ? areaData.image : '/images/Locked_grey.svg'}')`,
           } }></div>
@@ -111,15 +111,6 @@ class Header extends Component {
     });
   }
 
-  getPlayerSDG() {
-    if (this.props.activePlayerData.sdg) {
-      return `${this.props.activePlayerData.sdg}`
-    }
-    else {
-      return '>';
-    }
-  }
-
   startFirstWalkthrough() {
     this.setState({ settings: false });
     this.props.startWalkthrough(1);
@@ -128,11 +119,13 @@ class Header extends Component {
   renderContent() {
     if (isLoggedInAndLoaded(this.props)) {
       let ageData = getAge(this.props.journey);
-      return <div>
-        <div className="badgeTrackersHeader col-sm-4">
-          {this.renderRequirementsDisplay(ageData)}
+      return <div className="row">
+        <div className="badgeTrackersHeader col-sm-5">
+          <div className="row">
+            {this.renderRequirementsDisplay(ageData)}
+          </div>
         </div>
-        <div className="col-sm-2 col-sm-offset-1 age"> { /* onClick={ this.props.openTree  } */ }
+        <div className="col-sm-2 age"> { /* onClick={ this.props.openTree  } */ }
           <div className="roman">
             <div className="age-text">AGE</div>
             <div className="number">{getRomanAge(ageData)}</div>
@@ -140,10 +133,14 @@ class Header extends Component {
           <div className="name">{ageData.name}</div>
         </div>
 
-        <div className="col-sm-2 col-sm-offset-3 user">
-          <a className={`action user-sdg sdg${this.props.activePlayerData.sdg}`} onClick={this.props.openWelcome}>{this.getPlayerSDG()}</a> 
-          <p className="name">{this.props.activePlayerData.name}</p>
-          <a className="action settings" onClick={ () => this.setState({ settings: !this.state.settings }) }></a>
+        <div className="col-sm-2 offset-sm-3">
+          <div className="row">
+            <div className="col-sm-11 user">
+              {/* <a className={`action user-sdg sdg${this.props.activePlayerData.sdg}`} onClick={this.props.openWelcome}>{this.getPlayerSDG()}</a>  */}
+              <p className="name">{this.props.activePlayerData.name}</p>
+              <a className="action settings" onClick={ () => this.setState({ settings: !this.state.settings }) }></a>
+            </div>
+          </div>
         </div>
         <div className={`col-sm-2 dropdown ${(this.state.settings) ? 'visible': ''}`}>
           <div className="section-title">Settings</div>

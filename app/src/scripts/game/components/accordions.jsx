@@ -110,15 +110,19 @@ class Accordions extends Component {
             for(let showcaseItem of stage.showcaseItems) {
               // If it's the showcase we are working on
               if (showcaseItem.order === this.props.activeQuest.showcase) {
-                return <div className="accordion quizAccordion">
-                  <h3>{showcaseItem.name} by {showcaseItem.artist}</h3>
-                  
-                  <ReactMarkdown
-                    source={showcaseItem.instructions}
-                    renderers={ mdRenderers }
-                    />
+                return <div className="accordion quizAccordion container-fluid">
+                  <div className="col-12">
+                    <h3>{showcaseItem.name} by {showcaseItem.artist}</h3>
+                    
+                    <ReactMarkdown
+                      source={showcaseItem.instructions}
+                      renderers={ mdRenderers }
+                      />
+                  </div>
                 
-                  { this.renderShowcaseAction(stage, showcaseItem) }  
+                  <div className="col-12">
+                    { this.renderShowcaseAction(stage, showcaseItem) }  
+                  </div>
                 </div>
               }
             }

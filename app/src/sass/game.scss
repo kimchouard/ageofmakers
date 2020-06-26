@@ -11,20 +11,19 @@
 @import "~font-awesome/scss/font-awesome";
 // // ============= Bootstrap =============
 // // Core variables and mixins
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/variables";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/mixins";
-// Reset and dependencies
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/normalize";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/print";
-//@import "~bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/utilities";
 // Core CSS
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/type";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/code";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/grid";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/tables";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/forms";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/buttons";
+@import "~bootstrap/scss/bootstrap-grid";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/card";
 // ============= /Bootstrap =============
 
 html, body {

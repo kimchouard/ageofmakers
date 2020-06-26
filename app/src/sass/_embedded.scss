@@ -15,7 +15,7 @@
 .fullpage {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 105%;
   left: 0;
   padding: 55px 0 20px;
@@ -26,6 +26,7 @@
   
   &.open {
     top: 0px;
+    bottom: 0px;
 
     .closingbutton {
       position: fixed;
@@ -46,17 +47,17 @@
     background-color: $red;
   }
   
-  .btn-next {
-    padding: 10px 20px;
-    font-size: 20px;
-    width: fit-content;
-    display: block;
-    margin: 10px auto;
-    background-color: $red;
+  .actions {
+    text-align: center;
+  }
 
-    &.disabled {
-      background-color: $grey-light;
-      border-color: $grey;
+  .btn-next {
+    // display: block;
+    margin: 10px auto;
+
+    &:disabled {
+    //   background-color: $grey-light;
+    //   border-color: $grey;
       cursor: not-allowed;
     }
   }
@@ -155,65 +156,8 @@
             Music Showcase
 ================================ */
 
-.song {
-  border-radius: 5px;
-  border: 2px solid $grey;
-  margin-top: 10px;
-  padding: 0 15px;
-  height: 450px;
-
-  .title {
-    background: $grey;
-    margin: 0 -15px;
-    border-radius: 4px 4px 0 0;
-    color: white;
-    padding: 8px 15px;
-    position: relative;
-
-    .name {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .artist {
-      font-size: 14px;
-    }
-  }
-
-  .desc {
-    padding-top: 20px;
-
-    img {
-      max-width: 90%;
-      margin: 10px auto;
-      display: block;
-    }
-  }
-
-  .btn {
-    color: #fff;
-    display: block;
-    margin: 20px auto;
-    width: fit-content;
-
-    &.btn-done {
-      background-color: $green;
-      border-color: darken($green, 5);
-      
-      &:hover {
-        background-color: darken($green, 5);
-        border-color: darken($green, 10);
-      }
-    }
-
-    &.btn-action {
-      background-color: $red;
-      border-color: darken($red, 5);
-      
-      &:hover {
-        background-color: darken($red, 5);
-        border-color: darken($red, 10);
-      }
-    }
+.songs {
+  .actions {
+    text-align: center;
   }
 }

@@ -12,14 +12,18 @@
 ================================ */
 
 .aom-bubble {
-	@import "~normalize-scss/sass/normalize/import-now";
+	// @import "~normalize-scss/sass/normalize/import-now";
 	// Bootstrap imports
-	@import "~bootstrap-sass/assets/stylesheets/bootstrap/variables";
-	@import "~bootstrap-sass/assets/stylesheets/bootstrap/mixins";
-	@import "~bootstrap-sass/assets/stylesheets/bootstrap/normalize";
-	@import "~bootstrap-sass/assets/stylesheets/bootstrap/print";
-	@import "~bootstrap-sass/assets/stylesheets/bootstrap/forms";
-	@import "~bootstrap-sass/assets/stylesheets/bootstrap/buttons";
+	// Core variables and mixins
+	@import "~bootstrap/scss/mixins";
+	@import "~bootstrap/scss/functions";
+	@import "~bootstrap/scss/variables";
+	@import "~bootstrap/scss/utilities";
+	// Core CSS
+	@import "~bootstrap/scss/bootstrap-grid";
+	@import "~bootstrap/scss/grid";
+	@import "~bootstrap/scss/forms";
+	@import "~bootstrap/scss/buttons";
 
 	margin: auto;
 	width: 400px;

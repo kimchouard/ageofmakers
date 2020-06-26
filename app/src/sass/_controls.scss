@@ -39,16 +39,19 @@
     }
   }
 
-  .score {
+  .score, .user {
     background: $beige;
     font-size: 12px;
     line-height: 18px;
-    margin: 10px 0px 0 0;
+    margin: 10px 0 0 10px;
     box-sizing:border-box;
-    border-right: 10px $grey solid;
+    position: relative;
 
-    .icon {
-      background-color: $grey;
+    &.user {
+      margin: 10px 10px 0 0;
+    }
+
+    .icon, .action {
       height: 20px;
       width: 20px;
       float: left;
@@ -57,17 +60,45 @@
       background-position: 3px 3px;
       background-size: 14px 14px;
 
+      &.action {
+        background-color: $red;
+        height: 20px;
+        width: 20px;
+        float: right;
+
+        &.settings {
+          background-image: url('/images/settings.svg');
+          background-repeat: no-repeat;
+          background-position: 3px 3px;
+          background-size: 14px 14px;
+          cursor: pointer;
+        }
+      }
+
+      &.icon {
+        background-color: $grey;
+      }
+
       &.all {
         color: white;
         font-size: 8px;
         text-indent: 2px;
         padding-top: 2px;
       }
+
+      &:hover {
+        text-decoration: none;
+      }
     }
 
     .value {
       margin: 6px 0 4px;
       text-align: right;
+    }
+
+    .name {
+      margin: 4px 0 7px;
+      float: left;
     }
   }
 
@@ -105,64 +136,6 @@
       font-size: 18px;
       line-height: 50px;
       text-align: center;
-    }
-  }
-
-  .user {
-    background: $beige;
-    margin-top: 10px;
-
-    .name {
-      margin: 4px 0 7px;
-      float: left;
-    }
-
-    .action {
-      background-color: $red;
-      height: 20px;
-      width: 20px;
-      margin: 5px -10px 0 0;
-      float: right;
-      position: relative;
-
-      &:hover {
-        text-decoration: none;
-      }
-
-      &.settings {
-        background-image: url('/images/settings.svg');
-        background-repeat: no-repeat;
-        background-position: 3px 3px;
-        background-size: 14px 14px;
-        cursor: pointer;
-      }
-
-      &.user-sdg {
-        background-color: $grey;
-        color: white;
-        text-align: center;
-        margin-right: 10px;
-        margin-left: -10px;
-        float: left;
-
-        &.sdg1 { background: #e5243b; }
-        &.sdg2 { background: #DDA63A; }
-        &.sdg3 { background: #4C9F38; }
-        &.sdg4 { background: #C5192D; }
-        &.sdg5 { background: #FF3A21; }
-        &.sdg6 { background: #26BDE2; }
-        &.sdg7 { background: #FCC30B; }
-        &.sdg8 { background: #A21942; }
-        &.sdg9 { background: #FD6925; }
-        &.sdg10 { background: #DD1367; }
-        &.sdg11 { background: #FD9D24; }
-        &.sdg12 { background: #BF8B2E; }
-        &.sdg13 { background: #3F7E44; }
-        &.sdg14 { background: #0A97D9; }
-        &.sdg15 { background: #56C02B; }
-        &.sdg16 { background: #00689D; }
-        &.sdg17 { background: #19486A; }
-      }
     }
   }
 

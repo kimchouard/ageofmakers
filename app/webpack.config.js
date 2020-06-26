@@ -35,7 +35,7 @@ export default (scriptName, isBgScript) => {
                 includePaths: [
                   path.resolve(__dirname, './node_modules/compass-mixins/lib'),
                   path.resolve(__dirname, './node_modules/font-awesome/scss'),
-                  path.resolve(__dirname, './node_modules/bootstrap-sass/assets/stylesheets')
+                  path.resolve(__dirname, './node_modules/bootstrap/scss')
                 ],
               },
             },

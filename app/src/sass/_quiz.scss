@@ -44,12 +44,12 @@
         display: inline; // Revert the markdown effect
       }
 
-      &::after {
-        content: ':';
-        position: relative;
-        top: -0.5px;
-        margin: 0 8px 0 2px;
-      }
+      // &::after {
+      //   content: ':';
+      //   position: relative;
+      //   top: -0.5px;
+      //   margin: 0 8px 0 2px;
+      // }
 
       &.required::before {
         content: "*";

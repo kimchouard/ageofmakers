@@ -46,7 +46,7 @@ class Quiz extends Component {
     }
 
     if (this.props.quizData.questions) {
-      return <form name="quiz" className="form-group quizForm" onSubmit={(e) => { this.submitQuestion(e); }}>
+      return <form name="quiz" className="form-group quizForm col-12" onSubmit={(e) => { this.submitQuestion(e); }}>
         { this.props.quizData.questions.map((question) => {
           let inputHtml;
           if (question.type === quizAnswerTypes.FREETEXT) {
@@ -72,14 +72,14 @@ class Quiz extends Component {
             />
           }
 
-          return <div className="form-group row question" key={question.id}>
-            <label htmlFor={question.id} className="col-md-3 col-form-label required" title={question.name}>
+          return <div className="form-group question row" key={question.id}>
+            <label htmlFor={question.id} className={`col-md-${(this.props.inline) ? '12': '3'} col-form-label required`} title={question.name}>
               <ReactMarkdown
                 source={question.name}
                 renderers={ mdRenderers }
               />
             </label>
-            <div className="col-md-9">
+            <div className={ `col-md-${(this.props.inline) ? '12': '9'}` }>
               { inputHtml }
               { (!question.examples) ? '' : <small className={ `form-text` /* text-muted */ }>
                 <ReactMarkdown
@@ -92,7 +92,7 @@ class Quiz extends Component {
         }) }
 
         <div className="col-md-offset-3 submitWrapper">
-          <input type="submit" className="btn btn-primary" value="Submit" />
+          <input type="submit" className="btn btn-primary btn-lg" value="Submit" />
         </div>
       </form>
     }
@@ -104,7 +104,7 @@ class Quiz extends Component {
   render() {
     if (this.props.quizData) {
       return <div className={ `row quizWrapper ${(this.props.inline) ? 'inline': 'embedded'}`}>
-        { (this.props.inline) ? <div className="quizHeader">Answer these questions to complete the quest.</div> : ''}
+        { (this.props.inline) ? <div className="quizHeader col-12">Answer these questions to complete the quest.</div> : ''}
         { this.renderQuestions() }
       </div>
     }

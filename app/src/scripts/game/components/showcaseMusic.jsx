@@ -26,33 +26,51 @@ class MusicShowcase extends Component {
 
   renderActionBtn(showcaseItem) {
     if (showcaseItem.status === stageStatus.STATUS_COMPLETE) {
-      return <div className="btn btn-done">✓ COMPLETED</div>
+      return <button className="btn btn-success">✓ COMPLETED</button>
     }
     else {
-      return <div className="btn btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>Listen to the story</div>
+      return <button className="btn btn-primary btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>Listen to the story</button>
     }
   }
 
   renderShowcaseItems() {
     if (this.props.activeStageData.showcaseItems) {
       return this.props.activeStageData.showcaseItems.map((song) => {
-        return <div className="col-md-4" key={song.order}>
-          <div className="song">
-            <div className="row title">
-              <div className="name">{song.name}</div>
-              <div className="artist"><strong>By:</strong> {song.artist}</div>
+        return <div className="col mb-4">
+          <div className={ `card bg-secondary h-100 ${ (song.status === stageStatus.STATUS_COMPLETE) ? 'border-success' : ''}` } key={song.order}>
+            <img src={song.imageUrl} className="card-img-top" alt={ `Image for ${song.name} by ${song.artist}`} />
+            <div className="card-body">
+              <h5 className="card-title">{song.name} by {song.artist}</h5>
+              <div className="card-text">
+                <ReactMarkdown
+                  source={song.content}
+                  renderers={ mdRenderers }
+                />
+              </div>
+              <p className="card-text"><strong>📆 Historical Context: </strong> {song.historicalContext}</p>
             </div>
-            <div className="desc">
-              <ReactMarkdown
-                source={song.content}
-                renderers={ mdRenderers }
-              />
-            </div>
-            <div className="actions">
+            <div className="card-footer actions">
               { this.renderActionBtn(song) }
             </div>
           </div>
         </div>
+        // <div className="col-md-4" key={song.order}>
+        //   <div className="song">
+        //     <div className="row title">
+        //       <div className="name">{song.name}</div>
+        //       <div className="artist"><strong>By:</strong> {song.artist}</div>
+        //     </div>
+        //     <div className="desc">
+        //       <ReactMarkdown
+        //         source={song.content}
+        //         renderers={ mdRenderers }
+        //       />
+        //     </div>
+        //     <div className="actions">
+        //       { this.renderActionBtn(song) }
+        //     </div>
+        //   </div>
+        // </div>
       });
     }
     else {
@@ -69,16 +87,24 @@ class MusicShowcase extends Component {
     })
 
     // Only disable the next button if the player visited enough showcase items
-    return <div className={`btn btn-danger ${ (this.props.embeddedQuest.open) ? 'btn-next' : ''} ${ (countVisitedShowcaseItem >= this.props.activeStageData.requiredShowcaseViews) ? '' : 'disabled'}`} onClick={() => { if((countVisitedShowcaseItem >= this.props.activeStageData.requiredShowcaseViews)) { this.props.goToNextStage(this.props.activeStageData) } } }>NEXT</div>;
+    return <button
+      className={`btn btn-primary btn-lg btn-next`}
+      onClick={() => { if((countVisitedShowcaseItem >= this.props.activeStageData.requiredShowcaseViews)) { this.props.goToNextStage(this.props.activeStageData) } } }
+      disabled={ (countVisitedShowcaseItem < this.props.activeStageData.requiredShowcaseViews) }
+    >
+      NEXT
+    </button>;
   }
 
   render() {
     if (this.props.activeStageData) {
       return <div className="col-sm-12 instructionsWrapper">
-        { this.renderNextButton() }
+        <div className="text-center">
+          { this.renderNextButton() }
+        </div>
         <p className="instructions">Explore at least {this.props.activeStageData.requiredShowcaseViews} examples below and click NEXT to continue the quest.</p>
 
-        <div className="row">
+        <div className="row songs row-cols-2 row-cols-md-3">
           { this.renderShowcaseItems() }
         </div>
       </div>

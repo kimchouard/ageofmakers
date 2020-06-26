@@ -38,9 +38,6 @@ $journey-grey: #878787;
 
 
 // Bootstrap override
-$brand-primary:         $red; // #337ab7
-$brand-success:         $green;
-$brand-info:            $journey-blue;
-$brand-warning:         $orange;
-$brand-danger:          $red;
-$gray-base:             $grey;
+$primary:       $red;
+$secondary:       $beige;
+// $link-color:    $primary; // bugfix

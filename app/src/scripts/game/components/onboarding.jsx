@@ -29,7 +29,7 @@ class Onboarding extends Component {
     }
 
     startNewUserCreation(e) {
-      if (this.props.players) {
+      if (this.props.players && this.state.userName) {
         console.log('Creating new user:', this.state.userName);
         e.preventDefault(); 
         this.props.setNewPlayer(this.state.userName);
@@ -68,7 +68,7 @@ class Onboarding extends Component {
 
     renderCancelButton() {
       if (this.props.players && Object.keys(this.props.players) && Object.keys(this.props.players).length) {
-        return <input type="button" className="btn btn-cancel" value="Cancel" onClick={(e) => { return this.backToPlayerSelect(e); }}/>;
+        return <input type="button" className="btn btn-danger btn-cancel" value="Cancel" onClick={(e) => { return this.backToPlayerSelect(e); }}/>;
       }
     }
 
@@ -97,7 +97,7 @@ class Onboarding extends Component {
 
       if (!this.props.activePlayerData && (!this.props.activePlayer || this.props.activePlayer === -1 )) {
         if (this.state.newUserUi || !this.props.players || (this.props.players && !Object.keys(this.props.players).length) ) {
-          return <form className="name-form">
+          return <form className="name-form form-group">
             <label htmlFor="playerName">
               <h1>Hi! 👋</h1>
               <h1>Welcome to your new adventure 🚀</h1>
@@ -109,9 +109,11 @@ class Onboarding extends Component {
               placeholder="First, type your name here!"
               value={ this.state.userName }
               onChange={ e => this.setState({ userName: e.target.value }) }
-              className="player-name" />
+              className="player-name form-control"
+              required
+              />
               { this.renderCancelButton() }
-            <input type="submit" className="btn btn-login" value="Let's do it!" onClick={(e) => { return this.startNewUserCreation(e); }}/>
+            <input type="submit" className="btn btn-light btn-login" value="Let's do it!" onClick={(e) => { return this.startNewUserCreation(e); }}/>
             <div className="clear-both"></div>
           </form>;
         }
@@ -129,10 +131,10 @@ class Onboarding extends Component {
 
               return <div className="player" key={playerId} onClick={ (e) => { this.logIn(e, player); } }>
                 <div className="player-name">{ player.name }</div>
-                <button className="btn-delete" onClick={() => { this.startRemovingPlayer(playerId) }}>X</button>
+                <button className="btn btn-danger btn-delete btn-sm" onClick={() => { this.startRemovingPlayer(playerId) }}>X</button>
               </div>
             })}
-            <button className="btn btn-login" onClick={() => { this.setState({ newUserUi: true }) }}>+ New Player</button>
+            <button className="btn btn-light btn-login" onClick={() => { this.setState({ newUserUi: true }) }}>+ New Player</button>
           </div>;
         }
       }
