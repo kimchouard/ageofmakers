@@ -446,7 +446,7 @@ quiz:
         Example: to keep faith in the future and keep fighting for a brighter future.
       type: freetext
 prerequisites: 
-- welcome_music_world
+- music_change_the_world
 visibleAtAge: 1
 
 
