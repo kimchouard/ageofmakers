@@ -25,7 +25,7 @@ export const mdRenderers = {
     return (
       <img
         alt={alt}
-        src={chrome.extension.getURL(src)}
+        src={ (src.search('http') === -1) ? chrome.extension.getURL(src) : src }
       />
     );
   }

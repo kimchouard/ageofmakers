@@ -1,0 +1,21 @@
+# Copyright (c) 2020, salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+
+MakerMount:
+  name: Maker Mount
+  image: data/ftc/icons/MakerMount.svg
+  imageGrey: data/ftc/icons/MakerMount_grey.svg
+Electronics:
+  name: Electronics Valley
+  image: data/ftc/icons/Electronics.svg
+  imageGrey: data/ftc/icons/Electronics_grey.svg
+Coding:
+  name: Coding Valley
+  image: data/ftc/icons/Coding.svg
+  imageGrey: data/ftc/icons/Coding_grey.svg
+ThreeD:
+  name: 3D Valley
+  image: data/ftc/icons/3D.svg
+  imageGrey: data/ftc/icons/3D_grey.svg

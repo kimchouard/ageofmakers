@@ -82,7 +82,7 @@ stages:
 visibleAtAge: 0
 prerequisites: 
 - age: 1
-- maker_students_showcase
+- welcome_quest
 
 
 # -------------------------------------------------------
@@ -546,7 +546,7 @@ stages:
   order: 0
 prerequisites: 
 - age: 1
-- maker_students_showcase
+- welcome_quest
 visibleAtAge: 0
 
 
@@ -858,7 +858,7 @@ stages:
   order: 1
 prerequisites: 
 - age: 1
-- maker_students_showcase
+- welcome_quest
 visibleAtAge: 0
 
 
@@ -1372,30 +1372,52 @@ visibleAtAge: 1
 #                 Maker Quests
 # =======================================================
 
-
 # -------------------------------------------------------
-# What have other students done?
-# a004100000qR83OAAS / maker_students_showcase
+# Global Goal Advocacy Project
+# welcome
 ---
-id: maker_students_showcase
-name: What have other students done?
+id: welcome_quest
+name: Welcome to Your New Adventure!
 valley: MakerMount
 content: |-
   Welcome to the **Age of Makers**. 👋🏻 
   
   You're about to hop on an exciting adventure. 🎒😎🚀✨
     
-  ![FTC Winners Celebrating](https://ageofmakers.s3.amazonaws.com/Future%20Trailblazer%20Challenge%20-%20Students%20Celebrate_min.jpg)
+  ![FTC Winners Celebrating](data/music/images/Future%20Trailblazer%20Challenge%20-%20Students%20Celebrate_min.jpg)
   
   In this game, you'll learn how to use new technologies to solve the world's biggest problems, also known as the [Global Goals](https://www.globalgoals.org/).
 
-  Wonder what that means? Click **Start Your Journey** below to get started and get inspired by what other students have built with this game already!
+  Wonder what that means? Click **Start Your Journey** below to get started!
+type: embedded
+CTA: Start Your Journey 🏞
+positionLeft: 35
+positionTop: 35
+stages:
+- name: Music for Change
+  content: |-
+    Look at this video to know what's coming up for you. 🧐
+  type: video
+  youtubeVideoId: MPSr4XoyOfQ
+  order: 0
+prerequisites: []
+visibleAtAge: 0
+
+
+# -------------------------------------------------------
+# What have other students done?
+# a004100000qR83OAAS / students_showcase
+---
+id: students_showcase
+name: What have other students done?
+valley: MakerMount
+content: |-
+  Explore what other students have done with the game!
 # startUrl: https://docs.google.com/document/d/1D-yuD0ABFLaaa_J3s2YLOHNkNAi09UTcgf9sfZR3_9E/edit?usp=sharing
-startUrl: https://scratch.mit.edu
 type: showcase
-CTA: Start Your Journey
-positionLeft: 38
-positionTop: 36
+CTA: Show me!
+positionLeft: 39
+positionTop: 38
 stages:
 - name: Hidden stage
   content: |-
@@ -1515,7 +1537,8 @@ projects:
   using:
     - mobile
   order: 10
-prerequisites: []
+prerequisites:
+  - welcome_quest
 visibleAtAge: 0
 
 
