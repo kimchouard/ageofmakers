@@ -7,6 +7,7 @@
 
 import React from 'react';
 import CustomMessage from './game/components/customMessage';
+import BandlabPlayer from './game/components/bandlabPlayer';
 
 export const mdRenderers = {
   code: ({ language, value }) => {
@@ -14,6 +15,10 @@ export const mdRenderers = {
       return <CustomMessage type={language}>
         { value }
       </CustomMessage>
+    }
+
+    if (language === 'bandlab') {
+      return <BandlabPlayer musicId={value} />
     }
 
     // Or default code snippet
