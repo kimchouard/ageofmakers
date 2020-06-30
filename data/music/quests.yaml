@@ -31,7 +31,7 @@ positionLeft: 44.75
 positionTop: 82
 stages:
 - name: Music for Change
-  content: |-
+  subtitle: |-
     Look at this video to know what's coming up for you. 🧐
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -57,7 +57,7 @@ positionLeft: 50.5
 positionTop: 78.5
 stages:
 - name: Music for Change
-  content: |-
+  subtitle: |-
     Look at this video to know what's coming up for you. 🧐
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -351,7 +351,7 @@ positionLeft: 47.5
 positionTop: 71
 stages:
 - name: How Music Is Written
-  content: |-
+  subtitle: |-
     Music structure (sections, etc.) & gendra overview.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -464,7 +464,7 @@ type: embedded
 # CTA:
 stages:
 - name: What is Music Theory?
-  content: |-
+  subtitle: |-
     And why is it so powerful?
   type: video
   youtubeVideoId: QG2GAYKZVHc
@@ -496,7 +496,7 @@ type: embedded
 # CTA:
 stages:
 - name: Notes & Scales
-  content: |-
+  subtitle: |-
     Wonder what's the most used sound in modern music?
   type: video
   youtubeVideoId: hHGjP3zOcvQ
@@ -527,7 +527,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: qnetRvkxfOo
@@ -558,7 +558,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: AyI9ZO6PuiY
@@ -589,7 +589,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: DBmcbO53Ulk
@@ -620,7 +620,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: UAHZ8sTDTCc
@@ -651,7 +651,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -679,7 +679,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -707,7 +707,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -740,7 +740,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -765,7 +765,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -790,7 +790,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -815,7 +815,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -846,7 +846,7 @@ type: embedded
 # CTA:
 stages:
 - name: How do we measure and note rythm?
-  content: |-
+  subtitle: |-
     Understand how to make a beat it pump. 😎
   type: video
   youtubeVideoId: zDfnina4JHw
@@ -878,7 +878,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -905,7 +905,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -932,7 +932,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -964,7 +964,7 @@ type: embedded
 # CTA:
 stages:
 - name: Intro to Writing Lyrics
-  content: |-
+  subtitle: |-
     Learn what it takes to write lyrics for a song.
   type: video
   youtubeVideoId: kk-K5J0c_qE
@@ -996,7 +996,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -1023,7 +1023,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -1050,7 +1050,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -1077,7 +1077,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -1104,7 +1104,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -1137,7 +1137,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -1165,7 +1165,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -1192,7 +1192,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -1219,7 +1219,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
@@ -1246,7 +1246,7 @@ type: embedded
 # CTA:
 stages:
 - name: TODO
-  content: |-
+  subtitle: |-
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ

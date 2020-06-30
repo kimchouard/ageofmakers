@@ -8,6 +8,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
+import ReactMarkdown from 'react-markdown';
+
+import { mdRenderers } from '../../_reactUtils';
 import { closeEmbeddedQuest, changeQuestProgress } from '../../../actions/index';
 import { questTypes, stageTypes, getActiveQuestData, getStageData, getDefaultActiveStageOrder } from '../../_utils';
 import MusicShowcase from './showcaseMusic';
@@ -48,15 +51,20 @@ class EmbeddedQuest extends Component {
         else if (activeStageData && activeStageData.questions) {
           stageDiv = <Quiz quizData={activeStageData} saveQuiz={(questions) => { this.saveQuiz(questions) } } />
         }
+        // Default is to show content from Markdown!
         else {
           // TODO: Errors on stage data type unknown
-          console.log('Unknown stage type.', activeStageData);
+          console.error('Unknown stage type.', activeStageData);
+          stageDiv = <ReactMarkdown
+            source={activeStageData.content}
+            renderers={ mdRenderers }
+          />
         }
 
         return <div className="row">
           <div className="col-sm-10 offset-sm-1">
             <h2>{activeStageData.name}</h2>
-            <h5>{activeStageData.content}</h5>
+            <h5>{activeStageData.subtitle}</h5>
           </div>
           <div className="col-12">
             { stageDiv }
