@@ -418,7 +418,7 @@ name: Start Your First Track
 valley: musiccity
 content: |-
   Get started on your first music track!
-startUrl: https://edu.bandlab.com
+startUrl: https://edu.bandlab.com/classroom/musicforchange
 positionLeft: 47
 positionTop: 56
 stages:
@@ -445,31 +445,69 @@ visibleAtAge: 1
 
 
 # -------------------------------------------------------
-# How does a melody work?
-# melody_basics
+# What is Music Theory?
+# music_theory_intro
 --- 
-id: melody_basics
-name: How does a melody work?
+id: music_theory_intro
+name: What is Music Theory?
 valley: musiccity
 content: |-
-  Overview and notes with their relations → practice with a famous song.
-  **TODO**
+  Meet your awesome instructor, [Andrew Huang](https://www.youtube.com/channel/UCdcemy56JtVTrsFIOoqvV8g), and get a sneek peak at the magic behind Music Theory. 
+
+  In less than 30 minutes of video, you'll know the major things you have to know about music theory.
+
+  *Hint:* It doesn't have to be boring, and it'll actually be pretty interactive! 😎
 # startUrl: https://www.tinkercad.com/login 
-positionLeft: 55.5
-positionTop: 52
+positionLeft: 56.5
+positionTop: 54.5
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: What is Music Theory?
   content: |-
-    Description here.
+    And why is it so powerful?
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: QG2GAYKZVHc
+  featuredChannel:
+    name: ANDREW HUANG
+    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
   order: 0
 visibleAtAge: 1
 prerequisites:
 - age: 2
 - bandlab_start
+
+
+
+# -------------------------------------------------------
+# How does a melody work?
+# melody_basics
+--- 
+id: melody_basics
+name: You Said... Notes? 🤨
+valley: musiccity
+content: |-
+  Starting from the basics: what is a *note*? And how does it relate to a *scale*?
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 45
+positionTop: 52.5
+type: embedded
+# CTA:
+stages:
+- name: Notes & Scales
+  content: |-
+    Wonder what's the most used sound in modern music?
+  type: video
+  youtubeVideoId: hHGjP3zOcvQ
+  featuredChannel:
+    name: ANDREW HUANG
+    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
+  order: 0
+visibleAtAge: 1
+prerequisites:
+- music_theory_intro
 
 
 # -------------------------------------------------------
@@ -492,7 +530,11 @@ stages:
   content: |-
     Description here.
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: qnetRvkxfOo
+  featuredChannel:
+    name: ANDREW HUANG
+    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -500,11 +542,42 @@ prerequisites:
 
 
 # -------------------------------------------------------
-# Expand Your Instrumental
-# expand_instru
+# The Notation System
+# notation_system
 --- 
-id: expand_instru
-name: Expand Your Instrumental
+id: notation_system
+name: The Notation System
+valley: musiccity
+content: |-
+  Overview and notes with their relations → practice with a famous song.
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 49
+positionTop: 47
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: AyI9ZO6PuiY
+  featuredChannel:
+    name: ANDREW HUANG
+    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- chords_moods
+
+
+# -------------------------------------------------------
+# Inversions
+# inversions
+--- 
+id: inversions
+name: Inversions
 valley: musiccity
 content: |-
   Overview and notes with their relations → practice with a famous song.
@@ -519,11 +592,73 @@ stages:
   content: |-
     Description here.
   type: video
+  youtubeVideoId: DBmcbO53Ulk
+  featuredChannel:
+    name: ANDREW HUANG
+    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- notation_system
+
+
+# -------------------------------------------------------
+# Melodies
+# melodies
+--- 
+id: melodies
+name: Melodies
+valley: musiccity
+content: |-
+  Overview and notes with their relations → practice with a famous song.
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 58
+positionTop: 36.5
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
+  youtubeVideoId: UAHZ8sTDTCc
+  featuredChannel:
+    name: ANDREW HUANG
+    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- inversions
+
+
+# -------------------------------------------------------
+# Expand Your Instrumental
+# expand_instru
+--- 
+id: expand_instru
+name: Expand Your Instrumental
+valley: musiccity
+content: |-
+  Overview and notes with their relations → practice with a famous song.
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 51
+positionTop: 40
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  content: |-
+    Description here.
+  type: video
   youtubeVideoId: MPSr4XoyOfQ
   order: 0
 visibleAtAge: 2
 prerequisites:
-- chords_moods
+- melodies
 
 
 # -------------------------------------------------------
@@ -701,26 +836,29 @@ id: rhythm_basics
 name: Let's Stay in Tempo
 valley: beats
 content: |-
-  Intro to time aspect of music theory + examples of different gendra 
-  → try tapping your hands on a song you like
-
-  **TODO**
+  Introduction to rhythm and how it's counted, shared and used. 
+  
+  This also walks you through the 3 most basic elements of rhythm: Kick, Snare & Hit-hat.
 # startUrl: https://www.tinkercad.com/login 
 positionLeft: 70
 positionTop: 56.5
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: How do we measure and note rythm?
   content: |-
-    Description here.
+    Understand how to make a beat it pump. 😎
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: zDfnina4JHw
+  featuredChannel:
+    name: ANDREW HUANG
+    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
   order: 0
 visibleAtAge: 1
 prerequisites:
 - age: 2
-- bandlab_start
+- music_theory_intro
 
 # -------------------------------------------------------
 # The Main Rythm Elements
@@ -825,9 +963,9 @@ positionTop: 61.5
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: Intro to Writing Lyrics
   content: |-
-    Description here.
+    Learn what it takes to write lyrics for a song.
   type: video
   youtubeVideoId: kk-K5J0c_qE
   featuredChannel:
@@ -978,7 +1116,7 @@ prerequisites:
 
 
 # =======================================================
-#                 Lyrics Valley
+#                 Mixing Valley
 # =======================================================
 
 # -------------------------------------------------------

@@ -27,7 +27,7 @@ class Video extends Component {
       return <div className="featuredYoutubeChannel">
         <img className="channelIcon" src={this.props.activeStageData.featuredChannel.icon} />
         <div className="channelName">{this.props.activeStageData.featuredChannel.name}</div>
-        <a className="youtubeButton" href={`https://www.youtube.com/channel/${this.props.activeStageData.featuredChannel.youtubeChannelId}`} target="_blank"></a>
+        <a className="btn btn-primary youtubeButton" href={`https://www.youtube.com/channel/${this.props.activeStageData.featuredChannel.youtubeChannelId}`} target="_blank"></a>
       </div>
     }
   }
@@ -54,7 +54,7 @@ class Video extends Component {
           { this.renderFeatured() }
         </div>
         <div className="col-12 actions">
-          <div className={`btn btn-danger btn-lg btn-next`} onClick={() => { this.props.goToNextStage(this.props.activeStageData) }}>NEXT</div>
+          <div className={`btn btn-primary btn-lg btn-next`} onClick={() => { this.props.goToNextStage(this.props.activeStageData) }}>NEXT</div>
         </div>
       </div>
     }
