@@ -111,13 +111,13 @@ stages:
 
       ![Project Image](data/music/images/npr/npr_player.png)
     order: 1
-  - name: Cold Fact
-    artist: Sixto Rodríguez
-    startUrl: https://www.npr.org/2013/02/06/171182973/how-detroits-sugar-man-became-south-africas-superstar
+  - name: I Will Survive
+    artist: Gloria Gaynor
+    startUrl: https://www.npr.org/2019/09/24/763518201/gloria-gaynor-i-will-survive-american-anthem
     content: |-
-      How A Detroit Flop Became South Africa's Superstar.
-    imageUrl: data/music/images/npr/npr_cold_facts.png
-    historicalContext: 1970, during the South Africa's social movements.
+      'I Will Survive' Saves Marginalized People A Spot On The Dance Floor
+    imageUrl: data/music/images/npr/npr_i_will_survive.png
+    historicalContext: October 1978
     instructions: |-
       Listen or read this article.
 
@@ -326,6 +326,18 @@ stages:
 
       ![Project Image](data/music/images/npr/npr_player.png)
     order: 19
+  - name: Cold Fact
+    artist: Sixto Rodríguez
+    startUrl: https://www.npr.org/2013/02/06/171182973/how-detroits-sugar-man-became-south-africas-superstar
+    content: |-
+      How A Detroit Flop Became South Africa's Superstar.
+    imageUrl: data/music/images/npr/npr_cold_facts.png
+    historicalContext: 1970, during the South Africa's social movements.
+    instructions: |-
+      Listen or read this article.
+
+      ![Project Image](data/music/images/npr/npr_player.png)
+    order: 20
 prerequisites: 
 - welcome_quest
 visibleAtAge: 0
@@ -377,7 +389,7 @@ positionTop: 66
 stages: []
 quiz:
   name: Finding the Purpose of Your Song
-  content: |-
+  subtitle: |-
     Answer those questions to help you find what is the purpose of your song.
   questions:
     - id: themes
@@ -771,112 +783,6 @@ prerequisites:
 - melody_basics
 
 # =======================================================
-#                 Effects Lake
-# =======================================================
-
-# -------------------------------------------------------
-# The Magic of Effects
-# effects_basics
---- 
-id: effects_basics
-name: The Magic of Effects
-valley: effects
-content: |-
-  Overview of main effects ==> spot it in a famous song.
-
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 71
-positionTop: 36.3
-type: embedded
-# CTA:
-stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  order: 0
-visibleAtAge: 2
-prerequisites:
-- bandlab_start
-
-# -------------------------------------------------------
-# Add Volume with the Reverb
-# effects_reverb
---- 
-id: effects_reverb
-name: Add Volume with the Reverb
-valley: effects
-content: |-
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 66.5
-positionTop: 34.3
-type: embedded
-# CTA:
-stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  order: 0
-visibleAtAge: 2
-prerequisites:
-- effects_basics
-
-# -------------------------------------------------------
-# Make Sound Last with a Delay
-# effects_delay
---- 
-id: effects_delay
-name: Make Sound Last with a Delay
-valley: effects
-content: |-
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 64.5
-positionTop: 30
-type: embedded
-# CTA:
-stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  order: 0
-visibleAtAge: 2
-prerequisites:
-- effects_basics
-
-# -------------------------------------------------------
-# It Sounds More Full in Stereo
-# effects_stereo
---- 
-id: effects_stereo
-name: It Sounds More Full in Stereo
-valley: effects
-content: |-
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 70
-positionTop: 29.3
-type: embedded
-# CTA:
-stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  order: 0
-visibleAtAge: 2
-prerequisites:
-- effects_basics
-
-# =======================================================
 #                 Beats Forest
 # =======================================================
 
@@ -993,6 +899,112 @@ visibleAtAge: 2
 prerequisites:
 - bass_basics
 
+# =======================================================
+#                 Effects Lake
+# =======================================================
+
+# -------------------------------------------------------
+# The Magic of Effects
+# effects_basics
+--- 
+id: effects_basics
+name: The Magic of Effects
+valley: effects
+content: |-
+  Overview of main effects ==> spot it in a famous song.
+
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 71
+positionTop: 36.3
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  subtitle: |-
+    Description here.
+  type: video
+  youtubeVideoId: MPSr4XoyOfQ
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- bandlab_start
+
+# -------------------------------------------------------
+# Add Volume with the Reverb
+# effects_reverb
+--- 
+id: effects_reverb
+name: Add Volume with the Reverb
+valley: effects
+content: |-
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 66.5
+positionTop: 34.3
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  subtitle: |-
+    Description here.
+  type: video
+  youtubeVideoId: MPSr4XoyOfQ
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- effects_basics
+
+# -------------------------------------------------------
+# Make Sound Last with a Delay
+# effects_delay
+--- 
+id: effects_delay
+name: Make Sound Last with a Delay
+valley: effects
+content: |-
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 64.5
+positionTop: 30
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  subtitle: |-
+    Description here.
+  type: video
+  youtubeVideoId: MPSr4XoyOfQ
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- effects_basics
+
+# -------------------------------------------------------
+# It Sounds More Full in Stereo
+# effects_stereo
+--- 
+id: effects_stereo
+name: It Sounds More Full in Stereo
+valley: effects
+content: |-
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 70
+positionTop: 29.3
+type: embedded
+# CTA:
+stages:
+- name: TODO
+  subtitle: |-
+    Description here.
+  type: video
+  youtubeVideoId: MPSr4XoyOfQ
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- effects_basics
+
 
 # =======================================================
 #                 Lyrics Valley
@@ -1052,7 +1064,30 @@ stages:
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
+  featuredChannel:
+    name: Music Notes Online
+    icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdmOMNJhoZaUFofT4D2jibw
   order: 0
+quiz:
+  name: Free writing!
+  subtitle: |-
+    5 minutes to write as much as you can!
+  content: |-
+    ```countdown
+    1
+    ```
+  questions:
+    - id: freeflow
+      name: Write as much as you can here on your main topic
+      placeholder: |-
+        Examples to help you identify your take-home message:
+        - People should not be treated differently based on their race/gender/sexuality/income/age (STATING YOUR VALUES)
+        - Social media is changing the the nature of protest (THE TOOLS OF YOUR GENERATION)
+        - “Red-lining” still has a lasting impact in my community (IMPACT OF HISTORY)
+        - Racism has a deeper implication that you think. (DIGGING DEEPER)
+        - Being an ally sometimes means speaking up, and sometimes means stepping back (EXPLORING YOUR ROLE)
+      type: freetextlong
 visibleAtAge: 2
 prerequisites:
 - lyrics_intro
@@ -1079,6 +1114,10 @@ stages:
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
+  featuredChannel:
+    name: Music Notes Online
+    icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdmOMNJhoZaUFofT4D2jibw
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -1106,6 +1145,10 @@ stages:
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
+  featuredChannel:
+    name: Music Notes Online
+    icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdmOMNJhoZaUFofT4D2jibw
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -1133,6 +1176,10 @@ stages:
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
+  featuredChannel:
+    name: Music Notes Online
+    icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdmOMNJhoZaUFofT4D2jibw
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -1160,6 +1207,10 @@ stages:
     Description here.
   type: video
   youtubeVideoId: MPSr4XoyOfQ
+  featuredChannel:
+    name: Music Notes Online
+    icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdmOMNJhoZaUFofT4D2jibw
   order: 0
 visibleAtAge: 2
 prerequisites:

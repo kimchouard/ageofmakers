@@ -30,6 +30,7 @@ export const stageTypes = {
 
 export const quizAnswerTypes = {
   FREETEXT: 'freetext',
+  FREETEXTLONG: 'freetextlong',
   SMALLTEXT: 'smalltext',
 };
 

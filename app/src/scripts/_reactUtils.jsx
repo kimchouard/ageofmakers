@@ -8,6 +8,7 @@
 import React from 'react';
 import CustomMessage from './game/components/customMessage';
 import BandlabPlayer from './game/components/bandlabPlayer';
+import Countdown from './game/components/countdown';
 
 export const mdRenderers = {
   code: ({ language, value }) => {
@@ -19,6 +20,10 @@ export const mdRenderers = {
 
     if (language === 'bandlab') {
       return <BandlabPlayer musicId={value} />
+    }
+
+    if (language === 'countdown') {
+      return <Countdown minutes={value} />
     }
 
     // Or default code snippet

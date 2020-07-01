@@ -49,7 +49,7 @@ class Quiz extends Component {
       return <form name="quiz" className="form-group quizForm col-12" onSubmit={(e) => { this.submitQuestion(e); }}>
         { this.props.quizData.questions.map((question) => {
           let inputHtml;
-          if (question.type === quizAnswerTypes.FREETEXT) {
+          if (question.type === quizAnswerTypes.FREETEXT || question.type === quizAnswerTypes.FREETEXTLONG) {
             inputHtml = <textarea 
               placeholder={question.placeholder}
               id={question.id}
@@ -57,7 +57,7 @@ class Quiz extends Component {
               required
               value={this.state.questions[question.id]} 
               onChange={ (e) => { this.handleFormChange(e); } }
-              rows={ (this.props.inline) ? "3" : "5" }
+              rows={ (this.props.inline) ? "3" : (question.type === quizAnswerTypes.FREETEXTLONG) ? "10" : "5" }
             />
           }
           else if (question.type === quizAnswerTypes.SMALLTEXT) {

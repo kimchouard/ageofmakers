@@ -27,6 +27,15 @@ class EmbeddedQuest extends Component {
       }
   }
 
+  getStageContentHtml(content) {
+    if (content) {
+      return <ReactMarkdown
+        source={content}
+        renderers={ mdRenderers }
+      />;
+    }
+  }
+
   renderEmbbededQuestContent() {
     if (this.props.embeddedQuest.open && this.props.activeQuestData && this.props.activeQuestData.type === questTypes.EMBEDDED) {
       let activeStageData = getStageData(this.props.activeQuestData, this.state.activeStageOrder);
@@ -55,10 +64,6 @@ class EmbeddedQuest extends Component {
         else {
           // TODO: Errors on stage data type unknown
           console.error('Unknown stage type.', activeStageData);
-          stageDiv = <ReactMarkdown
-            source={activeStageData.content}
-            renderers={ mdRenderers }
-          />
         }
 
         return <div className="row">
@@ -67,6 +72,7 @@ class EmbeddedQuest extends Component {
             <h5>{activeStageData.subtitle}</h5>
           </div>
           <div className="col-12">
+            { this.getStageContentHtml(activeStageData.content) }
             { stageDiv }
           </div>
         </div>

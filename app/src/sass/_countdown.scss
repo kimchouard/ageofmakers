@@ -1,0 +1,60 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+ @import '~compass-mixins/lib/compass';
+ @import 'vars';
+ 
+ .countdown {
+  border: 1px solid #ccc;
+  width: 250px;
+	height: 135px;
+	text-align: center;
+  background: #f1f1f1;
+	border-radius: 5px;
+  margin: auto;
+
+  .timer-btn {
+    cursor: pointer;
+  }
+  
+  .tiles {
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    text-shadow: 1px 1px 0px #ccc;
+    display: inline-block;
+    text-align: center;
+    
+    padding: 20px;
+    border-radius: 4px 4px 0 0;
+    font-size: 50px;
+    font-weight: thin;
+    display: block;
+
+    &.color-full { background: $green; }
+    &.color-half { background: $orange; }
+    &.color-empty { background: $red; }
+
+    & > span {
+      width: 70px;
+      max-width: 70px;
+    
+      padding: 18px 0;
+      position: relative;
+    }
+  }
+
+  .countdown-label {
+    font-size: 16px;
+    color: #65584c;
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+    letter-spacing: 2px;
+    margin-top: 9px
+  }
+}
