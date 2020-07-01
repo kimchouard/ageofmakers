@@ -71,9 +71,11 @@ stages:
   quiz:
     questions:
       - id: themes
-        name: What are 1-3 topics that the artist explored in this song?
+        name: What injustice(s) did the song help shine a light on?
         placeholder: |-
           Examples: Racial Injustice, Police Brutality, Environmental Justice, Education...
+        examples: |-
+            Notes: In many cases, a song might be used to aid social movement even if it wasn’t part of the original intention of the artist.
         type: freetext
       - id: message
         name: What is one “take home message” you think the artist wanted people to understand from this song?
@@ -91,252 +93,252 @@ stages:
     startUrl: https://www.npr.org/2019/08/26/753511135/kendrick-lamar-alright-american-anthem-party-protest
     content: |-
       Both Party And Protest, 'Alright' Is The Sound Of Black Life's Duality.
-    imageUrl: data/music/images/npr/npr_alright_kendrick_lamar.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: Released on June 30, 2015.
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 0
   - name: Lift Every Voice and Sing
-    artist: Beyoncé
+    artist: Beyoncé (performed by)
     startUrl: https://www.npr.org/2018/08/16/638324920/american-anthem-lift-every-voice-and-sing-black-national-anthem
     content: |-
       Till Victory Is Won: The Staying Power Of 'Lift Every Voice And Sing'.
-    imageUrl: data/music/images/npr/npr_lift_every_voice_and_sing.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: Originally written by James Weldon Johnson in 1905.
       Covered by Beyonce at Coachela in 2018.
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 1
   - name: I Will Survive
     artist: Gloria Gaynor
     startUrl: https://www.npr.org/2019/09/24/763518201/gloria-gaynor-i-will-survive-american-anthem
     content: |-
       'I Will Survive' Saves Marginalized People A Spot On The Dance Floor
-    imageUrl: data/music/images/npr/npr_i_will_survive.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: October 1978
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 2
   - name: The Times They 'A-Changin'
     artist: Bob Dylan
     startUrl: https://www.npr.org/2018/09/24/650548856/american-anthem-the-times-they-are-a-changin
     content: |-
       The Times They Are 'A-Changin'" Still Speaks To Our Changing Times
-    imageUrl: data/music/images/npr/npr_times_are_a_changing.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: Originally released in 1963, but sang many times since then.
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 3
   - name: To Be Young, Gifted, and Black
     artist: Nina Simone
     startUrl: https://www.npr.org/2019/01/08/683021559/nina-simone-to-be-young-gifted-and-black-american-anthem
     content: |-
       Nina Simone's 'Lovely, Precious Dream' For Black Children.
-    imageUrl: data/music/images/npr/npr_nina-simone.jpg
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1969
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 4
   - name: This Land is Your Land 
     artist: Woodie Guthrie
     startUrl: https://www.npr.org/2019/03/14/702792467/woody-guthrie-this-land-is-your-land-american-anthem
     content: |-
       How 'This Land Is Your Land' Roamed And Rambled Into American Life.
-    imageUrl: data/music/images/npr/npr_this_land_is_your_land.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1940
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 5
   - name: La Bamba
     artist: Los Lobos
     startUrl: https://www.npr.org/2018/10/14/655833317/la-bamba-american-anthem-ritchie-valens-los-lobos-survival
     content: |-
       Through Slavery, Segregation And More, 'La Bamba' Has Been The Sound Of Survival.
-    imageUrl: data/music/images/npr/npr_la_bamba.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1987
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 6
   - name: I am a Woman
     artist: Helen Reddy
     startUrl: https://www.npr.org/2018/10/24/651795560/i-am-woman-helen-reddy-american-anthem-hear-them-roar
     content: |-
       You're Gonna Hear Them Roar: 'I Am Woman' Is An Anthem Beyond Its Era.
-    imageUrl: data/music/images/npr/npr_i_am_a_woman.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1970
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 7
   - name: You Make Me Feel (Might Real)
     artist: Sylvester
     startUrl: https://www.npr.org/2018/10/08/651794925/sylvester-you-make-me-feel-mighty-real-american-anthem-disco-celebration
     content: |-
       Bigger Than Disco, 'You Make Me Feel (Mighty Real)' Is A Celebration Of Self.
-    imageUrl: data/music/images/npr/npr_you_make_me_feel.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1978
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 8
   - name: Whittier Boulevard
     artist: The Midniters
     startUrl: https://www.npr.org/2018/11/29/671688096/the-story-of-whittier-blvd-a-song-and-place-where-latino-youth-found-each-other
     content: |-
       The Story Of 'Whittier Blvd.,' A Song And Place Where Latino Youth Found Each Other.
-    imageUrl: data/music/images/npr/npr_whittier_blvd.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1965
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 9
   - name: Quiet
     artist: MILCK
     startUrl: https://www.npr.org/2019/01/14/683694934/milck-quiet-womens-march-american-anthem
     content: |-
       A Song Called 'Quiet' Struck A Chord With Women. Two Years Later, It's Still Ringing.
-    imageUrl: data/music/images/npr/npr_quiet.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 2015
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 10
   - name: Born This Way 
     artist: Lady Gaga
     startUrl: https://www.npr.org/2019/01/30/687683804/lady-gaga-born-this-way-lgbt-american-anthem
     content: |-
       How 'Born This Way' Was Born: An LGBT Anthem's Pedigree.
-    imageUrl: data/music/images/npr/npr_born_this_way.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 2011
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 11
   - name: No Scrubs 
     artist: TLC
     startUrl: https://www.npr.org/2019/02/01/689703447/tlc-no-scrubs-20-years-american-anthem.
     content: |-
       Oh Yes Son, They're Talking To You: 20 Years Of 'No Scrubs'.
-    imageUrl: data/music/images/npr/npr_no_scrubs.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1999
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 12
   - name: For What It’s Worth
     artist: Buffalo Springfield
     startUrl: https://www.npr.org/2019/02/20/693790065/buffalo-springfield-for-what-its-worth-american-anthem
     content: |-
       A Thousand People In The Street: 'For What It's Worth' Captured Youth In Revolt and Became iconic Vietnam War Protest Anthem.
-    imageUrl: data/music/images/npr/npr_for_what_its_worth.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1967
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 13
   - name: Black, Brown, & Beige
     artist: Duke Ellington
     startUrl: https://www.npr.org/2019/02/22/697075534/a-sprawling-blueprint-for-protest-music-courtesy-of-the-jazz-duke
     content: |-
       A Sprawling Blueprint For Protest Music, Courtesy Of The Jazz Duke.
-    imageUrl: data/music/images/npr/npr_black_brown_and_beige.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1943
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 14
   - name: Born in the U.S.A. 
     artist: Bruce Springsteen
     startUrl: https://www.npr.org/2019/03/26/706566556/bruce-springsteen-born-in-the-usa-american-anthem
     content: |-
       What Does 'Born In The U.S.A.' Really Mean?.
-    imageUrl: data/music/images/npr/npr_born_in_the_usa.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1984
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 15
   - name: Mind Playing Tricks on Me
     artist: Geto Boys
     startUrl: https://www.npr.org/2019/05/29/726615663/geto-boys-mind-playing-tricks-on-me-anxiety-american-anthem
     content: |-
       Stressed Out: How 'Mind Playing Tricks On Me' Gave Anxiety A Home In Hip-Hop.
-    imageUrl: data/music/images/npr/npr_mind_playing_tricks_on_me.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1991
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 16
   - name: Rebel Girl 
     artist: Bikini Kill
     startUrl: https://www.npr.org/2019/08/12/749456007/kathleen-hanna-bikini-kill-rebel-girl-rock-camp-american-anthem
     content: |-
-    imageUrl: data/music/images/npr/npr_rebel_girl.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1993
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 17
   - name: We're A Winner 
     artist: Woodie Guthrie
     startUrl: https://www.npr.org/2019/08/02/745375571/curtis-mayfield-the-impressions-were-a-winner-american-anthem
     content: |-
       'We're A Winner' Married Black Pride To An Irresistible Beat.
-    imageUrl: data/music/images/npr/npr_we_re_a_winner.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1967
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 18
   - name: Fight The Power & Public Enemy
     artist: The Isley Brothers
     startUrl: https://www.npr.org/2018/12/07/673845242/fight-the-power-american-anthem-public-enemy-isley-brothers
     content: |-
       A Tale Of 2 Anthems (With The Same Name).
-    imageUrl: data/music/images/npr/npr_fight_the_power.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: The Isley Brothers (1975) & Public Enemy (1989)
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 19
   - name: Cold Fact
     artist: Sixto Rodríguez
     startUrl: https://www.npr.org/2013/02/06/171182973/how-detroits-sugar-man-became-south-africas-superstar
     content: |-
       How A Detroit Flop Became South Africa's Superstar.
-    imageUrl: data/music/images/npr/npr_cold_facts.png
+    imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1970, during the South Africa's social movements.
     instructions: |-
       Listen or read this article.
 
-      ![Project Image](data/music/images/npr/npr_player.png)
+      ![Project Image](data/music/images/npr_player.png)
     order: 20
 prerequisites: 
 - welcome_quest
@@ -393,9 +395,9 @@ quiz:
     Answer those questions to help you find what is the purpose of your song.
   questions:
     - id: themes
-      name: What are 1-3 topics that impact your life, your community, or the world around you?
+      name: What injustice(s) do you want your song to shine a light on?
       placeholder: |-
-        Example: police brutality, identity, environment, education...
+        Example: racial injustice, police brutality, identity, environment, education...
       examples: |-
         These are the themes you’ll explore in your song.
       type: smalltext
