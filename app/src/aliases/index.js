@@ -90,12 +90,12 @@ const getFullQuestWithAchievements = (callback) => {
           if (quests && ages && areas) {
             if (achievements && achievements.quests) {
               // Changing Quests status based on achievements
-              Object.keys(achievements.quests).forEach((achievedQuestId) => {
+              for(let achievedQuestId of Object.keys(achievements.quests)) {
                 let achievement = achievements.quests[achievedQuestId];
                 let achievedQuest = quests[achievedQuestId];
 
                 if (achievedQuest) {
-                  achievedQuest.stages.forEach((stage) => {
+                  for(let stage of achievedQuest.stages) {
                     // If the completed stage or before -> complete
                     if (stage.order <= achievement.stageNumber) {
                       stage.status = stageStatus.STATUS_COMPLETE;
@@ -103,28 +103,34 @@ const getFullQuestWithAchievements = (callback) => {
                     // If RIGHT after completed stage -> inProgress
                     else if (stage.order === achievement.stageNumber+1) {
                       stage.status = stageStatus.STATUS_INPROGRESS;
-
-                      // If some showcase items has been completed
-                      if(achievement.showcasesVisited && achievement.showcasesVisited !== {}) {
-                        Object.keys(achievement.showcasesVisited).forEach((visitedShowcaseOrder) => {
-                          for(let showcaseItem of stage.showcaseItems) {
-                            if (showcaseItem.order === parseInt(visitedShowcaseOrder)) {
-                              showcaseItem.status = stageStatus.STATUS_COMPLETE;
-
-                              // If the achievement is an object
-                              if (typeof achievement.showcasesVisited[visitedShowcaseOrder] === "object") {
-                                showcaseItem.quizResults = achievement.showcasesVisited[visitedShowcaseOrder];
-                              }
-                            }
-                          }
-                        })
-                      }
                     }
                     // If at least 2nd after completeed stage -> new
                     else {
                       stage.status = stageStatus.STATUS_NEW;
                     }
-                  });
+                    
+                    // If some showcase items has been completed
+                    if(achievement.showcasesVisited && achievement.showcasesVisited !== {}) {
+                      for(let visitedStageOrder of Object.keys(achievement.showcasesVisited)) {
+                        if (stage.order === parseInt(visitedStageOrder)) {
+                          let showcaseResults = achievement.showcasesVisited[visitedStageOrder];
+
+                          for(let visitedShowcaseOrder of Object.keys(showcaseResults)) {
+                            for(let showcaseItem of stage.showcaseItems) {
+                              if (showcaseItem.order === parseInt(visitedShowcaseOrder)) {
+                                showcaseItem.status = stageStatus.STATUS_COMPLETE;
+
+                                // If the achievement is an object
+                                if (typeof showcaseResults[visitedShowcaseOrder] === "object") {
+                                  showcaseItem.results = showcaseResults[visitedShowcaseOrder];
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  };
 
                   // If last stage completed,:
                   // - if the achieved quest doesn't have a quiz, completing all the stages is sufficient so the quest is completed too!
@@ -140,7 +146,7 @@ const getFullQuestWithAchievements = (callback) => {
                     quests[achievedQuestId].status = stageStatus.STATUS_INPROGRESS;
                   }
                 }
-              });
+              };
             }
 
             // Misc. Quests object manipulations
@@ -523,7 +529,11 @@ const changeQuestProgress = (originalAction) => {
 
             // If the progress change about a showcase
             if (originalAction.payload.achievedShowcaseNumber !== null && originalAction.payload.achievedShowcaseNumber >= 0) {
-              players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].showcasesVisited[originalAction.payload.achievedShowcaseNumber] = originalAction.payload.quizResults || true;
+              if (!players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].showcasesVisited[originalAction.payload.achievedStageNumber]) {
+                players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].showcasesVisited[originalAction.payload.achievedStageNumber] = {};
+              }
+
+              players[activePlayerId].achievements[playersJourney].quests[originalAction.payload.activeQuestKey].showcasesVisited[originalAction.payload.achievedStageNumber][originalAction.payload.achievedShowcaseNumber] = originalAction.payload.quizResults || true;
             }
             // If the progress change about the quiz
             else if (originalAction.payload.quizResults) {
