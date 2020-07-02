@@ -547,7 +547,7 @@ prerequisites:
 
 
 # -------------------------------------------------------
-# How does a melody work?
+# You Said... Notes? 🤨
 # melody_basics
 --- 
 id: melody_basics
@@ -571,7 +571,7 @@ stages:
     icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
     youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
   order: 0
-visibleAtAge: 1
+visibleAtAge: 2
 prerequisites:
 - music_theory_intro
 
@@ -1076,9 +1076,16 @@ quiz:
   subtitle: |-
     5 minutes to write as much as you can!
   content: |-
+    Use the timer below spend 5 minutes doing a “free write” that answers the following questions.
+    - What do you **understand** about the history and present of your topic? 
+    - How does this make you **feel**? Do you have any **personal examples** you can share? 
+    - How do **you** want the future to look? It’s your time to help shape it that way! 🚀
+
     ```countdown
     1
     ```
+
+    **Don’t filter yourself, don’t worry about grammar, and write AS MUCH AS YOU CAN.**
   questions:
     - id: freeflow
       name: Write as much as you can here on your main topic
@@ -1089,6 +1096,22 @@ quiz:
         - “Red-lining” still has a lasting impact in my community (IMPACT OF HISTORY)
         - Racism has a deeper implication that you think. (DIGGING DEEPER)
         - Being an ally sometimes means speaking up, and sometimes means stepping back (EXPLORING YOUR ROLE)
+      examples: |-
+        Review the vision for your song below:
+
+        ```quizResults
+        { "questId": "song_vision" }
+        ```
+
+        Sometimes, that’s all people need to do to get started writing their lyrics. Other times, people realize they need to do more research on their topic. 
+        
+        If you had trouble thinking of things to write about, you may need to:
+        - Talk to family members/friends or your teacher about this topic. 
+        - Do more research, that includes:
+          - Find reliable resources that explore the history of this topic in your community and how it shows up today.
+          - See if you can find facts, statistics, and quotes that you could use to educate your audience on your topic.
+        
+          Then, go back and do another five-minute free write about this information and how it made you feel.
       type: freetextlong
 visibleAtAge: 2
 prerequisites:

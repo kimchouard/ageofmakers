@@ -8,15 +8,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ReactMarkdown from 'react-markdown';
 
-import { mdRenderers } from '../../_reactUtils';
 import { closeEmbeddedQuest, changeQuestProgress } from '../../../actions/index';
 import { questTypes, stageTypes, getActiveQuestData, getStageData, getDefaultActiveStageOrder } from '../../_utils';
 import MusicShowcase from './showcaseMusic';
 import Kanban from './kanban';
 import Video from './video';
 import Quiz from './quiz';
+import Markdown from './markdown';
 
 class EmbeddedQuest extends Component {
   constructor(props) {
@@ -29,10 +28,7 @@ class EmbeddedQuest extends Component {
 
   getStageContentHtml(content) {
     if (content) {
-      return <ReactMarkdown
-        source={content}
-        renderers={ mdRenderers }
-      />;
+      return <Markdown mdContent={content} />;
     }
   }
 
@@ -70,9 +66,9 @@ class EmbeddedQuest extends Component {
           <div className="col-sm-10 offset-sm-1">
             <h2>{activeStageData.name}</h2>
             <h5>{activeStageData.subtitle}</h5>
+            { this.getStageContentHtml(activeStageData.content) }
           </div>
           <div className="col-12">
-            { this.getStageContentHtml(activeStageData.content) }
             { stageDiv }
           </div>
         </div>

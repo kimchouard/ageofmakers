@@ -10,9 +10,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { closeEmbeddedQuest, setActivePlayerSDG, changeQuestProgress, startQuest } from '../../../actions/index';
 import { getActiveQuestData, getActivePlayerData, stageStatus } from '../../_utils';
-import ReactMarkdown from 'react-markdown';
-import { mdRenderers } from '../../_reactUtils';
-
+import Markdown from './markdown';
 
 class MusicShowcase extends Component {
   constructor(props) {
@@ -42,10 +40,7 @@ class MusicShowcase extends Component {
             <div className="card-body">
               <h5 className="card-title">{song.name} by {song.artist}</h5>
               <div className="card-text">
-                <ReactMarkdown
-                  source={song.content}
-                  renderers={ mdRenderers }
-                />
+                <Markdown mdContent={song.content} />
               </div>
               <p className="card-text"><strong>📆 Historical Context: </strong> {song.historicalContext}</p>
             </div>
@@ -61,9 +56,8 @@ class MusicShowcase extends Component {
         //       <div className="artist"><strong>By:</strong> {song.artist}</div>
         //     </div>
         //     <div className="desc">
-        //       <ReactMarkdown
-        //         source={song.content}
-        //         renderers={ mdRenderers }
+        //       <Markdown
+        //         mdContent={song.content}
         //       />
         //     </div>
         //     <div className="actions">

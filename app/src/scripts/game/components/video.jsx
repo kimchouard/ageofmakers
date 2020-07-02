@@ -9,12 +9,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { closeEmbeddedQuest } from '../../../actions/index';
-import ReactMarkdown from 'react-markdown';
-import { mdRenderers } from '../../_reactUtils';
-/* <ReactMarkdown
-    source={contentVariableHere}
-    renderers={ mdRenderers }
-  /> */
 
 
 class Video extends Component {

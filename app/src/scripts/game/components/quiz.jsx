@@ -10,8 +10,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { closeEmbeddedQuest } from '../../../actions/index';
 import { quizAnswerTypes } from '../../_utils';
-import ReactMarkdown from 'react-markdown';
-import { mdRenderers } from '../../_reactUtils';
+import Markdown from './markdown';
 
 class Quiz extends Component {
   constructor(props) {
@@ -40,6 +39,15 @@ class Quiz extends Component {
     }
   }
 
+  renderSubmitBtn() {
+    // We don't show the submit button if there's already results added in quiz data
+    if (!this.props.quizData.results) {
+      return <div className="col-md-offset-3 submitWrapper">
+        <input type="submit" className="btn btn-primary btn-lg" value="Submit" />
+      </div>;
+    }
+  }
+
   renderQuestions() {
     const validateMessages = {
       required: 'This field is required!',
@@ -48,6 +56,11 @@ class Quiz extends Component {
     if (this.props.quizData.questions) {
       return <form name="quiz" className="form-group quizForm col-12" onSubmit={(e) => { this.submitQuestion(e); }}>
         { this.props.quizData.questions.map((question) => {
+          let quizResult;
+          if (this.props.quizData.results) {
+            quizResult = this.props.quizData.results[question.id];
+          }
+
           let inputHtml;
           if (question.type === quizAnswerTypes.FREETEXT || question.type === quizAnswerTypes.FREETEXTLONG) {
             inputHtml = <textarea 
@@ -55,9 +68,10 @@ class Quiz extends Component {
               id={question.id}
               className="form-control"
               required
-              value={this.state.questions[question.id]} 
+              value={quizResult || this.state.questions[question.id]} 
               onChange={ (e) => { this.handleFormChange(e); } }
               rows={ (this.props.inline) ? "3" : (question.type === quizAnswerTypes.FREETEXTLONG) ? "10" : "5" }
+              disabled={ (quizResult !== undefined) }
             />
           }
           else if (question.type === quizAnswerTypes.SMALLTEXT) {
@@ -66,34 +80,27 @@ class Quiz extends Component {
               id={question.id}
               className="form-control"
               required
-              value={this.state.questions[question.id]} 
+              value={quizResult || this.state.questions[question.id]} 
               onChange={ (e) => { this.handleFormChange(e); } }
               type="text"
+              disabled={ (quizResult !== undefined) }
             />
           }
 
           return <div className="form-group question row" key={question.id}>
             <label htmlFor={question.id} className={`col-md-${(this.props.inline) ? '12': '3'} col-form-label required`} title={question.name}>
-              <ReactMarkdown
-                source={question.name}
-                renderers={ mdRenderers }
-              />
+              <Markdown mdContent={question.name} />
             </label>
             <div className={ `col-md-${(this.props.inline) ? '12': '9'}` }>
               { inputHtml }
-              { (!question.examples) ? '' : <small className={ `form-text` /* text-muted */ }>
-                <ReactMarkdown
-                  source={question.examples}
-                  renderers={ mdRenderers }
-                /> 
+              { (!question.examples || this.props.quizData.results) ? '' : <small className={ `form-text` /* text-muted */ }>
+                <Markdown mdContent={question.examples} /> 
               </small> }
             </div>
           </div>
         }) }
 
-        <div className="col-md-offset-3 submitWrapper">
-          <input type="submit" className="btn btn-primary btn-lg" value="Submit" />
-        </div>
+        { this.renderSubmitBtn() }
       </form>
     }
     else {
@@ -103,7 +110,7 @@ class Quiz extends Component {
 
   render() {
     if (this.props.quizData) {
-      return <div className={ `row quizWrapper ${(this.props.inline) ? 'inline': 'embedded'}`}>
+      return <div className={ `row quizWrapper ${(this.props.inline) ? 'inline': 'embedded'} ${ (this.props.quizData.results) ? 'quizResults' : ''}`}>
         { (this.props.inline) ? <div className="quizHeader col-12">Answer these questions to complete the quest.</div> : ''}
         { this.renderQuestions() }
       </div>

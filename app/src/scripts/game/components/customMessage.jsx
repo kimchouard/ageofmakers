@@ -6,10 +6,8 @@
  */
 
 import React, {Component} from 'react';
-import ReactMarkdown from 'react-markdown';
 import {connect} from 'react-redux';
-
-import { mdRenderers } from '../../_reactUtils';
+import Markdown from './markdown';
 
 class CustomMessage extends Component {
   constructor(props) {
@@ -19,10 +17,7 @@ class CustomMessage extends Component {
   render() {
     return (
       <div className={`aom-${this.props.type}`}>
-        <ReactMarkdown
-          source={this.props.children}
-          renderers={ mdRenderers }
-        />
+        <Markdown mdContent={this.props.children} />
       </div>
     );
   }

@@ -6,9 +6,9 @@
  */
 
 import React, { Component } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { mdRenderers } from '../../_reactUtils';
 import yaml from 'js-yaml';
+
+import Markdown from './markdown';
 const questsUrl = chrome.runtime.getURL('data/quests.yaml');
 
 export default class List extends Component {
@@ -78,10 +78,7 @@ export default class List extends Component {
             <strong>Start Url:</strong> <a href={quest.startUrl} target="_blank">{quest.startUrl}</a>
           </p>
           <div className="description">
-            <ReactMarkdown
-              source={quest.content}
-              renderers={ mdRenderers }
-            />
+            <Markdown mdContent={quest.content} />
           </div>
           <div className="stages">
             <h3 class="stagesTitle">Stages</h3>
@@ -90,10 +87,7 @@ export default class List extends Component {
               return <div className="stage"  key={stage.order}>
                 <h4>{stage.order+1}. {stage.name}</h4>
 
-                <ReactMarkdown
-                  source={stage.content}
-                  renderers={ mdRenderers }
-                />
+                <Markdown mdContent={stage.content} />
               </div>
             })}
           </div>

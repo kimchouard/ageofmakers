@@ -9,11 +9,10 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ReactMarkdown from 'react-markdown';
-import { mdRenderers } from '../../_reactUtils';
 import { changeQuestProgress, unselectQuest, backToNewTab, logOut } from '../../../actions/index';
 import { getActiveQuestData, getStageData, getDefaultActiveStageOrder, stageStatus } from '../../_utils';
 import Quiz from './quiz';
+import Markdown from './markdown';
 
 class Accordions extends Component {
   constructor(props) {
@@ -114,10 +113,7 @@ class Accordions extends Component {
                   <div className="col-12">
                     <h3>{showcaseItem.name} by {showcaseItem.artist}</h3>
                     
-                    <ReactMarkdown
-                      source={showcaseItem.instructions}
-                      renderers={ mdRenderers }
-                      />
+                    <Markdown mdContent={showcaseItem.instructions} />
                   </div>
                 
                   <div className="col-12">
@@ -154,10 +150,7 @@ class Accordions extends Component {
               </label>
   
               <div className="box-content">
-                <ReactMarkdown
-                  source={stage.content}
-                  renderers={ mdRenderers }
-                />
+                <Markdown mdContent={stage.content} />
   
                 <div className="action">
                   <div

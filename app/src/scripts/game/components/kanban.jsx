@@ -11,12 +11,6 @@ import { bindActionCreators } from 'redux';
 import { closeEmbeddedQuest } from '../../../actions/index';
 import { getActiveQuestData } from '../../_utils';
 import Board from '@lourenci/react-kanban'
-import ReactMarkdown from 'react-markdown';
-import { mdRenderers } from '../../_reactUtils';
-/* <ReactMarkdown
-    source={contentVariableHere}
-    renderers={ mdRenderers }
-  /> */
 
 
 class Kanban extends Component {

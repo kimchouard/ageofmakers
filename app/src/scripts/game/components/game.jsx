@@ -8,9 +8,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ReactMarkdown from 'react-markdown';
+
 import { questUnlocked, getRomanAge, getAge, questTypes, isLoggedInAndLoaded, isNewAge, getActivePlayerData, getActiveQuestData } from '../../_utils';
-import { mdRenderers } from '../../_reactUtils';
 import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, openWelcome, setPlayerOnboarding, changeQuestProgress, startWalkthrough, openEmbeddedQuest } from '../../../actions/index';
 
 import Pin from './pin';
@@ -23,6 +22,7 @@ import Celebration from './celebration';
 import Welcome from './welcome';
 import LeafletMap from './leafletMap';
 import AgeTree from './ageTree';
+import Markdown from './markdown';
 
 class Game extends Component {
   constructor(props) {
@@ -133,10 +133,7 @@ class Game extends Component {
     >
       { this.renderWhatsNext() }
 
-      <ReactMarkdown
-        source={this.props.activeQuestData.content}
-        renderers={ mdRenderers }
-      />
+      <Markdown mdContent={this.props.activeQuestData.content} />
 
       <div className="action">
         { this.startButton() }
