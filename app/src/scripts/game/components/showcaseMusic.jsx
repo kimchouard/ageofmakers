@@ -8,7 +8,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { closeEmbeddedQuest, setActivePlayerSDG, changeQuestProgress, startQuest } from '../../../actions/index';
+import { setActivePlayerSDG, changeQuestProgress, startQuest } from '../../../actions/index';
 import { getActiveQuestData, getActivePlayerData, stageStatus } from '../../_utils';
 import Markdown from './markdown';
 
@@ -24,7 +24,7 @@ class MusicShowcase extends Component {
 
   renderActionBtn(showcaseItem) {
     if (showcaseItem.status === stageStatus.STATUS_COMPLETE) {
-      return <button className="btn btn-success">✓ COMPLETED</button>
+      return <button className="btn btn-success" disabled={true} >✓ COMPLETED</button>
     }
     else {
       return <button className="btn btn-primary btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>Listen to the story</button>
@@ -96,7 +96,7 @@ class MusicShowcase extends Component {
         <div className="text-center">
           { this.renderNextButton() }
         </div>
-        <p className="instructions">Explore at least {this.props.activeStageData.requiredShowcaseViews} examples below and click NEXT to continue the quest.</p>
+        <p className="instructions">Explore at least {this.props.activeStageData.requiredShowcaseViews} examples below and click NEXT to complete the quest.</p>
 
         <div className="row songs row-cols-2 row-cols-md-3">
           { this.renderShowcaseItems() }
@@ -108,7 +108,7 @@ class MusicShowcase extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    embeddedQuest: state.embeddedQuest,
+    embeddedPage: state.embeddedPage,
     activePlayerData: getActivePlayerData(state),
     activeQuest: state.activeQuest,
     activeQuestData: getActiveQuestData(state),
@@ -117,7 +117,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-return bindActionCreators({ closeEmbeddedQuest, setActivePlayerSDG, changeQuestProgress, startQuest }, dispatch);
+return bindActionCreators({ setActivePlayerSDG, changeQuestProgress, startQuest }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MusicShowcase);

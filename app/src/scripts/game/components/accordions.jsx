@@ -104,8 +104,8 @@ class Accordions extends Component {
       // If it's a showcase embedded quest
       if (this.props.activeQuest.showcase >= 0) {
         for(let stage of this.props.activeQuestData.stages) {
-          // If it's a music showcase stage and in progress
-          if (stage.status === stageStatus.STATUS_INPROGRESS && stage.type === 'musicShowcase') {
+          // If it's a music showcase stage and in progress or it's the first stage, which means it's potentially new.
+          if ((stage.status === stageStatus.STATUS_INPROGRESS || stage.order == 0) && stage.type === 'musicShowcase') {
             for(let showcaseItem of stage.showcaseItems) {
               // If it's the showcase we are working on
               if (showcaseItem.order === this.props.activeQuest.showcase) {

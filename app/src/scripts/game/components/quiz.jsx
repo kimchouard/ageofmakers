@@ -8,7 +8,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { closeEmbeddedQuest } from '../../../actions/index';
+import { } from '../../../actions/index';
 import { quizAnswerTypes } from '../../_utils';
 import Markdown from './markdown';
 
@@ -67,7 +67,7 @@ class Quiz extends Component {
               placeholder={question.placeholder}
               id={question.id}
               className="form-control"
-              required
+              required={ !question.optional }
               value={quizResult || this.state.questions[question.id]} 
               onChange={ (e) => { this.handleFormChange(e); } }
               rows={ (this.props.inline) ? "3" : (question.type === quizAnswerTypes.FREETEXTLONG) ? "10" : "5" }
@@ -79,7 +79,7 @@ class Quiz extends Component {
               placeholder={question.placeholder}
               id={question.id}
               className="form-control"
-              required
+              required={ !question.optional }
               value={quizResult || this.state.questions[question.id]} 
               onChange={ (e) => { this.handleFormChange(e); } }
               type="text"
@@ -93,9 +93,9 @@ class Quiz extends Component {
             </label>
             <div className={ `col-md-${(this.props.inline) ? '12': '9'}` }>
               { inputHtml }
-              { (!question.examples || this.props.quizData.results) ? '' : <small className={ `form-text` /* text-muted */ }>
+              { (!question.examples || this.props.quizData.results) ? '' : <div className={ `form-text` /* text-muted */ }>
                 <Markdown mdContent={question.examples} /> 
-              </small> }
+              </div> }
             </div>
           </div>
         }) }
@@ -127,7 +127,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-return bindActionCreators({ closeEmbeddedQuest }, dispatch);
+return bindActionCreators({ }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Quiz);

@@ -10,16 +10,15 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { questUnlocked, getRomanAge, getAge, questTypes, isLoggedInAndLoaded, isNewAge, getActivePlayerData, getActiveQuestData } from '../../_utils';
-import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, openWelcome, setPlayerOnboarding, changeQuestProgress, startWalkthrough, openEmbeddedQuest } from '../../../actions/index';
+import { reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, setPlayerOnboarding, changeQuestProgress, startWalkthrough, openEmbeddedQuest } from '../../../actions/index';
 
 import Pin from './pin';
 import Header from './header';
 import Bubble from './bubble';
-import EmbeddedQuest from './embeddedQuest';
+import EmbeddedPage from './embeddedPage';
 import Walkthrough from './walkthrough';
 import Onboarding from './onboarding';
 import Celebration from './celebration';
-import Welcome from './welcome';
 import LeafletMap from './leafletMap';
 import AgeTree from './ageTree';
 import Markdown from './markdown';
@@ -150,10 +149,9 @@ class Game extends Component {
       <div className={`gameWrapper ${ (!isLoggedInAndLoaded(this.props) || isNewAge(this.props.activePlayerData,this.props.journey)) ? 'blurry' : ''}`}>
         <Header />
         <LeafletMap />
-        <EmbeddedQuest />
+        <EmbeddedPage />
         <Onboarding />
         <Celebration />
-        {/* <Welcome /> */}
         <AgeTree />
         { (this.props.activeQuest) ? <Bubble embed={false}>{ this.getContent() }</Bubble> : null }
         { (isLoggedInAndLoaded(this.props)) ? <Walkthrough/> : null }
@@ -178,7 +176,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, openWelcome, changeQuestProgress, startWalkthrough, openEmbeddedQuest, setPlayerOnboarding, }, dispatch);
+  return bindActionCreators({ reloadQuests, selectQuest, startQuest, toggleBubble, getActivePlayer, stopWalkthrough, changeQuestProgress, startWalkthrough, openEmbeddedQuest, setPlayerOnboarding, }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

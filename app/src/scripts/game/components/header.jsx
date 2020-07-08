@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { questUnlocked, addComplete, getAge, getRomanAge, isLoggedInAndLoaded, getActivePlayerData, isLoggedIn, isQuestsLoaded, getAreaIconUrl } from '../../_utils';
-import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree, unselectQuest, resetQuests, resetActivePlayerJourney } from '../../../actions/index';
+import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openTree, unselectQuest, resetQuests, resetActivePlayerJourney, openEmbeddedCredits } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Header extends Component {
@@ -116,6 +116,11 @@ class Header extends Component {
     this.props.startWalkthrough(1);
   }
 
+  openCredits() {
+    // this.props.unselectQuest();
+    this.props.openEmbeddedCredits();
+  }
+
   renderContent() {
     if (isLoggedInAndLoaded(this.props)) {
       let ageData = getAge(this.props.journey);
@@ -136,7 +141,7 @@ class Header extends Component {
         <div className="col-sm-2 offset-sm-3">
           <div className="row">
             <div className="col-sm-11 user">
-              {/* <a className={`action user-sdg sdg${this.props.activePlayerData.sdg}`} onClick={this.props.openWelcome}>{this.getPlayerSDG()}</a>  */}
+              {/* <a className={`action user-sdg sdg${this.props.activePlayerData.sdg}`} >{this.getPlayerSDG()}</a>  */}
               <p className="name">{this.props.activePlayerData.name}</p>
               <a className="action settings" onClick={ () => this.setState({ settings: !this.state.settings }) }></a>
             </div>
@@ -151,6 +156,7 @@ class Header extends Component {
           <div className="dropdown-action help" onClick={ () => this.startFirstWalkthrough() }>Getting Started</div>
           <div className="dropdown-action help disabled">FAQs</div>
           <div className="dropdown-action help disabled">Download Quests in PDF</div>
+          <div className="dropdown-action help" onClick={ () => this.openCredits() }>Credits</div>
         </div>
       </div>;
     }
@@ -185,7 +191,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openWelcome, openTree, unselectQuest, resetQuests, resetActivePlayerJourney }, dispatch);
+  return bindActionCreators({ getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openTree, unselectQuest, resetQuests, resetActivePlayerJourney, openEmbeddedCredits }, dispatch);
 }
 
 

@@ -153,7 +153,7 @@ class Onboarding extends Component {
                 <div className="journey-description">Write and produce your first song to advocate for a more equitable and diverse world.</div>
               </div>
             </div>
-            <div className="journey disabled">
+            <div className="journey disabled" onClick={ (e) => { this.selectPlayerJourney('ftc'); } }>
               <div className="journey-icon">
                 <img src="images/ftc-logo.png" alt="Future Trailblazer Challenge"/>
               </div>

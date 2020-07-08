@@ -81,11 +81,12 @@ const getFullQuestWithAchievements = (callback) => {
       if (storage.players[storage.activePlayer]) {
         let achievements = storage.players[storage.activePlayer].achievements[storage.players[storage.activePlayer].journey];
 
-        chrome.storage.local.get(['quests', 'ages', 'areas'], (items) => {
+        chrome.storage.local.get(['quests', 'ages', 'areas', 'credits'], (items) => {
           let quests = items.quests;
           let ages = items.ages;
           let areas = items.areas;
-          console.log('Achievements: ', achievements, quests, ages, areas);
+          let credits = items.credits;
+          console.log('Achievements: ', achievements, quests, ages, areas, credits);
 
           if (quests && ages && areas) {
             if (achievements && achievements.quests) {
@@ -97,7 +98,7 @@ const getFullQuestWithAchievements = (callback) => {
                 if (achievedQuest) {
                   for(let stage of achievedQuest.stages) {
                     // If the completed stage or before -> complete
-                    if (stage.order <= achievement.stageNumber) {
+                    if (achievement.stageNumber !== null && stage.order <= achievement.stageNumber) {
                       stage.status = stageStatus.STATUS_COMPLETE;
                     }
                     // If RIGHT after completed stage -> inProgress
@@ -135,7 +136,7 @@ const getFullQuestWithAchievements = (callback) => {
                   // If last stage completed,:
                   // - if the achieved quest doesn't have a quiz, completing all the stages is sufficient so the quest is completed too!
                   // - if the quest have a quiz, we need to make sure the quiz is done too
-                  if (( achievedQuest.stages.length === 0 || achievement.stageNumber >= achievedQuest.stages[achievedQuest.stages.length - 1].order)
+                  if (achievement.stageNumber !== null && ( achievedQuest.stages.length === 0 || achievement.stageNumber >= achievedQuest.stages[achievedQuest.stages.length - 1].order)
                    && ( !achievedQuest.quiz || (achievedQuest.quiz && achievedQuest.quiz.questions && achievement.quiz && Object.keys(achievement.quiz).length === achievedQuest.quiz.questions.length) ) ) {
                       quests[achievedQuestId].status = stageStatus.STATUS_COMPLETE;
                       if (achievedQuest.quiz) {
@@ -187,11 +188,11 @@ const getFullQuestWithAchievements = (callback) => {
               } 
             }
 
-            console.log('Quests & Ages retrieved!', quests, ages, areas);
-            callback({ quests, ages, areas });
+            console.log('Quests & Ages retrieved!', quests, ages, areas, credits);
+            callback({ quests, ages, areas, credits });
           }
           else {
-            console.error('Error while loading the full quests', quests, ages, areas);
+            console.error('Error while loading the full quests', quests, ages, areas, credits);
           }
         }); 
       }
@@ -211,6 +212,7 @@ const loadQuests = (journeyId, resolve) => {
     const questsUrl = chrome.runtime.getURL(`data/${journeyId}/quests.yaml`);
     const agesUrl = chrome.runtime.getURL(`data/${journeyId}/ages.yaml`);
     const areasUrl = chrome.runtime.getURL(`data/${journeyId}/areas.yaml`);
+    const creditsUrl = chrome.runtime.getURL(`data/${journeyId}/credits.yaml`);
     fetch(questsUrl)
       .then((questsResponse) => {
       if (questsResponse.status !== 200) {
@@ -251,11 +253,25 @@ const loadQuests = (journeyId, resolve) => {
                 // console.log('Yaml quest data', areasData);
                 let areas = yaml.safeLoadAll(areasData)[0];
 
-                chrome.storage.local.set({ quests, ages, areas }, () => {
-                  console.log('Quests, Ages & Areas saved!', quests, ages, areas);
+                fetch(creditsUrl)
+                .then((creditsResponse) => {
+                  if (creditsResponse.status !== 200) {
+                    console.error('Error while loading credits:', res);
+                    return resolve({ error: creditsResponse.status });
+                  }
+                  
+                  // Examine the text in the creditsResponse
+                  creditsResponse.text().then((creditsData) => {
+                    // console.log('Yaml quest data', creditsData);
+                    let credits = yaml.safeLoadAll(creditsData)[0];
 
-                  getFullQuestWithAchievements((fullQuests) => {
-                    resolve(fullQuests);
+                    chrome.storage.local.set({ quests, ages, areas, credits }, () => {
+                      console.log('Quests, Ages, Areas & Credits saved!', quests, ages, areas, credits);
+
+                      getFullQuestWithAchievements((fullQuests) => {
+                        resolve(fullQuests);
+                      });
+                    });
                   });
                 });
               });

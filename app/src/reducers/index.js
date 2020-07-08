@@ -15,7 +15,7 @@ import currentTab from './reducer_current_tab';
 import bubbleToggled from './reducer_bubble_toggled';
 import welcome from './reducer_welcome';
 import tree from './reducer_tree';
-import embeddedQuest from './reducer_embedded_quest';
+import embeddedPage from './reducer_embedded_page';
 import walkthrough from './reducer_walkthrough';
 
 export default combineReducers({
@@ -27,6 +27,6 @@ export default combineReducers({
   players,
   welcome,
   tree,
-  embeddedQuest,
+  embeddedPage,
   walkthrough
 });

@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { closeEmbeddedQuest, changeQuestProgress } from '../../../actions/index';
+import { closeEmbeddedPage, changeQuestProgress } from '../../../actions/index';
 import { questTypes, stageTypes, getActiveQuestData, getStageData, getDefaultActiveStageOrder } from '../../_utils';
 import MusicShowcase from './showcaseMusic';
 import Kanban from './kanban';
@@ -17,7 +17,7 @@ import Video from './video';
 import Quiz from './quiz';
 import Markdown from './markdown';
 
-class EmbeddedQuest extends Component {
+class EmbeddedPage extends Component {
   constructor(props) {
       super(props);
 
@@ -33,7 +33,7 @@ class EmbeddedQuest extends Component {
   }
 
   renderEmbbededQuestContent() {
-    if (this.props.embeddedQuest.open && this.props.activeQuestData && this.props.activeQuestData.type === questTypes.EMBEDDED) {
+    if (this.props.embeddedPage.open && this.props.embeddedPage.type === 'quest' && this.props.activeQuestData && this.props.activeQuestData.type === questTypes.EMBEDDED) {
       let activeStageData = getStageData(this.props.activeQuestData, this.state.activeStageOrder);
 
       if (!activeStageData) {
@@ -74,6 +74,15 @@ class EmbeddedQuest extends Component {
         </div>
       }
     }
+    // If open but no active quests, it's for credits!
+    else if (this.props.embeddedPage.open && this.props.embeddedPage.type === 'credits' && this.props.journey && this.props.journey.credits) {
+      return <div className="row creditsWrapper">
+        <div className="col-md-6 offset-md-3">
+          <h1>Credits</h1>
+         <Markdown  mdContent={this.props.journey.credits.credits}/>
+        </div>
+      </div>
+    }
     else if (this.props.activeQuestData && this.props.activeQuestData.type !== questTypes.WEBSITE) {
       // TODO: Show error on unknown quests type
     }
@@ -81,7 +90,7 @@ class EmbeddedQuest extends Component {
 
   saveQuiz(questions) {
     this.props.changeQuestProgress(this.props.activeQuest.quest, null, null, questions);
-    this.props.closeEmbeddedQuest();
+    this.props.closeEmbeddedPage();
   }
 
   goToNextStage(stage) {
@@ -100,19 +109,19 @@ class EmbeddedQuest extends Component {
   }
 
   render() {
-    if (this.props.embeddedQuest && this.props.activeQuestData) {
+    if (this.props.embeddedPage) {
       // If the quest is done, close the embedded UI
-      if (this.props.activeQuestData.status === 'complete') {
-        this.props.closeEmbeddedQuest();
+      if (this.props.activeQuestData && this.props.activeQuestData.status === 'complete') {
+        this.props.closeEmbeddedPage();
       }
 
       return (
-        <div className={ (this.props.embeddedQuest.open) ? 'fullpage open' : 'fullpage'}>
+        <div className={ (this.props.embeddedPage.open) ? 'fullpage open' : 'fullpage'}>
             <div className="wrapper">
                 <div className="container">
                     { this.renderEmbbededQuestContent() }
                 </div>
-                <a className="btn btn-danger btn-close" onClick={() => this.props.closeEmbeddedQuest()}>CLOSE</a>
+                <a className="btn btn-danger btn-close" onClick={() => this.props.closeEmbeddedPage()}>CLOSE</a>
             </div>
         </div>
       );
@@ -125,14 +134,15 @@ class EmbeddedQuest extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    embeddedQuest: state.embeddedQuest,
+    embeddedPage: state.embeddedPage,
     activeQuest: state.activeQuest,
     activeQuestData: getActiveQuestData(state),
+    journey: state.journey,
   };
 };
 
 function mapDispatchToProps(dispatch) {
-return bindActionCreators({ closeEmbeddedQuest, changeQuestProgress }, dispatch);
+return bindActionCreators({ closeEmbeddedPage, changeQuestProgress }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EmbeddedQuest);
+export default connect(mapStateToProps, mapDispatchToProps)(EmbeddedPage);

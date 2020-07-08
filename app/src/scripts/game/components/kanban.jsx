@@ -8,7 +8,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { closeEmbeddedQuest } from '../../../actions/index';
+import { } from '../../../actions/index';
 import { getActiveQuestData } from '../../_utils';
 import Board from '@lourenci/react-kanban'
 
@@ -30,7 +30,7 @@ class Kanban extends Component {
   }
 
   render() {
-    if (this.props.embeddedQuest && this.props.activeQuestData) {
+    if (this.props.embeddedPage && this.props.activeQuestData) {
       return <div className="row">
           <div className="row">
             <div className="col-sm-10 col-sm-offset-1">
@@ -51,14 +51,14 @@ class Kanban extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    embeddedQuest: state.embeddedQuest,
+    embeddedPage: state.embeddedPage,
     activeQuest: state.activeQuest,
     activeQuestData: getActiveQuestData(state),
   };
 };
 
 function mapDispatchToProps(dispatch) {
-return bindActionCreators({ closeEmbeddedQuest }, dispatch);
+return bindActionCreators({ }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Kanban);

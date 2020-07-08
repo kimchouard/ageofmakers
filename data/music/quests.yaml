@@ -56,17 +56,11 @@ CTA: Find Out How 🧐
 positionLeft: 50.5
 positionTop: 78.5
 stages:
-- name: Music for Change
-  subtitle: |-
-    Look at this video to know what's coming up for you. 🧐
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  order: 0
 - name: Example of Music That Impacted Social Movements
   content: |-
     Here's a list of music – from the Civil Rights era to today – that shone light on injustice and helped us imagined a better world.
   type: musicShowcase
-  order: 1
+  order: 0
   requiredShowcaseViews: 1
   quiz:
     questions:

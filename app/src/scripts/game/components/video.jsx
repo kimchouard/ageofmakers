@@ -8,7 +8,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { closeEmbeddedQuest } from '../../../actions/index';
+import { } from '../../../actions/index';
 
 
 class Video extends Component {
@@ -64,7 +64,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-return bindActionCreators({ closeEmbeddedQuest }, dispatch);
+return bindActionCreators({ }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Video);
