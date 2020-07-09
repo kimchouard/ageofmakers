@@ -32,6 +32,7 @@ export const quizAnswerTypes = {
   FREETEXT: 'freetext',
   FREETEXTLONG: 'freetextlong',
   SMALLTEXT: 'smalltext',
+  URL: 'url',
 };
 
 export const isQuestsLoaded = (props) => {

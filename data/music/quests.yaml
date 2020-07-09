@@ -345,31 +345,6 @@ visibleAtAge: 0
 # =======================================================
 
 # -------------------------------------------------------
-# Welcome to the World of Music
-# welcome_music_world
----
-id: welcome_music_world
-name: Welcome to the World of Music
-valley: musiccity
-content: |-
-  Music structure (sections, etc.) & gendra overview
-type: embedded
-CTA: Learn About Music
-positionLeft: 47.5
-positionTop: 71
-stages:
-- name: How Music Is Written
-  subtitle: |-
-    Music structure (sections, etc.) & gendra overview.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  order: 0
-prerequisites: 
-- age: 1
-- welcome_quest
-visibleAtAge: 0
-
-# -------------------------------------------------------
 # Setting a Vision for Your Song
 # song_vision
 ---
@@ -381,8 +356,18 @@ content: |-
 type: embedded
 # CTA: Learn About Music
 positionLeft: 47.5
-positionTop: 66
-stages: []
+positionTop: 71
+stages: 
+- name: TODO
+  subtitle: |-
+    Description here.
+  type: video
+  youtubeVideoId: MPSr4XoyOfQ
+  featuredChannel:
+    name: Music Notes Online
+    icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
+    youtubeChannelId: UCdmOMNJhoZaUFofT4D2jibw
+  order: 0
 quiz:
   name: Finding the Purpose of Your Song
   subtitle: |-
@@ -414,6 +399,31 @@ quiz:
       type: freetext
 prerequisites: 
 - music_change_the_world
+visibleAtAge: 0
+
+# -------------------------------------------------------
+# Welcome to the World of Music
+# welcome_music_world
+---
+id: welcome_music_world
+name: Welcome to the World of Music
+valley: musiccity
+content: |-
+  Music structure (sections, etc.) & gendra overview
+type: embedded
+CTA: Learn About Music
+positionLeft: 47.5
+positionTop: 66
+stages:
+- name: How Music Is Written
+  subtitle: |-
+    Music structure (sections, etc.) & gendra overview.
+  type: video
+  youtubeVideoId: MPSr4XoyOfQ
+  order: 0
+prerequisites: 
+- age: 1
+- song_vision
 visibleAtAge: 1
 
 
@@ -498,9 +508,20 @@ stages:
 
     ![Assignements](data/music/images/bandlab/save_your_first_track.png)
   order: 5
+quiz:
+  name: Your First Song
+  subtitle: |-
+    Congrats on your first song!
+  questions:
+    - id: songUrl
+      name: Your song url
+      placeholder: |-
+        Paste your song url here
+      prepopulated: true
+      type: url
 prerequisites: 
 - age: 2
-- song_vision
+- welcome_music_world
 visibleAtAge: 1
 
 

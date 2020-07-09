@@ -17,8 +17,23 @@ class Quiz extends Component {
       super(props);
 
       this.state = {
-        questions: {}
+        questions: {},
       }
+  }
+
+  componentDidMount() {
+    let newQuestions = this.state.questions;
+
+    for (let question of this.props.quizData.questions) {
+      // If the question option is prepopulated for a URL, 
+      if (question.prepopulated && question.type === quizAnswerTypes.URL) {
+        newQuestions[question.id] = document.URL;
+      }
+    }
+    
+    this.setState({
+      questions: newQuestions,
+    });
   }
 
   submitQuestion(event) {
@@ -31,7 +46,7 @@ class Quiz extends Component {
       let newQuestions = this.state.questions;
       newQuestions[e.target.id] = e.target.value;
       this.setState({
-        questions: newQuestions
+        questions: newQuestions,
       });
     }
     else {
@@ -74,7 +89,7 @@ class Quiz extends Component {
               disabled={ (quizResult !== undefined) }
             />
           }
-          else if (question.type === quizAnswerTypes.SMALLTEXT) {
+          else if (question.type === quizAnswerTypes.SMALLTEXT || question.type === quizAnswerTypes.URL) {
             inputHtml = <input 
               placeholder={question.placeholder}
               id={question.id}
@@ -82,13 +97,13 @@ class Quiz extends Component {
               required={ !question.optional }
               value={quizResult || this.state.questions[question.id]} 
               onChange={ (e) => { this.handleFormChange(e); } }
-              type="text"
+              type={ (question.type === quizAnswerTypes.URL) ? 'url' : 'text' }
               disabled={ (quizResult !== undefined) }
             />
           }
 
           return <div className="form-group question row" key={question.id}>
-            <label htmlFor={question.id} className={`col-md-${(this.props.inline) ? '12': '3'} col-form-label required`} title={question.name}>
+            <label htmlFor={question.id} className={`col-md-${(this.props.inline) ? '12': '3'} col-form-label ${ (question.optional) ? '' : 'required' }`} title={question.name}>
               <Markdown mdContent={question.name} />
             </label>
             <div className={ `col-md-${(this.props.inline) ? '12': '9'}` }>

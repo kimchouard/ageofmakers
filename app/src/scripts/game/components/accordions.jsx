@@ -60,6 +60,9 @@ class Accordions extends Component {
     this.props.backToNewTab(this.props.activeQuest.quest);
   }
 
+  saveQuizResults(questions) {
+    this.props.changeQuestProgress(this.props.activeQuest.quest, null, null, questions);
+  }
   renderShowcaseAction(stage, showcaseItem) {
     if (stage.quiz) {
       return <Quiz quizData={stage.quiz} saveQuiz={(questions) => { this.backToShowcaseItems(stage, showcaseItem, questions) } } embedded={true} inline={true} />
@@ -78,27 +81,41 @@ class Accordions extends Component {
   renderAccordions() {
     // If the quest is done
     if (this.props.activeQuestData.stages[this.props.activeQuestData.stages.length-1].status === 'complete') {
-      return <div className="congrats">
-        <div className="title">Quest Completed!</div>
-
-        <div className="action">
-          <div
-            className="button complete"
-            onClick={ () => { this.props.backToNewTab(this.props.activeQuest.quest) } }>
-            What's next??
-          </div>
-        </div>        
-
-        <div className="action">
-          <div
-            className="button new"
-            onClick={ () => { this.resetStages() } }>
-            Restart
+      // Show the quiz if there is one
+      if (this.props.activeQuestData.quiz && !this.props.activeQuestData.quiz.results) {
+        return <div className="container">
+        <div className="row">
+          <div className="col-sm-12">
+            <h2>{this.props.activeQuestData.quiz.name}</h2>
+            <h5>{this.props.activeQuestData.quiz.subtitle}</h5>
+            <Quiz quizData={this.props.activeQuestData.quiz} saveQuiz={(questions) => { this.saveQuizResults(questions) } } embedded={true} inline={true} />
           </div>
         </div>
-
-        <img src={ chrome.extension.getURL("images/high-five_beige.gif") } />
       </div>
+      }
+      else {
+        return <div className="congrats">
+          <div className="title">Quest Completed!</div>
+
+          <div className="action">
+            <div
+              className="button complete"
+              onClick={ () => { this.props.backToNewTab(this.props.activeQuest.quest) } }>
+              What's next??
+            </div>
+          </div>        
+
+          <div className="action">
+            <div
+              className="button new"
+              onClick={ () => { this.resetStages() } }>
+              Restart
+            </div>
+          </div>
+
+          <img src={ chrome.extension.getURL("images/high-five_beige.gif") } />
+        </div>;
+      }
     }
     else {
       // If it's a showcase embedded quest
