@@ -795,7 +795,7 @@ stages:
   order: 0
 visibleAtAge: 2
 prerequisites:
-- lyrics_free_writing
+- lyrics_flow
 - rhythm_basics
 - melody_basics
 
@@ -1028,38 +1028,6 @@ prerequisites:
 # =======================================================
 
 # -------------------------------------------------------
-# Intro to Writing Lyrics
-# lyrics_intro
---- 
-id: lyrics_intro
-name: Intro to Writing Lyrics
-valley: lyrics
-content: |-
-  Lyrics writing process & vocabulary considerations
-  
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 35.5
-positionTop: 61.5
-type: embedded
-# CTA:
-stages:
-- name: Intro to Writing Lyrics
-  subtitle: |-
-    Learn what it takes to write lyrics for a song.
-  type: video
-  youtubeVideoId: kk-K5J0c_qE
-  featuredChannel:
-    name: Music Notes Online
-    icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
-    youtubeChannelId: UCdmOMNJhoZaUFofT4D2jibw
-  order: 0
-visibleAtAge: 1
-prerequisites: 
-- age: 2
-- bandlab_start
-
-# -------------------------------------------------------
 # What's On Your Mind?
 # lyrics_free_writing
 --- 
@@ -1071,8 +1039,8 @@ content: |-
   
   **TODO**
 # startUrl: https://www.tinkercad.com/login 
-positionLeft: 25
-positionTop: 54
+positionLeft: 35.5
+positionTop: 61.5
 type: embedded
 # CTA:
 stages:
@@ -1126,9 +1094,10 @@ quiz:
         
           Then, go back and do another five-minute free write about this information and how it made you feel.
       type: freetextlong
-visibleAtAge: 2
-prerequisites:
-- lyrics_intro
+visibleAtAge: 1
+prerequisites: 
+- age: 2
+- bandlab_start
 
 # -------------------------------------------------------
 # Expand Your Lyrics
@@ -1140,8 +1109,8 @@ valley: lyrics
 content: |-
   Transform your free flow inspiration into lyrics!
 # startUrl: https://www.tinkercad.com/login 
-positionLeft: 17
-positionTop: 52
+positionLeft: 25
+positionTop: 54
 type: embedded
 # CTA:
 stages:
@@ -1201,19 +1170,19 @@ prerequisites:
 - lyrics_free_writing
 
 # -------------------------------------------------------
-# Write Your Chorus
-# lyrics_chorus
+# Using Bandlab to Record Your Voice
+# bandlab_lyrics
 --- 
-id: lyrics_chorus
-name: Write Your Chorus
+id: bandlab_lyrics
+name: Using Bandlab to Record Your Voice
 valley: lyrics
 content: |-
-  Write a meaningful & catchy chorus
+  Learn How to Record Your Voice in BandLab
   
   **TODO**
 # startUrl: https://www.tinkercad.com/login 
 positionLeft: 15
-positionTop: 43
+positionTop: 41
 type: embedded
 # CTA:
 stages:
@@ -1229,48 +1198,18 @@ stages:
   order: 0
 visibleAtAge: 2
 prerequisites:
-- expand_lyrics
+- lyrics_free_writing
+
 
 # -------------------------------------------------------
-# Writing Your 1st Verse
-# lyrics_first_verse
+# Work on Your Flow
+# lyrics_flow
 --- 
-id: lyrics_first_verse
-name: Writing Your 1st Verse
+id: lyrics_flow
+name: Work on Your Flow
 valley: lyrics
 content: |-
-  Write the lyrics about your “hero”.
-  
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 20
-positionTop: 40
-type: embedded
-# CTA:
-stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  featuredChannel:
-    name: Music Notes Online
-    icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
-    youtubeChannelId: UCdmOMNJhoZaUFofT4D2jibw
-  order: 0
-visibleAtAge: 2
-prerequisites:
-- lyrics_chorus
-
-# -------------------------------------------------------
-# Writing Your 2nd Verse
-# lyrics_second_verse
---- 
-id: lyrics_second_verse
-name: Writing Your 2nd Verse
-valley: lyrics
-content: |-
-  Writing Your 2nd Verse about your story.
+  Learn the important pieces on how your deliver your lyrics on your music.
   
   **TODO**
 # startUrl: https://www.tinkercad.com/login 
@@ -1291,7 +1230,7 @@ stages:
   order: 0
 visibleAtAge: 2
 prerequisites:
-- lyrics_first_verse
+- bandlab_lyrics
 
 
 

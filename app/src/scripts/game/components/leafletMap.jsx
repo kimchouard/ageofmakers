@@ -40,23 +40,28 @@ class Leaflet extends Component {
           let quest = this.props.journey.quests[questKey];
 
           if (getAge(this.props.journey).index >= quest.visibleAtAge) {
-            let position = [100-quest.positionTop, quest.positionLeft];
-            let iconImg = new divIcon({
-              iconSize: [50, 65],
-              iconAnchor: position,
-              html: `<div class='pinWrapper ${quest.status} ${questUnlocked(quest, this.props.journey) ? `${quest.valley}` : `locked`} ${quest.id}'>
-                      <div class='pin bounce'>
-                        <div class='inner'  style="background-image: url('${getAreaIconUrl(quest, this.props.journey)}');"></div>
-                      </div>
-                      <div class='pulse'></div>
-                    </div>`
-            });
-            return <Marker
-              key={questKey}
-              icon={iconImg}
-              position={position} 
-              onClick={() => this.openQuest(questKey)}
-              />
+            if (quest.positionTop && quest.positionLeft) {
+              let position = [100-quest.positionTop, quest.positionLeft];
+              let iconImg = new divIcon({
+                iconSize: [50, 65],
+                iconAnchor: position,
+                html: `<div class='pinWrapper ${quest.status} ${questUnlocked(quest, this.props.journey) ? `${quest.valley}` : `locked`} ${quest.id}'>
+                        <div class='pin bounce'>
+                          <div class='inner'  style="background-image: url('${getAreaIconUrl(quest, this.props.journey)}');"></div>
+                        </div>
+                        <div class='pulse'></div>
+                      </div>`
+              });
+              return <Marker
+                key={questKey}
+                icon={iconImg}
+                position={position} 
+                onClick={() => this.openQuest(questKey)}
+                />
+            }
+            else {
+              console.error('Parameters positionTop & positionLeft not defined for this quest!', quest);
+            }
           }
         });
       }
