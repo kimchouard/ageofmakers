@@ -63,13 +63,21 @@ class Quiz extends Component {
     }
   }
 
-  renderQuestions() {
-    const validateMessages = {
-      required: 'This field is required!',
-    }
+  needToRenderHelpers() {
+    return (this.props.quizData.helpers && !this.props.quizData.results)
+  }
 
+  renderContentHelp(content) {
+    if (content && !this.props.quizData.results) {
+      return <div className={ `form-text` /* text-muted */ }>
+        <Markdown mdContent={content} /> 
+      </div>
+    }
+  }
+
+  renderQuestions() {
     if (this.props.quizData.questions) {
-      return <form name="quiz" className="form-group quizForm col-12" onSubmit={(e) => { this.submitQuestion(e); }}>
+      return <form name="quiz" className={`form-group quizForm col-${ (this.needToRenderHelpers()) ? '8' : '12' }`} onSubmit={(e) => { this.submitQuestion(e); }}>
         { this.props.quizData.questions.map((question) => {
           let quizResult;
           if (this.props.quizData.results) {
@@ -85,7 +93,7 @@ class Quiz extends Component {
               required={ !question.optional }
               value={quizResult || this.state.questions[question.id]} 
               onChange={ (e) => { this.handleFormChange(e); } }
-              rows={ (this.props.inline) ? "3" : (question.type === quizAnswerTypes.FREETEXTLONG) ? "10" : "5" }
+              rows={ (this.props.inline) ? "3" : (question.type === quizAnswerTypes.FREETEXTLONG) ? "20" : "5" }
               disabled={ (quizResult !== undefined) }
             />
           }
@@ -103,14 +111,22 @@ class Quiz extends Component {
           }
 
           return <div className="form-group question row" key={question.id}>
-            <label htmlFor={question.id} className={`col-md-${(this.props.inline) ? '12': '3'} col-form-label ${ (question.optional) ? '' : 'required' }`} title={question.name}>
+            <label
+              htmlFor={question.id}
+              className={
+                `col-md-${(this.props.inline || question.type === quizAnswerTypes.FREETEXTLONG) ? '12': '3'}
+                ${ (question.type === quizAnswerTypes.FREETEXTLONG) ? 'text-left' : '' }
+                col-form-label
+                ${ (question.optional) ? '' : 'required' }`
+              }
+              title={question.name}
+            >
               <Markdown mdContent={question.name} />
             </label>
-            <div className={ `col-md-${(this.props.inline) ? '12': '9'}` }>
+            <div className={ `col-md-${(this.props.inline || question.type === quizAnswerTypes.FREETEXTLONG) ? '12': '9'}` }>
+              { this.renderContentHelp(question.instructions) }
               { inputHtml }
-              { (!question.examples || this.props.quizData.results) ? '' : <div className={ `form-text` /* text-muted */ }>
-                <Markdown mdContent={question.examples} /> 
-              </div> }
+              { this.renderContentHelp(question.examples) }
             </div>
           </div>
         }) }
@@ -123,11 +139,20 @@ class Quiz extends Component {
     }
   }
 
+
+  renderHelpers() {
+    if (this.needToRenderHelpers()) {
+      return <div className={`quizHelpers col-4`}>
+        <Markdown mdContent={this.props.quizData.helpers} />
+      </div>;
+    }
+  }
   render() {
     if (this.props.quizData) {
       return <div className={ `row quizWrapper ${(this.props.inline) ? 'inline': 'embedded'} ${ (this.props.quizData.results) ? 'quizResults' : ''}`}>
         { (this.props.inline) ? <div className="quizHeader col-12">Answer these questions to complete the quest.</div> : ''}
         { this.renderQuestions() }
+        { this.renderHelpers() }
       </div>
     }
     else {

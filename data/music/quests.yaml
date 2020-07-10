@@ -1070,19 +1070,45 @@ quiz:
     { "questId": "song_vision" }
     ```
 
-    ```countdown
-    1
+    You can also put your music in the background for inspiration: 
+    ```dynamicLinkFromQuestQuiz
+    {
+      "questId": "bandlab_start",
+      "questionId": "songUrl",
+      "target":"_blank",
+      "label":"Click this button to open your song in a new tab and come back here to do your freewrite!"
+    }
     ```
 
     **Don’t filter yourself, don’t worry about grammar, and write AS MUCH AS YOU CAN.**
+  helpers: |-
+    ```countdown
+    {
+      "minutes": 5,
+      "prompts": [
+        "What’s something you want somebody to know about your topic?",
+        "How do your friends *feel* about this topic?",
+        "What have your parents taught you about this?",
+        "What has school taught you about this?",
+        "What has school **NOT** taught you about this?",
+        "What are things people disagree with you about on this topic?",
+        "How has this topic showed up in your own life?",
+        "What do you think people misunderstand about this topic?",
+        "What might make somebody change their mind about this topic?",
+        "What can people do to help?",
+        "How is this topic covered in the media?",
+        "What is the history of this topic in your community?",
+        "What do you want the future to look like?"
+      ]
+    }
+    ```
   questions:
     - id: freeflow
-      name: Write as much as you can here on your main topic
+      name: Your Free Write
       placeholder: |-
-        “Free write” that answers the following questions.
-        - What do you **understand** about the history and present of your topic? 
-        - How does this make you **feel**? Do you have any **personal examples** you can share? 
-        - How do **you** want the future to look? It’s your time to help shape it that way! 🚀
+        Write as much as you can here based on your vision.
+        Don’t filter yourself, don’t worry about grammar. 
+        Write AS MUCH AS YOU CAN!
       examples: |-
         Sometimes, that’s all people need to do to get started writing their lyrics. Other times, people realize they need to do more research on their topic. 
         
@@ -1132,7 +1158,7 @@ quiz:
     **The general structure of a song is VERSE 1 / CHORUS  / VERSE 2 / CHORUS.** You’ll use this as an outline when you start writing lyrics. 
     
     Go through your free-write and copy the beautiful phrases, word combinations or ideas that help get across the understanding and feeling of your song’s vision.
-
+  helpers: |-
     ```quizResults
     { "questId": "lyrics_free_writing" }
     ```
@@ -1141,7 +1167,7 @@ quiz:
       name: Chorus
       placeholder: |-
         Extract your chorus here!
-      examples: |-
+      instructions: |-
         The chorus (or hook) should be your take-home message and is the only required part of your song. The goal of your chorus is to take the most important message and get it into the most catchy and repetitive part of this song.
       type: freetext
     - id: verse1
@@ -1149,8 +1175,10 @@ quiz:
       optional: true
       placeholder: |-
         Put your first verse here!
+      instructions: |-
+        You can also choose to include verses in your song, which can accomplish whatever you want them to (tell stories, share history/facts…).  
       examples: |-
-        You can also choose to include verses in your song, which can accomplish whatever you want them to (tell stories, share history/facts…). Possible themes for a verse: 
+        Possible themes for a verse: 
         - What is it? (explain the history of your topic and what it is).
         - What do we do about it? (envision the actions necessary to make a better world).
         - Story about yourself.
@@ -1162,7 +1190,7 @@ quiz:
       optional: true
       placeholder: |-
         Put your second verse here!
-      examples: |-
+      instructions: |-
         Use a theme here that you haven't used above.
       type: freetext
 visibleAtAge: 2

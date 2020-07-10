@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Markdown from './markdown';
 
 export default class Countdown extends Component {
   constructor(props) {
@@ -9,13 +10,14 @@ export default class Countdown extends Component {
       minutes: this.props.minutes || 0,
       seconds: this.props.seconds || 0,
       timerOn: this.props.autoPlay || false,
+      currentPrompt: null,
     };
   }
 
   componentDidMount() {
     this.myInterval = setInterval(() => {
-      if(this.state.timerOn) {
-        const { seconds, minutes } = this.state
+      if (this.state.timerOn) {
+        const { seconds, minutes, currentPrompt } = this.state;
         if (seconds > 0) {
           this.setState(({ seconds }) => ({
             seconds: seconds - 1
@@ -29,9 +31,15 @@ export default class Countdown extends Component {
           } else {
             this.setState(({ minutes }) => ({
               minutes: minutes - 1,
-              seconds: 59
+              seconds: 59,
+              currentPrompt: this.getNewRandomPrompt(currentPrompt)
             }))
           }
+        }
+        else if (seconds === 30) {
+          this.setState({
+            currentPrompt: this.getNewRandomPrompt(currentPrompt),
+          })
         }
       }
     }, 1000);
@@ -110,6 +118,30 @@ export default class Countdown extends Component {
       return <span className="timer-btn" onClick={() => { this.startTimer() }}>► Start </span>
     }
   }
+
+  getNewRandomPrompt(currentPrompt) {
+    if (this.props.prompts) {
+      let newPrompt; 
+      do {
+        newPrompt = this.props.prompts[Math.round(Math.random() * (this.props.prompts.length - 1))];
+      } while (currentPrompt === newPrompt) 
+      return newPrompt;
+    }
+    else {
+      return null;
+    }
+  }
+
+  renderPrompts() {
+    if (this.props.prompts && this.state.currentPrompt) {
+      return <div className="countdownPrompts">
+        <p className="title"><strong>Feeling stuck?</strong> Try to answer this prompt:</p>
+        <blockquote className="blockquote">
+          <Markdown mdContent={this.state.currentPrompt} />
+        </blockquote>
+      </div>
+    }
+  }
   
   render() {
     return (
@@ -121,6 +153,7 @@ export default class Countdown extends Component {
           <div className="countdown-label">{ this.renderCoundownLabel() }</div>
           <audio src={ chrome.extension.getURL(`/images/alarm-clock.mp3`) } type="audio/mpeg" ref={(ref) => { this.player = ref } }/>
         </div>
+        { this.renderPrompts() }
       </div>
     );
   }

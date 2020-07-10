@@ -21,9 +21,7 @@ class EmbeddedPage extends Component {
   constructor(props) {
       super(props);
 
-      this.state = {
-        activeStageOrder: getDefaultActiveStageOrder(this.props.activeQuestData),
-      }
+      this.state = {}
   }
 
   getStageContentHtml(content) {
@@ -34,12 +32,11 @@ class EmbeddedPage extends Component {
 
   renderEmbbededQuestContent() {
     if (this.props.embeddedPage.open && this.props.embeddedPage.type === 'quest' && this.props.activeQuestData && this.props.activeQuestData.type === questTypes.EMBEDDED) {
-      let activeStageData = getStageData(this.props.activeQuestData, this.state.activeStageOrder);
+      let activeStageOrder = getDefaultActiveStageOrder(this.props.activeQuestData);
+      let activeStageData = getStageData(this.props.activeQuestData, activeStageOrder);
 
       if (!activeStageData) {
-        this.setState({
-          activeStageOrder: getDefaultActiveStageOrder(this.props.activeQuestData),
-        });
+        console.log('Error while loading stage data', activeStageOrder, this.props.activeQuestData);
       }
       else {
         let stageDiv;

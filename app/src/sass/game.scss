@@ -54,6 +54,12 @@ body.game {
   clear: both;
 }
 
+// Markdown Custom Blocks
+
+a.dynamicLink {
+  text-decoration: none;
+}
+
 @import 'controls';
 @import 'tuto';
 @import 'bubble';

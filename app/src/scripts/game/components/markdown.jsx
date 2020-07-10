@@ -33,14 +33,50 @@ class Markdown extends Component {
         }
     
         if (language === 'countdown') {
-          return <Countdown minutes={value} />
+          try {
+            let params = JSON.parse(value);
+
+            if (params && params.minutes) {
+              return <Countdown minutes={params.minutes} prompts={params.prompts} />
+            }
+          } catch (e) {
+            console.error('Error', e);
+            return <p>Error rendering the countdown.</p>
+          }
+        }
+    
+        if (language === 'dynamicLinkFromQuestQuiz') {
+          try {
+            let params = JSON.parse(value);
+            if (params && isLoggedInAndLoaded(this.props)) {
+              if (params.questionId && this.props.journey.quests[params.questId]) {
+                return <p className="text-center">
+                  <a href={this.props.journey.quests[params.questId].quiz.results[params.questionId]} target={params.target} className="btn btn-dark dynamicLink">{params.label}</a>
+                </p>
+              }
+              else {
+                return <p>Error loading the dynamic link.</p>
+              }
+            }
+          } catch (e) {
+            console.error('Error', e);
+            return <p>Error rendering the dynamic link.</p>
+          }
         }
     
         if (language === 'quizResults') {
-          let params = JSON.parse(value);
-          console.log('Params', params, this.props.journey.quests[params.questId]);
-          if (params && isLoggedInAndLoaded(this.props)) {
-            return <Quiz quizData={this.props.journey.quests[params.questId].quiz}  />
+          try {
+            let params = JSON.parse(value);
+
+            if (params.questionId && this.props.journey.quests[params.questId]) {
+              return this.props.journey.quests[params.questId].quiz.results[params.questionId];
+            }
+            else {
+              return <Quiz quizData={this.props.journey.quests[params.questId].quiz}  />
+            }
+          } catch (e) {
+            console.error('Error', e);
+            return <p>Error rendering the quiz results.</p>
           }
         }
     
