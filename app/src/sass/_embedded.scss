@@ -81,13 +81,20 @@
             Youtube Video
 ================================ */
 
-.videoWrapper {
-  .youtubeVideo {
-    margin: 10px auto 0;
-    display: block;
-    width:840px;
-    height:472px;
+.youtubeVideo {
+  margin: 10px auto 0;
+  display: block;
+  width:840px;
+  height:472px;
+
+  &.embedded {
+    width:420px;
+    height:236px;
   }
+}
+
+
+.videoWrapper {
 
   .featuredYoutubeChannel {
     background: $grey;

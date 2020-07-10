@@ -1111,7 +1111,7 @@ quiz:
         Write AS MUCH AS YOU CAN!
       examples: |-
         Sometimes, that’s all people need to do to get started writing their lyrics. Other times, people realize they need to do more research on their topic. 
-        
+      helpers: |-
         If you had trouble thinking of things to write about, you may need to:
         - Talk to family members/friends or your teacher about this topic. 
         - Do more research, that includes:
@@ -1170,6 +1170,12 @@ quiz:
       instructions: |-
         The chorus (or hook) should be your take-home message and is the only required part of your song. The goal of your chorus is to take the most important message and get it into the most catchy and repetitive part of this song.
       type: freetext
+      helpers: |-
+        Hear from LaMar on how to write a catchy chorus!
+
+        ```youtube
+        MPSr4XoyOfQ
+        ```
     - id: verse1
       name: Verse One
       optional: true
@@ -1193,6 +1199,12 @@ quiz:
       instructions: |-
         Use a theme here that you haven't used above.
       type: freetext
+      helpers: |-
+        Hear from LaMar on how to write a catchy chorus!
+
+        ```youtube
+        MPSr4XoyOfQ
+        ```
 visibleAtAge: 2
 prerequisites:
 - lyrics_free_writing

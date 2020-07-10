@@ -32,6 +32,15 @@ class Markdown extends Component {
           return <BandlabPlayer musicId={value} />
         }
     
+        if (language === 'youtube') {
+          return <iframe 
+            className="youtubeVideo embedded"
+            src={`https://www.youtube.com/embed/${value}`}
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen />
+        }
+    
         if (language === 'countdown') {
           try {
             let params = JSON.parse(value);

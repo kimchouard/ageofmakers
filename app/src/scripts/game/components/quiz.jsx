@@ -18,6 +18,7 @@ class Quiz extends Component {
 
       this.state = {
         questions: {},
+        currentQuestionHelpers: null,
       }
   }
 
@@ -75,6 +76,37 @@ class Quiz extends Component {
     }
   }
 
+  toggleQuestionHelpers(question) {
+    if (this.state.currentQuestionHelpers === question.id) {
+      this.setState({
+        currentQuestionHelpers: null,
+      });
+    }
+    else {
+      this.setState({
+        currentQuestionHelpers: question.id,
+      });
+    }
+  }
+
+  renderQuestionHelpers(question) {
+    if (question.helpers) {
+      return <div className="quizQuestionHelper">
+        <div className="helpersToggle">
+          <div className="btn btn-dark btn-sm" onClick={ () => { this.toggleQuestionHelpers(question); }}>
+            { (this.state.currentQuestionHelpers === question.id) ? 'Close help' : 'Need more help?' }
+          </div>
+        </div>
+        <div className="helpersContent" style={ {
+          height: (this.state.currentQuestionHelpers === question.id) ? 'auto' : 0
+        }}>
+          <Markdown mdContent={question.helpers} /> 
+        </div>
+      </div>
+    }
+    
+  }
+
   renderQuestions() {
     if (this.props.quizData.questions) {
       return <form name="quiz" className={`form-group quizForm col-${ (this.needToRenderHelpers()) ? '8' : '12' }`} onSubmit={(e) => { this.submitQuestion(e); }}>
@@ -127,6 +159,7 @@ class Quiz extends Component {
               { this.renderContentHelp(question.instructions) }
               { inputHtml }
               { this.renderContentHelp(question.examples) }
+              { this.renderQuestionHelpers(question) }
             </div>
           </div>
         }) }

@@ -81,4 +81,19 @@
       font-style: italic;
     }
   }
+
+  .quizQuestionHelper {
+    margin: 10px 0;
+
+    .helpersToggle {
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    .helpersContent {
+      transition: height 300ms ease-in-out;
+      height: 0;
+      overflow: hidden;
+    }
+  }
 }
