@@ -67,7 +67,7 @@ stages:
       - id: themes
         name: What injustice(s) did the song help shine a light on?
         placeholder: |-
-          Examples: Racial Injustice, Police Brutality, Environmental Justice, Education...
+          Examples: Racial Injustice, LGBT rights, police brutality, Environmental Justice, Colorism...
         examples: |-
             Notes: In many cases, a song might be used to aid social movement even if it wasn’t part of the original intention of the artist.
         type: freetext
@@ -376,7 +376,7 @@ quiz:
     - id: themes
       name: What injustice(s) do you want your song to shine a light on?
       placeholder: |-
-        Example: racial injustice, police brutality, identity, environment, education...
+        Example: Racial Injustice, LGBT rights, Police Brutality, Environmental Justice, Colorism...
       examples: |-
         These are the themes you’ll explore in your song.
       type: smalltext
@@ -1076,7 +1076,7 @@ quiz:
       "questId": "bandlab_start",
       "questionId": "songUrl",
       "target":"_blank",
-      "label":"Click this button to open your song in a new tab and come back here to do your freewrite!"
+      "label":"▶ Play Your Song"
     }
     ```
 
@@ -1088,9 +1088,9 @@ quiz:
       "prompts": [
         "What’s something you want somebody to know about your topic?",
         "How do your friends *feel* about this topic?",
-        "What have your parents taught you about this?",
-        "What has school taught you about this?",
-        "What has school **NOT** taught you about this?",
+        "What have your parents taught you about the injustice you chose?",
+        "What has school taught you about the injustice you chose?",
+        "What has school **NOT** taught you about the injustice you chose?",
         "What are things people disagree with you about on this topic?",
         "How has this topic showed up in your own life?",
         "What do you think people misunderstand about this topic?",
@@ -1158,6 +1158,16 @@ quiz:
     **The general structure of a song is VERSE 1 / CHORUS  / VERSE 2 / CHORUS.** You’ll use this as an outline when you start writing lyrics. 
     
     Go through your free-write and copy the beautiful phrases, word combinations or ideas that help get across the understanding and feeling of your song’s vision.
+
+    You can also put your music in the background for inspiration: 
+    ```dynamicLinkFromQuestQuiz
+    {
+      "questId": "bandlab_start",
+      "questionId": "songUrl",
+      "target":"_blank",
+      "label":"▶ Play Your Song"
+    }
+    ```
   helpers: |-
     ```quizResults
     { "questId": "lyrics_free_writing" }

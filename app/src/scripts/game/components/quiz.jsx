@@ -93,7 +93,7 @@ class Quiz extends Component {
     if (question.helpers) {
       return <div className="quizQuestionHelper">
         <div className="helpersToggle">
-          <div className="btn btn-dark btn-sm" onClick={ () => { this.toggleQuestionHelpers(question); }}>
+          <div className="btn btn-primary btn-sm" onClick={ () => { this.toggleQuestionHelpers(question); }}>
             { (this.state.currentQuestionHelpers === question.id) ? 'Close help' : 'Need more help?' }
           </div>
         </div>

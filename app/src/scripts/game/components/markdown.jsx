@@ -60,7 +60,7 @@ class Markdown extends Component {
             if (params && isLoggedInAndLoaded(this.props)) {
               if (params.questionId && this.props.journey.quests[params.questId]) {
                 return <p className="text-center">
-                  <a href={this.props.journey.quests[params.questId].quiz.results[params.questionId]} target={params.target} className="btn btn-dark dynamicLink">{params.label}</a>
+                  <a href={this.props.journey.quests[params.questId].quiz.results[params.questionId]} target={params.target} className="btn btn-success dynamicLink">{params.label}</a>
                 </p>
               }
               else {
