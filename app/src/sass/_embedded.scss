@@ -175,6 +175,81 @@
   }
 }
 
+
+/* ================================
+            FTC Showcase
+================================ */
+
+.ftcShowcase {
+  .sdgPickerWrapper {
+
+    .SDG-selector {
+      margin-top: 15px; 
+      cursor: pointer;
+
+      .SDG-icon {
+        width: 100%;
+      }
+    }
+  }
+
+  .project {
+    border-radius: 5px;
+    border: 2px solid $grey;
+    margin-top: 10px;
+    height: 530px;
+    padding: 0 15px;
+
+    .title {
+      background: $grey;
+      margin: 0 -15px;
+      border-radius: 5px 5px 0 0;
+      color: white;
+      padding: 8px 15px;
+      font-weight: bold;
+      font-size: 16px;
+      height: 62px;
+      line-height: 45px;
+      text-indent: 60px;
+      position: relative;
+
+      .SDG {
+        height: 60px;
+        width: 60px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 5px 0 0 0;
+      }
+    }
+
+    .desc {
+      padding-top: 20px;
+
+      img {
+        max-width: 90%;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+
+    .using {
+      text-align: center;
+
+      &::before {
+        content: "Using:";
+        text-indent: 15px;
+        font-weight: bold;
+      }
+
+      .tool img {
+        max-width: 100%;
+        max-height: 80px;
+      }
+    }
+  }
+}
+
 /* ================================
             Credits
 ================================ */

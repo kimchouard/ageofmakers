@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { closeEmbeddedPage, changeQuestProgress } from '../../../actions/index';
 import { questTypes, stageTypes, getActiveQuestData, getStageData, getDefaultActiveStageOrder } from '../../_utils';
 import MusicShowcase from './showcaseMusic';
+import FTCShowcase from './showcaseFtc';
 import Kanban from './kanban';
 import Video from './video';
 import Quiz from './quiz';
@@ -42,6 +43,9 @@ class EmbeddedPage extends Component {
         let stageDiv;
         if (activeStageData && activeStageData.type === stageTypes.MUSIC_SHOWCASE) {
           stageDiv = <MusicShowcase activeStageData={activeStageData} goToNextStage={(stage) => { this.goToNextStage(stage) } } />;
+        }
+        else if (activeStageData && activeStageData.type === stageTypes.FTC_SHOWCASE) {
+          stageDiv = <FTCShowcase activeStageData={activeStageData} goToNextStage={(stage) => { this.goToNextStage(stage) } } />;
         }
         else if (activeStageData && activeStageData.type === stageTypes.KANBAN) {
           stageDiv = <Kanban />

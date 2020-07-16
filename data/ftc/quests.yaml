@@ -1414,129 +1414,131 @@ valley: MakerMount
 content: |-
   Explore what other students have done with the game!
 # startUrl: https://docs.google.com/document/d/1D-yuD0ABFLaaa_J3s2YLOHNkNAi09UTcgf9sfZR3_9E/edit?usp=sharing
-type: showcase
+type: embedded
 CTA: Show me!
 positionLeft: 39
 positionTop: 38
 stages:
-- name: Hidden stage
+- name: Example of Student's Projects
   content: |-
-    
+    Scroll through the list of what other students have built with the game, and see if there is anything that inspires you! Click "Next" at the bottom of the screen when you're done.
+  type: ftcShowcase
   order: 0
-projects:
-- name: Self-Watering Community Garden
-  content: |-
-    For homeless people to grow their food and have a project to be a part-of.
+  requiredShowcaseViews: 1
+  showcaseItems:
+  - name: Self-Watering Community Garden
+    content: |-
+      For homeless people to grow their food and have a project to be a part-of.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/self-watering-garden.png)
-  SDG: 2
-  from: San Francisco, USA
-  using:
-    - microbit
-    - toybox
-  order: 0
-- name: Pet Plan
-  content: |-
-    Provide the pet experience to allergic kids with carnivore plant box and its food.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/self-watering-garden.png)
+    SDG: 2
+    from: San Francisco, USA
+    using:
+      - microbit
+      - toybox
+    order: 0
+  - name: Pet Plan
+    content: |-
+      Provide the pet experience to allergic kids with carnivore plant box and its food.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/pet-plant.jpeg)
-  SDG: 3
-  from: Paris, FR
-  using: []
-  order: 1
-- name: The Aluminum Curtain
-  content: |-
-    An innovative bullet-proof door to keep students safe from school shootings.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/pet-plant.jpeg)
+    SDG: 3
+    from: Paris, FR
+    using: []
+    order: 1
+  - name: The Aluminum Curtain
+    content: |-
+      An innovative bullet-proof door to keep students safe from school shootings.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/aluminium-curtain.png)
-  SDG: 4
-  from: Oakland, USA
-  using:
-    - toybox
-  order: 2
-- name: LGBTQ Community Devices & SWAG
-  content: |-
-    For community building and to create a support system.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/aluminium-curtain.png)
+    SDG: 4
+    from: Oakland, USA
+    using:
+      - toybox
+    order: 2
+  - name: LGBTQ Community Devices & SWAG
+    content: |-
+      For community building and to create a support system.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/LGBTQ-device.png)
-  SDG: 5
-  from: Oakland, USA
-  using:
-    - microbit
-    - toybox
-  order: 3
-- name: Water Filtration System
-  content: |-
-    3D-Printed for countries that lacks access to clean water, distributed by partnered nonprofits.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/LGBTQ-device.png)
+    SDG: 5
+    from: Oakland, USA
+    using:
+      - microbit
+      - toybox
+    order: 3
+  - name: Water Filtration System
+    content: |-
+      3D-Printed for countries that lacks access to clean water, distributed by partnered nonprofits.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/portable-water-filter.png)
-  SDG: 6
-  from: San Francisco, USA
-  using:
-    - toybox
-  order: 4
-- name: WIIZUM
-  content: |-
-    Electronic devices to to help blind, deaf and disabled people, like an electronic blind-cane, a vibrating whistle & more!
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/portable-water-filter.png)
+    SDG: 6
+    from: San Francisco, USA
+    using:
+      - toybox
+    order: 4
+  - name: WIIZUM
+    content: |-
+      Electronic devices to to help blind, deaf and disabled people, like an electronic blind-cane, a vibrating whistle & more!
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/WIIZUM.png)
-  SDG: 10
-  from: Paris, FR
-  using:
-    - arduino
-    - toybox
-  order: 5
-- name: Gamified Recycling Kiosk
-  content: |-
-    Mrs Hot Dog let’s you win points as you recycle item through the kiosk.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/WIIZUM.png)
+    SDG: 10
+    from: Paris, FR
+    using:
+      - arduino
+      - toybox
+    order: 5
+  - name: Gamified Recycling Kiosk
+    content: |-
+      Mrs Hot Dog let’s you win points as you recycle item through the kiosk.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/mrs-hot-dog.png)
-  SDG: 12
-  from: San Francisco, USA
-  using:
-    - microbit
-  order: 6
-- name: Air Pollution Filter
-  content: |-
-    With air filters aimed to reduce global warming.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/mrs-hot-dog.png)
+    SDG: 12
+    from: San Francisco, USA
+    using:
+      - microbit
+    order: 6
+  - name: Air Pollution Filter
+    content: |-
+      With air filters aimed to reduce global warming.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/air-pollution-filter.png)
-  SDG: 13
-  from: San Francisco, USA
-  using:
-    - toybox
-  order: 7
-- name: Ocean De-Polluting Boats
-  content: |-
-    Autonomous boats navigating on their own and communicating to each other to de-pollute our oceans.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/air-pollution-filter.png)
+    SDG: 13
+    from: San Francisco, USA
+    using:
+      - toybox
+    order: 7
+  - name: Ocean De-Polluting Boats
+    content: |-
+      Autonomous boats navigating on their own and communicating to each other to de-pollute our oceans.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/ocean-depolluting-boat.png)
-  SDG: 14
-  from: San Francisco, USA
-  using:
-    - microbit
-    - toybox
-  order: 8
-- name: SOS (Save Our Sea)
-  content: |-
-    Gamified remote drone piloting game to collect pollution in the ocean from the “7th continent”, made of just trashes.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/ocean-depolluting-boat.png)
+    SDG: 14
+    from: San Francisco, USA
+    using:
+      - microbit
+      - toybox
+    order: 8
+  - name: SOS (Save Our Sea)
+    content: |-
+      Gamified remote drone piloting game to collect pollution in the ocean from the “7th continent”, made of just trashes.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/save-our-seas.png)
-  SDG: 10
-  from: Paris, FR
-  using:
-    - mobile
-  order: 9
-- name: E2GAME
-  content: |-
-    A Board game around Sustainable Goals and an app to create bridge between generation.
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/save-our-seas.png)
+    SDG: 10
+    from: Paris, FR
+    using:
+      - mobile
+    order: 9
+  - name: E2GAME
+    content: |-
+      A Board game around Sustainable Goals and an app to create bridge between generation.
 
-    ![Project Image](https://ageofmakers.s3.amazonaws.com/e2game.png)
-  SDG: 17
-  from: Paris, FR
-  using:
-    - mobile
-  order: 10
+      ![Project Image](https://ageofmakers.s3.amazonaws.com/e2game.png)
+    SDG: 17
+    from: Paris, FR
+    using:
+      - mobile
+    order: 10
 prerequisites:
   - welcome_quest
 visibleAtAge: 0

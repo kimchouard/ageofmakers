@@ -12,6 +12,7 @@ import { getQuests } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
 import MusicShowcase from './showcaseMusic';
+import FTCShowcase from './showcaseFtc';
 import Kanban from './kanban';
 import Video from './video';
 import Quiz from './quiz';
@@ -89,6 +90,9 @@ class List extends Component {
       }
       else if (stage.type === stageTypes.MUSIC_SHOWCASE) {
         stageDiv = <MusicShowcase activeStageData={stage} viewOnly={true} />;
+      }
+      else if (stage.type === stageTypes.FTC_SHOWCASE) {
+        stageDiv = <FTCShowcase activeStageData={stage} viewOnly={true} />;
       }
       else if (stage.type === stageTypes.FTC_SHOWCASE) {
         // TODO: Implement FTC Showcase
