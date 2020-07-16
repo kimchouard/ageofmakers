@@ -40,6 +40,20 @@ class Video extends Component {
     }
   }
 
+  renderActions() { 
+    if (!this.props.viewOnly) {
+      return <div className="col-12 actions">
+        <div className={`btn btn-primary btn-lg btn-next`} onClick={() => { this.props.goToNextStage(this.props.activeStageData) }}>NEXT</div>
+      </div>
+    }
+    // If the video is viewOnly, put a link to the youtube video (iFrame not working in PDF)
+    else {
+      return <div className="col-12">
+        <p><strong>Youtube video link:</strong> <a href={`https://www.youtube.com/watch?v=${this.props.activeStageData.youtubeVideoId}`} target="_blank">{`https://www.youtube.com/watch?v=${this.props.activeStageData.youtubeVideoId}`}</a></p>
+      </div>
+    }
+  }
+
   render() {
     if (this.props.activeStageData) {
       return <div className="row videoWrapper">
@@ -47,14 +61,12 @@ class Video extends Component {
           { this.renderVideo() }
           { this.renderFeatured() }
         </div>
-        <div className="col-12 actions">
-          <div className={`btn btn-primary btn-lg btn-next`} onClick={() => { this.props.goToNextStage(this.props.activeStageData) }}>NEXT</div>
-        </div>
+        { this.renderActions() }
       </div>
     }
     else {
       return <div>Loading</div>
-    }  
+    }
   }
 }
 

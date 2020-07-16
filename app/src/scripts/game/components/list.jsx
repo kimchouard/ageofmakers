@@ -6,57 +6,73 @@
  */
 
 import React, { Component } from 'react';
-import yaml from 'js-yaml';
+import {connect} from 'react-redux';
+import { isLoggedInAndLoaded, isQuestsLoaded, isLoggedIn, getActivePlayerData, getRomanAge, questTypes, stageTypes, journeyIds } from '../../_utils';
+import { getQuests } from '../../../actions/index';
+import { bindActionCreators } from 'redux';
 
+import MusicShowcase from './showcaseMusic';
+import Kanban from './kanban';
+import Video from './video';
+import Quiz from './quiz';
 import Markdown from './markdown';
-const questsUrl = chrome.runtime.getURL('data/quests.yaml');
 
-export default class List extends Component {
-  constructor() {
-    super();
+class List extends Component {
+  constructor(props) {
+    super(props);
 
-    this.state = {
-      quests: null
+    this.state = { }
+    this.reloadQuestsIfNeeded();
+  }
+  
+  componentDidUpdate() {
+    this.reloadQuestsIfNeeded();
+  }
+
+  reloadQuestsIfNeeded() {
+    if (isLoggedIn(this.props) && !isQuestsLoaded(this.props)) {
+      this.props.reloadQuests(this.props.activePlayerData.journey);
     }
   }
 
-  componentDidMount() {
-    fetch(questsUrl)
-      .then((response) => {
-      if (response.status !== 200) {
-        console.error('Error while changing quest state:', res);
-        return resolve({ error: response.status });
-      }
-
-      // // Examine the text in the response
-      response.text().then((questsData) => {
-        this.setState({
-          quests: yaml.safeLoadAll(questsData)
-        });
-      });
-    });
-  }
-
-  getValleyName(valley) {
-    if (valley === "ThreeD") {
-      return '3D';
+  getValleyData(valleyId) {
+    if (this.props.journey.areas && this.props.journey.areas[valleyId]) {
+      return this.props.journey.areas[valleyId];
     }
     else {
-      return valley;
+      console.error('No area data!', this.props.journey, valleyId)
+      return null;
     }
   }
 
-  renderList(list) {
-    if (list.length) {
+  renderRequirementsList(list) {
+    if (list && list.length) {
       return <ul>
-        {list.map((listItem) => {
-          let questItem = this.state.quests.find((quest) => { 
-            return quest.id === listItem; 
-          });
-          console.log('For', listItem, ' found ', questItem);
-          return <li>
-            { (questItem) ? <a href={`#${questItem.id}`}>{questItem.name}</a> : listItem }
-          </li>
+        { list.map((listItem) => {
+          // If the requirement is a quests (string is a quest ID)
+          if (typeof listItem === 'string') {
+            let questItem = this.props.journey.quests[listItem];
+            
+            if (questItem) {
+              return <li key={questItem.id}>
+                { (questItem) ? <a href={`#${questItem.id}`}>{questItem.name}</a> : listItem }
+              </li>
+            }
+            else {
+              console.error('Impossible to find the quest item:', listItem);
+            }
+          }
+          // If not quest ID, it's an object with Age requirement
+          else if (listItem.age) {
+            let agePrereq = this.props.journey.ages[listItem.age];
+
+            return <li key={listItem.age}>
+              Age { getRomanAge(agePrereq) } required: Age of { agePrereq.name }
+            </li>;
+          }
+          else {
+            console.error('Unknown requirement type.', listItem);
+          }
         })}
       </ul>
     }
@@ -65,39 +81,83 @@ export default class List extends Component {
     }
   }
 
-  renderQuestList() {
-    if (this.state.quests) {
-      return this.state.quests.map((quest) => {
-        return <div key={quest.id}>
-
-          <h2 className="title" id={quest.id}>{quest.name}</h2>
-          <p>
-            <strong>Valley:</strong> <em>{this.getValleyName(quest.valley)}</em><br />
-            <strong>Pre-Requesites:</strong> { this.renderList(quest.prerequisites) }
-            <strong>Following:</strong> { this.renderList(quest.following) }
-            <strong>Start Url:</strong> <a href={quest.startUrl} target="_blank">{quest.startUrl}</a>
-          </p>
-          <div className="description">
-            <Markdown mdContent={quest.content} />
-          </div>
-          <div className="stages">
-            <h3 class="stagesTitle">Stages</h3>
-
-            {quest.stages.map((stage) => {
-              return <div className="stage"  key={stage.order}>
-                <h4>{stage.order+1}. {stage.name}</h4>
-
-                <Markdown mdContent={stage.content} />
-              </div>
-            })}
-          </div>
-        </div>
-      })
+  renderStage(stage) {
+    if (stage.type === stageTypes.VIDEO) {
+      return <Video activeStageData={stage} viewOnly={true} />
+    }
+    else if (stage.type === stageTypes.MUSIC_SHOWCASE) {
+      return <MusicShowcase activeStageData={stage} viewOnly={true} />
+    }
+    else if (stage.type === stageTypes.FTC_SHOWCASE) {
+      // TODO: Implement FTC Showcase
+      return <p><em>FTC Showcase quests content not visible in this page.</em></p>
+    }
+    else if (stage.type === stageTypes.KANBAN) {
+      // TODO: Implement Kanban
+      return <p><em>KANBAN quests content not visible in this page.</em></p>
     }
     else {
-      <div className="text-center">
-        <em>Loading...</em>
+      return <div className="stage"  key={stage.order}>
+        <h4>{stage.order+1}. {stage.name}</h4>
+
+        <Markdown mdContent={stage.content} />
       </div>
+    }
+  }
+
+  renderQuiz(quest) {
+    if (quest.quiz) {
+      return <Quiz quizData={quest.quiz} inline={true} />
+    }
+  }
+
+  renderQuestList() {
+    if (isLoggedIn(this.props)) {
+      if (isQuestsLoaded(this.props)) {
+        return Object.keys(this.props.journey.quests).map((questId) => {
+          let quest = this.props.journey.quests[questId];
+          let valleyData = this.getValleyData(quest.valley);
+
+          return <div key={quest.id}>
+  
+            <h2 className="title" id={quest.id}>{quest.name}</h2>
+            <p>
+              <strong>Quest Type:</strong> {quest.type}<br />
+              <strong>Valley:</strong> {valleyData.name}<br /> { /* TODO: add valley icon */}
+              { (quest.CTA) ? <div><strong>Custom Call to Action:</strong> { quest.CTA }<br /></div> : '' }
+              { (quest.type === questTypes.WEBSITE) ? <div><strong>Start Url:</strong> <a href={quest.startUrl} target="_blank">{quest.startUrl}</a><br /></div> : '' }
+              <strong>Pre-Requesites:</strong> { this.renderRequirementsList(quest.prerequisites) }
+              <strong>Following:</strong> { this.renderRequirementsList(quest.following) }
+            </p>
+            <div className="description">
+              <Markdown mdContent={quest.content} />
+            </div>
+            <div className="stages">
+              <h3 className="stagesTitle">Stages</h3>
+  
+              {quest.stages.map((stage) => {
+                return this.renderStage(stage);
+              })}
+            </div>
+            { this.renderQuiz(quest) }
+          </div>
+        });
+      }
+      else {
+        return <h1 className="text-center">Loading...</h1>
+      }
+    }
+    else {
+      return <h2>No user logged in.</h2>
+    }
+  }
+
+  getJourneyName() {
+    if (this.props.activePlayerData.journey === journeyIds.JOURNEY_FTC) {
+      return "Future Trailblazer Challenge"
+    }
+    else if (this.props.activePlayerData.journey === journeyIds.JOURNEY_MUSIC) {
+      return "Music for Change"
     }
   }
 
@@ -105,11 +165,12 @@ export default class List extends Component {
     require('../../../sass/list.scss');
     var today = new Date();
 
-    return <div class="contentListWrapper container">
-      <div class="row">
-        <div class="col-sm">
+    return <div className="contentListWrapper container">
+      <div className="row">
+        <div className="col-sm">
           <h1 className="header">Game Content</h1>
           <div className="text-center">
+            <strong>Curriculum:</strong> { this.getJourneyName() }<br/>
             <em className="text-underline">Last updated:</em> {today.toDateString() }
           </div>
       
@@ -119,3 +180,19 @@ export default class List extends Component {
     </div>
   }
 }
+
+const mapStateToProps = (state) => { 
+  return {
+    journey: state.journey,
+    activePlayer: state.activePlayer,
+    activePlayerData: getActivePlayerData(state),
+    players: state.players,
+  };
+};
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getQuests, isLoggedIn }, dispatch);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);

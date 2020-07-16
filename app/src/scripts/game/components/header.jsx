@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { questUnlocked, addComplete, getAge, getRomanAge, isLoggedInAndLoaded, getActivePlayerData, isLoggedIn, isQuestsLoaded, getAreaIconUrl } from '../../_utils';
-import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openTree, unselectQuest, resetQuests, resetActivePlayerJourney, openEmbeddedCredits } from '../../../actions/index';
+import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openTree, unselectQuest, resetQuests, resetActivePlayerJourney, openEmbeddedCredits, closeEmbeddedPage } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Header extends Component {
@@ -112,6 +112,7 @@ class Header extends Component {
   }
 
   startFirstWalkthrough() {
+    this.props.closeEmbeddedPage();
     this.setState({ settings: false });
     this.props.startWalkthrough(1);
   }
@@ -154,9 +155,9 @@ class Header extends Component {
           <div className="dropdown-action reload" onClick={ () => this.props.reloadQuests(this.props.activePlayerData.journey) }>Reload Quests</div>
           <div className="section-title">Help</div>
           <div className="dropdown-action help" onClick={ () => this.startFirstWalkthrough() }>Getting Started</div>
-          <div className="dropdown-action help disabled">FAQs</div>
-          <div className="dropdown-action help disabled">Download Quests in PDF</div>
+          <a className="dropdown-action help" href={ chrome.extension.getURL('list.html') } target="_blank">Download Quests in PDF</a>
           <div className="dropdown-action help" onClick={ () => this.openCredits() }>Credits</div>
+          <div className="dropdown-action help disabled">FAQs</div>
         </div>
       </div>;
     }
@@ -191,7 +192,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openTree, unselectQuest, resetQuests, resetActivePlayerJourney, openEmbeddedCredits }, dispatch);
+  return bindActionCreators({ getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openTree, unselectQuest, resetQuests, resetActivePlayerJourney, openEmbeddedCredits, closeEmbeddedPage }, dispatch);
 }
 
 

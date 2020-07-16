@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setActivePlayerSDG, changeQuestProgress, startQuest } from '../../../actions/index';
 import { getActiveQuestData, getActivePlayerData, stageStatus } from '../../_utils';
+import Quiz from './quiz';
 import Markdown from './markdown';
 
 class MusicShowcase extends Component {
@@ -23,19 +24,27 @@ class MusicShowcase extends Component {
   }
 
   renderActionBtn(showcaseItem) {
-    if (showcaseItem.status === stageStatus.STATUS_COMPLETE) {
-      return <button className="btn btn-success" disabled={true} >✓ COMPLETED</button>
+    if (!this.props.viewOnly) {
+      if (showcaseItem.status === stageStatus.STATUS_COMPLETE) {
+        return <button className="btn btn-success" disabled={true} >✓ COMPLETED</button>
+      }
+      else {
+        return <button className="btn btn-primary btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>Listen to the story</button>
+      }
     }
     else {
-      return <button className="btn btn-primary btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>Listen to the story</button>
+      return <div>
+        <a href={ showcaseItem.startUrl } target="_blank" className="btn btn-primary btn-action">Listen to the story</a>
+        <p><strong>Story's Full Url:</strong> { showcaseItem.startUrl }</p>
+      </div>
     }
   }
 
   renderShowcaseItems() {
     if (this.props.activeStageData.showcaseItems) {
       return this.props.activeStageData.showcaseItems.map((song) => {
-        return <div className="col mb-4">
-          <div className={ `card bg-secondary h-100 ${ (song.status === stageStatus.STATUS_COMPLETE) ? 'border-success' : ''}` } key={song.order}>
+        return <div className={ `col mb-4` }>
+          <div className={ `card bg-${ (this.props.viewOnly) ? 'light' : 'secondary' } h-100 ${ (song.status === stageStatus.STATUS_COMPLETE) ? 'border-success' : ''}` } key={song.order}>
             <img src={song.imageUrl} className="card-img-top" alt={ `Image for ${song.name} by ${song.artist}`} />
             <div className="card-body">
               <h5 className="card-title">{song.name} by {song.artist}</h5>
@@ -49,22 +58,6 @@ class MusicShowcase extends Component {
             </div>
           </div>
         </div>
-        // <div className="col-md-4" key={song.order}>
-        //   <div className="song">
-        //     <div className="row title">
-        //       <div className="name">{song.name}</div>
-        //       <div className="artist"><strong>By:</strong> {song.artist}</div>
-        //     </div>
-        //     <div className="desc">
-        //       <Markdown
-        //         mdContent={song.content}
-        //       />
-        //     </div>
-        //     <div className="actions">
-        //       { this.renderActionBtn(song) }
-        //     </div>
-        //   </div>
-        // </div>
       });
     }
     else {
@@ -73,21 +66,29 @@ class MusicShowcase extends Component {
   }
 
   renderNextButton() {
-    let countVisitedShowcaseItem = 0;
-    this.props.activeStageData.showcaseItems.forEach((showcaseItem) => {
-      if (showcaseItem.status === stageStatus.STATUS_COMPLETE) {
-        countVisitedShowcaseItem++;
-      }
-    })
+    if (!this.props.viewOnly) {
+      let countVisitedShowcaseItem = 0;
+      this.props.activeStageData.showcaseItems.forEach((showcaseItem) => {
+        if (showcaseItem.status === stageStatus.STATUS_COMPLETE) {
+          countVisitedShowcaseItem++;
+        }
+      })
 
-    // Only disable the next button if the player visited enough showcase items
-    return <button
-      className={`btn btn-primary btn-lg btn-next`}
-      onClick={() => { if((countVisitedShowcaseItem >= this.props.activeStageData.requiredShowcaseViews)) { this.props.goToNextStage(this.props.activeStageData) } } }
-      disabled={ (countVisitedShowcaseItem < this.props.activeStageData.requiredShowcaseViews) }
-    >
-      NEXT
-    </button>;
+      // Only disable the next button if the player visited enough showcase items
+      return <button
+        className={`btn btn-primary btn-lg btn-next`}
+        onClick={() => { if((countVisitedShowcaseItem >= this.props.activeStageData.requiredShowcaseViews)) { this.props.goToNextStage(this.props.activeStageData) } } }
+        disabled={ (countVisitedShowcaseItem < this.props.activeStageData.requiredShowcaseViews) }
+      >
+        NEXT
+      </button>;
+    }
+    else {
+      return <div>
+        <h4>Showcases Quiz</h4>
+        <Quiz quizData={this.props.activeStageData.quiz} inline={true}/>
+      </div>
+    }
   }
 
   render() {
@@ -98,7 +99,7 @@ class MusicShowcase extends Component {
         </div>
         <p className="instructions">Explore at least {this.props.activeStageData.requiredShowcaseViews} examples below and click NEXT to complete the quest.</p>
 
-        <div className="row songs row-cols-2 row-cols-md-3">
+        <div className={ `row songs ${ (this.props.viewOnly) ? 'row-cols-1' : 'row-cols-2 row-cols-md-3' }`}>
           { this.renderShowcaseItems() }
         </div>
       </div>

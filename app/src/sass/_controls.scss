@@ -163,6 +163,9 @@
       position: relative;
       margin: 6px 0;
       cursor: pointer;
+      display: block;
+      text-decoration: none;
+      color: $grey;
 
       &:hover {
         font-weight: bold;

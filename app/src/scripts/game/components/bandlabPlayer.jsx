@@ -17,7 +17,7 @@ class BandlabPlayer extends Component {
     return <iframe 
       className="bandlabIframe"
       src={ `https://www.bandlab.com/embed/?id=${this.props.musicId}` }
-      frameborder="0"
+      frameBorder="0"
       allowFullScreen
     />;
   }

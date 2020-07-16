@@ -57,7 +57,7 @@ class Quiz extends Component {
 
   renderSubmitBtn() {
     // We don't show the submit button if there's already results added in quiz data
-    if (!this.props.quizData.results) {
+    if (!this.props.quizData.results && this.props.saveQuiz) {
       return <div className="col-md-offset-3 submitWrapper">
         <input type="submit" className="btn btn-primary btn-lg" value="Submit" />
       </div>;
