@@ -125,7 +125,7 @@ class Quiz extends Component {
               required={ !question.optional }
               value={quizResult || this.state.questions[question.id]} 
               onChange={ (e) => { this.handleFormChange(e); } }
-              rows={ (this.props.inline) ? "3" : (question.type === quizAnswerTypes.FREETEXTLONG) ? "20" : "5" }
+              rows={ (this.props.inline) ? (question.type === quizAnswerTypes.FREETEXTLONG) ? "10" : "3" : (question.type === quizAnswerTypes.FREETEXTLONG) ? "20" : "5" }
               disabled={ (quizResult !== undefined) }
             />
           }

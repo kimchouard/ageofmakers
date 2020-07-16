@@ -82,19 +82,30 @@ class List extends Component {
   }
 
   renderStage(stage) {
-    if (stage.type === stageTypes.VIDEO) {
-      return <Video activeStageData={stage} viewOnly={true} />
-    }
-    else if (stage.type === stageTypes.MUSIC_SHOWCASE) {
-      return <MusicShowcase activeStageData={stage} viewOnly={true} />
-    }
-    else if (stage.type === stageTypes.FTC_SHOWCASE) {
-      // TODO: Implement FTC Showcase
-      return <p><em>FTC Showcase quests content not visible in this page.</em></p>
-    }
-    else if (stage.type === stageTypes.KANBAN) {
-      // TODO: Implement Kanban
-      return <p><em>KANBAN quests content not visible in this page.</em></p>
+    if (stage.type) {
+      let stageDiv;
+      if (stage.type === stageTypes.VIDEO) {
+        stageDiv = <Video activeStageData={stage} viewOnly={true} />;
+      }
+      else if (stage.type === stageTypes.MUSIC_SHOWCASE) {
+        stageDiv = <MusicShowcase activeStageData={stage} viewOnly={true} />;
+      }
+      else if (stage.type === stageTypes.FTC_SHOWCASE) {
+        // TODO: Implement FTC Showcase
+        stageDiv = <p><em>FTC Showcase quests content not visible in this page.</em></p>;
+      }
+      else if (stage.type === stageTypes.KANBAN) {
+        // TODO: Implement Kanban
+        stageDiv = <p><em>KANBAN quests content not visible in this page.</em></p>;
+      }
+
+      return <div className="stage"  key={stage.order}>
+        <h4>{stage.order+1}. {stage.name}</h4>
+        <p>{stage.subtitle}</p>
+        <Markdown mdContent={stage.content} />
+        
+        { stageDiv }
+      </div>
     }
     else {
       return <div className="stage"  key={stage.order}>
@@ -111,37 +122,53 @@ class List extends Component {
     }
   }
 
+  renderQuestChain(quest) {
+    let valleyData = this.getValleyData(quest.valley);
+
+    let questHtml = <div key={quest.id}>
+      <h2 className="title" id={quest.id}>{quest.name}</h2>
+      <p>
+        <strong>Quest Type:</strong> {quest.type}<br />
+        <strong>Valley:</strong> {valleyData.name}<br /> { /* TODO: add valley icon */}
+        { (quest.CTA) ? <div><strong>Custom Call to Action:</strong> { quest.CTA }<br /></div> : '' }
+        { (quest.type === questTypes.WEBSITE) ? <div><strong>Start Url:</strong> <a href={quest.startUrl} target="_blank">{quest.startUrl}</a><br /></div> : '' }
+        <strong>Pre-Requesites:</strong> { this.renderRequirementsList(quest.prerequisites) }
+        <strong>Following:</strong> { this.renderRequirementsList(quest.following) }
+      </p>
+      <div className="description">
+        <Markdown mdContent={quest.content} />
+      </div>
+      <div className="stages">
+        <h3 className="stagesTitle">Stages</h3>
+
+        {quest.stages.map((stage) => {
+          return this.renderStage(stage);
+        })}
+      </div>
+      { this.renderQuiz(quest) }
+    </div>
+
+    return <div>
+      { questHtml }
+      { (quest.following) ? quest.following.map((followingQuestId) => {
+        let followingQuest = this.props.journey.quests[followingQuestId];
+        return this.renderQuestChain(followingQuest);
+      }) : ''}
+    </div>
+  }
+
   renderQuestList() {
     if (isLoggedIn(this.props)) {
       if (isQuestsLoaded(this.props)) {
-        return Object.keys(this.props.journey.quests).map((questId) => {
+        for(let questId in this.props.journey.quests) {
           let quest = this.props.journey.quests[questId];
-          let valleyData = this.getValleyData(quest.valley);
-
-          return <div key={quest.id}>
-  
-            <h2 className="title" id={quest.id}>{quest.name}</h2>
-            <p>
-              <strong>Quest Type:</strong> {quest.type}<br />
-              <strong>Valley:</strong> {valleyData.name}<br /> { /* TODO: add valley icon */}
-              { (quest.CTA) ? <div><strong>Custom Call to Action:</strong> { quest.CTA }<br /></div> : '' }
-              { (quest.type === questTypes.WEBSITE) ? <div><strong>Start Url:</strong> <a href={quest.startUrl} target="_blank">{quest.startUrl}</a><br /></div> : '' }
-              <strong>Pre-Requesites:</strong> { this.renderRequirementsList(quest.prerequisites) }
-              <strong>Following:</strong> { this.renderRequirementsList(quest.following) }
-            </p>
-            <div className="description">
-              <Markdown mdContent={quest.content} />
-            </div>
-            <div className="stages">
-              <h3 className="stagesTitle">Stages</h3>
-  
-              {quest.stages.map((stage) => {
-                return this.renderStage(stage);
-              })}
-            </div>
-            { this.renderQuiz(quest) }
-          </div>
-        });
+          // If the quest if visible at the first age AND doesn't have any prerequisites
+          // ==> That's the root quest.
+          // WARNING: Quests always need 1 (and only 1!) root quest from which the whole adventure starts. In other words, all quests needs prerequisites except for the first one.
+          if (quest.visibleAtAge === 0 && quest.prerequisites.length === 0) {
+            return this.renderQuestChain(quest);
+          }
+        }
       }
       else {
         return <h1 className="text-center">Loading...</h1>

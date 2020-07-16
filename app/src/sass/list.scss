@@ -26,6 +26,11 @@
 @import "~bootstrap/scss/card";
 // ============= /Bootstrap =============
 
+html, body {
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+}
+
 .contentListWrapper {
   max-width: 600px;
   overflow-wrap: break-word;
