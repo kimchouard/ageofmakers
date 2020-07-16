@@ -146,7 +146,7 @@ class Onboarding extends Component {
           <div className="journeys">
             <div className="journey" onClick={ (e) => { this.selectPlayerJourney('music'); } }>
               <div className="journey-icon">
-                <img src="images/music-for-the-sdg-logo.png" alt="Music for the SDGs"/>
+                <img src="images/music-for-change-logo.png" alt="Music for the SDGs"/>
               </div>
               <div className="journey-details">
                 <div className="journey-title">Music for Change</div>
