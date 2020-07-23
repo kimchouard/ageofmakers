@@ -34,7 +34,7 @@ stages:
   subtitle: |-
     Look at this video to know what's coming up for you. 🧐
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: i9h3swxmM5c
   order: 0
 prerequisites: []
 visibleAtAge: 0
@@ -362,7 +362,7 @@ stages:
   subtitle: |-
     Description here.
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: jHPpnZ_9lA4
   featuredChannel:
     name: Music Notes Online
     icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
@@ -419,8 +419,14 @@ stages:
   subtitle: |-
     Music structure (sections, etc.) & gendra overview.
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: K1PsKwZsJQg
   order: 0
+- name: How Music Is Written
+  subtitle: |-
+    Music structure (sections, etc.) & gendra overview.
+  type: video
+  youtubeVideoId: c5lrLxb_I6A
+  order: 1
 prerequisites: 
 - age: 1
 - song_vision
@@ -438,11 +444,11 @@ content: |-
   Get started on your first music track! You'll start with music like these ones:
 
   ```bandlab
-  762a6808-9dba-ea11-9b05-501ac51f5e37
+  3360d06b-2fca-ea11-8b03-501ac51fd70d
   ```
   
   ```bandlab
-  193b6dad-98ba-ea11-9b05-501ac51f5e37
+  f4285019-30ca-ea11-8b03-501ac51fd70d
   ```
 startUrl: https://edu.bandlab.com/classroom/musicforchange
 positionLeft: 47
@@ -450,9 +456,9 @@ positionTop: 56
 stages:
 - name: Start as a Student
   content: |-
-    Let's get your all set-up on Bandlab! 💻
+    Let's get your all set-up on BandLab! 💻
 
-    Click **Start as a Student** from the [Bandlab Edu Homepage](https://edu.bandlab.com/).
+    Click **Start as a Student** from the [BandLab Edu Homepage](https://edu.bandlab.com/).
 
     ![Click Start as a Student](data/music/images/bandlab/start_as_a_student.png)
   order: 0
@@ -461,13 +467,21 @@ stages:
     Then, enter the code that the teacher or volunteer gave you.
 
     ![Join Classroom](data/music/images/bandlab/join_classroom_nocode.png)
+
+    ```info
+    You're over 18 y.o. and not working with a teacher or volunteers? You can create a [basic BandLab account](https://www.bandlab.com/sign-up) and fork one of those base tracks:
+    - [Hip Hop Trap Beat in C Minor - 91BPM](https://www.bandlab.com/kimikbynight/without-my-cash-hip-hop-trap-beat-in-c-minor-91bpm-37df688f-75bf239?revId=3360d06b-2fca-ea11-8b03-501ac51fd70d)
+    - [Dance Beat in F minor - 122BPM](https://www.bandlab.com/kimikbynight/just-dont-dance-track-in-f-minor-122bpm-a48d7155-8deab4d?revId=3a3e7d4c-b5cb-ea11-8b03-501ac51fd70d)
+    - [RnB in E Major - 123 BPM](https://www.bandlab.com/kimikbynight/zeekanddestroy-56a985d?revId=9ac8b9db-88cc-ea11-8b03-501ac51fd70d)
+    - [Hip Hop Beat in C# Minor - 90BPM](https://www.bandlab.com/kimikbynight/hip-hop-beat-in-c-minor-90bpm-50f51b94-8b7eaaa?revId=a6475c53-31ca-ea11-8b03-501ac51fd70d)
+    ```
   order: 1
-- name: Sign-up for Bandlab
+- name: Sign-up for BandLab
   content: |-
-    You can now sign-up for Bandlab.
+    You can now sign-up for BandLab.
 
     ```warning
-    If you are not 18 years old or older, or the applicable age of majority in your jurisdiction, you must get your parent or guardian to read [Bandlab's Terms of Use](https://blog.bandlab.com/terms-of-use/) and agree to them for you before you use the service or provide any information to them.
+    If you are not 18 years old or older, or the applicable age of majority in your jurisdiction, **you must get your parent or guardian to read [Bandlab's Terms of Use](https://blog.bandlab.com/terms-of-use/) and agree to them** for you before you use the service or provide any information to them.
     ```
 
     Pick an username and click **Continue**.
@@ -526,6 +540,33 @@ visibleAtAge: 1
 
 
 # -------------------------------------------------------
+# Bandlab Overview
+# bandlab_overview
+--- 
+id: bandlab_overview
+name: Bandlab Overview
+valley: musiccity
+content: |-
+  **TODO**
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 56.5
+positionTop: 54.5
+type: embedded
+# CTA:
+stages:
+- name: Bandlab Overview
+  subtitle: |-
+    A little tour of your DAW, Bandlab.
+  type: video
+  youtubeVideoId: msTr3t5IfKk
+  order: 0
+visibleAtAge: 1
+prerequisites:
+- age: 2
+- bandlab_start
+
+
+# -------------------------------------------------------
 # What is Music Theory?
 # music_theory_intro
 --- 
@@ -539,8 +580,8 @@ content: |-
 
   *Hint:* It doesn't have to be boring, and it'll actually be pretty interactive! 😎
 # startUrl: https://www.tinkercad.com/login 
-positionLeft: 56.5
-positionTop: 54.5
+positionLeft: 54
+positionTop: 51
 type: embedded
 # CTA:
 stages:
@@ -554,10 +595,9 @@ stages:
     icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
     youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
   order: 0
-visibleAtAge: 1
+visibleAtAge: 2
 prerequisites:
-- age: 2
-- bandlab_start
+- bandlab_overview
 
 
 
@@ -833,7 +873,7 @@ stages:
 visibleAtAge: 1
 prerequisites:
 - age: 2
-- music_theory_intro
+- bandlab_overview
 
 # -------------------------------------------------------
 # The Main Rythm Elements
@@ -1048,7 +1088,7 @@ stages:
   subtitle: |-
     Description here.
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: LTjBhKVUYfA
   featuredChannel:
     name: Music Notes Online
     icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
@@ -1144,7 +1184,7 @@ stages:
   subtitle: |-
     Description here.
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: 84j-rodJuIE
   featuredChannel:
     name: Music Notes Online
     icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
@@ -1184,10 +1224,10 @@ quiz:
         Hear from LaMar on how to write a catchy chorus!
 
         ```youtube
-        MPSr4XoyOfQ
+        Qi3ghwckpWk
         ```
     - id: verse1
-      name: Verse One
+      name: Verse One (optional)
       optional: true
       placeholder: |-
         Put your first verse here!
@@ -1201,20 +1241,20 @@ quiz:
         - Story about someone else.
         - Story about your community.
       type: freetext
+      helpers: |-
+        Hear from LaMar on how to write a verse & work on your flow!
+
+        ```youtube
+        Qi3ghwckpWk
+        ```
     - id: verse2
-      name: Verse Two
+      name: Verse Two (optional)
       optional: true
       placeholder: |-
         Put your second verse here!
       instructions: |-
         Use a theme here that you haven't used above.
       type: freetext
-      helpers: |-
-        Hear from LaMar on how to write a catchy chorus!
-
-        ```youtube
-        MPSr4XoyOfQ
-        ```
 visibleAtAge: 2
 prerequisites:
 - lyrics_free_writing
