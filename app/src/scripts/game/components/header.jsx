@@ -87,7 +87,7 @@ class Header extends Component {
   getRequirementsDisplay(ageData, valleyName){
     if(valleyName === "total") {
       return (
-        <div className="col-md-2 col-sm-3 score" key={valleyName}>
+        <div className="col-md-2 col-sm-3 score" key={valleyName} data-helper={`GOAL: Complete ${this.getQuestsNumber(ageData, valleyName)} quests from any areas`}>
           <div className="icon all">ANY</div>
           <p className="value">{addComplete(this.props.journey.quests)} / { this.getQuestsNumber(ageData, valleyName) }</p>
         </div>      
@@ -95,7 +95,7 @@ class Header extends Component {
     } else {
       let areaData = this.props.journey.areas[valleyName];
       return (
-        <div className="col-md-2 col-sm-3 score" key={valleyName}>
+        <div className="col-md-2 col-sm-3 score" key={valleyName} data-helper={`GOAL: Complete ${this.getQuestsNumber(ageData, valleyName)} quests from ${areaData.name}`}>
           <div className={"icon"} style={ {
             backgroundImage: `url('${ (areaData) ? areaData.image : '/images/Locked_grey.svg'}')`,
           } }></div>

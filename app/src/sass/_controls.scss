@@ -51,6 +51,34 @@
       margin: 10px 10px 0 0;
     }
 
+    &.score[data-helper]:hover {
+      &:after { 
+        content: attr(data-helper);
+        display: block;
+        background: $beige;
+        // border: 2px $grey solid;
+        padding: 5px 10px;
+        position: absolute;
+        left: 0;
+        margin-top: 8px;
+      }
+
+      &:before {
+        content: '';
+        display: block;
+        width: 0; 
+        height: 0; 
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid #EEE7C8;
+
+        position: absolute;
+        bottom: -10px;
+        left: 7px;
+        z-index: 20;
+      }
+    }
+
     .icon, .action {
       height: 20px;
       width: 20px;
