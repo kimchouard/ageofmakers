@@ -67,7 +67,7 @@ stages:
     Here's a list of music – from the U.S. Civil Rights era to today – that shone light on injustice and helped us imagined a better world.
   type: musicShowcase
   order: 0
-  requiredShowcaseViews: 1
+  requiredShowcaseViews: 3
   quiz:
     questions:
       - id: themes
@@ -98,14 +98,13 @@ stages:
     instructions: |-
       Listen or read this article.
     order: 0
-  - name: Lift Every Voice and Sing
-    artist: Beyoncé (performed by)
-    startUrl: https://www.npr.org/2018/08/16/638324920/american-anthem-lift-every-voice-and-sing-black-national-anthem
+  - name: Born This Way 
+    artist: Lady Gaga
+    startUrl: https://www.npr.org/2019/01/30/687683804/lady-gaga-born-this-way-lgbt-american-anthem
     content: |-
-      Till Victory Is Won: The Staying Power Of 'Lift Every Voice And Sing'.
+      How 'Born This Way' Was Born: An LGBT Anthem's Pedigree.
     imageUrl: data/music/images/audio_article_banner.png
-    historicalContext: Originally written by James Weldon Johnson in 1905.
-      Covered by Beyonce at Coachela in 2018.
+    historicalContext: 2011
     instructions: |-
       Listen or read this article.
     order: 1
@@ -119,6 +118,17 @@ stages:
     instructions: |-
       Listen or read this article.
     order: 2
+  - name: Lift Every Voice and Sing
+    artist: Beyoncé (performed by)
+    startUrl: https://www.npr.org/2018/08/16/638324920/american-anthem-lift-every-voice-and-sing-black-national-anthem
+    content: |-
+      Till Victory Is Won: The Staying Power Of 'Lift Every Voice And Sing'.
+    imageUrl: data/music/images/audio_article_banner.png
+    historicalContext: Originally written by James Weldon Johnson in 1905.
+      Covered by Beyonce at Coachela in 2018.
+    instructions: |-
+      Listen or read this article.
+    order: 3
   - name: The Times They 'A-Changin'
     artist: Bob Dylan
     startUrl: https://www.npr.org/2018/09/24/650548856/american-anthem-the-times-they-are-a-changin
@@ -128,7 +138,7 @@ stages:
     historicalContext: Originally released in 1963, but sang many times since then.
     instructions: |-
       Listen or read this article.
-    order: 3
+    order: 4
   - name: To Be Young, Gifted, and Black
     artist: Nina Simone
     startUrl: https://www.npr.org/2019/01/08/683021559/nina-simone-to-be-young-gifted-and-black-american-anthem
@@ -138,7 +148,7 @@ stages:
     historicalContext: 1969
     instructions: |-
       Listen or read this article.
-    order: 4
+    order: 5
   - name: This Land is Your Land 
     artist: Woodie Guthrie
     startUrl: https://www.npr.org/2019/03/14/702792467/woody-guthrie-this-land-is-your-land-american-anthem
@@ -148,7 +158,7 @@ stages:
     historicalContext: 1940
     instructions: |-
       Listen or read this article.
-    order: 5
+    order: 6
   - name: La Bamba
     artist: Los Lobos
     startUrl: https://www.npr.org/2018/10/14/655833317/la-bamba-american-anthem-ritchie-valens-los-lobos-survival
@@ -158,7 +168,7 @@ stages:
     historicalContext: 1987
     instructions: |-
       Listen or read this article.
-    order: 6
+    order: 7
   - name: I am a Woman
     artist: Helen Reddy
     startUrl: https://www.npr.org/2018/10/24/651795560/i-am-woman-helen-reddy-american-anthem-hear-them-roar
@@ -168,7 +178,7 @@ stages:
     historicalContext: 1970
     instructions: |-
       Listen or read this article.
-    order: 7
+    order: 8
   - name: You Make Me Feel (Might Real)
     artist: Sylvester
     startUrl: https://www.npr.org/2018/10/08/651794925/sylvester-you-make-me-feel-mighty-real-american-anthem-disco-celebration
@@ -178,7 +188,7 @@ stages:
     historicalContext: 1978
     instructions: |-
       Listen or read this article.
-    order: 8
+    order: 9
   - name: Whittier Boulevard
     artist: The Midniters
     startUrl: https://www.npr.org/2018/11/29/671688096/the-story-of-whittier-blvd-a-song-and-place-where-latino-youth-found-each-other
@@ -188,7 +198,7 @@ stages:
     historicalContext: 1965
     instructions: |-
       Listen or read this article.
-    order: 9
+    order: 10
   - name: Quiet
     artist: MILCK
     startUrl: https://www.npr.org/2019/01/14/683694934/milck-quiet-womens-march-american-anthem
@@ -196,16 +206,6 @@ stages:
       A Song Called 'Quiet' Struck A Chord With Women. Two Years Later, It's Still Ringing.
     imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 2015
-    instructions: |-
-      Listen or read this article.
-    order: 10
-  - name: Born This Way 
-    artist: Lady Gaga
-    startUrl: https://www.npr.org/2019/01/30/687683804/lady-gaga-born-this-way-lgbt-american-anthem
-    content: |-
-      How 'Born This Way' Was Born: An LGBT Anthem's Pedigree.
-    imageUrl: data/music/images/audio_article_banner.png
-    historicalContext: 2011
     instructions: |-
       Listen or read this article.
     order: 11
@@ -263,6 +263,7 @@ stages:
     artist: Bikini Kill
     startUrl: https://www.npr.org/2019/08/12/749456007/kathleen-hanna-bikini-kill-rebel-girl-rock-camp-american-anthem
     content: |-
+      Fascination, Friendship And Desire: Kathleen Hanna On The Reign Of 'Rebel Girl'
     imageUrl: data/music/images/audio_article_banner.png
     historicalContext: 1993
     instructions: |-
@@ -452,7 +453,7 @@ stages:
     ![Join Classroom](data/music/images/bandlab/join_classroom_nocode.png)
 
     ```info
-    You're over 18 y.o. and not working with a teacher or volunteers? You can create a [basic BandLab account](https://www.bandlab.com/sign-up) and fork one of those base tracks:
+    You're over 18 y.o. and not working with a teacher or volunteers? You can create a [regular BandLab account](https://www.bandlab.com/sign-up) and fork one of those base tracks:
     - [Hip Hop Trap Beat in C Minor - 91BPM](https://www.bandlab.com/kimikbynight/without-my-cash-hip-hop-trap-beat-in-c-minor-91bpm-37df688f-75bf239?revId=3360d06b-2fca-ea11-8b03-501ac51fd70d)
     - [Dance Beat in F minor - 122BPM](https://www.bandlab.com/kimikbynight/just-dont-dance-track-in-f-minor-122bpm-a48d7155-8deab4d?revId=3a3e7d4c-b5cb-ea11-8b03-501ac51fd70d)
     - [RnB in E Major - 123 BPM](https://www.bandlab.com/kimikbynight/zeekanddestroy-56a985d?revId=9ac8b9db-88cc-ea11-8b03-501ac51fd70d)
@@ -464,7 +465,7 @@ stages:
     You can now sign-up for BandLab.
 
     ```warning
-    If you are not 18 years old or older, or the applicable age of majority in your jurisdiction, **you must get your parent or guardian to read [Bandlab's Terms of Use](https://blog.bandlab.com/terms-of-use/) and agree to them** for you before you use the service or provide any information to them.
+    If you are **not** 18 years old or older, or the applicable age of majority in your jurisdiction, **you must get your parent or guardian to read [Bandlab's Terms of Use](https://blog.bandlab.com/terms-of-use/) and agree to them** for you before you use the service or provide any information to them.
     ```
 
     Pick an username and click **Continue**.
@@ -490,6 +491,12 @@ stages:
     - Choose **Teacher's Assignment** to start from the example track.
     
     ![Assignements](data/music/images/bandlab/start_assignment.png)
+
+    ```info
+    Feeling inspired and rather start from scratch? Open the **Mix Editor** from your **Library**.
+
+    ![Assignements](data/music/images/bandlab/new_song.png)
+    ```
   order: 4
 - name: Save Your First Track
   content: |-
@@ -504,6 +511,10 @@ stages:
     3. Voilà! You just saved your first track 😎
 
     ![Assignements](data/music/images/bandlab/save_your_first_track.png)
+
+    ```info
+    If you've created a brand new track, you'll have to record your voice or some notes instruments in order to save your track.
+    ```
   order: 5
 quiz:
   name: Your First Song
