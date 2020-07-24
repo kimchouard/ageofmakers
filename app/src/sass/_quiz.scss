@@ -32,8 +32,16 @@
   }
 
   &.inline {
-    .quizForm label {
-      text-align: left;
+    .quizForm {
+      label {
+        text-align: left;
+      }
+
+      .form-text {
+        font-size: 12px;
+        font-style: italic;
+        margin-top: 10px;
+      }
     }
   }
  

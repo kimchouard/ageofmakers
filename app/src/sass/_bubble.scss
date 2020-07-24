@@ -49,6 +49,13 @@
 	a {
 		color: $red;
 	}
+
+	blockquote {
+		border-left: 3px solid #464646;
+    margin: 10px;
+    padding-left: 10px;
+    font-style: italic;
+	}
 	
 	&.bubbleClosed {
 		width: 50px;

@@ -22,17 +22,17 @@ content: |-
     
   ![FTC Winners Celebrating](data/music/images/Future%20Trailblazer%20Challenge%20-%20Students%20Celebrate_min.jpg)
   
-  In this game, you'll learn produce your own song to examine injustice and imagine a better world.
+  In this game, you'll learn how to produce your own song to examine injustice and imagine a better world.
 
-  Wonder what that means? Click **Start Your Journey** below to get started!
+  Wonder what that means? Click **Start Your Journey** below to learn more!
 type: embedded
 CTA: Start Your Journey 🏞
 positionLeft: 44.75
 positionTop: 82
 stages:
-- name: Music for Change
+- name: Your New Music for Change Adventure
   subtitle: |-
-    Look at this video to know what's coming up for you. 🧐
+    We're very excited to have you onboard! 😎 Look at this video to see what's coming up for you. 🧐🚀
   type: video
   youtubeVideoId: i9h3swxmM5c
   order: 0
@@ -44,21 +44,27 @@ visibleAtAge: 0
 # music_change_the_world
 ---
 id: music_change_the_world
-name: How Can Music Change The World
+name: How Can Music Change The World?
 valley: changemaker
 content: |-
-  Students will explore *examples* of music by black (and women & other) artists - from the Civil Rights era to today - that:
+  In this quest, you'll explore *examples* of music that changed the world, from the U.S. Civil Rights era to today.
   
-  1. Shone light on injustice
-  2. Imagined a better world
+  Each one of those songs helped us:
+
+  1. Shine light on injustice
+  2. Imagine a better world
+
+  Spend some time understanding what creative choices artists have taken as they created their changemaking song.
+
+  ➡️ It'll inspire you as you put your song's vision together in the following quest. 
 type: embedded
-CTA: Find Out How 🧐
+CTA: Let's Learn From the Best 🕺🏻✨💃
 positionLeft: 50.5
 positionTop: 78.5
 stages:
 - name: Example of Music That Impacted Social Movements
   content: |-
-    Here's a list of music – from the Civil Rights era to today – that shone light on injustice and helped us imagined a better world.
+    Here's a list of music – from the U.S. Civil Rights era to today – that shone light on injustice and helped us imagined a better world.
   type: musicShowcase
   order: 0
   requiredShowcaseViews: 1
@@ -69,7 +75,7 @@ stages:
         placeholder: |-
           Examples: Racial Injustice, LGBT rights, police brutality, Environmental Justice, Colorism...
         examples: |-
-            Notes: In many cases, a song might be used to aid social movement even if it wasn’t part of the original intention of the artist.
+            **Notes:** In many cases, a song might be used to aid social movement even if it wasn’t part of the original intention of the artist.
         type: freetext
       - id: message
         name: What is one “take home message” you think the artist wanted people to understand from this song?
@@ -91,8 +97,6 @@ stages:
     historicalContext: Released on June 30, 2015.
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 0
   - name: Lift Every Voice and Sing
     artist: Beyoncé (performed by)
@@ -104,8 +108,6 @@ stages:
       Covered by Beyonce at Coachela in 2018.
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 1
   - name: I Will Survive
     artist: Gloria Gaynor
@@ -116,8 +118,6 @@ stages:
     historicalContext: October 1978
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 2
   - name: The Times They 'A-Changin'
     artist: Bob Dylan
@@ -128,8 +128,6 @@ stages:
     historicalContext: Originally released in 1963, but sang many times since then.
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 3
   - name: To Be Young, Gifted, and Black
     artist: Nina Simone
@@ -140,8 +138,6 @@ stages:
     historicalContext: 1969
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 4
   - name: This Land is Your Land 
     artist: Woodie Guthrie
@@ -152,8 +148,6 @@ stages:
     historicalContext: 1940
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 5
   - name: La Bamba
     artist: Los Lobos
@@ -164,8 +158,6 @@ stages:
     historicalContext: 1987
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 6
   - name: I am a Woman
     artist: Helen Reddy
@@ -176,8 +168,6 @@ stages:
     historicalContext: 1970
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 7
   - name: You Make Me Feel (Might Real)
     artist: Sylvester
@@ -188,8 +178,6 @@ stages:
     historicalContext: 1978
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 8
   - name: Whittier Boulevard
     artist: The Midniters
@@ -200,8 +188,6 @@ stages:
     historicalContext: 1965
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 9
   - name: Quiet
     artist: MILCK
@@ -212,8 +198,6 @@ stages:
     historicalContext: 2015
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 10
   - name: Born This Way 
     artist: Lady Gaga
@@ -224,8 +208,6 @@ stages:
     historicalContext: 2011
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 11
   - name: No Scrubs 
     artist: TLC
@@ -236,8 +218,6 @@ stages:
     historicalContext: 1999
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 12
   - name: For What It’s Worth
     artist: Buffalo Springfield
@@ -248,8 +228,6 @@ stages:
     historicalContext: 1967
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 13
   - name: Black, Brown, & Beige
     artist: Duke Ellington
@@ -260,8 +238,6 @@ stages:
     historicalContext: 1943
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 14
   - name: Born in the U.S.A. 
     artist: Bruce Springsteen
@@ -272,8 +248,6 @@ stages:
     historicalContext: 1984
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 15
   - name: Mind Playing Tricks on Me
     artist: Geto Boys
@@ -284,8 +258,6 @@ stages:
     historicalContext: 1991
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 16
   - name: Rebel Girl 
     artist: Bikini Kill
@@ -295,8 +267,6 @@ stages:
     historicalContext: 1993
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 17
   - name: We're A Winner 
     artist: Woodie Guthrie
@@ -307,8 +277,6 @@ stages:
     historicalContext: 1967
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 18
   - name: Fight The Power & Public Enemy
     artist: The Isley Brothers
@@ -319,8 +287,6 @@ stages:
     historicalContext: The Isley Brothers (1975) & Public Enemy (1989)
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 19
   - name: Cold Fact
     artist: Sixto Rodríguez
@@ -331,8 +297,6 @@ stages:
     historicalContext: 1970, during the South Africa's social movements.
     instructions: |-
       Listen or read this article.
-
-      ![Project Image](data/music/images/npr_player.png)
     order: 20
 prerequisites: 
 - welcome_quest
@@ -352,15 +316,23 @@ id: song_vision
 name: Setting a Vision for Your Song
 valley: musiccity
 content: |-
-  What is the goal of your song? What is it about, and how is it going to change the world?
+  It's now time to start working on your own song. Before you do anything else, it's important to get a sense of direction:
+  
+  > What is the goal of your song?
+  >
+  > What will it talk about?
+  >
+  > How is it going to change the world?
+
+  Follow LaMar in this quest to set a clear vision on how your song will help shine light on injustice and imagine a better world.
 type: embedded
 # CTA: Learn About Music
 positionLeft: 47.5
 positionTop: 71
 stages: 
-- name: TODO
+- name: Articulating Your Vision
   subtitle: |-
-    Description here.
+    Listen to LaMar as he walks you through setting up a song vision and puts one together for his song.
   type: video
   youtubeVideoId: jHPpnZ_9lA4
   featuredChannel:
@@ -397,6 +369,12 @@ quiz:
       placeholder: |-
         Example: to keep faith in the future and keep fighting for a brighter future.
       type: freetext
+      examples: |-
+        You can inspire yourself from what you've learn from the greats in the previous quest by clicking the **Need More Help** button.
+      helpers: |-
+        ```quizResults
+        { "questId": "music_change_the_world", "stageOrder": 0 }
+        ```
 prerequisites: 
 - music_change_the_world
 visibleAtAge: 0
@@ -406,24 +384,29 @@ visibleAtAge: 0
 # welcome_music_world
 ---
 id: welcome_music_world
-name: Welcome to the World of Music
+name: Welcome to the World of Music!
 valley: musiccity
 content: |-
-  Music structure (sections, etc.) & gendra overview
+  Now that you have a north star for your song with your vision, time to make some creative choices!
+
+  In this quest, you'll learn about:
+  
+  - Music genres and how it can help you find you *"music family"*
+  - The only tool you need to start creating music! 🎶🔭
 type: embedded
 CTA: Learn About Music
 positionLeft: 47.5
 positionTop: 66
 stages:
-- name: How Music Is Written
+- name: Find Your Music Family
   subtitle: |-
-    Music structure (sections, etc.) & gendra overview.
+    Choose a music genre that you can inspire yourself from.
   type: video
   youtubeVideoId: K1PsKwZsJQg
   order: 0
-- name: How Music Is Written
+- name: How Is Music Created?
   subtitle: |-
-    Music structure (sections, etc.) & gendra overview.
+    Learn about the essential tool you need to create music: a Digital Audio Workstation (DAW)
   type: video
   youtubeVideoId: c5lrLxb_I6A
   order: 1
@@ -547,12 +530,17 @@ id: bandlab_overview
 name: Bandlab Overview
 valley: musiccity
 content: |-
-  **TODO**
+  Follow Kim as he walks you through the main parts of BandLab.
+
+  You'll learn how to:
+  - Use the different BandLab controls
+  - Use the different tracks types and leverage BandLab samples
+  - Choose your instruments and edit the notes your playing
 # startUrl: https://www.tinkercad.com/login 
 positionLeft: 56.5
 positionTop: 54.5
 type: embedded
-# CTA:
+CTA: Let's Start the Tour 🎒
 stages:
 - name: Bandlab Overview
   subtitle: |-
@@ -1075,18 +1063,20 @@ id: lyrics_free_writing
 name: What's On Your Mind?
 valley: lyrics
 content: |-
-  Start by writing what's on your mind. #guidedFreeWriting
+  Time to put words to your vision!
   
-  **TODO**
+  Listen to LaMar's tips in this quest as he shows you how to use freewrite to start your lyrics.
+
+  You'll then be able to do your own freewriting! 📝🦅
 # startUrl: https://www.tinkercad.com/login 
 positionLeft: 35.5
 positionTop: 61.5
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: Freewrite
   subtitle: |-
-    Description here.
+    Time to put words to your vision! Listen to LaMar as he shows you how to freewrite to start your lyrics.
   type: video
   youtubeVideoId: LTjBhKVUYfA
   featuredChannel:
@@ -1173,16 +1163,18 @@ id: expand_lyrics
 name: Expand Your Lyrics
 valley: lyrics
 content: |-
-  Transform your free flow inspiration into lyrics!
+  Transform your freewrite inspiration into full lyrics by breaking it down to basic lyric sections: Chorus & Verses.
+
+  Don't worry, LaMar will walk you through how to do it and give you tips to make catchy chorus and improve your flow. 🎙😎
 # startUrl: https://www.tinkercad.com/login 
 positionLeft: 25
 positionTop: 54
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: Transform Your Freewrite Into Lyrics
   subtitle: |-
-    Description here.
+    See how LaMar stuctures his freewrite into a chorus and verses before you do the same. 
   type: video
   youtubeVideoId: 84j-rodJuIE
   featuredChannel:
@@ -1220,8 +1212,9 @@ quiz:
       instructions: |-
         The chorus (or hook) should be your take-home message and is the only required part of your song. The goal of your chorus is to take the most important message and get it into the most catchy and repetitive part of this song.
       type: freetext
+      helperText: More catchy chorus tips from Lamar 🎬
       helpers: |-
-        Hear from LaMar on how to write a catchy chorus!
+        Hear from LaMar on how to write a catchy chorus.
 
         ```youtube
         Qi3ghwckpWk
@@ -1241,11 +1234,12 @@ quiz:
         - Story about someone else.
         - Story about your community.
       type: freetext
+      helperText: More verse and flow tips from Lamar 🎬
       helpers: |-
-        Hear from LaMar on how to write a verse & work on your flow!
+        Hear from LaMar on how to write a verse & work on your flow.
 
         ```youtube
-        Qi3ghwckpWk
+        b2t4ZwmuVYc
         ```
     - id: verse2
       name: Verse Two (optional)

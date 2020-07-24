@@ -18,7 +18,7 @@ class Quiz extends Component {
 
       this.state = {
         questions: {},
-        currentQuestionHelpers: null,
+        currentQuestionHelpers: [],
       }
   }
 
@@ -55,9 +55,26 @@ class Quiz extends Component {
     }
   }
 
+  hasQuizResult() {
+    // If the results are in the quiz data or passed directly in the quizResults parameter
+    return this.props.quizData.results || this.props.quizResults;
+  }
+
+  getQuizResults(questionId) {
+    if (this.props.quizData.results) {
+      return this.props.quizData.results[questionId];
+    }
+    else if (this.props.quizResults) {
+      return this.props.quizResults[questionId];
+    }
+    else {
+      console.log('No quiz results to show for the quiz.', this.props.quizData, this.props.quizResults)
+    }
+  }
+
   renderSubmitBtn() {
     // We don't show the submit button if there's already results added in quiz data
-    if (!this.props.quizData.results && this.props.saveQuiz) {
+    if (!this.hasQuizResult() && this.props.saveQuiz) {
       return <div className="col-md-offset-3 submitWrapper">
         <input type="submit" className="btn btn-primary btn-lg" value="Submit" />
       </div>;
@@ -65,11 +82,11 @@ class Quiz extends Component {
   }
 
   needToRenderHelpers() {
-    return (this.props.quizData.helpers && !this.props.quizData.results)
+    return (this.props.quizData.helpers && !this.hasQuizResult())
   }
 
   renderContentHelp(content) {
-    if (content && !this.props.quizData.results) {
+    if (content && !this.hasQuizResult()) {
       return <div className={ `form-text` /* text-muted */ }>
         <Markdown mdContent={content} /> 
       </div>
@@ -77,28 +94,32 @@ class Quiz extends Component {
   }
 
   toggleQuestionHelpers(question) {
-    if (this.state.currentQuestionHelpers === question.id) {
+    if (this.state.currentQuestionHelpers[question.id]) {
+      let newCurrentQuestionHelpers = this.state.currentQuestionHelpers;
+      newCurrentQuestionHelpers[question.id] = false;
       this.setState({
-        currentQuestionHelpers: null,
+        currentQuestionHelpers: newCurrentQuestionHelpers,
       });
     }
     else {
+      let newCurrentQuestionHelpers = this.state.currentQuestionHelpers;
+      newCurrentQuestionHelpers[question.id] = true;
       this.setState({
-        currentQuestionHelpers: question.id,
+        currentQuestionHelpers: newCurrentQuestionHelpers,
       });
     }
   }
 
   renderQuestionHelpers(question) {
-    if (question.helpers) {
+    if (question.helpers && !this.hasQuizResult()) {
       return <div className="quizQuestionHelper">
         <div className="helpersToggle">
           <div className="btn btn-primary btn-sm" onClick={ () => { this.toggleQuestionHelpers(question); }}>
-            { (this.state.currentQuestionHelpers === question.id) ? 'Close help' : 'Need more help?' }
+            { (this.state.currentQuestionHelpers[question.id]) ? 'Close Help' : question.helperText || 'Need more help?' }
           </div>
         </div>
         <div className="helpersContent" style={ {
-          height: (this.state.currentQuestionHelpers === question.id) ? 'auto' : 0
+          height: (this.state.currentQuestionHelpers[question.id]) ? 'auto' : 0
         }}>
           <Markdown mdContent={question.helpers} /> 
         </div>
@@ -112,8 +133,8 @@ class Quiz extends Component {
       return <form name="quiz" className={`form-group quizForm col-${ (this.needToRenderHelpers()) ? '8' : '12' }`} onSubmit={(e) => { this.submitQuestion(e); }}>
         { this.props.quizData.questions.map((question) => {
           let quizResult;
-          if (this.props.quizData.results) {
-            quizResult = this.props.quizData.results[question.id];
+          if (this.hasQuizResult()) {
+            quizResult = this.getQuizResults(question.id);
           }
 
           let inputHtml;
@@ -182,8 +203,8 @@ class Quiz extends Component {
   }
   render() {
     if (this.props.quizData) {
-      return <div className={ `row quizWrapper ${(this.props.inline) ? 'inline': 'embedded'} ${ (this.props.quizData.results) ? 'quizResults' : ''}`}>
-        { (this.props.inline) ? <div className="quizHeader col-12">Answer these questions to complete the quest.</div> : ''}
+      return <div className={ `row quizWrapper ${(this.props.inline) ? 'inline': 'embedded'} ${ (this.hasQuizResult()) ? 'quizResults' : ''}`}>
+        { (this.props.inline && !this.hasQuizResult()) ? <div className="quizHeader col-12">Answer these questions to complete the quest.</div> : ''}
         { this.renderQuestions() }
         { this.renderHelpers() }
       </div>

@@ -77,11 +77,28 @@ class Markdown extends Component {
           try {
             let params = JSON.parse(value);
 
-            if (params.questionId && this.props.journey.quests[params.questId]) {
+            if (params && params.questionId && this.props.journey.quests[params.questId]) {
               return this.props.journey.quests[params.questId].quiz.results[params.questionId];
             }
-            else {
-              return <Quiz quizData={this.props.journey.quests[params.questId].quiz}  />
+            else if (params && params.questId && this.props.journey.quests[params.questId]) {
+              if (params.stageOrder >= 0 && this.props.journey.quests[params.questId].stages && this.props.journey.quests[params.questId].stages[params.stageOrder] && this.props.journey.quests[params.questId].stages[params.stageOrder].showcaseItems) {
+                return <div className="row">
+                  { this.props.journey.quests[params.questId].stages[params.stageOrder].showcaseItems.map((showcaseItem) => {
+                    if (showcaseItem.results) {
+                      return <div className="col-4">
+                        <h6><strong>{ showcaseItem.name } by { showcaseItem.artist }</strong></h6>
+                        <Quiz quizData={this.props.journey.quests[params.questId].stages[params.stageOrder].quiz} quizResults={showcaseItem.results} inline={true}/>
+                      </div>
+                    }
+                  }) }
+                </div>
+              }
+              else if (this.props.journey.quests[params.questId] && this.props.journey.quests[params.questId].quiz) {
+                return <Quiz quizData={this.props.journey.quests[params.questId].quiz}  />
+              }
+              else {
+                console.log('Error while loading quiz markdown', params);
+              }
             }
           } catch (e) {
             console.error('Error', e);
