@@ -382,8 +382,9 @@ const setNewPlayer = (originalAction) => {
   
           players[newPlayer.id] = newPlayer;
         }
-        // That means that it's the first player!
+        // That means that it's the first player to be saved ever!
         else {
+          newPlayer.id = "0";
           players = {
             0: newPlayer
           };
