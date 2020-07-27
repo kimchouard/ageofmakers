@@ -409,7 +409,7 @@ stages:
   subtitle: |-
     Learn about the essential tool you need to create music: a Digital Audio Workstation (DAW)
   type: video
-  youtubeVideoId: c5lrLxb_I6A
+  youtubeVideoId: E6n407-p_SM
   order: 1
 prerequisites: 
 - age: 1
@@ -434,7 +434,7 @@ content: |-
   ```bandlab
   f4285019-30ca-ea11-8b03-501ac51fd70d
   ```
-startUrl: https://edu.bandlab.com/classroom/musicforchange
+startUrl: https://edu.bandlab.com
 positionLeft: 47
 positionTop: 56
 stages:
@@ -631,6 +631,68 @@ prerequisites:
 
 
 # -------------------------------------------------------
+# Practice Finding Scales
+# scales_practice
+---
+id: scales_practice
+name: Practice Finding Scales
+valley: musiccity
+content: |-
+  Time to put Andrew's lesson on Notes & Scale to practice.
+  
+  You'll spend some time finding the notes in the scale from different keys.
+# TODO --> ability to start from the quest quiz response + default start url as a fallback
+startUrl: https://edu.bandlab.com/library/projects
+positionLeft: 38
+positionTop: 52
+stages:
+- name: Add an Instrument Track
+  content: |-
+    Add a new instrument track by:
+    - Click **Add Track**
+    - Select **Instruments**
+    - Make sure that the notes plays when you press your keyboard.
+
+    ```info
+    If you want, you can rename your track from the three dots menu.
+    ```
+
+    Okay, now time to practice!
+  order: 0
+- name: Practice 5 Major Scales
+  content: |-
+    Practice applying the major scale formula:
+    - Choose a note to be a "root" (from A to G, also called *Key*)
+    - Use the *"whole whole half whole whole whole half"* trick to find the different notes in the scale.
+    
+    ➡️ Do this with at least **5 different starting notes**
+
+    ☝️ As you use the notes, practice getting familiar with their letter names, as well as what number degree they are within th emajor scale (the root is always 1).
+
+    ```info
+    Here's a quick cheat-sheet from Andrew's lesson:
+
+    **TODO!!**
+    ```
+  order: 1
+quiz:
+  name: Your First Scales
+  subtitle: |-
+    Good job in practicing your scales 😎
+  questions:
+    - id: practicedScale
+      name: What's the scale you liked most?
+      placeholder: |-
+        TODO: Select mode here!!
+      prepopulated: true
+      type: smalltext
+      # TODO ==> ubild a select more for quiz
+prerequisites: 
+- melody_basics
+visibleAtAge: 2
+
+
+# -------------------------------------------------------
 # Chords & Moods
 # chords_moods
 --- 
@@ -638,17 +700,16 @@ id: chords_moods
 name: Chords & Moods
 valley: musiccity
 content: |-
-  Overview and notes with their relations → practice with a famous song.
-  **TODO**
+  Learn about chords and they can be used to convey emotions.
 # startUrl: https://www.tinkercad.com/login 
 positionLeft: 35
 positionTop: 48
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: Learn About Chords
   subtitle: |-
-    Description here.
+    Listen to Andrew as he plays different chords and shows you how some are sad and other happy.
   type: video
   youtubeVideoId: qnetRvkxfOo
   featuredChannel:
@@ -658,7 +719,56 @@ stages:
   order: 0
 visibleAtAge: 2
 prerequisites:
-- melody_basics
+- scales_practice
+
+
+# -------------------------------------------------------
+# Practice Playing Chords
+# chords_practice
+---
+id: chords_practice
+name: Practice Playing Chords
+valley: musiccity
+content: |-
+  You've learned about chords in the previous quest, and how they can be *happy* or *sad*.
+  
+  Now you can see it for yourself by practicing it on a few scales. 🎹🎶
+# TODO --> ability to start from the quest quiz response + default start url as a fallback
+startUrl: https://edu.bandlab.com/library/projects
+positionLeft: 40
+positionTop: 45
+stages:
+- name: Practice Triad Chords
+  content: |-
+    On the same track that your used for the scales, practice applying the triads out of the first through sixth degrees of a major scale.
+    
+    ➡️ Repeat this exercise with at least **5 different major scales**
+
+    ☝️ For each chords, identify:
+    - What's the letter name of the root note?
+    - Is it major or minor?
+
+    ```info
+    Here's a quick cheat-sheet from Andrew's lesson:
+
+    **TODO!!**
+    ```
+  order: 0
+# quiz:
+#   name: Your First Chords
+#   subtitle: |-
+#     Good job in practicing your chords 
+#   questions:
+#     - id: practicedChord
+#       name: Did you find chords you liked?
+#       placeholder: |-
+#         TODO: Select mode here!!
+#       prepopulated: true
+#       type: smalltext
+#       # TODO ==> ubild a select more for quiz
+prerequisites: 
+- chords_moods
+visibleAtAge: 2
 
 
 # -------------------------------------------------------
@@ -669,17 +779,18 @@ id: notation_system
 name: The Notation System
 valley: musiccity
 content: |-
-  Overview and notes with their relations → practice with a famous song.
-  **TODO**
+  Learn how to use roman numerals to reference chords and use this notation system to build chord progressions. 🧐
+
+  The cool thing with that? You can inspire yourself from songs you like and make it yours by changing the key of the song. 🤯
 # startUrl: https://www.tinkercad.com/login 
 positionLeft: 49
 positionTop: 47
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: The Notation System
   subtitle: |-
-    Description here.
+    Andrew walks you through how to use roman numerals to reference chords, irrespective of the key.
   type: video
   youtubeVideoId: AyI9ZO6PuiY
   featuredChannel:
@@ -689,7 +800,46 @@ stages:
   order: 0
 visibleAtAge: 2
 prerequisites:
-- chords_moods
+- chords_practice
+
+
+# -------------------------------------------------------
+# Practice Playing Chords
+# chords_practice
+---
+id: notation_practice
+name: Practice the Notation System
+valley: musiccity
+content: |-
+  Put your new skill to practice by going from numbers to music, and see if you can inspire yourself from songs you know.
+# TODO --> ability to start from the quest quiz response + default start url as a fallback
+startUrl: https://edu.bandlab.com/library/projects
+positionLeft: 53
+positionTop: 46.5
+stages:
+- name: Practice the Notation System
+  content: |-
+    On the same track that your used for the scales, practice making chord progressions based on numbers.
+
+    To do so:
+    - Pick a random key 
+    - Pick a random sequence of numbers between 1 and 6
+    - Find the corresponding chords
+    - Practice playing them in sequence.
+    
+    ➡️ Repeat this exercise a few times.
+
+    ☝️  You can also look up the chords to a song you like and try to work out what key it's in and what degree of the major scale fits each chord.
+
+    ```info
+    Here's a quick cheat-sheet from Andrew's lesson:
+
+    **TODO!!**
+    ```
+  order: 0
+prerequisites: 
+- notation_system
+visibleAtAge: 2
 
 
 # -------------------------------------------------------
@@ -700,17 +850,19 @@ id: inversions
 name: Inversions
 valley: musiccity
 content: |-
-  Overview and notes with their relations → practice with a famous song.
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 56
-positionTop: 42.5
+  Learn how to get creative with your chords, by complexifying your triad a bit more.
+
+  ```info
+  This quest is not stricly required, but will definitely help you come up with dope chords!
+  ```
+positionLeft: 57
+positionTop: 46.5
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: Inversions
   subtitle: |-
-    Description here.
+    Use the same triad concept but move some notes around. 🎶✨
   type: video
   youtubeVideoId: DBmcbO53Ulk
   featuredChannel:
@@ -720,7 +872,7 @@ stages:
   order: 0
 visibleAtAge: 2
 prerequisites:
-- notation_system
+- notation_practice
 
 
 # -------------------------------------------------------
@@ -731,17 +883,18 @@ id: melodies
 name: Melodies
 valley: musiccity
 content: |-
-  Overview and notes with their relations → practice with a famous song.
-  **TODO**
+  Learn how to build out melodies based on youur chords to add some memorable pieces to your track! 😎
+
+  You'll learn things with cool serious names like *Pentatonic Scales*, which will allow you to come up with solid melodies.
 # startUrl: https://www.tinkercad.com/login 
-positionLeft: 58
-positionTop: 36.5
+positionLeft: 56
+positionTop: 41
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: Melodies
   subtitle: |-
-    Description here.
+    Listen to Andrew as he give you some tips on coming up with your melody
   type: video
   youtubeVideoId: UAHZ8sTDTCc
   featuredChannel:
@@ -751,8 +904,175 @@ stages:
   order: 0
 visibleAtAge: 2
 prerequisites:
-- inversions
+- notation_practice
 
+
+# -------------------------------------------------------
+# Coming Up With Your Chords
+# find_chords
+--- 
+id: find_chords
+name: Coming Up With Your Chords
+valley: musiccity
+content: |-
+  See how Kim uses Andrew's knowledge to find chords that fits his song's vision.
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 60
+positionTop: 48.5
+type: embedded
+# CTA:
+stages:
+- name: Coming Up With Your Chords
+  subtitle: |-
+    See how Kim uses Andrew's knowledge to find chords for his song!
+  type: video
+  youtubeVideoId: lEo859uO--U
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- notation_practice
+
+
+# -------------------------------------------------------
+# Find Your Music's Chords
+# first_chords
+---
+id: first_chords
+name: Find Your Music's Chords
+valley: musiccity
+content: |-
+  Andrew showed you the theory, Kim gave you a walkthrough on how to use your vision for your song and find your chords... Time to put all this knowledge to work! 
+
+  Whether you're starting from scratch or using a base track, try to see if you can come up with your own chords.
+startUrl: 
+  questId: bandlab_start
+  questionId: songUrl
+  fallbackUrl: https://edu.bandlab.com/library/projects
+positionLeft: 62
+positionTop: 42
+stages:
+- name: Find Your Chords
+  content: |-
+    Navigate to your song to start working on your chords.
+
+    **Option 1: You're using one of our base track?**
+    - You then have to make sure to use the key of the song. 
+    - You can find the key next to the BPM.
+    
+    **Option 2: You've started from scratch**
+    - You'll then have full freedom in what key you use!
+    - Remember the one you liked the most when practicing!
+
+    ```info
+    Can't find a combinaison you like? Looking for inspiration? 
+
+    A simple trick is to search for "*random number generator*"" in Google, and generate 4 numbers from 1 to 6 randomly! 🔮
+
+    You can then use the notation system to get the related chords for those numbers. 
+
+    ![Google Random Number Generator](data/music/images/random_number_generator.png)
+    ```
+  order: 0
+prerequisites: 
+- find_chords
+visibleAtAge: 2
+
+
+# -------------------------------------------------------
+# How To Get Your Melody?
+# find_melody
+--- 
+id: find_melody
+name: How To Get Your Melody?
+valley: musiccity
+content: |-
+  See how Kim uses Andrew's knowledge to get cool melodies for his track.
+# startUrl: https://www.tinkercad.com/login 
+positionLeft: 60
+positionTop: 36.5
+type: embedded
+# CTA:
+stages:
+- name: How To Get Your Melody?
+  subtitle: |-
+    See how Kim uses Andrew's knowledge to get cool melodies for his track.
+  type: video
+  youtubeVideoId: 1X7Goyy5e20
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- first_chords
+- melodies
+
+
+# -------------------------------------------------------
+# Find Your Melody
+# first_melody
+---
+id: first_melody
+name: Find Your Melody
+valley: musiccity
+content: |-
+  Add the icing on the cake with what most probably be the most memorable part of your track: your melody! 💃🕺🏻
+startUrl:
+  questId: bandlab_start
+  questionId: songUrl
+  fallbackUrl: https://edu.bandlab.com/library/projects
+positionLeft: 54
+positionTop: 38
+stages:
+- name: Find Your Melody
+  content: |-
+    Navigate to your song to start working on your melody. 
+
+    **Option 1: You're using one of our base track?**
+    - You then have to make sure to use the key of the song. 
+    - See if there's already a melody. Either change the instrument or replace it all-together with yours.
+    
+    **Option 2: You've started from scratch**
+    - You'll then have full freedom in your melody! Stick to the key you've used for your chords.
+
+
+    **For both of this options:**
+    - Pay attention to which melody notes are and aren't part of the chords they're being played with, and how they sound. (you can solo just the chords and your bass, or mute everything else).
+    - Find places where you can resolve from a melody note that's outside of the chorse to one that's in the chord.
+    - Try using the pentatonic major scale (remove the 4th and 7th degrees).
+  order: 0
+prerequisites:
+- find_melody
+visibleAtAge: 2
+
+
+# -------------------------------------------------------
+# Basic Song Structure
+# song_structure
+--- 
+id: song_structure
+name: Basic Song Structure
+valley: musiccity
+content: |-
+  Learn what is the basic song stuctures and see how Kim uses his basic loop to create Verses & Chorus and expand his track.
+positionLeft: 50
+positionTop: 42
+type: embedded
+# CTA:
+stages:
+- name: Basic Song Structure
+  subtitle: |-
+    Do: Verse, Chorus, Verse, Chorus (Bridge, Chorus). TADA! Your have a song.
+  type: video
+  youtubeVideoId: UB6Oht0jY5Y
+  order: 0
+- name: Expanding Your Track
+  subtitle: |-
+    See how Kim uses his basic loop to create Verses & Chorus and expand his track.
+  type: video
+  youtubeVideoId: -J5pPdbRLXA
+  order: 1
+visibleAtAge: 2
+prerequisites:
+- bass_basics
+- first_melody
 
 # -------------------------------------------------------
 # Expand Your Instrumental
@@ -762,81 +1082,36 @@ id: expand_instru
 name: Expand Your Instrumental
 valley: musiccity
 content: |-
-  Overview and notes with their relations → practice with a famous song.
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 51
-positionTop: 40
-type: embedded
-# CTA:
+  Now that you have all your musical piece and you've seen how Kim does it, it's time to expand your own song!
+startUrl: 
+  questId: bandlab_start
+  questionId: songUrl
+  fallbackUrl: https://edu.bandlab.com/library/projects
+positionLeft: 45
+positionTop: 43
 stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
+- name: Expand Your Instrumental
+  content: |-
+    Navigate to your song to start expanding your snog. 
+
+    **Option 1: You're using one of our base track?**
+    - Make sure you understand the current structure of the song. Where is the chorus? the verse?
+    - If you have your lyrics already, see if those fit in the current length. Try to adapt the number of bars (extend or shorten) based on your need.
+    - You can also play around with changing what gets added/remove when the song goes from Verse to Chorus and the other way around. Have fun with the intro and outro too!
+    
+    **Option 2: You've started from scratch**
+    - You most probably have a few bars available. 
+    - See what you want to use for your chorus, and then start working on your intro. Make sure it fits your vision and what you want to convey through your song.
+    - Iterate until you have at least one verse and one chorus. Ideally you have 2 of them though ;)
+
+
+    ```info
+    Make sure you navigate through the BandLab loops and see if there's any you can use as "ear candies" or for your transition. 👂🏻🍭
+    ```
   order: 0
-visibleAtAge: 2
 prerequisites:
-- melodies
-
-
-# -------------------------------------------------------
-# Using Samples
-# samples_basics
-# --- 
-# id: samples_basics
-# name: Using Samples
-# valley: musiccity
-# content: |-
-#   How to use music samples to create a new sound.
-
-#   **TODO**
-# # startUrl: https://www.tinkercad.com/login 
-# positionLeft: 61
-# positionTop: 48
-# type: embedded
-# # CTA:
-# stages:
-# - name: TODO
-#   subtitle: |-
-#     Description here.
-#   type: video
-#   youtubeVideoId: MPSr4XoyOfQ
-#   order: 0
-# visibleAtAge: 2
-# prerequisites:
-# - melody_basics
-
-
-# -------------------------------------------------------
-# Record Your Lyrics
-# lyrics_record
---- 
-id: lyrics_record
-name: Record Your Lyrics
-valley: musiccity
-content: |-
-  Put your voice on top of your instrumental!
-
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 44.5
-positionTop: 39
-type: embedded
-# CTA:
-stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  order: 0
+- song_structure
 visibleAtAge: 2
-prerequisites:
-- lyrics_flow
-- rhythm_basics
-- melody_basics
 
 # =======================================================
 #                 Beats Forest
@@ -853,7 +1128,6 @@ content: |-
   Introduction to rhythm and how it's counted, shared and used. 
   
   This also walks you through the 3 most basic elements of rhythm: Kick, Snare & Hit-hat.
-# startUrl: https://www.tinkercad.com/login 
 positionLeft: 70
 positionTop: 56.5
 type: embedded
@@ -875,85 +1149,133 @@ prerequisites:
 - bandlab_overview
 
 # -------------------------------------------------------
-# The Main Rythm Elements
-# main_rhythms
+# How to Build Drums in Bandlab?
+# find_drums
 --- 
-id: main_rhythms
-name: The Main Rythm Elements
+id: find_drums
+name: How to Build Drums in Bandlab?
 valley: beats
 content: |-
-  Going over the basic elements: kick, snare, high-hat.
-  
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
+  Follow this walkthrough of how you can add drums in Bandlab.
+
+  Kim will also show how he comes up with the drum for his own song.
 positionLeft: 74.5
 positionTop: 50.5
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: How to Build Drums in Bandlab?
   subtitle: |-
-    Description here.
+    Follow this walkthrough of how you can add drums in Bandlab and see how to come up with yours.
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: a5JtDsEtkHU
   order: 0
 visibleAtAge: 2
 prerequisites:
 - rhythm_basics
 
 # -------------------------------------------------------
-# Adding a Bass
+# Build Your Drums
+# build_drums
+--- 
+id: build_drums
+name: Build Your Drums
+valley: beats
+content: |-
+  Time for your build (or edit) your drums!
+startUrl:
+  questId: bandlab_start
+  questionId: songUrl
+  fallbackUrl: https://edu.bandlab.com/library/projects
+positionLeft: 84
+positionTop: 54
+stages:
+- name: Build Your Drums
+  content: |-
+    Navigate to your song to start working on your drums.
+
+
+    **Option 1: You're using one of our base track?**
+    
+    - Try to spot the elements that add rythms. It's either a drum machine, or a track named with kick, snare or high-hats.
+    - You can then try to change the drums that are used, edit the rhythm.
+    - You could also remove them all (or mute them) and start your own from scratch!
+    - Play around with the BPM too to see what it does to the track 👀
+
+    **Option 2: You've started from scratch**
+    
+    - You'll then have full freedom in what BPM you can use! Try to look for songs you liked and want to inspire yourself from, and search their BPM online.
+    - See if you can use Andrew's tips to note down a rhythm and add it to your track.
+
+    Have fun with it! 😎
+  order: 0
+prerequisites:
+- find_drums
+visibleAtAge: 2
+
+# -------------------------------------------------------
+# Coming Up With Your Bass
+# bass_demo
+--- 
+id: bass_demo
+name: Coming Up With Your Bass
+valley: beats
+content: |-
+  Learn how to add some rhythm to your beat with the base line(s).
+positionLeft: 79
+positionTop: 47
+type: embedded
+CTA: Let's DROP the Bass 💣
+stages:
+- name: Coming Up With Your Bass
+  subtitle: |-
+    Learn how to add some rhythm to your beat with the base line(s).
+  type: video
+  youtubeVideoId: 19wnD0D1nJ4
+  order: 0
+visibleAtAge: 2
+prerequisites:
+- build_drums
+- melodies
+
+# -------------------------------------------------------
+# Get Your Bass
 # main_rhythms
 --- 
 id: bass_basics
-name: Adding a Bass
+name: Get Your Bass
 valley: beats
 content: |-
-  Add some depth to your beat!
-  
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 84
-positionTop: 54
-type: embedded
-# CTA:
+  Time to add some depth to your beat with your last rhythmic element: your bass.
+positionLeft: 83
+positionTop: 44
+startUrl:
+  questId: bandlab_start
+  questionId: songUrl
+  fallbackUrl: https://edu.bandlab.com/library/projects
 stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  order: 0
-visibleAtAge: 2
-prerequisites:
-- main_rhythms
+- name: Build Your Bass
+  content: |-
+    Navigate to your song to start working on your drums.
 
-# -------------------------------------------------------
-# The Main Rythm Elements
-# main_rhythms
---- 
-id: advanced_beats
-name: Advanced Beat Tricks
-valley: beats
-content: |-
-  16th, Triplets...
-  
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 80.5
-positionTop: 43.5
-type: embedded
-# CTA:
-stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
+
+    **Option 1: You're using one of our base track?**
+    
+    - Try to spot the bass in the track. *Note:* There might be more than one ;)
+    - Select the track and play around with change the instruments to see how it sounds.
+    - Feel free to remove the current bass line and come up with yours! Make sure to stay in the key of the song ☝️
+
+    **Option 2: You've started from scratch**
+    
+    - You'll then have full freedom in what bass line you can use! Just stick to the song's key.
+    - First select your bass instrument.
+    - Play around to find your bass line. You can make it as simple as one note in a rhythm, or make it more melodic.
+
+    Have fun with it! 😎
   order: 0
-visibleAtAge: 2
 prerequisites:
-- bass_basics
+- bass_demo
+visibleAtAge: 2
 
 # =======================================================
 #                 Effects Lake
@@ -967,20 +1289,19 @@ id: effects_basics
 name: The Magic of Effects
 valley: effects
 content: |-
-  Overview of main effects ==> spot it in a famous song.
+  Get an overview of some of the most common effects you can use to control your sounds and explore new horizons.
 
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
+  Kim will also walk you through where can you add effect in BandLab and some of the most common settings.
 positionLeft: 71
 positionTop: 36.3
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: Overview of Audio Effects
   subtitle: |-
-    Description here.
+    And how to use them in BandLab.
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: HfH3h6PsMc4
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -991,46 +1312,54 @@ prerequisites:
 # effects_reverb
 --- 
 id: effects_reverb
-name: Add Volume with the Reverb
+name: Reverb and Delay
 valley: effects
 content: |-
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
+  Learn about the two most common effects used in music:
+  - Reverb
+  - Delay
 positionLeft: 66.5
 positionTop: 34.3
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: Reverbs
   subtitle: |-
-    Description here.
+    Put your sound in a virtual room to make it pop.
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: z9MRvRkDm-c
   order: 0
+- name: Delays
+  subtitle: |-
+    Do you hear some echo? That's what this effect is made for!
+  type: video
+  youtubeVideoId: b4GlicTSnNw
+  order: 1
 visibleAtAge: 2
 prerequisites:
 - effects_basics
 
 # -------------------------------------------------------
-# Make Sound Last with a Delay
+# Spice Up Your Vocals
 # effects_delay
 --- 
-id: effects_delay
-name: Make Sound Last with a Delay
+id: effects_vocals
+name: Spice Up Your Vocals
 valley: effects
 content: |-
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
+  See the effects your can use on your vocals to spice them up. 
+
+  Whether it's to achieve a creative goal or to transform your voice, you'll find what you need through this video!
 positionLeft: 64.5
 positionTop: 30
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: Spice Up Your Vocals With Effects
   subtitle: |-
-    Description here.
+    Learn some of the most used vocal effects as Kim walk you through what he added to his voice.
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: 5Lk9YqM7XBc
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -1044,18 +1373,18 @@ id: effects_stereo
 name: It Sounds More Full in Stereo
 valley: effects
 content: |-
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
+  A common transformation added to sounds is called **Panning**. That basically define whether your sounds plays on the left or right hear.
+
+  Learn how to set your panning in BandLab and even control it over time!
 positionLeft: 70
 positionTop: 29.3
 type: embedded
-# CTA:
 stages:
-- name: TODO
+- name: Panning (Left / Right)
   subtitle: |-
-    Description here.
+    Learn how to set your panning in BandLab and even control it over time!
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: CYkdYBwZdZU
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -1272,24 +1601,17 @@ id: bandlab_lyrics
 name: Using Bandlab to Record Your Voice
 valley: lyrics
 content: |-
-  Learn How to Record Your Voice in BandLab
-  
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
+  Learn How to Record Your Voice in BandLab as Kim shows you how he does it for his chorus.
 positionLeft: 15
 positionTop: 41
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: Using Bandlab to Record Your Voice
   subtitle: |-
-    Description here.
+    Learn How to Record Your Voice in BandLab as Kim shows you how he does it for his chorus.
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  featuredChannel:
-    name: Music Notes Online
-    icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
-    youtubeChannelId: UCdmOMNJhoZaUFofT4D2jibw
+  youtubeVideoId: 7i7fGTpW2mE
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -1297,34 +1619,37 @@ prerequisites:
 
 
 # -------------------------------------------------------
-# Work on Your Flow
-# lyrics_flow
+# Record Your Lyrics
+# lyrics_record
 --- 
-id: lyrics_flow
-name: Work on Your Flow
+id: lyrics_record
+name: Record Your Lyrics
 valley: lyrics
 content: |-
-  Learn the important pieces on how your deliver your lyrics on your music.
-  
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
+  Whether you've started from scratch or use a base track, it's time to add some concrete meaning to your song and put your voice on top of your instrumental!
+startUrl: 
+  questId: bandlab_start
+  questionId: songUrl
+  fallbackUrl: https://edu.bandlab.com/library/projects
 positionLeft: 30
 positionTop: 40
-type: embedded
-# CTA:
 stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  featuredChannel:
-    name: Music Notes Online
-    icon: https://yt3.ggpht.com/a/AATXAJxIAxQ4XsK_9IpMaU52ZE2LSwhIS6-sbRDL0A=s288-c-k-c0xffffffff-no-rj-mo
-    youtubeChannelId: UCdmOMNJhoZaUFofT4D2jibw
+- name: Record Your Lyrics
+  content: |-
+    Navigate to your song to start adding your lyrics.
+
+    - Create a new Voice track.
+    - Record your lyrics on the different parts of your track.
+    - You can break it down by verse / chorus so you don't have to it in one shot. You can also reuse some of your recordings, especially for your choruses.
+
+
+    ```info
+    Check-out the quest on vocals in the lake of effects to see how you can spice up your vocals. 🎙🌶🔥
+    ```
   order: 0
 visibleAtAge: 2
 prerequisites:
+- expand_instru
 - bandlab_lyrics
 
 
@@ -1341,20 +1666,25 @@ id: mixing_basics
 name: It’s Like Mixing a Recipe
 valley: mixing
 content: |-
-  What is mixing and why?
+  Learn what is mixing and why we're doing it?
 
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
+  Kim will walk you through how he starts it with his track, from the basic most important element of your song: volumes.
+
+  ```warning
+  Only start this quest when you completed your track and you have nothing left to edit in it.
+
+  This is basically the final touches. ✨
+  ```
 positionLeft: 47
 positionTop: 29
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: What is mixing and why we're doing it?
   subtitle: |-
-    Description here.
+    Kim will walk you through how he starts mixing his track.
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: 4lqg9JHeaSM
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -1369,78 +1699,87 @@ id: mixing_volumes
 name: It All Starts With Volumes
 valley: mixing
 content: |-
-  Bring it back up 1 by 1.
-
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
+  Based on what Kim explained you in the previous quest, listen to your song and adjusts your volumes.
+startUrl: 
+  questId: bandlab_start
+  questionId: songUrl
+  fallbackUrl: https://edu.bandlab.com/library/projects
 positionLeft: 37
 positionTop: 29
-type: embedded
-# CTA:
 stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
+- name: Adjusts Your Tracks Volumes
+  content: |-
+    Listen closely to your song as if it was the first time your were hearing it. It usually helps to not look at your screen while it plays and even close your eyes.
+    
+    Try to spot the tracks that are either too loud or hard to hear, and adjust the volume accordingly.
+
+    ```info
+    Note that volumes might need to be different throughout your song. Your pads might need to be higher in the verse (where there no much to compete against), that in your chorus (where there is a lot more sound). 
+
+    ➡️ Remember that you can use automation to control your volumes over time.
+    ```
+
+    ```info
+    You can also spread certain tracks in stereo. One track will be more on the left where the other will be more on the right, and they won't be on top of each other that much. 🙃
+    ```
   order: 0
 visibleAtAge: 3
 prerequisites:
 - mixing_basics
 
-# -------------------------------------------------------
-# Cleaning with the EQs
-# mixing_eq
---- 
-id: mixing_eq
-name: Cleaning with the EQs
-valley: mixing
-content: |-
-  Each parts has its own space. Not less, not more.
+# # -------------------------------------------------------
+# # Cleaning with the EQs
+# # mixing_eq
+# --- 
+# id: mixing_eq
+# name: Cleaning with the EQs
+# valley: mixing
+# content: |-
+#   Each parts has its own space. Not less, not more.
 
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
-positionLeft: 29
-positionTop: 24
-type: embedded
-# CTA:
-stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  order: 0
-visibleAtAge: 3
-prerequisites:
-- mixing_volumes
+#   **TODO**
+# # startUrl: https://www.tinkercad.com/login 
+# positionLeft: 29
+# positionTop: 24
+# type: embedded
+# # CTA:
+# stages:
+# - name: TODO
+#   subtitle: |-
+#     Description here.
+#   type: video
+#   youtubeVideoId: MPSr4XoyOfQ
+#   order: 0
+# visibleAtAge: 3
+# prerequisites:
+# - mixing_volumes
 
 # -------------------------------------------------------
 # Export Your Track!
 # export_track
 --- 
 id: export_track
-name: Export Your Track!
+name: How to Export Your Track?
 valley: mixing
 content: |-
-  Get ready to share your story with the world!
-
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
+  Congrats in finalizing your track. 😎
+  
+  You're aaaaalmost there. Follow this quest to learn how you can download your track. ⬇️
 positionLeft: 37.7
 positionTop: 10.7
 type: embedded
 # CTA:
 stages:
-- name: TODO
+- name: How to Export Your Track?
   subtitle: |-
-    Description here.
+    Learn how you can download your track and what does Stems means. 🤨
   type: video
-  youtubeVideoId: MPSr4XoyOfQ
+  youtubeVideoId: wlvn-dUlbCI
   order: 0
 visibleAtAge: 3
 prerequisites:
-- mixing_eq
+- mixing_volumes
+# - mixing_eq
 
 # -------------------------------------------------------
 # Share Your Track!
@@ -1451,19 +1790,23 @@ name: Share Your Track!
 valley: mixing
 content: |-
   Time to share your story with the world!
-
-  **TODO**
-# startUrl: https://www.tinkercad.com/login 
+startUrl: 
+  questId: bandlab_start
+  questionId: songUrl
+  fallbackUrl: https://edu.bandlab.com/library/projects
 positionLeft: 46.7
 positionTop: 4.5
-type: embedded
-# CTA:
 stages:
-- name: TODO
-  subtitle: |-
-    Description here.
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
+- name: Download Your Track
+  content: |-
+    - Get to your track.
+    - Click **File** > **Download** > **Mixdown As**.
+    - Choose either:
+      - Highest Quality MP3 if you want to share it with your friends and family
+      - WAV if you want to share it with your educator or volunteer, or another musician. 
+    - Voilà! Your track is now ready to be shared and impact your community, and potentially, the world? 😱🚀
+
+    Congrats again in completing this exciting journey. 😎
   order: 0
 visibleAtAge: 3
 prerequisites:

@@ -140,7 +140,7 @@ class Onboarding extends Component {
       }
       else {
         return <div>
-          <h1>Okay Kim, time to select your journey! 🏞</h1>
+          <h1>Okay { this.props.activePlayerData.name }, time to select your journey! 🏞</h1>
           <h3>Click on an icon to get started.</h3>
 
           <div className="journeys">

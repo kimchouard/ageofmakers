@@ -28,8 +28,8 @@
   - 50
   requirements:
     lyrics: 3
-    beats: 1
-    musiccity: 5
+    beats: all
+    musiccity: 18
     changemaker: all
     # total: 8
 - index: 3
@@ -41,7 +41,7 @@
   requirements:
     mixing: 4
 - index: 4
-  name: Sharing
+  name: Producer 😎🎧
   image: data/music/images/map-music-all.jpg
   position:
   - 80

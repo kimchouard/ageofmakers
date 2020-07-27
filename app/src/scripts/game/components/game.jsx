@@ -36,7 +36,26 @@ class Game extends Component {
   startQuestBt() {
     if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.WEBSITE) {
       this.props.startQuest(this.props.activeQuest.quest, this.props.currentTab.id);
-      window.location = this.props.activeQuestData.lastUrl || this.props.activeQuestData.startUrl;
+
+      if (typeof this.props.activeQuestData.startUrl === 'string') {
+        return window.location = this.props.activeQuestData.lastUrl || this.props.activeQuestData.startUrl;
+      }
+      else if (this.props.activeQuestData.startUrl && this.props.activeQuestData.startUrl.questId && this.props.activeQuestData.startUrl.questionId && this.props.activeQuestData.startUrl.fallbackUrl) {
+        let questData = this.props.journey.quests[this.props.activeQuestData.startUrl.questId];
+
+        if (questData && questData.quiz && questData.quiz.results) {
+          return window.location = questData.quiz.results[this.props.activeQuestData.startUrl.questionId] || this.props.activeQuestData.startUrl.fallbackUrl;
+        }
+        else {
+          console.error('Can not find related quest & question', this.props.activeQuestData.startUrl, questData);
+        }
+
+        // If anything else fails, go to the fallback url
+        return window.location = this.props.activeQuestData.startUrl.fallbackUrl;
+      }
+      else {
+        console.error('Incomplete startUrl', this.props.activeQuestData.startUrl);
+      }
     }
     else if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.EMBEDDED) {
       this.props.openEmbeddedQuest();
