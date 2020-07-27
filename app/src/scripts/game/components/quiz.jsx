@@ -74,7 +74,7 @@ class Quiz extends Component {
 
   renderSubmitBtn() {
     // We don't show the submit button if there's already results added in quiz data
-    if (!this.hasQuizResult() && this.props.saveQuiz) {
+    if ((!this.hasQuizResult() || (this.props.activeQuest && this.props.activeQuest.viewOrderId === -1)) && this.props.saveQuiz) {
       return <div className="col-md-offset-3 submitWrapper">
         <input type="submit" className="btn btn-primary btn-lg" value="Submit" />
       </div>;
@@ -217,6 +217,7 @@ class Quiz extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    activeQuest: state.activeQuest,
   };
 };
 

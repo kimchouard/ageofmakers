@@ -22,6 +22,7 @@ import Celebration from './celebration';
 import LeafletMap from './leafletMap';
 import AgeTree from './ageTree';
 import Markdown from './markdown';
+import Quiz from './quiz';
 
 class Game extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class Game extends Component {
     this.props.selectQuest(questKey);
   }
 
-  startQuestBt() {
+  startQuestBt(viewOrderId) {
     if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.WEBSITE) {
       this.props.startQuest(this.props.activeQuest.quest, this.props.currentTab.id);
 
@@ -58,7 +59,22 @@ class Game extends Component {
       }
     }
     else if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.EMBEDDED) {
+      // If defined, set the view order id before the quest opens.
+      if (viewOrderId >= 0) {
+        this.props.selectQuest(this.props.activeQuestData.id, viewOrderId);
+      }
+
       this.props.openEmbeddedQuest();
+    }
+  }
+
+  renderQuizResults() {
+    if (this.props.activeQuestData.quiz && this.props.activeQuestData.quiz.results) {
+      return <div>
+        <hr/>
+        <h5>Your Quiz Answers</h5>
+        <Quiz quizData={this.props.activeQuestData.quiz} inline={true} />
+      </div>
     }
   }
 
@@ -77,11 +93,19 @@ class Game extends Component {
         </button>
     }
     else if (this.props.activeQuestData.status === 'complete') {
-      return <button
-        className="complete"
-        onClick={ () => { this.props.changeQuestProgress(this.props.activeQuest.quest, 'none') } }>
+      return <div>
+        { this.renderQuizResults() }
+        { (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.EMBEDDED) ? <button
+          className="view"
+          onClick={ () => { this.startQuestBt(0) } }>
+          View the Quest
+        </button> : '' }
+        <button
+          className="complete"
+          onClick={ () => { this.props.changeQuestProgress(this.props.activeQuest.quest, 'none') } }>
           Restart the quest
         </button>
+      </div>
     }
     else {
       return <button

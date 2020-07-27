@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { closeEmbeddedPage, changeQuestProgress } from '../../../actions/index';
+import { closeEmbeddedPage, changeQuestProgress, selectQuest } from '../../../actions/index';
 import { questTypes, stageTypes, getActiveQuestData, getStageData, getDefaultActiveStageOrder } from '../../_utils';
 import MusicShowcase from './showcaseMusic';
 import FTCShowcase from './showcaseFtc';
@@ -33,7 +33,7 @@ class EmbeddedPage extends Component {
 
   renderEmbbededQuestContent() {
     if (this.props.embeddedPage.open && this.props.embeddedPage.type === 'quest' && this.props.activeQuestData && this.props.activeQuestData.type === questTypes.EMBEDDED) {
-      let activeStageOrder = getDefaultActiveStageOrder(this.props.activeQuestData);
+      let activeStageOrder = getDefaultActiveStageOrder(this.props.activeQuestData, this.props.activeQuest);
       let activeStageData = getStageData(this.props.activeQuestData, activeStageOrder);
 
       if (!activeStageData) {
@@ -89,19 +89,48 @@ class EmbeddedPage extends Component {
     }
   }
 
+  nextViewId(isQuiz) {
+    // If we're at the last stage, then close the quest
+    if (this.props.activeQuestData.stages.length === this.props.activeQuest.viewOrderId + 1) {
+      // If there is no quiz or we're asking to go next from a quiz, then we clove the view page
+      if (!this.props.activeQuestData.quiz || isQuiz) {
+        this.props.selectQuest(this.props.activeQuestData.id);
+      }
+      // If we're having a quiz, then set the order id to -1 to show it
+      else if (this.props.activeQuestData.quiz) {
+        this.props.selectQuest(this.props.activeQuestData.id, -1);
+      }
+    }
+    else {
+      this.props.selectQuest(this.props.activeQuestData.id, this.props.activeQuest.viewOrderId+1);
+    }
+  }
+
   saveQuiz(questions) {
-    this.props.changeQuestProgress(this.props.activeQuest.quest, null, null, questions);
+    if (this.viewOrderIsDefined()) {
+      this.nextViewId(true);
+    }
+    else {
+      this.props.changeQuestProgress(this.props.activeQuest.quest, null, null, questions);
+    }
+
     this.props.closeEmbeddedPage();
   }
 
   goToNextStage(stage) {
-    this.props.changeQuestProgress(this.props.activeQuest.quest, stage.order);
+    if (this.viewOrderIsDefined()) {
+      this.nextViewId();
+    }
+    else {
+      this.props.changeQuestProgress(this.props.activeQuest.quest, stage.order);
+    }
+    
     this.setActiveStageOrder(stage.order+1);
   }
 
   setActiveStageOrder(activeStageOrder) {
     if(activeStageOrder !== 0 && !activeStageOrder) {
-      activeStageOrder = getDefaultActiveStageOrder(this.props.activeQuestData);
+      activeStageOrder = getDefaultActiveStageOrder(this.props.activeQuestData, this.props.activeQuest);
     }
 
     this.setState({
@@ -109,10 +138,14 @@ class EmbeddedPage extends Component {
     });
   }
 
+  viewOrderIsDefined() {
+    return (this.props.activeQuest.viewOrderId !== null && this.props.activeQuest.viewOrderId !== undefined);
+  }
+
   render() {
     if (this.props.embeddedPage) {
-      // If the quest is done, close the embedded UI
-      if (this.props.activeQuestData && this.props.activeQuestData.status === 'complete') {
+      // If the quest is done AND either no viewId is defined, close the embedded UI
+      if (this.props.activeQuestData && this.props.activeQuestData.status === 'complete' && !this.viewOrderIsDefined()) {
         this.props.closeEmbeddedPage();
       }
 
@@ -143,7 +176,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-return bindActionCreators({ closeEmbeddedPage, changeQuestProgress }, dispatch);
+return bindActionCreators({ closeEmbeddedPage, changeQuestProgress, selectQuest }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmbeddedPage);

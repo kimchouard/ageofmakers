@@ -118,22 +118,27 @@ export const getStageData = (activeQuest, stageOrder) => {
   return activeStage;
 }
 
-export const getDefaultActiveStageOrder = (activeQuestData) => {
+export const getDefaultActiveStageOrder = (activeQuestData, activeQuest) => {
   if(activeQuestData && activeQuestData.stages) {
-    let defaultActiveStageOrder = 0;
-    // defaultActiveStageOrder is -1 if we need to run the quiz!
-    if ((!activeQuestData.stages.length || activeQuestData.stages[activeQuestData.stages.length-1].status === 'complete') && activeQuestData.quiz) {
-      defaultActiveStageOrder = -1;
+    if (activeQuest && activeQuest.viewOrderId >= 0) {
+      return activeQuest.viewOrderId;
     }
     else {
-      activeQuestData.stages.forEach((stage) => {
-        if (stage.status === 'inProgress') {
-          defaultActiveStageOrder = stage.order;
-        }
-      });
-    }
+      let defaultActiveStageOrder = 0;
+      // defaultActiveStageOrder is -1 if we need to run the quiz!
+      if ((!activeQuestData.stages.length || activeQuestData.stages[activeQuestData.stages.length-1].status === 'complete') && activeQuestData.quiz) {
+        defaultActiveStageOrder = -1;
+      }
+      else {
+        activeQuestData.stages.forEach((stage) => {
+          if (stage.status === 'inProgress') {
+            defaultActiveStageOrder = stage.order;
+          }
+        });
+      }
 
-    return defaultActiveStageOrder;
+      return defaultActiveStageOrder;
+    }
   }
 }
 

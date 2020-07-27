@@ -215,11 +215,12 @@ export function changeQuestProgress(activeQuestKey, achievedStageNumber, achieve
 //         Active Quest
 // =========================================
 
-export function selectQuest(questId) {
+export function selectQuest(questId, viewOrderId) {
   return {
     type: QUEST_SELECTED,
     payload: {
-      quest: questId
+      quest: questId,
+      viewOrderId,
     },
   };
 }

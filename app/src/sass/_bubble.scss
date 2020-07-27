@@ -98,6 +98,12 @@
 			background: $red;
 			border: 1px solid darken($red, 10%);
 		}
+		&.view {
+			background: $grey;
+			border: 1px solid darken($grey, 10%);
+			display: block;
+			margin: 0 auto 10px; 
+		}
 		&.disabled {
 			cursor: default;
 			background: $grey-light;
