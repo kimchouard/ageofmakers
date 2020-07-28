@@ -34,11 +34,10 @@
   background: $grey;
 	overflow: auto;
 	position: fixed;
-  z-index: 9999;
 	bottom: 20px;
 	right: 20px;
 	// padding: 50px 0;
-	z-index: 990;
+	z-index: 9997;
 
 	& * {
 		-webkit-font-smoothing: antialiased;

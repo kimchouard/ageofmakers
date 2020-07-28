@@ -23,6 +23,7 @@ import LeafletMap from './leafletMap';
 import AgeTree from './ageTree';
 import Markdown from './markdown';
 import Quiz from './quiz';
+import AnalyticsProvider from './analyticsProvider';
 
 class Game extends Component {
   constructor(props) {
@@ -35,6 +36,18 @@ class Game extends Component {
   }
 
   startQuestBt(viewOrderId) {
+    // TODO: Send events to Google Analytics
+    // ga('send', {
+    //   hitType: 'event',
+    //   eventCategory: 'Quest',
+    //   eventAction: 'start',
+    //   eventLabel: this.props.activeQuestData.id,
+    //   hitCallback: () => {
+    //     console.log('Event sent to Google Analytics!');
+    //   }
+    // });
+    // _gaq.push(['_trackEvent', 'Quest', 'start']);
+
     if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.WEBSITE) {
       this.props.startQuest(this.props.activeQuest.quest, this.props.currentTab.id);
 
@@ -198,6 +211,7 @@ class Game extends Component {
         <AgeTree />
         { (this.props.activeQuest) ? <Bubble embed={false}>{ this.getContent() }</Bubble> : null }
         { (isLoggedInAndLoaded(this.props)) ? <Walkthrough/> : null }
+        <AnalyticsProvider />
       </div>
     );
   }

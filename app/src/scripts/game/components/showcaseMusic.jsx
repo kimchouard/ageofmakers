@@ -97,7 +97,7 @@ class MusicShowcase extends Component {
         <div className="text-center">
           { this.renderNextButton() }
         </div>
-        <p className="instructions">Explore at least {this.props.activeStageData.requiredShowcaseViews} examples below and click NEXT to complete the quest.</p>
+        <p className="instructions">Explore at least <strong>{this.props.activeStageData.requiredShowcaseViews} examples</strong> below and click NEXT to complete the quest.</p>
 
         <div className={ `row songs ${ (this.props.viewOnly) ? 'row-cols-1' : 'row-cols-2 row-cols-md-3' }`}>
           { this.renderShowcaseItems() }

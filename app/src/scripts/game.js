@@ -25,4 +25,3 @@ const unsubscribe = proxyStore.subscribe(() => {
     </Provider>
     , document.getElementById('ageofmakers'));
 });
-
