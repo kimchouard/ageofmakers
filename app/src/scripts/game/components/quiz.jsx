@@ -19,6 +19,7 @@ class Quiz extends Component {
       this.state = {
         questions: {},
         currentQuestionHelpers: [],
+        editQuiz: false,
       }
   }
 
@@ -38,8 +39,9 @@ class Quiz extends Component {
   }
 
   submitQuestion(event) {
-    this.props.saveQuiz(this.state.questions);
+    this.props.saveQuiz(this.state.questions, this.state.editQuiz);
     event.preventDefault();
+    this.setState({ editQuiz: false })
   }
 
   handleFormChange(e) {
@@ -72,12 +74,25 @@ class Quiz extends Component {
     }
   }
 
+  startEditingQuiz() {
+    this.setState({ editQuiz: true, questions: this.props.quizData.results || this.props.quizResults });
+  }
+
   renderSubmitBtn() {
     // We don't show the submit button if there's already results added in quiz data
-    if ((!this.hasQuizResult() || (this.props.activeQuest && this.props.activeQuest.viewOrderId === -1)) && this.props.saveQuiz) {
+    if (!this.hasQuizResult() && this.props.saveQuiz) {
       return <div className="col-md-offset-3 submitWrapper">
         <input type="submit" className="btn btn-primary btn-lg" value="Submit" />
       </div>;
+    }
+    // We show custom buttons if we're embedding results
+    else if ((this.props.embeddedPage && this.props.embeddedPage.viewOrderId === -1) || this.props.editable) {
+      return <div>
+        <div className="col-md-offset-3 submitWrapper">
+          {(!this.state.editQuiz) ? <button className={ `btn btn-dark ${ (!this.props.editable) ? 'btn-lg' : ''} edit-btn` } onClick={() => { this.startEditingQuiz() }}>Edit</button> : ''} 
+          {(!this.props.editable || this.state.editQuiz) ? <input type="submit" className={ `btn btn-primary ${ (!this.props.editable) ? 'btn-lg' : ''} edit-btn` } value={(this.state.editQuiz) ? 'Save' : 'Next'} /> : ''}
+        </div>
+      </div>
     }
   }
 
@@ -125,7 +140,19 @@ class Quiz extends Component {
         </div>
       </div>
     }
-    
+  }
+
+  isDisabled(quizResult) {
+    return (quizResult !== undefined && !this.state.editQuiz);
+  }
+
+  getQuizValue(questionId, quizResult) {
+    if (quizResult && !this.state.editQuiz) {
+      return quizResult;
+    } 
+    else {
+      return this.state.questions[questionId];
+    }
   }
 
   renderQuestions() {
@@ -144,10 +171,10 @@ class Quiz extends Component {
               id={question.id}
               className="form-control"
               required={ !question.optional }
-              value={quizResult || this.state.questions[question.id]} 
+              value={ this.getQuizValue(question.id, quizResult) } 
               onChange={ (e) => { this.handleFormChange(e); } }
               rows={ (this.props.inline) ? (question.type === quizAnswerTypes.FREETEXTLONG) ? "10" : "3" : (question.type === quizAnswerTypes.FREETEXTLONG) ? "20" : "5" }
-              disabled={ (quizResult !== undefined) }
+              disabled={ this.isDisabled(quizResult) }
             />
           }
           else if (question.type === quizAnswerTypes.SMALLTEXT || question.type === quizAnswerTypes.URL) {
@@ -156,10 +183,10 @@ class Quiz extends Component {
               id={question.id}
               className="form-control"
               required={ !question.optional }
-              value={quizResult || this.state.questions[question.id]} 
+              value={ this.getQuizValue(question.id, quizResult) } 
               onChange={ (e) => { this.handleFormChange(e); } }
               type={ (question.type === quizAnswerTypes.URL) ? 'url' : 'text' }
-              disabled={ (quizResult !== undefined) }
+              disabled={ this.isDisabled(quizResult) }
             />
           }
 
@@ -217,7 +244,7 @@ class Quiz extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    activeQuest: state.activeQuest,
+    embeddedPage: state.embeddedPage,
   };
 };
 

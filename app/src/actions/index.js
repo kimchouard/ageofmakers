@@ -215,12 +215,11 @@ export function changeQuestProgress(activeQuestKey, achievedStageNumber, achieve
 //         Active Quest
 // =========================================
 
-export function selectQuest(questId, viewOrderId) {
+export function selectQuest(questId) {
   return {
     type: QUEST_SELECTED,
     payload: {
       quest: questId,
-      viewOrderId,
     },
   };
 }
@@ -303,12 +302,13 @@ export function closeTree() {
 // =========================================
 
 // Open the embedded page for quests
-export function openEmbeddedQuest() {
+export function openEmbeddedQuest(viewOrderId) {
   return {
     type: EMBEDDED_QUEST_OPENED,
     payload: {
       open: true,
       type: 'quest',
+      viewOrderId,
     },
   };
 }

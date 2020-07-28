@@ -54,7 +54,7 @@ class Game extends Component {
       if (typeof this.props.activeQuestData.startUrl === 'string') {
         return window.location = this.props.activeQuestData.lastUrl || this.props.activeQuestData.startUrl;
       }
-      else if (this.props.activeQuestData.startUrl && this.props.activeQuestData.startUrl.questId && this.props.activeQuestData.startUrl.questionId && this.props.activeQuestData.startUrl.fallbackUrl) {
+      else if (this.isSmartStartUrl()) {
         let questData = this.props.journey.quests[this.props.activeQuestData.startUrl.questId];
 
         if (questData && questData.quiz && questData.quiz.results) {
@@ -72,12 +72,8 @@ class Game extends Component {
       }
     }
     else if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.EMBEDDED) {
-      // If defined, set the view order id before the quest opens.
-      if (viewOrderId >= 0) {
-        this.props.selectQuest(this.props.activeQuestData.id, viewOrderId);
-      }
-
-      this.props.openEmbeddedQuest();
+      // If defined, set the view order id as we open the quest
+      this.props.openEmbeddedQuest(viewOrderId);
     }
   }
 
@@ -86,8 +82,40 @@ class Game extends Component {
       return <div>
         <hr/>
         <h5>Your Quiz Answers</h5>
-        <Quiz quizData={this.props.activeQuestData.quiz} inline={true} />
+        <Quiz 
+          quizData={this.props.activeQuestData.quiz}
+          inline={true}
+          editable={true} 
+          saveQuiz={(questions) => { this.props.changeQuestProgress(this.props.activeQuest.quest, null, null, questions); } } />
       </div>
+    }
+  }
+
+  isSmartStartUrl() {
+    return this.props.activeQuestData.startUrl && this.props.activeQuestData.startUrl.questId && this.props.activeQuestData.startUrl.questionId && this.props.activeQuestData.startUrl.fallbackUrl;
+  }
+
+  getSmartStartUrlHint() {
+    if (this.isSmartStartUrl()) {
+      let questData = this.props.journey.quests[this.props.activeQuestData.startUrl.questId];
+
+      if (questData && questData.quiz && questData.quiz.questions) {
+        for (let question of questData.quiz.questions) {
+          if (question.id === this.props.activeQuestData.startUrl.questionId) {
+            return <div className="startUrlHint">
+              <small>You will be redirected to the link you answered to <strong>{ question.name }</strong> from the <a onClick={() => { this.openQuest(questData.id); }} className="questLink">{ questData.name }</a> quest</small>
+            </div>
+          }
+        }
+
+        console.error('Question not found in quest', this.props.activeQuestData.startUrl, questData);
+      }
+      else {
+        console.error('Invalid Quest Id for smart start url', this.props.activeQuestData.startUrl, questData);
+      }
+    }
+    else {
+      console.error('Invalid smarl start url', this.props.activeQuestData.startUrl);
     }
   }
 
@@ -114,18 +142,25 @@ class Game extends Component {
           View the Quest
         </button> : '' }
         <button
-          className="complete"
-          onClick={ () => { this.props.changeQuestProgress(this.props.activeQuest.quest, 'none') } }>
+          className="restart"
+          onClick={ () => { 
+            if (confirm(`Are you sure you want to restart the quest "${ this.props.activeQuestData.name }"?`)) { 
+              this.props.changeQuestProgress(this.props.activeQuest.quest, 'none');
+            }
+          } }>
           Restart the quest
         </button>
       </div>
     }
     else {
-      return <button
-        className="new"
-        onClick={ () => { this.startQuestBt() } }>
+      return <div>
+        <button
+          className="new"
+          onClick={ () => { this.startQuestBt() } }>
           { this.props.activeQuestData.CTA || 'Get Started!' }
         </button>
+        { (typeof this.props.activeQuestData.startUrl !== 'string') ? this.getSmartStartUrlHint() : ''}
+      </div>
     }
   }
 

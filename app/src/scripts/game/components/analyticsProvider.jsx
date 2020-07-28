@@ -6,7 +6,7 @@ export default function AnalyticsProvider() {
       const gaPlugin = _gaq || [];
       gaPlugin.push(['_setAccount', 'UA-173708168-1']);
       gaPlugin.push(['_trackPageview']);
-    }, 2000);
+    }, 5000);
   };
 
   useEffect(() => {

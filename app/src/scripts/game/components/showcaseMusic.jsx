@@ -26,7 +26,18 @@ class MusicShowcase extends Component {
   renderActionBtn(showcaseItem) {
     if (!this.props.viewOnly) {
       if (showcaseItem.status === stageStatus.STATUS_COMPLETE) {
-        return <button className="btn btn-success" disabled={true} >✓ COMPLETED</button>
+        return <div>
+          <h5>Quiz Answers</h5>
+          <Quiz 
+            quizData={this.props.activeStageData.quiz}
+            quizResults={showcaseItem.results}
+            inline={true}
+            editable={true} 
+            saveQuiz={(questions) => {
+              this.props.changeQuestProgress(this.props.activeQuest.quest, this.props.activeStageData.order, showcaseItem.order, questions); 
+            } }/>
+          <button className="btn btn-success" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>View the story</button>
+        </div>
       }
       else {
         return <button className="btn btn-primary btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>Listen to the story</button>

@@ -118,10 +118,10 @@ export const getStageData = (activeQuest, stageOrder) => {
   return activeStage;
 }
 
-export const getDefaultActiveStageOrder = (activeQuestData, activeQuest) => {
+export const getDefaultActiveStageOrder = (activeQuestData, embeddedPage) => {
   if(activeQuestData && activeQuestData.stages) {
-    if (activeQuest && activeQuest.viewOrderId >= 0) {
-      return activeQuest.viewOrderId;
+    if (embeddedPage && embeddedPage.viewOrderId >= 0) {
+      return embeddedPage.viewOrderId;
     }
     else {
       let defaultActiveStageOrder = 0;
