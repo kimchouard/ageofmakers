@@ -89,7 +89,7 @@
       background-size: 14px 14px;
 
       &.action {
-        background-color: $red;
+        background-color: $grey;
         height: 20px;
         width: 20px;
         float: right;
@@ -131,23 +131,39 @@
   }
 
   .age {
-    background: $beige;
-    color: $grey;
+    background: $grey;
+    color: $beige;
     font-size: 30px;
     text-align: center;
     height: 50px;
-    box-sizing:border-box;
-    border-right: 6px $red solid;
+    margin: 0 auto;
+    // box-sizing:border-box;
+    border-right: 6px $beige solid;
 
     .roman {
       float: left;
-      background: $red;
-      padding: 0 10px;
-      margin: 0 10px 0 -15px;
+      background: $beige;
+      padding: 0 10px 0 15px;
+      margin: 0 15px 0 -15px;
       height: 100%;
-      width: 60px;
+      // width: 60px;
       text-align: center;
-      color: white;
+      color: $grey;
+      position: relative;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 15px solid $beige;
+        border-top: 25px solid transparent;
+        border-bottom: 25px solid transparent;
+        position: absolute;
+        right: -15px;
+        top: 0;
+
+      }
 
       .age-text {
         font-size: 10px;
@@ -161,9 +177,11 @@
     }
 
     .name {
+      float: left;
       font-size: 18px;
       line-height: 50px;
-      text-align: center;
+      text-align: left;
+      padding: 0 20px 0 15px;
     }
   }
 
@@ -205,7 +223,7 @@
 
       &::before {
         content: "";
-        background-color: $red;
+        background-color: $grey;
         height: 20px;
         width: 20px;
         position: absolute;

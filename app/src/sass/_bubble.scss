@@ -468,6 +468,9 @@
 		.questName {
 			text-indent: 70px;
 			line-height: 60px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 		}
 
 		.agePrereq {

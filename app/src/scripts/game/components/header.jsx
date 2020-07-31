@@ -131,7 +131,7 @@ class Header extends Component {
             {this.renderRequirementsDisplay(ageData)}
           </div>
         </div>
-        <div className="col-sm-2 age"> { /* onClick={ this.props.openTree  } */ }
+        <div className="age"> { /* onClick={ this.props.openTree  } */ }
           <div className="roman">
             <div className="age-text">AGE</div>
             <div className="number">{getRomanAge(ageData)}</div>
