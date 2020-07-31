@@ -144,27 +144,22 @@ class EmbeddedPage extends Component {
   }
 
   render() {
-    if (this.props.embeddedPage && this.props.embeddedPage.open) {
-      // If the quest is done AND either no viewId is defined, close the embedded UI
-      if (this.props.activeQuestData && this.props.activeQuestData.status === 'complete' && !this.viewOrderIsDefined()) {
-        console.log('Closing embedded page');
-        this.props.closeEmbeddedPage();
-      }
-
-      return (
-        <div className={ (this.props.embeddedPage.open) ? 'fullpage open' : 'fullpage'}>
-            <div className="wrapper">
-                <div className="container">
-                    { this.renderEmbbededQuestContent() }
-                </div>
-                <a className="btn btn-danger btn-close" onClick={() => this.props.closeEmbeddedPage()}>CLOSE</a>
-            </div>
-        </div>
-      );
+    // If the quest is done AND either no viewId is defined, close the embedded UI
+    if (this.props.embeddedPage && this.props.embeddedPage.open && this.props.activeQuestData && this.props.activeQuestData.status === 'complete' && !this.viewOrderIsDefined()) {
+      console.log('Closing embedded page');
+      this.props.closeEmbeddedPage();
     }
-    else {
-      return <div>Loading</div>
-    }  
+
+    return (
+      <div className={ (this.props.embeddedPage.open) ? 'fullpage open' : 'fullpage'}>
+          <div className="wrapper">
+              <div className="container">
+                  { this.renderEmbbededQuestContent() }
+              </div>
+              <a className="btn btn-danger btn-close" onClick={() => this.props.closeEmbeddedPage()}>CLOSE</a>
+          </div>
+      </div>
+    );
   }
 }
 

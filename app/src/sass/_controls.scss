@@ -138,12 +138,12 @@
     height: 50px;
     margin: 0 auto;
     // box-sizing:border-box;
-    border-right: 6px $beige solid;
+    border-right: 4px $beige solid;
 
     .roman {
       float: left;
       background: $beige;
-      padding: 0 10px 0 15px;
+      padding: 0 12px 0 17px;
       margin: 0 15px 0 -15px;
       height: 100%;
       // width: 60px;
@@ -156,11 +156,11 @@
         display: block;
         width: 0;
         height: 0;
-        border-left: 15px solid $beige;
+        border-left: 13px solid $beige;
         border-top: 25px solid transparent;
         border-bottom: 25px solid transparent;
         position: absolute;
-        right: -15px;
+        right: -13px;
         top: 0;
 
       }
@@ -181,7 +181,7 @@
       font-size: 18px;
       line-height: 50px;
       text-align: left;
-      padding: 0 20px 0 15px;
+      padding: 0 20px 0 13px;
     }
   }
 

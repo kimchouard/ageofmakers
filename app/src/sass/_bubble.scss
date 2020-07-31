@@ -7,6 +7,15 @@
 
 @import 'vars';
 
+@keyframes loader {
+	0% {
+		transform: rotateZ(0);
+	}
+	100% {
+		transform: rotateZ(360deg);
+	}
+}
+
 /* ================================
           Help Bubble
 ================================ */
@@ -84,6 +93,14 @@
 		color: white;
 		display: inline-block;
 		cursor: pointer;
+		will-change: transform;
+		transition: all .1s ease;
+		transition: background-color 0s ease;
+		font-size: 16px;
+
+		&:focus {
+			outline: none;
+		}
 		
 		&.inProgress {
 			background: $orange;
@@ -109,6 +126,18 @@
 			cursor: default;
 			background: $grey-light;
 			border: 1px solid darken($grey-light, 10%);
+		}
+
+		&.loader {
+			font-size: 0;
+			border-radius: 40px;
+			padding: 0;
+			height: 40px;
+			width: 40px;
+			background: transparent;
+			border-width: 2px;
+			border-right: 2px solid $beige;
+			animation: loader .4s linear infinite;
 		}
 	}
 	

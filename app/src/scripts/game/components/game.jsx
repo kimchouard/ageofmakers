@@ -28,6 +28,18 @@ import AnalyticsProvider from './analyticsProvider';
 class Game extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      loading: false,
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.loading === true && !this.props.embeddedPage.open && this.props.activeQuestData && this.props.activeQuestData.type === questTypes.WEBSITE) {
+      this.setState({
+        loading: false,
+      });
+    }
   }
 
   openQuest(questKey) {
@@ -47,6 +59,10 @@ class Game extends Component {
     //   }
     // });
     // _gaq.push(['_trackEvent', 'Quest', 'start']);
+
+    this.setState({
+      loading: true,
+    });
 
     if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.WEBSITE) {
       this.props.startQuest(this.props.activeQuest.quest, this.props.currentTab.id);
@@ -119,6 +135,11 @@ class Game extends Component {
     }
   }
 
+  needsLoader() {
+    // this.props.embeddedPage.open to trigger rerendering and removing the loader
+    return (this.state.loading && this.props.embeddedPage && (this.props.embeddedPage.open || !this.props.embeddedPage.open));
+  }
+
   startButton() {
     if (!questUnlocked(this.props.activeQuestData, this.props.journey)) {
       return <button className="disabled">
@@ -128,9 +149,9 @@ class Game extends Component {
 
     if (this.props.activeQuestData.status === 'inProgress') {
       return <button
-        className="inProgress"
+        className={ `inProgress ${ (this.needsLoader()) ? 'loader' : ''}` }
         onClick={ () => { this.startQuestBt() } }>
-          Continue the quest
+          { (!this.needsLoader()) ? 'Continue the quest' : '' }
         </button>
     }
     else if (this.props.activeQuestData.status === 'complete') {
@@ -155,9 +176,9 @@ class Game extends Component {
     else {
       return <div>
         <button
-          className="new"
+          className={ `new ${ (this.needsLoader()) ? 'loader' : ''}` }
           onClick={ () => { this.startQuestBt() } }>
-          { this.props.activeQuestData.CTA || 'Get Started!' }
+          { (!this.needsLoader()) ? this.props.activeQuestData.CTA || 'Get Started!' : '' }
         </button>
         { (typeof this.props.activeQuestData.startUrl !== 'string') ? this.getSmartStartUrlHint() : ''}
       </div>
@@ -257,9 +278,10 @@ const mapStateToProps = (state) => {
     sid: state.sid,
     activePlayer: state.activePlayer,
     activePlayerData: getActivePlayerData(state),
-    players: state.players,
+    embeddedPage: state.embeddedPage,
     activeQuest: state.activeQuest,
     activeQuestData: getActiveQuestData(state),
+    players: state.players,
     journey: state.journey,
     currentTab: state.currentTab,
     walkthrough: state.walkthrough,
