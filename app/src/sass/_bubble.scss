@@ -37,7 +37,7 @@
 	margin: auto;
 	width: 400px;
   font-size: 16px;
-	height: calc(100% - 140px);
+	max-height: calc(100% - 100px);
 	transition: all 0.5s ease-in-out;
 	border-radius: 20px;
   background: $grey;
@@ -62,15 +62,16 @@
 		border-left: 3px solid #464646;
     margin: 10px;
     padding-left: 10px;
-    font-style: italic;
+		font-style: italic;
 	}
 	
 	&.bubbleClosed {
 		width: 50px;
-		height: 50px;
+		max-height: 50px;
 		overflow: hidden;
 		border-radius: 50px;
 		padding: 0;
+		overflow: none;
 		
 		.box-header:hover .box-icon { background-image: url('https://ageofmakers.herokuapp.com/images/maximize.svg') !important; }
 	}
@@ -79,12 +80,6 @@
 	
 	input {
 		display: none;
-	}
-
-	.action {
-		text-align: center;
-		width: 100%;
-		margin: 20px 0 10px;
 	}
 
 	button, .button {
@@ -126,6 +121,20 @@
 			cursor: default;
 			background: $grey-light;
 			border: 1px solid darken($grey-light, 10%);
+			position: relative;
+			text-indent: 20px;
+			margin-bottom: 10px;
+
+			&::before {
+				content: '';
+				position: absolute;
+				left: 10px;
+				top: 3px;
+				display: block;
+				width: 30px;
+				height: 30px;
+				background: url('../../../images/locked.svg') center center no-repeat;
+			}
 		}
 
 		&.loader {
@@ -136,7 +145,7 @@
 			width: 40px;
 			background: transparent;
 			border-width: 2px;
-			border-right: 2px solid $beige;
+			border-right: 2px solid $grey;
 			animation: loader .4s linear infinite;
 		}
 	}
@@ -174,7 +183,9 @@
     z-index: 100;
 		text-indent: 50px;
 		text-align: left;
-		position: relative;
+		position: sticky;
+    top: 0;
+    left: 0;
 		
 		.box-icon {
 			box-shadow: none;
@@ -190,9 +201,12 @@
 	}
 	
 	.box-footer {
-    bottom: 0;	
 		width: 100%;
 		text-align: center;
+		position: sticky;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
 
 		&:hover {
 			.close {
@@ -243,7 +257,8 @@
     height: 30px;
     right: 355px;
     z-index: 50;
-    bottom: 10px;
+		bottom: 10px;
+		left: 15px;
     border-radius: 4px;
     background-image: url('https://ageofmakers.herokuapp.com/images/exit.svg');
     background-repeat: no-repeat;
@@ -319,16 +334,16 @@
 			}
 		}
 
+		.action {
+			width: 100%;
+			text-align: center;
+			margin: 10px 0;
+		}
+
 		.congrats {
 			position: relative;
 			padding: 20px 0 260px;
 			height: 100%;
-
-			.action {
-				width: 100%;
-				text-align: center;
-				margin: 10px 0;
-			}
 
 			.title {
 				font-size: 20px;
@@ -359,7 +374,7 @@
 			}
 
 			.box-title {
-				width: calc(100% - 64px);
+				// width: calc(100% - 64px);
 				height: 64px;
 				line-height: 64px;
 				font-weight: inherit;
@@ -395,7 +410,7 @@
 			}
 
 			.box-content {
-				width: calc(100% - 40px);
+				// width: calc(100% - 40px);
 				padding: 30px 20px;
 				font-size: 11pt;
 				color: rgba(0,0,0,.54);
@@ -466,76 +481,165 @@
 .bubble-description {
 	padding: 10px 20px;
 	text-align: left;
+	display: flex;
+	flex-direction: column;
+
+	.text-description, .actions {
+		flex: 1;
+	}
 
 	img {
 		max-width: 100%;
 	}
 
-	.startUrlHint {
-		margin-top: 10px;
-	}
+	.actions {
+		background: $grey;
+		border-radius: 12px;
+		padding: 15px;
+		text-align: center;
 
-	.questLink {
-		font-weight: bold;
-		cursor: pointer;
-		color: $grey;
-		text-decoration: underline;
-
-		&:hover {
-			color: darken($red, 10%);
-		}	
-	}
-
-	.prereqWrapper {
-		padding: 0 0 10px;
-		cursor: pointer;
-
-		.pinWrapper .pulse:after {
-			margin-left: -14px;
+		&, * { 
+			color: white;
 		}
 
-		.questName {
-			text-indent: 70px;
-			line-height: 60px;
-			overflow: hidden;
-			white-space: nowrap;
-			text-overflow: ellipsis;
+		.checkmark {
+			&::before {
+				content: "✓ ";
+				display: inline-block;
+				color: $green;
+				font-weight: bold;
+				margin-right: 5px;
+			}
 		}
 
-		.agePrereq {
-			position: absolute;
-      &.locked { background: $grey-light; }
-      &.complete { background: $green; }
-      padding: 0 10px;
-			margin: 5px 0 5px;
-      height: 50px;
-			width: 50px;
-			border-radius: 10px;
-      text-align: center;
-      color: white; 
-			line-height: 50px;
-			font-family: 'Oil-Makes-You-Run-Faster' !important;
-			font-size: 25px;
-    }
-	}
+		.expand, .collapse {
+			cursor: pointer;
+			margin-top: 5px;
 
-	.cta {
-		border-radius: 10px;
-		padding: 10px;
-    margin-bottom: 10px;
-		
-		.title {
-			text-align: center;
+			&::before {
+				font-weight: bold;
+			}
+
+			&.expand::before {
+				content: '+ ';
+			}
+
+			&.collapse::before {
+				content: '- ';
+			}
+		}
+
+		.questHint {
+			margin-top: 10px;
+			font-size: 12px;
+		}
+	
+		.questLink {
 			font-weight: bold;
+			cursor: pointer;
+			text-decoration: underline;
+	
+			&:hover {
+				color: darken($red, 10%);
+			}	
 		}
 
-		&.next { 
-			& .title { color: $green; }
-			border: 2px solid $green;
-			background: transparentize($green, 0.8)
+		.questList {
+			padding: 10px 0 0;
+			margin: 0 20px;
+
+			&.bordered {
+				border-top: 1px solid $grey-light;	
+			}
 		}
-		&.before {
-			& .title { color: $grey; }
+
+		.finishedActionsWrapper {
+			display: flex;
+			flex-direction: row;
+			margin: 15px auto;
+			width: fit-content;
+
+			.view, .restart {
+				color: $grey-light;
+				width: fit-content;
+				margin: 0 20px;
+				cursor: pointer;
+
+				&:hover {
+					color: white;
+				}
+				
+				&::before {
+					content: '';
+					display: block;
+					float: left;
+					width: 15px;
+					height: 15px;
+					margin-right: 10px;
+				}
+
+				&.view::before {
+					background: url('../../../images/view.svg') no-repeat 0 3px; 
+				}
+
+				&.restart::before {
+					background: url('../../../images/restart.svg') no-repeat;
+				}
+			}
+		}
+
+		.prereqWrapper {
+			padding: 0 0 10px;
+			cursor: pointer;
+
+			.pinWrapper .pulse:after {
+				margin-left: -14px;
+			}
+
+			.questName {
+				text-indent: 70px;
+				line-height: 60px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				text-align: left;
+			}
+
+			.agePrereq {
+				position: absolute;
+				&.locked { background: $grey-light; }
+				&.complete { background: $green; }
+				padding: 0 10px;
+				margin: 5px 0 5px;
+				height: 50px;
+				width: 50px;
+				border-radius: 10px;
+				text-align: center;
+				color: white; 
+				line-height: 50px;
+				font-family: 'Oil-Makes-You-Run-Faster' !important;
+				font-size: 25px;
+			}
+		}
+
+		.cta {
+			border-radius: 10px;
+			padding: 10px;
+			margin-bottom: 10px;
+			
+			.title {
+				text-align: center;
+				font-weight: bold;
+			}
+
+			&.next { 
+				& .title { color: $green; }
+				border: 2px solid $green;
+				background: transparentize($green, 0.8)
+			}
+			&.before {
+				& .title { color: $grey; }
+			}
 		}
 	}
 }

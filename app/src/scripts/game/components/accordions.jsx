@@ -99,7 +99,7 @@ class Accordions extends Component {
 
           <div className="action">
             <div
-              className="button complete"
+              className="btn btn-success"
               onClick={ () => { this.props.backToNewTab(this.props.activeQuest.quest) } }>
               What's next??
             </div>
@@ -107,7 +107,7 @@ class Accordions extends Component {
 
           <div className="action">
             <div
-              className="button new"
+              className="btn btn-primary"
               onClick={ () => { this.resetStages() } }>
               Restart
             </div>
@@ -171,7 +171,7 @@ class Accordions extends Component {
   
                 <div className="action">
                   <div
-                    className="button complete"
+                    className="btn btn-primary"
                     onClick={ () => { this.nextStage(stage) } }>
                     I DID IT!
                   </div>
@@ -191,7 +191,9 @@ class Accordions extends Component {
       this.props.unselectQuest(this.props.currentTab);
     }
     else {
-      return <div className='boxAccordion'>
+      return <div className='boxAccordion' style={ {
+        maxHeight: window.innerHeight-50-50-100
+      }}>
         { this.renderAccordions() }
       </div>;
     }
