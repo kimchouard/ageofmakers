@@ -20,9 +20,9 @@ import Markdown from './markdown';
 
 class EmbeddedPage extends Component {
   constructor(props) {
-      super(props);
+    super(props);
 
-      this.state = {}
+    this.state = {}
   }
 
   getStageContentHtml(content) {
@@ -63,13 +63,15 @@ class EmbeddedPage extends Component {
           console.error('Unknown stage type.', activeStageData);
         }
 
-        return <div className="row">
-          <div className="col-sm-10 offset-sm-1">
-            <h2>{activeStageData.name}</h2>
-            <h5>{activeStageData.subtitle}</h5>
-            { this.getStageContentHtml(activeStageData.content) }
-          </div>
-          <div className="col-12">
+        let questDetails = <div className={ 'col-sm-10 offset-sm-1' }>
+          <h2>{activeStageData.name}</h2>
+          <h5>{activeStageData.subtitle}</h5>
+          { this.getStageContentHtml(activeStageData.content) }
+        </div>;
+
+        return <div className={ (activeStageData && activeStageData.type === stageTypes.VIDEO) ? 'container-fluid' : 'container'}>
+          <div className={ `row ` }>
+            { (activeStageData && activeStageData.type !== stageTypes.VIDEO) ? questDetails : '' }
             { stageDiv }
           </div>
         </div>
@@ -152,12 +154,11 @@ class EmbeddedPage extends Component {
 
     return (
       <div className={ (this.props.embeddedPage.open) ? 'fullpage open' : 'fullpage'}>
-          <div className="wrapper">
-              <div className="container">
-                  { this.renderEmbbededQuestContent() }
-              </div>
-              <a className="btn btn-danger btn-close" onClick={() => this.props.closeEmbeddedPage()}>CLOSE</a>
-          </div>
+        <div className="wrapper">
+          { this.renderEmbbededQuestContent() }
+          
+          <a className="btn btn-dark btn-close" onClick={() => this.props.closeEmbeddedPage()}>Close Quest</a>
+        </div>
       </div>
     );
   }

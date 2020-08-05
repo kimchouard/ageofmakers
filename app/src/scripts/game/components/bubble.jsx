@@ -23,7 +23,7 @@ class Bubble extends Component {
     this.state = {
       loading: false,
       showPrerequisites: false,
-      showWhatsNext: false,
+      showWhatsNext: true,
     }
   }
 
@@ -187,15 +187,17 @@ class Bubble extends Component {
   }
 
   renderWhatsNext() {
-    if (this.state.showWhatsNext) {
-      return <div className="questList bordered">
-        { this.renderPinsList(this.props.activeQuestData.following) }
+    if (this.props.activeQuestData.following && this.props.activeQuestData.following.length) {
+      if (this.state.showWhatsNext) {
+        return <div className="questList bordered">
+          { this.renderPinsList(this.props.activeQuestData.following) }
 
-        <div className="collapse" onClick={() => { this.setState({ showWhatsNext: false }) }}>Hide What's Next</div>
-      </div>
-    }
-    else if (this.props.activeQuestData.following && this.props.activeQuestData.following.length) {
-      return <div className="expand" onClick={() => { this.setState({ showWhatsNext: true }) }}>Show What's Next</div>
+          <div className="collapse" onClick={() => { this.setState({ showWhatsNext: false }) }}>Hide What's Next</div>
+        </div>
+      }
+      else {
+        return <div className="expand" onClick={() => { this.setState({ showWhatsNext: true }) }}>Show What's Next</div>
+      }
     }
   }
 
@@ -263,6 +265,9 @@ class Bubble extends Component {
   getContent() {
     return <div
       className="bubble-description"
+      style={ {
+        maxHeight: window.innerHeight-50-50-100
+      }}
     >
 
       <div className="text-description">

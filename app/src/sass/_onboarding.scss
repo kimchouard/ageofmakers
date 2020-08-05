@@ -66,8 +66,8 @@
             top: 50%;
             right: 0;
             transform: translateY(-50%);
-            background: $red;
             border: none;
+            font-size: 10px;
           }
         }
         
@@ -78,36 +78,22 @@
         }
 
         .btn-cancel {
-          color: white;
-          background: darken($red, 10);
           margin-right: 25px;
-
-          &:hover {
-            background: darken($red, 20);
-          }
-        }
-
-        .btn-login {
-          color: #333;
-
-          &:hover {
-            background: darken(#FFF, 10);
-          }
         }
         
         .name-form {
           .player-name {
             display: block;
             width: 100%;
-            background: rgba(0,0,0,0.3);
+            background:white;
             border: none;
             border-radius: 10px 10px 5px 5px;
-            border-bottom: 2px solid white;
+            border-bottom: 2px solid $grey-light;
             text-align: center;
             font-size: 24px;
             margin: 20px 0 15px;
             padding: 8px 0 5px;
-            color: white;
+            color: $grey;
 
             &:focus {
               outline: none;

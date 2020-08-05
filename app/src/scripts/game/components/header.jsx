@@ -61,11 +61,13 @@ class Header extends Component {
 
   logOutActivePlayer() {
     this.props.logOut();
+    this.props.closeEmbeddedPage();
     this.resetQuests();
   }
 
   resetActivePlayerJourney() {
     this.props.resetActivePlayerJourney();
+    this.props.closeEmbeddedPage();
     this.resetQuests();
   }
 

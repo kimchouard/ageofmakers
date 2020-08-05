@@ -71,7 +71,7 @@ class Onboarding extends Component {
 
     renderCancelButton() {
       if (this.props.players && Object.keys(this.props.players) && Object.keys(this.props.players).length) {
-        return <input type="button" className="btn btn-danger btn-cancel" value="Cancel" onClick={(e) => { return this.backToPlayerSelect(e); }}/>;
+        return <input type="button" className="btn btn-dark btn-cancel" value="Cancel" onClick={(e) => { return this.backToPlayerSelect(e); }}/>;
       }
     }
 
@@ -116,7 +116,7 @@ class Onboarding extends Component {
               required
               />
               { this.renderCancelButton() }
-            <input type="submit" className="btn btn-light btn-login" value="Let's do it!" onClick={(e) => { return this.startNewUserCreation(e); }}/>
+            <input type="submit" className="btn btn-primary btn-login" value="Let's do it!" onClick={(e) => { return this.startNewUserCreation(e); }}/>
             <div className="clear-both"></div>
           </form>;
         }
@@ -134,10 +134,10 @@ class Onboarding extends Component {
 
               return <div className="player" key={playerId} onClick={ (e) => { this.logIn(e, player); } }>
                 <div className="player-name">{ player.name }</div>
-                <button className="btn btn-danger btn-delete btn-sm" onClick={() => { this.startRemovingPlayer(playerId) }}>X</button>
+                <button className="btn btn-dark btn-delete btn-sm" onClick={() => { this.startRemovingPlayer(playerId) }}>X</button>
               </div>
             })}
-            <button className="btn btn-light btn-login" onClick={() => { this.setState({ newUserUi: true }) }}>+ New Player</button>
+            <button className="btn btn-primary btn-login" onClick={() => { this.setState({ newUserUi: true }) }}>+ New Player</button>
           </div>;
         }
       }
@@ -168,7 +168,7 @@ class Onboarding extends Component {
             </div>
             <div className="clear-both"></div>
           </div>
-          <input type="button" className="btn btn-cancel" value="Cancel" onClick={ this.props.logOut }/>
+          <input type="button" className="btn btn-dark btn-cancel" value="Cancel" onClick={ this.props.logOut }/>
         </div>
       }
     }
