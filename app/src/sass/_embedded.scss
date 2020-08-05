@@ -101,7 +101,8 @@
 			background: transparent;
 			border-width: 2px;
 			border-right: 2px solid $beige;
-			animation: loader .4s linear infinite;
+      animation: loader .4s linear infinite;
+      box-shadow: none;
 		}
   }
 

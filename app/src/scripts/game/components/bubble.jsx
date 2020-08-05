@@ -8,7 +8,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getCurrentTab, startQuest, updateQuestUrl, unselectQuest, toggleBubble, selectQuest, changeQuestProgress, openEmbeddedQuest, } from '../../../actions/index';
+import { getCurrentTab, startQuest, updateQuestUrl, unselectQuest, toggleBubble, selectQuest, changeQuestProgress, openEmbeddedQuest, backToNewTab } from '../../../actions/index';
 import { getActiveQuestData, getAreaIconUrl, questUnlocked, getRomanAge, getAge, questTypes, getActivePlayerData } from '../../_utils';
 
 
@@ -319,7 +319,14 @@ class Bubble extends Component {
                 if (this.props.embed) {
                   this.props.updateQuestUrl(this.props.journey.quests, this.props.activeQuest.quest, window.location.href);
                 }
-                this.props.unselectQuest((this.props.embed) ? this.props.currentTab : null);
+
+                // We make sure the quest stays select if it's a showcase quest (because it'll redirect to the showcase list)
+                if (this.props.embed && this.props.activeQuest && this.props.activeQuest.showcase >= 0) {
+                  this.props.backToNewTab(this.props.activeQuest.quest);
+                }
+                else {
+                  this.props.unselectQuest((this.props.embed) ? this.props.currentTab : null);
+                }
               } } ></div>
 
             <label htmlFor="acc-close" className="box-title">
@@ -355,7 +362,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getCurrentTab, startQuest, updateQuestUrl, unselectQuest, selectQuest, toggleBubble, changeQuestProgress, openEmbeddedQuest }, dispatch);
+  return bindActionCreators({ getCurrentTab, startQuest, updateQuestUrl, unselectQuest, selectQuest, toggleBubble, changeQuestProgress, openEmbeddedQuest, backToNewTab, }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bubble);

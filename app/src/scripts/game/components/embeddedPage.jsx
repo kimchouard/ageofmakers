@@ -147,7 +147,12 @@ class EmbeddedPage extends Component {
 
   render() {
     // If the quest is done AND either no viewId is defined, close the embedded UI
-    if (this.props.embeddedPage && this.props.embeddedPage.open && this.props.activeQuestData && this.props.activeQuestData.status === 'complete' && !this.viewOrderIsDefined()) {
+    if (this.props.embeddedPage && this.props.embeddedPage.open && 
+       (
+         (this.props.activeQuestData && this.props.activeQuestData.status === 'complete' && !this.viewOrderIsDefined()) 
+         || (this.props.activeQuest === null)
+       ) 
+    ) {
       console.log('Closing embedded page');
       this.props.closeEmbeddedPage();
     }
@@ -157,7 +162,7 @@ class EmbeddedPage extends Component {
         <div className="wrapper">
           { this.renderEmbbededQuestContent() }
           
-          <a className="btn btn-dark btn-close" onClick={() => this.props.closeEmbeddedPage()}>Close Quest</a>
+          <a className="btn btn-dark btn-close" onClick={() => this.props.closeEmbeddedPage()}>Close</a>
         </div>
       </div>
     );

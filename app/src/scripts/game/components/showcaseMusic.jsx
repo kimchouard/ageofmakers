@@ -19,10 +19,12 @@ class MusicShowcase extends Component {
 
       this.state = {
         quizToShow: {},
+        showcaseItemLoading: {},
       }
   }
 
   startShowcaseBt(showcaseItem) {
+    this.toggleShowcaseItemLoading(showcaseItem, true);
     this.props.startQuest(this.props.activeQuest.quest, this.props.currentTab.id, showcaseItem.order);
     window.location = showcaseItem.startUrl;
   }
@@ -36,6 +38,18 @@ class MusicShowcase extends Component {
     newQuizToShow[showcaseItem.order] = show;
     this.setState({
       quizToShow: newQuizToShow,
+    });
+  }
+
+  isShowcaseItemLoading(showcaseItem) {
+    return this.state.showcaseItemLoading[showcaseItem.order];
+  }
+
+  toggleShowcaseItemLoading(showcaseItem, loading) {
+    let newShowcaseItemLoading = this.state.showcaseItemLoading;
+    newShowcaseItemLoading[showcaseItem.order] = loading;
+    this.setState({
+      showcaseItemLoading: newShowcaseItemLoading,
     });
   }
 
@@ -65,11 +79,11 @@ class MusicShowcase extends Component {
 
         return <div>
           { quizDiv }
-          <button className="btn btn-success" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>▶ Review the story</button>
+          <button className={ `btn btn-success ${ (this.isShowcaseItemLoading(showcaseItem)) ? 'loader' : '' }` } onClick={ () => { this.startShowcaseBt(showcaseItem); } }>▶ Review the story</button>
         </div>
       }
       else {
-        return <button className="btn btn-dark btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>Listen to the story</button>
+        return <button className={ `btn btn-dark btn-action ${ (this.isShowcaseItemLoading(showcaseItem)) ? 'loader' : '' }` } onClick={ () => { this.startShowcaseBt(showcaseItem); } }>{ (!this.isShowcaseItemLoading(showcaseItem)) ? 'Listen to the story' : '' }</button>
       }
     }
     else {
