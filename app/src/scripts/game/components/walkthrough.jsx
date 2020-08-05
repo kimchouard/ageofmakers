@@ -41,7 +41,7 @@ class Walkthrough extends Component {
           this.setWalkthrough()
       } else if (type === EVENTS.STEP_AFTER) {
         if (this.props.walkthrough.start === 1) {
-          if (index === 7) {
+          if (index === 3) {
             this.props.toggleBubble(false);
             this.props.selectQuest(this.state.demoQuest);
             setTimeout(() => {
@@ -116,14 +116,8 @@ class Walkthrough extends Component {
           },
           {
             content: <div style={ { textAlign: 'left' } }>
-              <p>This is a pin, which represents a quest.<br />A quest is either:</p>
-              <ul>
-                <li>red if ready to be tackled,</li>
-                <li>gray if locked,</li>
-                <li>orange if you're working on it</li>
-                <li>and green for complete!</li>
-              </ul>
-              <p>You can access the quest via this pins. They are placed in different areas, based on the skills you'll learn with it. 👨‍💻</p>
+              <p>You'll learn how to create your song by completing quests, which are bite-sized learning adventures.</p>
+              <p>You can access the quests via their pins, like this one. They are placed in different areas, based on the skills you'll learn with it. 👨‍💻</p>
             </div>,
             placementBeacon: "top",
             placement: "left",
@@ -131,36 +125,36 @@ class Walkthrough extends Component {
             disableBeacon: true,
             target: "."+this.state.demoQuest
           },
-          {
-            content: <p>👀 Up here is the header, which tracks two things...</p>,
-            placementBeacon: "top",
-            placement: "bottom",
-            styles: stepStyles,
-            disableBeacon: true,
-            target: ".controls"
-          },
-          {
-            content: <p>It shows the number of quests you completed... 💪</p>,
-            placementBeacon: "top",
-            placement: "bottom",
-            styles: stepStyles,
-            disableBeacon: true,
-            target: ".badgeTrackersHeader"
-          },
-          {
-            content: <p>...and the account you are currently logged in with. ☝️</p>,
-            placementBeacon: "left",
-            placement: "bottom-left",
-            styles: stepStyles,
-            target: ".user"
-          },
-          {
-            content: <p>You can also click here to get help or change your settings. 🙃</p>,
-            placement: "right",
-            styles: stepStyles,
-            disableBeacon: true,
-            target: ".settings"
-          },
+          // {
+          //   content: <p>👀 Up here is the header, which tracks two things...</p>,
+          //   placementBeacon: "top",
+          //   placement: "bottom",
+          //   styles: stepStyles,
+          //   disableBeacon: true,
+          //   target: ".controls"
+          // },
+          // {
+          //   content: <p>It shows the number of quests you completed... 💪</p>,
+          //   placementBeacon: "top",
+          //   placement: "bottom",
+          //   styles: stepStyles,
+          //   disableBeacon: true,
+          //   target: ".badgeTrackersHeader"
+          // },
+          // {
+          //   content: <p>...and the account you are currently logged in with. ☝️</p>,
+          //   placementBeacon: "left",
+          //   placement: "bottom-left",
+          //   styles: stepStyles,
+          //   target: ".user"
+          // },
+          // {
+          //   content: <p>You can also click here to get help or change your settings. 🙃</p>,
+          //   placement: "right",
+          //   styles: stepStyles,
+          //   disableBeacon: true,
+          //   target: ".settings"
+          // },
           // {
           //   content: <p>You can also access you profile page via your tent. ⛺️</p>,
           //   placement: "right",
@@ -169,37 +163,37 @@ class Walkthrough extends Component {
           //   target: ".tent"
           // },
           {
-            content: <p>But enough with the boring stuff, let's get started! Start by clicking the pin, then hit next.</p>,
+            content: <p>Let's get started! Start by clicking the pin, then hit next.</p>,
             placement: "right",
             styles: stepStyles,
             disableBeacon: true,
             spotlightClicks: true,
             target: "."+this.state.demoQuest
           },
-          {
-            content: <p>This is the quest bubble, it shows information for a quest like...</p>,
-            placementBeacon: "top",
-            placement: "left",
-            styles: stepStyles,
-            disableBeacon: true,
-            target: ".aom-bubble"
-          },
-          {
-            content: <p>The title of the quest...</p>,
-            placementBeacon: "top",
-            placement: "left",
-            styles: stepStyles,
-            disableBeacon: true,
-            target: ".box-title"
-          },
-          {
-            content: <p>...and a description of the quest.</p>,
-            placementBeacon: "top",
-            placement: "left",
-            styles: stepStyles,
-            disableBeacon: true,
-            target: ".bubble-description"
-          },
+          // {
+          //   content: <p>This is the quest bubble, it shows information for a quest like...</p>,
+          //   placementBeacon: "top",
+          //   placement: "left",
+          //   styles: stepStyles,
+          //   disableBeacon: true,
+          //   target: ".aom-bubble"
+          // },
+          // {
+          //   content: <p>The title of the quest...</p>,
+          //   placementBeacon: "top",
+          //   placement: "left",
+          //   styles: stepStyles,
+          //   disableBeacon: true,
+          //   target: ".box-title"
+          // },
+          // {
+          //   content: <p>...and a description of the quest.</p>,
+          //   placementBeacon: "top",
+          //   placement: "left",
+          //   styles: stepStyles,
+          //   disableBeacon: true,
+          //   target: ".bubble-description"
+          // },
           {
               content: <p>Now it's all up to you! Click on the "Start Your Journey 🏞" button and complete your first quest by following the steps. 🚀</p>,
               placementBeacon: "top",
@@ -207,7 +201,7 @@ class Walkthrough extends Component {
               styles: stepStyles,
               spotlightClicks: true,
               disableBeacon: true,
-              target: ".bubble-description .action"
+              target: ".bubble-description .actions"
           },
         ]})
       } else if (this.props.walkthrough.start === 2) {
