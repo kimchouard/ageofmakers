@@ -16,6 +16,10 @@ import Markdown from './markdown';
 class MusicShowcase extends Component {
   constructor(props) {
       super(props);
+
+      this.state = {
+        quizToShow: {},
+      }
   }
 
   startShowcaseBt(showcaseItem) {
@@ -23,24 +27,49 @@ class MusicShowcase extends Component {
     window.location = showcaseItem.startUrl;
   }
 
+  isQuizOpen(showcaseItem) {
+    return this.state.quizToShow[showcaseItem.order];
+  }
+
+  toggleQuizView(showcaseItem, show) {
+    let newQuizToShow = this.state.quizToShow;
+    newQuizToShow[showcaseItem.order] = show;
+    this.setState({
+      quizToShow: newQuizToShow,
+    });
+  }
+
   renderActionBtn(showcaseItem) {
     if (!this.props.viewOnly) {
       if (showcaseItem.status === stageStatus.STATUS_COMPLETE) {
+        let quizDiv;
+
+        if (this.isQuizOpen(showcaseItem)) {
+          quizDiv = <div className="quiz-results">
+            <div className="collapse" onClick={() => { this.toggleQuizView(showcaseItem, false) }}>Hide Quiz Results</div>
+            <Quiz 
+              quizData={this.props.activeStageData.quiz}
+              quizResults={showcaseItem.results}
+              inline={true}
+              editable={true} 
+              saveQuiz={(questions) => {
+                this.props.changeQuestProgress(this.props.activeQuest.quest, this.props.activeStageData.order, showcaseItem.order, questions); 
+              } }/>
+          </div>
+        }
+        else {
+          quizDiv = <div className="quiz-results">
+            <div className="expand" onClick={() => { this.toggleQuizView(showcaseItem, true) }}>Show Quiz Results</div>
+          </div>
+        }
+
         return <div>
-          <h5>Quiz Answers</h5>
-          <Quiz 
-            quizData={this.props.activeStageData.quiz}
-            quizResults={showcaseItem.results}
-            inline={true}
-            editable={true} 
-            saveQuiz={(questions) => {
-              this.props.changeQuestProgress(this.props.activeQuest.quest, this.props.activeStageData.order, showcaseItem.order, questions); 
-            } }/>
-          <button className="btn btn-success" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>View the story</button>
+          { quizDiv }
+          <button className="btn btn-success" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>▶ Review the story</button>
         </div>
       }
       else {
-        return <button className="btn btn-primary btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>Listen to the story</button>
+        return <button className="btn btn-dark btn-action" onClick={ () => { this.startShowcaseBt(showcaseItem); } }>Listen to the story</button>
       }
     }
     else {

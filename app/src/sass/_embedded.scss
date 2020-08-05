@@ -89,8 +89,8 @@
   .btn {
 		will-change: transform;
 		transition: background-color 0s ease;
-		font-size: 16px;
-    transition: all .1s ease;
+		// font-size: 16px;
+    transition: all .05s ease;
     
 		&.loader {
 			font-size: 0;
@@ -243,6 +243,27 @@
 
   .btn-action {
     text-decoration: none;
+  }
+
+  .quiz-results {
+    margin-bottom: 8px; 
+  }
+
+  .expand, .collapse {
+    cursor: pointer;
+    margin-top: 5px;
+
+    &::before {
+      font-weight: bold;
+    }
+
+    &.expand::before {
+      content: '+ ';
+    }
+
+    &.collapse::before {
+      content: '- ';
+    }
   }
 }
 

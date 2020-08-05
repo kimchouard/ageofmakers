@@ -20,6 +20,7 @@ class Quiz extends Component {
         questions: {},
         currentQuestionHelpers: [],
         editQuiz: false,
+        loading: false,
       }
   }
 
@@ -39,9 +40,9 @@ class Quiz extends Component {
   }
 
   submitQuestion(event) {
+    this.setState({ loading: true, editQuiz: false });
     this.props.saveQuiz(this.state.questions, this.state.editQuiz);
     event.preventDefault();
-    this.setState({ editQuiz: false })
   }
 
   handleFormChange(e) {
@@ -82,7 +83,7 @@ class Quiz extends Component {
     // We don't show the submit button if there's already results added in quiz data
     if (!this.hasQuizResult() && this.props.saveQuiz) {
       return <div className="col-md-offset-3 submitWrapper">
-        <input type="submit" className="btn btn-primary btn-lg" value="Submit" />
+        <input type="submit" className={ `btn btn-primary btn-lg ${ (this.state.loading) ? 'loader' : ''}` } value="Submit" />
       </div>;
     }
     // We show custom buttons if we're embedding results
@@ -129,7 +130,7 @@ class Quiz extends Component {
     if (question.helpers && !this.hasQuizResult()) {
       return <div className="quizQuestionHelper">
         <div className="helpersToggle">
-          <div className="btn btn-primary btn-sm" onClick={ () => { this.toggleQuestionHelpers(question); }}>
+          <div className="btn btn-dark btn-sm" onClick={ () => { this.toggleQuestionHelpers(question); }}>
             { (this.state.currentQuestionHelpers[question.id]) ? 'Close Help' : question.helperText || 'Need more help?' }
           </div>
         </div>

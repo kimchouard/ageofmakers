@@ -24,6 +24,15 @@ class Video extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.loading === true) {
+      this.setState({
+        ytStatus: null,
+        loading: null,
+      });
+    }
+  }
+
   goToNextStageWithLoader() {
     this.setState({
       loading: true,
@@ -60,6 +69,10 @@ class Video extends Component {
 
   isVideoPlaying() {
     return (this.state.ytStatus === 3 || this.state.ytStatus === 1);
+  }
+
+  isVideoReadyToPlay() {
+    return (this.state.ytStatus === null || this.state.ytStatus === 5);
   }
 
   playVideo() {
@@ -120,10 +133,10 @@ class Video extends Component {
   renderOverlay() {
     if (!this.isVideoPlaying()) {
       let playButton = <div 
-        className={`btn ${(this.state.ytStatus === null) ? 'btn-primary' : 'btn-secondary' } btn-lg ${ (!this.state.ytPlayer) ? 'loader' : ''}`}
+        className={`btn ${(this.isVideoReadyToPlay()) ? 'btn-primary' : 'btn-secondary' } btn-lg ${ (!this.state.ytPlayer) ? 'loader' : ''}`}
         onClick={() => { this.playVideo() }}
         >
-        ▶ {(this.state.ytStatus === null) ? 'PLAY' : 'CONTINUE' } VIDEO
+        ▶ {(this.isVideoReadyToPlay()) ? 'PLAY' : 'CONTINUE' } VIDEO
       </div>;
       let nextButton = <div
         className={`btn btn-primary btn-lg ${ (this.state.loading) ? 'loader' : ''}`}
@@ -137,7 +150,7 @@ class Video extends Component {
           <h5>{this.props.activeStageData.subtitle}</h5>
           <div className="videosBtns">
             { playButton }
-            { (this.state.ytStatus !== null) ? nextButton : '' }
+            { (!this.isVideoReadyToPlay()) ? nextButton : '' }
           </div>
         </div>;
       }
@@ -146,7 +159,7 @@ class Video extends Component {
           <h5 className="text-center">Good job in watching this whole video. Let's see what's next! 👀</h5>
 
           <div className="videosBtns">
-            { (this.state.ytStatus !== null) ? nextButton : '' }
+            { nextButton }
           </div>
         </div>
       }
