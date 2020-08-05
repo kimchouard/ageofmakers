@@ -34,7 +34,10 @@ class Onboarding extends Component {
         e.preventDefault(); 
         this.props.setNewPlayer(this.state.userName);
         this.props.startWalkthrough(1);
-        this.setState({ userName: '', newUserUi: false, userIdToLogin: Object.keys(this.props.players).length });
+        let playersIds = Object.keys(this.props.players);
+        let userIdToLogin = (playersIds && playersIds.length) ? parseInt(playersIds[playersIds.length-1])+1 : 0;
+        console.log('User ID to login', userIdToLogin, playersIds);
+        this.setState({ userName: '', newUserUi: false, userIdToLogin });
         return false;
       }
       else {
@@ -140,7 +143,8 @@ class Onboarding extends Component {
       }
       else {
         return <div>
-          <h1>Okay { this.props.activePlayerData.name }, time to select your journey! 🏞</h1>
+          {/* TODO! { this.props.activePlayerData.name } */}
+          <h1>Okay, time to select your journey! 🏞</h1>
           <h3>Click on an icon to get started.</h3>
 
           <div className="journeys">
