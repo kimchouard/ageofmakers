@@ -52,7 +52,7 @@ class Video extends Component {
 
   _onYoutubeReady(event) {
     // Set access to player via the state from the event handlers, event.target
-    console.log('Video initiated', event, event.data);
+    // console.log('Video initiated', event, event.data);
     this.setState({
       ytPlayer: event.target,
     });
@@ -61,7 +61,7 @@ class Video extends Component {
   _onYoutubeStateChanged(event) {
     // Storing the current video state from the event.data
     // Status values: -1 (unstarted), 0 (ended), 1 (playing), 2 (paused), 3 (buffering), 5 (video cued).
-    console.log('Video status changed!', event, event.data);
+    // console.log('Video status changed!', event, event.data);
     this.setState({
       ytStatus: event.data,
     });
@@ -89,8 +89,8 @@ class Video extends Component {
       return <YouTube 
         videoId={this.props.activeStageData.youtubeVideoId}
         opts={ {
-          height: '100%',
-          width: '100%',
+          height: (this.props.viewOnly) ? '340' : '100%',
+          width: (this.props.viewOnly) ? '570' : '100%',
           playerVars: {
             // https://developers.google.com/youtube/player_parameters
             // autoplay: 1,
@@ -116,14 +116,8 @@ class Video extends Component {
     return (this.props.embeddedPage && this.props.embeddedPage.viewOrderId !== null && this.props.embeddedPage.viewOrderId !== undefined);
   }
 
-  renderActions() { 
-    if (!this.props.viewOnly && this.isVideoPlaying()) {
-      // return <div className="col-12 actions">
-      //   <div className={`btn ${ (this.viewOrderIsDefined()) ? 'btn-dark' : 'btn-primary'} btn-lg btn-next`} onClick={() => { this.props.goToNextStage(this.props.activeStageData) }}>NEXT</div>
-      // </div>
-    }
-    // If the video is viewOnly, put a link to the youtube video (iFrame not working in PDF)
-    else if (this.props.viewOnly) {
+  renderViewOnly() {
+    if (this.props.viewOnly) {
       return <div className="col-12">
         <p><strong>Youtube video link:</strong> <a href={`https://www.youtube.com/watch?v=${this.props.activeStageData.youtubeVideoId}`} target="_blank">{`https://www.youtube.com/watch?v=${this.props.activeStageData.youtubeVideoId}`}</a></p>
       </div>
@@ -131,7 +125,7 @@ class Video extends Component {
   }
 
   renderOverlay() {
-    if (!this.isVideoPlaying()) {
+    if (!this.props.viewOnly && !this.isVideoPlaying()) {
       let playButton = <div 
         className={`btn ${(this.isVideoReadyToPlay()) ? 'btn-primary' : 'btn-secondary' } btn-lg ${ (!this.state.ytPlayer) ? 'loader' : ''}`}
         onClick={() => { this.playVideo() }}
@@ -168,11 +162,11 @@ class Video extends Component {
 
   render() {
     if (this.props.activeStageData) {
-      return <div className="videoWrapper">
+      return <div className={`videoWrapper ${ (!this.props.viewOnly) ? 'wideVideo' : '' }`}>
         { this.renderOverlay() }
         { this.renderVideo() }
         {/* { this.renderFeatured() } */}
-        { this.renderActions() }
+        { this.renderViewOnly() }
       </div>
     }
     else {

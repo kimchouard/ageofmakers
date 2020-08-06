@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getCurrentTab, startQuest, updateQuestUrl, unselectQuest, toggleBubble, selectQuest, changeQuestProgress, openEmbeddedQuest, backToNewTab } from '../../../actions/index';
-import { getActiveQuestData, getAreaIconUrl, questUnlocked, getRomanAge, getAge, questTypes, getActivePlayerData } from '../../_utils';
+import { getActiveQuestData, getAreaIconUrl, questUnlocked, getRomanAge, getAge, questTypes, getActivePlayerData, getQuestUrl, isSmartStartUrl } from '../../_utils';
 
 
 import Pin from './pin';
@@ -66,25 +66,7 @@ class Bubble extends Component {
     if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.WEBSITE) {
       this.props.startQuest(this.props.activeQuest.quest, this.props.currentTab.id);
 
-      if (typeof this.props.activeQuestData.startUrl === 'string') {
-        return window.location = this.props.activeQuestData.lastUrl || this.props.activeQuestData.startUrl;
-      }
-      else if (this.isSmartStartUrl()) {
-        let questData = this.props.journey.quests[this.props.activeQuestData.startUrl.questId];
-
-        if (questData && questData.quiz && questData.quiz.results) {
-          return window.location = questData.quiz.results[this.props.activeQuestData.startUrl.questionId] || this.props.activeQuestData.startUrl.fallbackUrl;
-        }
-        else {
-          console.error('Can not find related quest & question', this.props.activeQuestData.startUrl, questData);
-        }
-
-        // If anything else fails, go to the fallback url
-        return window.location = this.props.activeQuestData.startUrl.fallbackUrl;
-      }
-      else {
-        console.error('Incomplete startUrl', this.props.activeQuestData.startUrl);
-      }
+      return window.location = getQuestUrl(this.props.activeQuestData, this.props.journey) || '#';
     }
     else if (this.props.activeQuestData && this.props.activeQuestData.type === questTypes.EMBEDDED) {
       // If defined, set the view order id as we open the quest
@@ -106,12 +88,8 @@ class Bubble extends Component {
     }
   }
 
-  isSmartStartUrl() {
-    return this.props.activeQuestData.startUrl && typeof this.props.activeQuestData.startUrl !== 'string' && this.props.activeQuestData.startUrl.questId && this.props.activeQuestData.startUrl.questionId && this.props.activeQuestData.startUrl.fallbackUrl; 
-  }
-
   getQuestHint() {
-    if (this.isSmartStartUrl()) {
+    if (isSmartStartUrl(this.props.activeQuestData)) {
       let questData = this.props.journey.quests[this.props.activeQuestData.startUrl.questId];
 
       if (questData && questData.quiz && questData.quiz.questions) {

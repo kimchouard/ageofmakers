@@ -97,8 +97,8 @@ class MusicShowcase extends Component {
   renderShowcaseItems() {
     if (this.props.activeStageData.showcaseItems) {
       return this.props.activeStageData.showcaseItems.map((song) => {
-        return <div className={ `col mb-4` }>
-          <div className={ `card bg-${ (this.props.viewOnly) ? 'light' : 'secondary' } h-100 ${ (song.status === stageStatus.STATUS_COMPLETE) ? 'border-success' : ''}` } key={song.order}>
+        return <div className={ `col mb-4` } key={song.order}>
+          <div className={ `card bg-${ (this.props.viewOnly) ? 'light' : 'secondary' } h-100 ${ (song.status === stageStatus.STATUS_COMPLETE) ? 'border-success' : ''}` }>
             <img src={song.imageUrl} className="card-img-top" alt={ `Image for ${song.name} by ${song.artist}`} />
             <div className="card-body">
               <h5 className="card-title">{song.name} by {song.artist}</h5>

@@ -151,22 +151,24 @@
 
 
 .videoWrapper {
-  .overlay-content {
-    position: fixed;
-    top: 50%;
-    background: #EEE7C8;
-    z-index: 20;
-    width: 100%;
-    padding: 10px 50px;
-    transform: translateY(-50%);
-  }
-
-  iframe {
-    height: calc(100% - 50px);
-    width: 100%;
-    position: fixed;
-    top: 50px;
-    left: 0;
+  &.wideVideo {
+    .overlay-content {
+      position: fixed;
+      top: 50%;
+      background: #EEE7C8;
+      z-index: 20;
+      width: 100%;
+      padding: 10px 50px;
+      transform: translateY(-50%);
+    }
+  
+    iframe {
+      height: calc(100% - 50px);
+      width: 100%;
+      position: fixed;
+      top: 50px;
+      left: 0;
+    }
   }
 
   .featuredYoutubeChannel {

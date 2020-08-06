@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { isLoggedInAndLoaded, isQuestsLoaded, isLoggedIn, getActivePlayerData, getRomanAge, questTypes, stageTypes, journeyIds } from '../../_utils';
+import { isLoggedInAndLoaded, isQuestsLoaded, isLoggedIn, getActivePlayerData, getRomanAge, questTypes, stageTypes, journeyIds, getQuestUrl } from '../../_utils';
 import { getQuests } from '../../../actions/index';
 import { bindActionCreators } from 'redux';
 
@@ -132,14 +132,14 @@ class List extends Component {
 
     let questHtml = <div key={quest.id}>
       <h2 className="title" id={quest.id}>{quest.name}</h2>
-      <p>
+      <div>
         <strong>Quest Type:</strong> {quest.type}<br />
         <strong>Valley:</strong> {valleyData.name}<br /> { /* TODO: add valley icon */}
         { (quest.CTA) ? <div><strong>Custom Call to Action:</strong> { quest.CTA }<br /></div> : '' }
-        { (quest.type === questTypes.WEBSITE) ? <div><strong>Start Url:</strong> <a href={quest.startUrl} target="_blank">{quest.startUrl}</a><br /></div> : '' }
+        { (quest.type === questTypes.WEBSITE) ? <div><strong>Start Url:</strong> <a href={getQuestUrl(quest, this.props.journey) || '#'} target="_blank">{ getQuestUrl(quest, this.props.journey) || '#' }</a><br /></div> : '' }
         <strong>Pre-Requesites:</strong> { this.renderRequirementsList(quest.prerequisites) }
         <strong>Following:</strong> { this.renderRequirementsList(quest.following) }
-      </p>
+      </div>
       <div className="description">
         <Markdown mdContent={quest.content} />
       </div>
@@ -153,7 +153,7 @@ class List extends Component {
       { this.renderQuiz(quest) }
     </div>
 
-    return <div>
+    return <div key={quest.id}>
       { questHtml }
       { (quest.following) ? quest.following.map((followingQuestId) => {
         let followingQuest = this.props.journey.quests[followingQuestId];

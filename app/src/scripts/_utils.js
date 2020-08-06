@@ -296,3 +296,30 @@ export const getAge = (journey) => {
     };
   }
 };
+
+export const isSmartStartUrl = (activeQuestData) => {
+  return activeQuestData.startUrl && typeof activeQuestData.startUrl !== 'string' && activeQuestData.startUrl.questId && activeQuestData.startUrl.questionId && activeQuestData.startUrl.fallbackUrl; 
+}
+
+export const getQuestUrl = (activeQuestData, journey) => {
+  if (typeof activeQuestData.startUrl === 'string') {
+    return activeQuestData.lastUrl || activeQuestData.startUrl;
+  }
+  else if (isSmartStartUrl(activeQuestData)) {
+    let targetQuestData = journey.quests[activeQuestData.startUrl.questId];
+
+    if (targetQuestData && targetQuestData.quiz && targetQuestData.quiz.results) {
+      return targetQuestData.quiz.results[activeQuestData.startUrl.questionId] || activeQuestData.startUrl.fallbackUrl;
+    }
+    else {
+      console.error('Can not find related quest & question', activeQuestData.startUrl, questData);
+    }
+
+    // If anything else fails, go to the fallback url
+    return activeQuestData.startUrl.fallbackUrl;
+  }
+  else {
+    console.error('Incomplete startUrl', activeQuestData.startUrl);
+    return null;
+  }
+}
