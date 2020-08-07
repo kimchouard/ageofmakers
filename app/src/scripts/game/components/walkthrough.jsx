@@ -85,13 +85,14 @@ class Walkthrough extends Component {
       }
       // When walkthrough stops
       else if (action === ACTIONS.STOP || action === ACTIONS.CLOSE || type === EVENTS.TOUR_END) {
+        this.setState({steps: [], stepIndex: 0});
+        
         if (this.props.ageWalkthrough) {
           // Set the age in the user profile
           this.props.changeAge(getAge(this.props.journey).index);
         }
         else {
           this.props.stopWalkthrough();
-          this.setState({steps: [], stepIndex: 0});
         }
         // this.props.setPlayerOnboarding(true);
       }
