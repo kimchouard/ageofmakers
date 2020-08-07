@@ -51,9 +51,10 @@ export const isNewAge = (activePlayerData, journey) => {
   if (activePlayerData && activePlayerData.achievements  && activePlayerData.journey && journey && activePlayerData.achievements[activePlayerData.journey] && journey.ages && journey.quests) {
     let achievementAgeIndex = activePlayerData.achievements[activePlayerData.journey].age;
     let currentAgeIndex = getAge(journey).index;
+    console.log('Age check. Stored age:', achievementAgeIndex, 'Current age:', currentAgeIndex);
 
     // Either the saved aged is under the current one, or no ages are saved yet and we're after the first (0) age
-    return ( (achievementAgeIndex < currentAgeIndex) );
+    return ( achievementAgeIndex === null ||achievementAgeIndex < currentAgeIndex );
   }
 }
 

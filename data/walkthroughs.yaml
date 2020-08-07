@@ -1,0 +1,50 @@
+welcome_walkthrough:
+- content: |-
+    ### Welcome to the Age of Makers!
+
+    In this game, you're leading your own adventure to create your very first song. 🏆🎧🤩
+    
+    It might change the world, so no time to waste, let's get to it! 🚀😎
+  placement: center
+  target: body
+- content: |-
+    Click next.
+  placement: right
+  target: ".welcome_quest"
+- content: |-
+    You'll learn how to create your song by completing quests, which are bite-sized learning adventures.
+
+    You can access the quests via their pins, like this one. They are placed in different areas, based on the skills you'll learn with it. 👨‍💻
+  placementBeacon: top
+  placement: left
+  target: ".welcome_quest"
+- content: |-
+    👀 Up here is the header, which tracks two things...
+  placementBeacon: top
+  placement: bottom
+  target: ".controls"
+- content: |-
+    It shows the number of quests you completed... 💪
+  placementBeacon: top
+  placement: bottom
+  target: ".badgeTrackersHeader"
+- content: |-
+    ...and the account you are currently logged in with. ☝️
+  placementBeacon: left
+  placement: bottom-left
+  target: ".user"
+- content: |-
+    You can also click here to get help or change your settings. 🙃
+  placement: right
+  target: ".settings"
+- content: |-
+    Let's get started! Start by clicking the pin, then hit next.
+  placement: right
+  spotlightClicks: true
+  target: ".welcome_quest"
+- content: |-
+    This is the quest bubble! Click on the 'Start Your Journey 🏞' button and complete your first quest by following the steps. 🚀"
+  placementBeacon: top
+  placement: left
+  spotlightClicks: true
+  target: ".bubble-description .actions"

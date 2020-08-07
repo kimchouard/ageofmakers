@@ -3,9 +3,14 @@ import { useEffect } from 'react';
 export default function AnalyticsProvider() {
   const initAnalytics = () => {
     setTimeout(() => {
-      const gaPlugin = _gaq || [];
-      gaPlugin.push(['_setAccount', 'UA-173708168-1']);
-      gaPlugin.push(['_trackPageview']);
+      try {
+        const gaPlugin = _gaq || [];
+        gaPlugin.push(['_setAccount', 'UA-173708168-1']);
+        gaPlugin.push(['_trackPageview']);
+      }
+      catch(err) {
+        console.error('Error while initializing Google Analytics', err);
+      };
     }, 5000);
   };
 

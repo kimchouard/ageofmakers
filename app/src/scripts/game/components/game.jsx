@@ -17,7 +17,6 @@ import Bubble from './bubble';
 import EmbeddedPage from './embeddedPage';
 import Walkthrough from './walkthrough';
 import Onboarding from './onboarding';
-import Celebration from './celebration';
 import LeafletMap from './leafletMap';
 import AgeTree from './ageTree';
 import AnalyticsProvider from './analyticsProvider';
@@ -31,15 +30,14 @@ class Game extends Component {
     require('../../../sass/game.scss');
 
     return (
-      <div className={`gameWrapper ${ (!isLoggedInAndLoaded(this.props) || isNewAge(this.props.activePlayerData,this.props.journey)) ? 'blurry' : ''}`}>
+      <div className={`gameWrapper ${ (!isLoggedInAndLoaded(this.props)) ? 'blurry' : ''}`}>
         <Header />
         <LeafletMap />
         <EmbeddedPage />
         <Onboarding />
-        <Celebration />
         <AgeTree />
         { (this.props.activeQuest) ? <Bubble embed={false} /> : null }
-        { (isLoggedInAndLoaded(this.props)) ? <Walkthrough/> : null }
+        { (isLoggedInAndLoaded(this.props)) ? <Walkthrough ageWalkthrough={isNewAge(this.props.activePlayerData,this.props.journey)} /> : null }
         <AnalyticsProvider />
       </div>
     );

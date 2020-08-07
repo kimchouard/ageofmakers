@@ -82,7 +82,7 @@ class EmbeddedPage extends Component {
       return <div className="row creditsWrapper">
         <div className="col-md-6 offset-md-3">
           <h1>Credits</h1>
-         <Markdown  mdContent={this.props.journey.credits.credits}/>
+         <Markdown mdContent={this.props.journey.credits.credits}/>
         </div>
       </div>
     }

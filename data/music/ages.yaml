@@ -11,6 +11,38 @@
   - 45
   requirements:
     changemaker: 1
+  walkthrough:
+    - content: |-
+        ### Welcome to the Age of Makers!
+
+        In this game, you're leading your own adventure to create your very first song. 🏆🎧🤩
+        
+        It might change the world, so no time to waste, let's get to it! 🚀😎
+      placement: center
+      target: body
+    - content: |-
+        Click next.
+      placement: right
+      target: ".welcome_quest"
+    - content: |-
+        You'll learn how to create your song by completing quests, which are bite-sized learning adventures.
+
+        You can access the quests via their pins, like this one. They are placed in different areas, based on the skills you'll learn with it. 👨‍💻
+      placementBeacon: top
+      placement: left
+      target: ".welcome_quest"
+    - content: |-
+        Let's get started! Start by clicking the pin, then hit next.
+      placement: right
+      spotlightClicks: true
+      openQuest: "welcome_quest"
+      target: ".welcome_quest"
+    - content: |-
+        This is the quest bubble! Click on the 'Start Your Journey 🏞' button and complete your first quest by following the steps. 🚀
+      placementBeacon: top
+      placement: left
+      spotlightClicks: true
+      target: ".aom-bubble"
 - index: 1
   name: Learning
   image: data/music/images/map-music-1.jpg
@@ -20,6 +52,13 @@
   requirements:
     musiccity: 2
     changemaker: 2
+  walkthrough:
+    - content: |-
+        ### Congrats!
+
+        You just reached a new Age. 😎
+      placement: center
+      target: body
 - index: 2
   name: Producing
   image: data/music/images/map-music-2.jpg
@@ -47,3 +86,10 @@
   - 80
   - 41
   requirements: {}
+  walkthrough:
+    - content: |-
+        ### Oh my...
+
+        You made it! 😱
+      placement: center
+      target: body

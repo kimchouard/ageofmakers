@@ -113,10 +113,10 @@ class Header extends Component {
     });
   }
 
-  startFirstWalkthrough() {
+  startDefaultWelcomeWalkthrough() {
     this.props.closeEmbeddedPage();
     this.setState({ settings: false });
-    this.props.startWalkthrough(1);
+    this.props.startWalkthrough('welcome_walkthrough');
   }
 
   openCredits() {
@@ -156,7 +156,7 @@ class Header extends Component {
           <div className="dropdown-action logout" onClick={ () => this.logOutActivePlayer() }>Log Out</div>
           <div className="dropdown-action reload" onClick={ () => this.props.reloadQuests(this.props.activePlayerData.journey) }>Reload Quests</div>
           <div className="section-title">Help</div>
-          <div className="dropdown-action help" onClick={ () => this.startFirstWalkthrough() }>Getting Started</div>
+          <div className="dropdown-action help" onClick={ () => this.startDefaultWelcomeWalkthrough() }>Getting Started</div>
           <a className="dropdown-action help" href={ chrome.extension.getURL('list.html') } target="_blank">Download Quests in PDF</a>
           <div className="dropdown-action help" onClick={ () => this.openCredits() }>Credits</div>
           <div className="dropdown-action help disabled">FAQs</div>

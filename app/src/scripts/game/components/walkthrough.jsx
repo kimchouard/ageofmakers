@@ -10,8 +10,10 @@ import Joyride from 'react-joyride';
 import { ACTIONS, EVENTS } from 'react-joyride/lib/index.js';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { isLoggedInAndLoaded, getActivePlayerData } from '../../_utils';
-import {stopWalkthrough, startWalkthrough, toggleBubble, selectQuest, setPlayerOnboarding } from '../../../actions/index';
+import { isLoggedInAndLoaded, getActivePlayerData, getAge, isNewAge } from '../../_utils';
+import {stopWalkthrough, startWalkthrough, toggleBubble, selectQuest, setPlayerOnboarding, changeAge, } from '../../../actions/index';
+import Markdown from './markdown';
+import yaml from 'js-yaml';
 
 class Walkthrough extends Component {
     constructor(props) {
@@ -19,333 +21,131 @@ class Walkthrough extends Component {
       this.state = {
         steps: [],
         stepIndex: 0,
-        demoQuest: 'welcome_quest'
-      }
-    }
-
-    componentDidMount() {
-      // If the game is loaded, and that the player hasn't been onboarded, start the walkthrough, if not started already.
-      if (isLoggedInAndLoaded(this.props) && this.props.activePlayerData && !this.props.walkthrough.start && (this.props.activePlayerData.onboarded === false || this.props.activePlayerData.onboarded === undefined)) {
-        this.props.startWalkthrough(1);
-        // this.props.setPlayerOnboarding(true);
-      }
-    }
-
-    walkthroughCb(action,index,type,tour) {
-      if (action === ACTIONS.STOP || action === ACTIONS.CLOSE || type === EVENTS.TOUR_END) {
-        this.props.stopWalkthrough();
-        this.setState({stepIndex: 0});
-        this.props.setPlayerOnboarding(true);
-      } else if (action === ACTIONS.START) {
-          // this.props.closeProfile();
-          this.setWalkthrough()
-      } else if (type === EVENTS.STEP_AFTER) {
-        if (this.props.walkthrough.start === 1) {
-          if (index === 3) {
-            this.props.toggleBubble(false);
-            this.props.selectQuest(this.state.demoQuest);
-            setTimeout(() => {
-              this.setState({stepIndex: this.state.stepIndex + 1});
-            }, 500);
-          } else {
-            this.setState({stepIndex: this.state.stepIndex + 1});
-          }
-        } else if (this.props.walkthrough.start === 2) {
-          if (index === 0) {
-            // this.props.openProfile()
-            this.setState({stepIndex: this.state.stepIndex + 1});
-          } else if (index === 7) {
-            // this.props.closeProfile()
-            this.setState({stepIndex: this.state.stepIndex + 1});
-          } else {
-            this.setState({stepIndex: this.state.stepIndex + 1});
-          }
-        } else if (this.props.walkthrough.start === 3) {
-          if (index === 2) {
-            this.props.toggleBubble(false);
-            this.props.selectQuest(this.state.demoQuest);
-            setTimeout(() => {
-              this.setState({stepIndex: this.state.stepIndex + 1});
-            }, 400);
-          } else {
-            this.setState({stepIndex: this.state.stepIndex + 1});
-          }
+        demoQuest: 'welcome_quest',
+        stepDefaultStyles: {
+          options: {
+            zIndex: 10000,
+          },
+          buttonNext: {
+            borderRadius: 4,
+            position: 'absolute',
+            left: '43%',
+            bottom: '5%',
+            textAlign:'center',
+            color: 'white',
+            background: '#FF5335',
+          },
+          floater: {
+            arrow : {
+                display: "none"
+            }
+          }  
         }
       }
     }
 
-    setWalkthrough() {
-      const stepStyles = {
-        options: {
-          zIndex: 10000,
-        },
-        buttonNext: {
-          borderRadius: 4,
-          position: 'absolute',
-          left: '43%',
-          bottom: '5%',
-          textAlign:'center',
-          color: 'white',
-          background: '#FF5335',
-        },
-        floater: {
-          arrow : {
-              display: "none"
+    // componentDidMount() {
+    //   // If the game is loaded, and that the player hasn't been onboarded, start the walkthrough, if not started already.
+    //   if (isLoggedInAndLoaded(this.props) && this.props.activePlayerData && !this.props.walkthrough.start && (this.props.activePlayerData.onboarded === false || this.props.activePlayerData.onboarded === undefined)) {
+    //     this.props.startWalkthrough(1);
+    //     // this.props.setPlayerOnboarding(true);
+    //   }
+    // }
+
+    walkthroughCb(action,index,type,tour) {
+      // When walkthrough starts
+      if (action === ACTIONS.START) {
+          if (this.props.ageWalkthrough) {
+            let currentAge = getAge(this.props.journey);
+            console.log('Current age:', currentAge);
+            if (currentAge.walkthrough) {
+              this.setWalkthroughSteps(currentAge.walkthrough);
+            }
+            else {
+              console.error('Current age does not have a walkthrough. Skipping it.', currentAge);
+              this.props.changeAge(getAge(this.props.journey).index);
+            }
           }
-        }  
+          else if (this.props.walkthrough.name) {
+            this.setDefaultWalkthrough(this.props.walkthrough.name);
+          }
+      // When walkthrough goes to next step
+      } else if (type === EVENTS.STEP_AFTER) {
+        let currentStep = this.state.steps[this.state.stepIndex];
+
+        if (currentStep.openQuest) {
+          this.props.toggleBubble(false);
+          this.props.selectQuest(currentStep.openQuest);
+          setTimeout(() => {
+            this.setState({stepIndex: this.state.stepIndex + 1});
+          }, 500);
+        } else {
+          this.setState({stepIndex: this.state.stepIndex + 1});
+        }
       }
-      if (this.props.walkthrough.start === 1) {
-        this.setState({steps: [
-          {
-            content: <div>
-              <h3>Welcome to<br/> the Age of Makers!</h3>
-              <p>In this game, you're leading your own adventure to create your very first song. 🏆🎧🤩</p>
-              <p>It might change the world, so no time to waste, let's get to it! 🚀😎</p>
-            </div>,
-            placement: "center",
-            styles: stepStyles,
-            disableBeacon: true,
-            target: "body"
-          },
-          {
-            content: <div>Click next.</div>,
-            placement: "right",
-            styles: stepStyles,
-            disableBeacon: true,
-            target: "."+this.state.demoQuest
-          },
-          {
-            content: <div style={ { textAlign: 'left' } }>
-              <p>You'll learn how to create your song by completing quests, which are bite-sized learning adventures.</p>
-              <p>You can access the quests via their pins, like this one. They are placed in different areas, based on the skills you'll learn with it. 👨‍💻</p>
-            </div>,
-            placementBeacon: "top",
-            placement: "left",
-            styles: stepStyles,
-            disableBeacon: true,
-            target: "."+this.state.demoQuest
-          },
-          // {
-          //   content: <p>👀 Up here is the header, which tracks two things...</p>,
-          //   placementBeacon: "top",
-          //   placement: "bottom",
-          //   styles: stepStyles,
-          //   disableBeacon: true,
-          //   target: ".controls"
-          // },
-          // {
-          //   content: <p>It shows the number of quests you completed... 💪</p>,
-          //   placementBeacon: "top",
-          //   placement: "bottom",
-          //   styles: stepStyles,
-          //   disableBeacon: true,
-          //   target: ".badgeTrackersHeader"
-          // },
-          // {
-          //   content: <p>...and the account you are currently logged in with. ☝️</p>,
-          //   placementBeacon: "left",
-          //   placement: "bottom-left",
-          //   styles: stepStyles,
-          //   target: ".user"
-          // },
-          // {
-          //   content: <p>You can also click here to get help or change your settings. 🙃</p>,
-          //   placement: "right",
-          //   styles: stepStyles,
-          //   disableBeacon: true,
-          //   target: ".settings"
-          // },
-          // {
-          //   content: <p>You can also access you profile page via your tent. ⛺️</p>,
-          //   placement: "right",
-          //   styles: stepStyles,
-          //   disableBeacon: true,
-          //   target: ".tent"
-          // },
-          {
-            content: <p>Let's get started! Start by clicking the pin, then hit next.</p>,
-            placement: "right",
-            styles: stepStyles,
-            disableBeacon: true,
-            spotlightClicks: true,
-            target: "."+this.state.demoQuest
-          },
-          // {
-          //   content: <p>This is the quest bubble, it shows information for a quest like...</p>,
-          //   placementBeacon: "top",
-          //   placement: "left",
-          //   styles: stepStyles,
-          //   disableBeacon: true,
-          //   target: ".aom-bubble"
-          // },
-          // {
-          //   content: <p>The title of the quest...</p>,
-          //   placementBeacon: "top",
-          //   placement: "left",
-          //   styles: stepStyles,
-          //   disableBeacon: true,
-          //   target: ".box-title"
-          // },
-          // {
-          //   content: <p>...and a description of the quest.</p>,
-          //   placementBeacon: "top",
-          //   placement: "left",
-          //   styles: stepStyles,
-          //   disableBeacon: true,
-          //   target: ".bubble-description"
-          // },
-          {
-              content: <p>Now it's all up to you! Click on the "Start Your Journey 🏞" button and complete your first quest by following the steps. 🚀</p>,
-              placementBeacon: "top",
-              placement: "left",
-              styles: stepStyles,
-              spotlightClicks: true,
-              disableBeacon: true,
-              target: ".bubble-description .actions"
-          },
-        ]})
-      } else if (this.props.walkthrough.start === 2) {
-        this.setState({
-          steps: [
-            {
-              content: <p>Let's take a closer look at the tent shall we. 👀 Start off by clicking next!</p>,
-              placement: "right",
-              styles: stepStyles,
-              disableBeacon: true,
-              target: ".tent"
-            },
-            {
-              content: <p>Welcome to your profile page! 🎉 Here you can get lots of info like...</p>,
-              placement: "center",
-              styles: stepStyles,
-              disableBeacon: false,
-              target: ".wrapper"
-            },
-            {
-              content: <p>your profile name with a nice greeting 😌</p>,
-              placement: "right",
-              styles: stepStyles,
-              disableBeacon: false,
-              target: ".profileName"
-            },
-            {
-              content: <p>the number quests you have beaten so far 💪🏻</p>,
-              placement: "right",
-              styles: stepStyles,
-              disableBeacon: false,
-              target: ".questsBeat"
-            },
-            {
-              content: <p>and the badges for quests you have completed!</p>,
-              placement: "right",
-              styles: stepStyles,
-              disableBeacon: false,
-              target: ".codingBadges"
-            },
-            {
-              content: <p>Note that badges that are up next are grayed-out. As you complete a quest's task, they will gain color and track progress through a progress bar..</p>,
-              placement: "right",
-              styles: stepStyles,
-              disableBeacon: false,
-              target: ".content"
-            },
-            {
-              content: <p>The badges are sorted by valley, so find your favorite one and click it to open up the quest correlated to that badge.</p>,
-              placement: "right",
-              styles: stepStyles,
-              disableBeacon: false,
-              target: ".codingName"
-            },
-            {
-              content: <p>Click this back button when you want to return back to the map.</p>,
-              placement: "right",
-              styles: stepStyles,
-              disableBeacon: false,
-              target: ".closingbutton"
-            },
-            {
-              content: <p>If you ever want to go to the profile page again, just click your tent. ⛺️</p>,
-              placement: "right",
-              styles: stepStyles,
-              disableBeacon: false,
-              target: ".tent"
-            },
-            
-          ]
-        })
-      } else if (this.props.walkthrough.start === 3) {
-        this.setState({
-          steps: [
-            {
-              content: <p>Ready for the adventure?? Let's go through the process of completing your first quest! 🏆</p>,
-              placement: "center",
-              styles: stepStyles,
-              disableBeacon: true,
-              target: ".leaflet-container"
-            },
-            {
-              content: <div>
-                  <p>This is a pin, which represents a quest.<br />A quest is either:</p>
-                  <ul style={ { 'text-center': 'left' } }>
-                    <li>gray if locked,</li>
-                    <li>red if ready to be tackled,</li>
-                    <li>orange if you're working on it</li>
-                    <li>and green for complete!</li>
-                  </ul>
-                </div>,
-              placement: "right",
-              styles: stepStyles,
-              disableBeacon: true,
-              target: ".a004100000qR83OAAS"
-            },
-            {
-              content: <p>But enough with the boring stuff, let's actually start the quest!</p>,
-              placement: "right",
-              styles: stepStyles,
-              disableBeacon: true,
-              spotlightClicks: true,
-              target: ".a004100000qR83OAAS"
-            },
-            {
-              content: <p>This is the quest bubble, it shows information for a quest like...</p>,
-              placementBeacon: "top",
-              placement: "left",
-              styles: stepStyles,
-              disableBeacon: true,
-              target: ".aom-bubble"
-            },
-            {
-              content: <p>The title of the quest...</p>,
-              placementBeacon: "top",
-              placement: "left",
-              styles: stepStyles,
-              disableBeacon: true,
-              target: ".box-title"
-            },
-            {
-              content: <p>...and a description of the quest.</p>,
-              placementBeacon: "top",
-              placement: "left",
-              styles: stepStyles,
-              disableBeacon: true,
-              target: ".bubble-description div"
-            },
-            {
-                content: <p>Now it's all up to you! Click the "Get Started" button and complete your first quest by following the steps. 🚀</p>,
-                placementBeacon: "top",
-                placement: "left",
-                styles: stepStyles,
-              spotlightClicks: true,
-              disableBeacon: true,
-              target: ".bubble-description .action"
-            },
-          ],
-        })
+      // When walkthrough stops
+      else if (action === ACTIONS.STOP || action === ACTIONS.CLOSE || type === EVENTS.TOUR_END) {
+        if (this.props.ageWalkthrough) {
+          // Set the age in the user profile
+          this.props.changeAge(getAge(this.props.journey).index);
+        }
+        else {
+          this.props.stopWalkthrough();
+          this.setState({steps: [], stepIndex: 0});
+        }
+        // this.props.setPlayerOnboarding(true);
       }
     }
 
+    setWalkthroughSteps(steps) {
+      if (steps && steps.length) {
+        this.setState({
+          // Adding the default styles to each steps
+          steps: steps.map((step) => {
+            let newStep = step;
+            newStep.styles = this.state.stepDefaultStyles;
+            newStep.disableBeacon = true;
+            newStep.content = (typeof step.content === "string") ? <Markdown mdContent={step.content}/> : step.content;
+            return newStep;
+          }),
+          stepIndex: 0,
+        });
+      }
+      else {
+        console.error('Invalid steps, impossible to set it for the walkthrough.', steps);
+      }
+    }
+
+    setDefaultWalkthrough(walkthroughName) {
+      const walkthroughsUrl = chrome.runtime.getURL(`data/walkthroughs.yaml`);
+      fetch(walkthroughsUrl)
+        .then((walkthroughsResponse) => {
+        if (walkthroughsResponse.status !== 200) {
+          console.error('Error while loading quests:', res);
+          return resolve({ error: walkthroughsResponse.status });
+        }
+
+        // Examine the text in the walkthroughsResponse
+        walkthroughsResponse.text().then((walkthroughsData) => {
+          let walkthroughsArray = yaml.safeLoadAll(walkthroughsData);
+          console.log('Yaml data', walkthroughsArray);
+          
+          if (walkthroughsArray && walkthroughsArray[0]) {
+            let steps = walkthroughsArray[0][walkthroughName];
+            
+            if (steps) {
+              this.setWalkthroughSteps(steps);
+            }
+            else {
+              console.error('Error while loading the default walkthrough for', walkthroughName);
+            }
+          }
+        });
+    });
+    }
+
     render() {
-      if (this.props.walkthrough && this.props.walkthrough.start) {
+      if (this.props.walkthrough && this.props.walkthrough.name || this.props.ageWalkthrough) {
         return (
           <Joyride
               run={true}
@@ -379,7 +179,7 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({stopWalkthrough, startWalkthrough, toggleBubble, selectQuest, setPlayerOnboarding}, dispatch);
+    return bindActionCreators({stopWalkthrough, startWalkthrough, toggleBubble, selectQuest, setPlayerOnboarding, changeAge, }, dispatch);
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(Walkthrough);

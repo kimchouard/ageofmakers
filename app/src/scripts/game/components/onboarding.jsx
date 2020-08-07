@@ -33,7 +33,7 @@ class Onboarding extends Component {
         console.log('Creating new user:', this.state.userName);
         e.preventDefault(); 
         this.props.setNewPlayer(this.state.userName);
-        this.props.startWalkthrough(1);
+        // this.props.startWalkthrough(1);
         let playersIds = Object.keys(this.props.players);
         let userIdToLogin = (playersIds && playersIds.length) ? parseInt(playersIds[playersIds.length-1])+1 : 0;
         console.log('User ID to login', userIdToLogin, playersIds);
@@ -61,9 +61,9 @@ class Onboarding extends Component {
 
     logIn(e, player) { 
       if (e.target.className == 'player-name') {
-        if (player.onboarded === false || player.onboarded === undefined) {
-          this.props.startWalkthrough(1);
-        }
+        // if (player.onboarded === false || player.onboarded === undefined) {
+        //   this.props.startWalkthrough(1);
+        // }
 
         this.props.logIn(player.id);
       }

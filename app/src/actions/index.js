@@ -339,11 +339,11 @@ export function closeEmbeddedPage() {
 // =========================================
 
 // Start the walkthrough
-export function startWalkthrough(type) {
+export function startWalkthrough(name) {
   return {
     type: WALKTHROUGH_START,
     payload: {
-      start: type
+      name
     },
   };
 }
@@ -352,8 +352,6 @@ export function startWalkthrough(type) {
 export function stopWalkthrough() {
   return {
     type: WALKTHROUGH_STOP,
-    payload: {
-      start: 0
-    },
+    payload: {},
   };
 }

@@ -306,7 +306,7 @@ const updatePlayersData = (field, originalAction, reset) => {
           if(field === 'journey' && !reset) {
             if (!players[activePlayerId].achievements[originalAction.payload.journeyId]) {
               players[activePlayerId].achievements[originalAction.payload.journeyId] = {
-                age: 0,
+                age: null,
                 quests: {},
               }
             }
@@ -465,6 +465,7 @@ const changeAge = (originalAction) => {
           let playersJourney = players[activePlayerId].journey;
 
           if (players[activePlayerId].achievements[playersJourney] && players[activePlayerId].achievements[playersJourney].age >= 0) {
+            console.log("Updating user's age:", originalAction.payload);
             players[activePlayerId].achievements[playersJourney].age = originalAction.payload.newAge;
           } 
           else {
@@ -476,7 +477,7 @@ const changeAge = (originalAction) => {
           });
         }
         else {
-          console.error('Players not found or no played logged in.', storage);
+          console.error('Players not found or no player logged in.', storage);
         }
       });
     }
