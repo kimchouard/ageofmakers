@@ -20,6 +20,7 @@ class MusicShowcase extends Component {
       this.state = {
         quizToShow: {},
         showcaseItemLoading: {},
+        loading: null,
       }
   }
 
@@ -119,6 +120,15 @@ class MusicShowcase extends Component {
     }
   }
 
+  triggerNextStage(countVisitedShowcaseItem) {
+    if((countVisitedShowcaseItem >= this.props.activeStageData.requiredShowcaseViews)) {
+      this.setState({
+        loading: true,
+      });
+      this.props.goToNextStage(this.props.activeStageData);
+    }
+  }
+
   renderNextButton() {
     if (!this.props.viewOnly) {
       let countVisitedShowcaseItem = 0;
@@ -130,11 +140,11 @@ class MusicShowcase extends Component {
 
       // Only disable the next button if the player visited enough showcase items
       return <button
-        className={`btn btn-primary btn-lg btn-next`}
-        onClick={() => { if((countVisitedShowcaseItem >= this.props.activeStageData.requiredShowcaseViews)) { this.props.goToNextStage(this.props.activeStageData) } } }
+        className={`btn btn-primary btn-lg btn-next ${ (this.state.loading) ? 'loader' : ''}`}
+        onClick={() => { this.triggerNextStage(countVisitedShowcaseItem) } }
         disabled={ (countVisitedShowcaseItem < this.props.activeStageData.requiredShowcaseViews) }
       >
-        NEXT
+        { (!this.state.loading) ? 'NEXT' : ''}
       </button>;
     }
     else {

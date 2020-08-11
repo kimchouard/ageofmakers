@@ -51,10 +51,21 @@ export const isNewAge = (activePlayerData, journey) => {
   if (activePlayerData && activePlayerData.achievements  && activePlayerData.journey && journey && activePlayerData.achievements[activePlayerData.journey] && journey.ages && journey.quests) {
     let achievementAgeIndex = activePlayerData.achievements[activePlayerData.journey].age;
     let currentAgeIndex = getAge(journey).index;
-    console.log('Age check. Stored age:', achievementAgeIndex, 'Current age:', currentAgeIndex);
+    console.log('New Age check. Stored age:', achievementAgeIndex, 'Current age:', currentAgeIndex);
 
     // Either the saved aged is under the current one, or no ages are saved yet and we're after the first (0) age
-    return ( achievementAgeIndex === null ||achievementAgeIndex < currentAgeIndex );
+    return ( achievementAgeIndex === null || achievementAgeIndex < currentAgeIndex);
+  }
+}
+
+export const isOutdatedAge = (activePlayerData, journey) => {
+  if (activePlayerData && activePlayerData.achievements  && activePlayerData.journey && journey && activePlayerData.achievements[activePlayerData.journey] && journey.ages && journey.quests) {
+    let achievementAgeIndex = activePlayerData.achievements[activePlayerData.journey].age;
+    let currentAgeIndex = getAge(journey).index;
+    console.log('Outdated Age check. Stored age:', achievementAgeIndex, 'Current age:', currentAgeIndex);
+
+    // Either the saved aged is under the current one, or no ages are saved yet and we're after the first (0) age
+    return ( typeof achievementAgeIndex !== "number" || achievementAgeIndex > currentAgeIndex);
   }
 }
 

@@ -15,9 +15,9 @@
     - content: |-
         ### Welcome to the Age of Makers!
 
-        In this game, you're leading your own adventure to create your very first song. 🏆🎧🤩
+        In this game, you're starting your own adventure to create your very first song. 🎧🤩
         
-        It might change the world, so no time to waste, let's get to it! 🚀😎
+        It might change the world, so no time to waste, let's get to it! 😎🚀
       placement: center
       target: body
     - content: |-
@@ -25,23 +25,24 @@
       placement: right
       target: ".welcome_quest"
     - content: |-
-        You'll learn how to create your song by completing quests, which are bite-sized learning adventures.
+        See all those pins on the map? 👀
+        
+        Each pin is a quest that guides you on your music journey. 🏞
 
-        You can access the quests via their pins, like this one. They are placed in different areas, based on the skills you'll learn with it. 👨‍💻
+        Let's get started by clicking the pin, then hit next.
       placementBeacon: top
       placement: left
-      target: ".welcome_quest"
-    - content: |-
-        Let's get started! Start by clicking the pin, then hit next.
-      placement: right
-      spotlightClicks: true
       openQuest: "welcome_quest"
       target: ".welcome_quest"
     - content: |-
-        This is the quest bubble! Click on the 'Start Your Journey 🏞' button and complete your first quest by following the steps. 🚀
+        Here are the details of your first quest.
+        
+        ➡️ Click on the red button to get started. 
+        
+        Have fun! 🙌
       placementBeacon: top
       placement: left
-      spotlightClicks: true
+      # spotlightClicks: true
       target: ".aom-bubble"
 - index: 1
   name: Learning
@@ -54,11 +55,22 @@
     changemaker: 2
   walkthrough:
     - content: |-
-        ### Congrats!
+        ### Congrats! 💪🥳
 
-        You just reached a new Age. 😎
-      placement: center
-      target: body
+        You've just completed your first age. Welcome to Age II, the age of Learning. 😎
+
+        Each new age unlocks more quests and shows you a bigger map. 🗺
+      placement: bottom
+      placementBeacon: top
+      target: ".age"
+    - content: |-
+        This section tells you how many completed quests you need to get to the next age.
+
+        So, can you make it to Age III?? 🤨
+      placementBeacon: top
+      placement: left
+      spotlightClicks: true
+      target: ".badgeTrackersHeader"
 - index: 2
   name: Producing
   image: data/music/images/map-music-2.jpg
@@ -71,6 +83,18 @@
     musiccity: 18
     changemaker: all
     # total: 8
+  walkthrough:
+    - content: |-
+        ### The time has come...
+
+        You've made it to the age of Producing. 😎
+
+        You can now start working on your instrumental and lyrics. 🎤🎹🎶
+        
+        This is the most creative and exciting part! Can't wait to hear what you produce. 😍👂✨
+      placement: bottom
+      placementBeacon: top
+      target: ".age"
 - index: 3
   name: Mixing
   image: data/music/images/map-music-all.jpg
@@ -79,6 +103,16 @@
   - 41
   requirements:
     mixing: 4
+  walkthrough:
+    - content: |-
+        ### BOOM! 🎙💨
+
+        Wow... Great job in putting your song together, that was quite some work. 👌
+
+        Time to add the final touches now, and get your music ready for prime time. 💃🕺
+      placement: bottom
+      placementBeacon: top
+      target: ".age"
 - index: 4
   name: Producer 😎🎧
   image: data/music/images/map-music-all.jpg
@@ -88,8 +122,12 @@
   requirements: {}
   walkthrough:
     - content: |-
-        ### Oh my...
+        ### Oh my... 😏
 
-        You made it! 😱
+        You made it to the top! 😱 #soGood #soProud
+        
+        Don't stop there though, keep learning and make more songs! 
+        
+        It only gets better from there. #cantStopWontStop 🚀
       placement: center
       target: body

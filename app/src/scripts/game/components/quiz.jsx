@@ -91,7 +91,7 @@ class Quiz extends Component {
       return <div>
         <div className="col-md-offset-3 submitWrapper">
           {(!this.state.editQuiz) ? <button className={ `btn btn-dark ${ (!this.props.editable) ? 'btn-lg' : ''} edit-btn` } onClick={() => { this.startEditingQuiz() }}>Edit</button> : ''} 
-          {(!this.props.editable || this.state.editQuiz) ? <input type="submit" className={ `btn btn-primary ${ (!this.props.editable) ? 'btn-lg' : ''} edit-btn` } value={(this.state.editQuiz) ? 'Save' : 'Next'} /> : ''}
+          {(!this.props.editable || this.state.editQuiz) ? <input type="submit" className={ `btn btn-primary ${ (!this.props.editable) ? 'btn-lg' : ''} edit-btn ${ (this.state.loading) ? 'loader' : ''}` } value={(this.state.editQuiz) ? 'Save' : 'Next'} /> : ''}
         </div>
       </div>
     }

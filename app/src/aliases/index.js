@@ -456,7 +456,7 @@ const changeAge = (originalAction) => {
   // TODO: API to update the user records
   return middlewarePromise(originalAction, new Promise((resolve, reject) => {
     if (originalAction.payload && originalAction.payload.mock) {
-      console.log(`Updating player's journey ${originalAction.payload.playerJourney} with age: ${originalAction.payload.newAge}`);
+      console.log(`Updating player with age: ${originalAction.payload.newAge}`);
 
       chrome.storage.sync.get(['players', 'activePlayer'], (storage) => {
         if (storage && storage.players && storage.activePlayer) {
@@ -464,7 +464,8 @@ const changeAge = (originalAction) => {
           let activePlayerId = storage.activePlayer;
           let playersJourney = players[activePlayerId].journey;
 
-          if (players[activePlayerId].achievements[playersJourney] && players[activePlayerId].achievements[playersJourney].age >= 0) {
+          if (players[activePlayerId].achievements[playersJourney] 
+          && (players[activePlayerId].achievements[playersJourney].age >= 0 || typeof players[activePlayerId].achievements[playersJourney].age !== "number") ) {
             console.log("Updating user's age:", originalAction.payload);
             players[activePlayerId].achievements[playersJourney].age = originalAction.payload.newAge;
           } 

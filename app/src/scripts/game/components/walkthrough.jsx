@@ -10,7 +10,7 @@ import Joyride from 'react-joyride';
 import { ACTIONS, EVENTS } from 'react-joyride/lib/index.js';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { isLoggedInAndLoaded, getActivePlayerData, getAge, isNewAge } from '../../_utils';
+import { isLoggedInAndLoaded, getActivePlayerData, getAge, isNewAge, isOutdatedAge } from '../../_utils';
 import {stopWalkthrough, startWalkthrough, toggleBubble, selectQuest, setPlayerOnboarding, changeAge, } from '../../../actions/index';
 import Markdown from './markdown';
 import yaml from 'js-yaml';
@@ -55,7 +55,7 @@ class Walkthrough extends Component {
     walkthroughCb(action,index,type,tour) {
       // When walkthrough starts
       if (action === ACTIONS.START) {
-          if (this.props.ageWalkthrough) {
+          if (isNewAge(this.props.activePlayerData,this.props.journey)) {
             let currentAge = getAge(this.props.journey);
             console.log('Current age:', currentAge);
             if (currentAge.walkthrough) {
@@ -63,7 +63,7 @@ class Walkthrough extends Component {
             }
             else {
               console.error('Current age does not have a walkthrough. Skipping it.', currentAge);
-              this.props.changeAge(getAge(this.props.journey).index);
+              this.props.changeAge(currentAge.index);
             }
           }
           else if (this.props.walkthrough.name) {
@@ -87,7 +87,7 @@ class Walkthrough extends Component {
       else if (action === ACTIONS.STOP || action === ACTIONS.CLOSE || type === EVENTS.TOUR_END) {
         this.setState({steps: [], stepIndex: 0});
         
-        if (this.props.ageWalkthrough) {
+        if (isNewAge(this.props.activePlayerData,this.props.journey)) {
           // Set the age in the user profile
           this.props.changeAge(getAge(this.props.journey).index);
         }
@@ -146,7 +146,7 @@ class Walkthrough extends Component {
     }
 
     render() {
-      if (this.props.walkthrough && this.props.walkthrough.name || this.props.ageWalkthrough) {
+      if (this.props.walkthrough && this.props.walkthrough.name || isNewAge(this.props.activePlayerData,this.props.journey)) {
         return (
           <Joyride
               run={true}
@@ -163,6 +163,14 @@ class Walkthrough extends Component {
         );
       }
       else {
+        if (isOutdatedAge(this.props.activePlayerData,this.props.journey)) {
+          let userAge = getAge(this.props.journey).index;
+          console.log('Age outdated, updated user age', userAge);
+
+          // Set the right age in the user profile
+          this.props.changeAge(userAge);
+        }
+
         return <div></div>;
       }
     }

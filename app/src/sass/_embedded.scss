@@ -90,7 +90,8 @@
 		will-change: transform;
 		transition: background-color 0s ease;
 		// font-size: 16px;
-    transition: all .05s ease;
+    transition: all .1s ease;
+    transition-property: box-shadow, height, width, border; // border-radius, 
     
 		&.loader {
 			font-size: 0;
