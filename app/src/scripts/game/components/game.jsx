@@ -37,7 +37,7 @@ class Game extends Component {
         <Onboarding />
         <AgeTree />
         { (this.props.activeQuest) ? <Bubble embed={false} /> : null }
-        { (isLoggedInAndLoaded(this.props)) ? <Walkthrough ageWalkthrough={isNewAge(this.props.activePlayerData,this.props.journey)} /> : null }
+        { (isLoggedInAndLoaded(this.props)) ? <Walkthrough /> : null }
         <AnalyticsProvider />
       </div>
     );
