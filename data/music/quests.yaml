@@ -623,6 +623,14 @@ stages:
     icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
     youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
   order: 0
+quiz:
+  name: Practice Finding a Scale
+  subtitle: |-
+    Practice your new music theory knowledge based on the video you just watched!
+  questions:
+    - id: scale
+      name: This is your title!
+      type: musictheory
 visibleAtAge: 2
 prerequisites:
 - music_theory_intro
