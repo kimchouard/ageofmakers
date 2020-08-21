@@ -16,7 +16,15 @@ export default (scriptName, isBgScript) => {
       exclude: /(node_modules)/,
       include: path.join(__dirname, 'src'),
       query: {
-        presets: ['@babel/preset-env', '@babel/preset-react']
+        presets: [
+          '@babel/preset-env', 
+          '@babel/preset-react',
+          {
+            "plugins": [
+              "@babel/plugin-proposal-class-properties"
+            ]
+          }
+        ]
       }
     },
   ]

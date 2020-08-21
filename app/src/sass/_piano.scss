@@ -5,6 +5,24 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+ 
+  /* ================================
+              Custom Styles
+  ================================ */
+
+.musicTheoryQuizWrapper {
+  margin-bottom: 20px;
+  
+  .piano {
+    // Custom piano styles here
+  }
+}
+ 
+/* ================================
+    Default React Piano Styling here
+================================ */
+
+
 .ReactPiano__Keyboard {
   /* Used for absolute positioning of .ReactPiano__Key--accidental elements */
   position: relative;
