@@ -24,9 +24,12 @@ class MusicTheoryQuiz extends Component {
 
       return <div className="musicTheoryQuizWrapper">
         <h4>{ this.props.question.name }</h4>
-        <p>This is an interactive quiz! :D</p>
+        
 
-        <ResponsivePiano className="piano" />
+        <ResponsivePiano className="piano" onPlayNoteInput={(midiNote) => {
+          console.log("A note has been played!", midiNote);
+          
+        }} />
       </div>
     }
     else {
