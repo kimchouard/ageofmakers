@@ -19,15 +19,28 @@ class MusicTheoryQuiz extends Component {
     this.state = {
       lastNotePlayed: null,
       noteInScale: null,
-      selectedKey: 48,
+      selectedKey: 48
     }
   }
 
   createScaleFromKey() {
+    if(this.state.selectedKey){
+      let scaleNotes = [this.state.selectedKey];
+      for (let index = 0; index < 7; index++) {
+        // If its half a note
+        if (index == 2 || index == 6){
+          scaleNotes.push(scaleNotes[scaleNotes.length - 1] + 1);
+        }
+        // If it is a whole note
+        else{ 
+          scaleNotes.push(scaleNotes[scaleNotes.length - 1] + 2);
+        }
+      }
+      console.log(scaleNotes);
+      return scaleNotes;
+    }
     // Using: this.state.selectedKey
     // With the WWHWWWH (W = +2 / H = +1)
-
-    return [48, 50, 52, 53, 55, 57, 59, 60, 62, 64, 65]
   }
 
   notePlayed(midiNote) {
@@ -70,7 +83,7 @@ class MusicTheoryQuiz extends Component {
   }
 
   handleChange(event) {
-    this.setState({selectedKey: event.target.value});
+    this.setState({selectedKey: parseInt(event.target.value)});
   }
 
   render() {
