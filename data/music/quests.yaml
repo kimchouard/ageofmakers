@@ -634,7 +634,7 @@ quiz:
     #     Type a number here
     #   type: smalltext
     - id: scale
-      name: Play all the notes in the C major scale.
+      name: Try to find all the notes in the different major scale.
       type: musictheory
 visibleAtAge: 2
 prerequisites:

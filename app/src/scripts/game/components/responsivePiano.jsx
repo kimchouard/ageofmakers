@@ -18,7 +18,7 @@ class ResponsivePiano extends React.Component {
     
     const noteRange = {
       first: MidiNumbers.fromNote('c3'),
-      last: MidiNumbers.fromNote('f4'),
+      last: MidiNumbers.fromNote('b4'),
     };
     const keyboardShortcuts = KeyboardShortcuts.create({
       firstNote: noteRange.first,
