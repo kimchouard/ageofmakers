@@ -25,15 +25,18 @@ class MusicTheoryQuiz extends Component {
 
   createScaleFromKey() {
     if(this.state.selectedKey){
-      let scaleNotes = [this.state.selectedKey];
-      for (let index = 0; index < 7; index++) {
-        // If its half a note
-        if (index == 2 || index == 6){
-          scaleNotes.push(scaleNotes[scaleNotes.length - 1] + 1);
-        }
-        // If it is a whole note
-        else{ 
-          scaleNotes.push(scaleNotes[scaleNotes.length - 1] + 2);
+      let scaleNotes = [this.state.selectedKey - 12];
+      for (let octaveIndex = 0; octaveIndex < 3; octaveIndex++) {
+        for (let scaleIndex = 0; scaleIndex < 7; scaleIndex++) {
+          let lastNoteCalculated = scaleNotes[scaleNotes.length - 1];
+          // If its half a note
+          if (scaleIndex == 2 || scaleIndex == 6){
+            scaleNotes.push(lastNoteCalculated + 1);
+          }
+          // If it is a whole note
+          else{ 
+            scaleNotes.push(lastNoteCalculated + 2);
+          }
         }
       }
       console.log(scaleNotes);
@@ -74,10 +77,10 @@ class MusicTheoryQuiz extends Component {
     }
     else {
       if (this.state.noteInScale) {
-        return <p className="text-center text-success">Good job! This note is in the C scale.</p>
+        return <p className="text-center text-success">Good job! This note is in the selected scale.</p>
       }
       else {
-        return <p className="text-center text-danger">Oops! This note is not in the C scale.</p>
+        return <p className="text-center text-danger">Oops! This note is not in the selected scale.</p>
       }
     }
   }
@@ -93,10 +96,13 @@ class MusicTheoryQuiz extends Component {
         <h4>{ this.props.question.name }</h4>
         <label htmlFor="key">Choose a scale:</label>
         <select name="key" value={this.state.selectedKey} onChange={(event) => { this.handleChange(event); }}>
+          <option value={45}>A</option>
+          <option value={47}>B</option>
           <option value={48}>C</option>
           <option value={50}>D</option>
           <option value={52}>E</option>
           <option value={53}>F</option>
+          <option value={55}>G</option>
         </select>
         
         <ResponsivePiano className="piano" onPlayNoteInput={(midiNote) => { this.notePlayed(midiNote); }} />
