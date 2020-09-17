@@ -634,7 +634,7 @@ quiz:
     #     Type a number here
     #   type: smalltext
     - id: scale
-      name: Try to find all the notes in the different major scale.
+      name: Find all the notes in the minor & major scales using 3 different keys
       type: musictheory
 visibleAtAge: 2
 prerequisites:
