@@ -628,11 +628,20 @@ quiz:
   subtitle: |-
     Practice your new music theory knowledge based on the video you just watched!
   questions:
-    # - id: notesinscale
-    #   name: How many notes is there in a scale?
-    #   placeholder: |-
-    #     Type a number here
-    #   type: smalltext
+    - id: notesinscale
+      name: How many notes is there in a scale?
+      placeholder: |-
+        Type a number here
+      type: number
+    - id: testSelect
+      name: What's the scale you liked most?
+      placeholder: |-
+        Select mood here
+      values:
+        - major
+        - minor
+      type: picklist
+      # TODO ==> ubild a select more for quiz
     - id: scale
       name: Find all the notes in the minor & major scales using 3 different keys
       type: musictheory
