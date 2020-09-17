@@ -183,7 +183,19 @@ class Quiz extends Component {
                 disabled={ this.isDisabled(quizResult) }
               />
             }
-            else if (question.type === quizAnswerTypes.SMALLTEXT || question.type === quizAnswerTypes.URL) {
+            else if (question.type === quizAnswerTypes.SMALLTEXT || question.type === quizAnswerTypes.NUMBER || question.type === quizAnswerTypes.URL) {
+              inputHtml = <input 
+                placeholder={question.placeholder}
+                id={question.id}
+                className="form-control"
+                required={ !question.optional }
+                value={ this.getQuizValue(question.id, quizResult) } 
+                onChange={ (e) => { this.handleFormChange(e); } }
+                type={ (question.type === quizAnswerTypes.URL) ? 'url' : (question.type === quizAnswerTypes.NUMBER) ? 'number' : 'text' }
+                disabled={ this.isDisabled(quizResult) }
+              />
+            }
+            else if (question.type === quizAnswerTypes.PICKLIST) {
               inputHtml = <input 
                 placeholder={question.placeholder}
                 id={question.id}
@@ -194,6 +206,18 @@ class Quiz extends Component {
                 type={ (question.type === quizAnswerTypes.URL) ? 'url' : 'text' }
                 disabled={ this.isDisabled(quizResult) }
               />
+              inputHtml = <select 
+                id={question.id}
+                className="form-control"
+                required={ !question.optional }
+                value={ this.getQuizValue(question.id, quizResult) }
+                onChange={ (e) => { this.handleFormChange(e); } }
+                disabled={ this.isDisabled(quizResult) }
+              >
+                { question.values.map((value) => {
+                  return <option value={value}>{value}</option>
+                }) }
+              </select>
             }
 
             return <div className="form-group question row" key={question.id}>

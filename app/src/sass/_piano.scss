@@ -5,6 +5,7 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+ @import 'vars';
  
   /* ================================
               Custom Styles
@@ -12,7 +13,19 @@
 
 .musicTheoryQuizWrapper {
   margin-bottom: 20px;
+
+  .questionLabels {
+    margin-bottom: 10px;
+
+    select {
+      margin: 0 5px;
+    }
+  }
   
+  .guides { 
+    margin-bottom: 30px;
+  }
+
   .piano {
     // Custom piano styles here
   }
@@ -50,6 +63,28 @@
   /* Use absolute positioning along with inline styles specified in JS to put keys in correct locations. */
   position: absolute;
   top: 0;
+}
+
+.note-letter {
+  position: absolute;
+  margin: -20px 0 0 32px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+
+  &.key-C, &.key-F { margin-left: 15px; }
+  &.key-G { margin-left: 24px; }
+  &.key-G { margin-left: 38px; }
+  &.key-E, &.key-B { margin-left: 48px; }
+
+  &:first::before {
+    content: 'Note Names:';
+    position: absolute;
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    color: $grey;
+  }
 }
 
 /*

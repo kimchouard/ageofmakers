@@ -33,6 +33,8 @@ export const quizAnswerTypes = {
   FREETEXTLONG: 'freetextlong',
   SMALLTEXT: 'smalltext',
   URL: 'url',
+  NUMBER: 'number',
+  PICKLIST: 'picklist',
   MUSICTHEORY: 'musictheory',
 };
 
