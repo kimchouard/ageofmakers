@@ -303,6 +303,70 @@ visibleAtAge: 0
 
 
 
+# -------------------------------------------------------
+# Explore the world of artist like you
+# Explore_the_world
+---
+id: explore_the_world
+name: Explore The World Of Artist Like You?
+valley: changemaker
+content: |-
+  In this quest, you'll find other artists songs that have gone through the game.
+  Each one of these songs are made from artists like you 
+
+  Spend some time listening and figuring out what social justice movements each covers.
+
+   These songs should give you an idea of what your songs could look like at the end of the game! 
+type: embedded
+CTA: Let's Learn From the Best 🕺🏻✨💃
+positionLeft: 70.5
+positionTop: 82
+stages:
+- name: Songs Artist Like You Have Created 
+  content: |-
+
+  type: musicShowcase
+  order: 0
+  requiredShowcaseViews: 3
+  quiz:
+    questions:
+      - id: themes
+        name: What injustice(s) did the song help shine a light on?
+        placeholder: |-
+          Examples: Racial Injustice, LGBT rights, police brutality, Environmental Justice, Colorism...
+        examples: |-
+            **Notes:** In many cases, a song might be used to aid social movement even if it wasn’t part of the original intention of the artist.
+        type: freetext
+      - id: message
+        name: What is one “take home message” you think the artist wanted people to understand from this song?
+        placeholder: |-
+          Example: Despite how though it is and all the barriers, we’re going to be alright.
+        type: freetext
+      - id: action
+        name: What *feeling(s)* do you think the artist wanted the audience to have?
+        placeholder: |-
+          Examples: Anger, Happiness, Hopeful...
+        type: freetext
+  showcaseItems:
+  - name: Code Switching
+    artist: Lil Jerm
+    startUrl: https://soundcloud.com/kimik-by-night/jeremy-samuel-code-switching/s-CJeIIv97uH9?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/Jeremy_Samuel.jpg
+    content: |-
+      Bio: In the fall I am going to be a freshman at the University of Loyola in
+      Maryland studying Computer Science. throughout my life I have played many
+      instruments including drums, trumpet, piano, and bass guitar. During Highschool I
+      lead my schools pep band and also played drums in the jazz band.
+    instructions: |-
+      Listen or read this article.
+    order: 0
+prerequisites: 
+- welcome_quest
+visibleAtAge: 0
+
+
+
+
 # =======================================================
 #                 Music City Quests
 # =======================================================
