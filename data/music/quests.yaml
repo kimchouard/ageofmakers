@@ -362,7 +362,7 @@ stages:
     order: 0
 prerequisites: 
 - welcome_quest
-visibleAtAge: 0
+visibleAtAge: 1
 
 
 
