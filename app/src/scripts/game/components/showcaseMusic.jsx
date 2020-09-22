@@ -98,15 +98,27 @@ class MusicShowcase extends Component {
   renderShowcaseItems() {
     if (this.props.activeStageData.showcaseItems) {
       return this.props.activeStageData.showcaseItems.map((song) => {
+        let imgParsedUrl;
+        if (song.imageUrl) {
+          try {
+            imgParsedUrl = new URL(song.imageUrl);
+          }
+          catch(err) {
+            console.error('Error while parsing url', song.imageUrl, err);
+          }
+        }
         return <div className={ `col mb-4` } key={song.order}>
           <div className={ `card bg-${ (this.props.viewOnly) ? 'light' : 'secondary' } h-100 ${ (song.status === stageStatus.STATUS_COMPLETE) ? 'border-success' : ''}` }>
-            <img src={song.imageUrl} className="card-img-top" alt={ `Image for ${song.name} by ${song.artist}`} />
+            <div className="imgWrapper" style={ { backgroundImage: `url('${(song.imageUrl) ? song.imageUrl : '/data/music/images/audio_article_banner.png'}')` } }>
+              { (song.imageUrl && imgParsedUrl) ? <p className="card-text card-source"><em>Source: </em> { imgParsedUrl.host }</p> : '' }
+            </div>
             <div className="card-body">
               <h5 className="card-title">{song.name} by {song.artist}</h5>
+              { (song.location) ? <p className="card-text"><strong>📍 Location: </strong> {song.location}</p> : '' }
               <div className="card-text">
                 <Markdown mdContent={song.content} />
               </div>
-              <p className="card-text"><strong>📆 Historical Context: </strong> {song.historicalContext}</p>
+              { (song.historicalContext) ? <p className="card-text"><strong>📆 Historical Context: </strong> {song.historicalContext}</p> : '' }
             </div>
             <div className="card-footer actions">
               { this.renderActionBtn(song) }
