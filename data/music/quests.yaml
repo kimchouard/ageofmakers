@@ -308,19 +308,18 @@ visibleAtAge: 0
 # Explore_the_world
 ---
 id: explore_the_world
-name: Explore The World Of Artist Like You?
+name: Explore Songs From Other Students
 valley: changemaker
 content: |-
-  In this quest, you'll find other artists songs that have gone through the game.
-  Each one of these songs are made from artists like you 
+  In this quest, you'll find other students' songs that, like you, have gone through the game.
+  
+  The songs featured in this quest are made from alumni of the Hidden Genius Project, in the **California Bay Area**.
 
-  Spend some time listening and figuring out what social justice movements each covers.
-
-   These songs should give you an idea of what your songs could look like at the end of the game! 
+  Spend some time listening and figuring out what social justice movements each covers. These songs should give you an idea of what your songs could look like at the end of the game! (but yours can also be much different ;) 
 type: embedded
-CTA: Let's Learn From the Best 🕺🏻✨💃
-positionLeft: 70.5
-positionTop: 82
+CTA: Listen to the Songs 🎧
+positionLeft: 68.5
+positionTop: 81.5
 stages:
 - name: Songs Artist Like You Have Created 
   content: |-
@@ -1484,7 +1483,7 @@ prerequisites:
 # lyrics_free_writing
 --- 
 id: lyrics_free_writing
-name: What's On Your Mind?
+name: Free Write Your Thoughts
 valley: lyrics
 content: |-
   Time to put words to your vision!
