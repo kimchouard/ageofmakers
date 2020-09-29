@@ -347,9 +347,9 @@ stages:
           Examples: Anger, Happiness, Hopeful...
         type: freetext
   showcaseItems:
-  - name: Code Switching
+  - name: Code switching
     artist: Lil Jerm
-    location: Oakland, CA, USA
+    location: Richmond, CA, USA
     startUrl: https://soundcloud.com/kimik-by-night/jeremy-samuel-code-switching/s-CJeIIv97uH9?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
     imageUrl: data/music/images/genius/Jeremy_Samuel.jpg
     content: |-
@@ -360,6 +360,82 @@ stages:
     instructions: |-
       Listen or read this article.
     order: 0
+  - name: Embrace
+    artist: Usean Redic
+    location: Richmond, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/usean-redic-embrace/s-WeEIH8wDoRT?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/1 Usean Redic.jpg
+    content: |-
+      Bio: My name is Usean Redic and I am 19 years old. I attend the University of
+      California, Irvine, and I major in biological sciences/neurobiology and plan to
+      minor in music composition. I have played trumpet for many years but I now
+      mainly play piano, and a little bass. I went to a performing arts center for 5 years
+      where I was taught music theory and played in ensembles.
+    instructions: |-
+      Listen or read this article.
+    order: 1
+  - name: Like This
+    artist: Brylan L
+    location: Oakland, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/brylan-lundy-like-this/s-rBfIDCYbTz8
+    imageUrl: data/music/images/genius/5 Brylan.jpeg
+    content: |-
+        Bio: This is my first go round with making music. I feel pretty confident in this
+        song.
+    instructions: |-
+      Listen or read this article.
+    order: 2
+  - name: Elevator Pitch
+    artist: Elijah Hynson
+    location: Oakland, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/elijah-hynson-elevator-pitch/s-fp59gh8ttLg?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/6 Elijah.jpg
+    content: |-
+      Bio: Interested in all aspects of multimedia art, whether it be music, drawing or
+      writing, Elijah Hynson is a man who likes to dabble in things. Mainly wanting to
+      become a game designer, Elijah produces music as a hobby and the song,
+      "Elevator Pitch" is his first real project. His goal is to use his art, whatever form it
+      may be, as a platform to both engage and educate his audience.
+    instructions: |-
+      Listen or read this article.
+    order: 3
+  - name: N/A
+    artist: Reezusls
+    location: Oakland, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/reezusls-real-you/s-bYoLWTupfdg?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/7 Reezusls.jpg
+    content: |-
+      Bio: My name is Reginald aka Reezus Lost Star. I've been messing with music for
+      as long as I can remember and started taking it serious about 5 years ago. I hope
+      to change the world through art.
+    instructions: |-
+      Listen or read this article.
+    order: 4
+  - name: Nothing Gonna Stop Us Now
+    artist: Sonny B
+    location: Oakland, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/sonny-nothing-gonna-stop-us/s-sl6Qh5f37fv?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/2 - Sonny.jpeg
+    content: |-
+      Bio: My name is Usean Redic and I am 19 years old. I attend the University of
+      California, Irvine, and I major in biological sciences/neurobiology and plan to
+      minor in music composition. I have played trumpet for many years but I now
+      mainly play piano, and a little bass. I went to a performing arts center for 5 years
+      where I was taught music theory and played in ensembles.
+    instructions: |-
+      Listen or read this article.
+    order: 5
+  - name: Fight For Us
+    artist: Zaire
+    location: Richmond, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/zaire-garza-fight-for-us/s-o3ZnmpqzSmL?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/4 Zaire.JPG
+    content: |-
+      Bio: I am an aspiring music artist and producer. I like to make my own beats and
+      apply lyrics to it to create my own songs.
+    instructions: |-
+      Listen or read this article.
+    order: 6
 prerequisites: 
 - welcome_quest
 visibleAtAge: 1
