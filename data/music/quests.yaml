@@ -34,27 +34,6 @@ stages:
   type: video
   youtubeVideoId: i9h3swxmM5c
   order: 0
-quiz:
-- name: Welcome Quiz!
-  subtitle: |-
-    We want to know about your previous musical knowlege you may have! Please answer each question to the best of your ability.
-  questions:
-    - id: welcomequiz 
-      name: Have you ever created your own song?
-      placeholder: |-
-        Yes or No?
-      values:
-        - No I have Not
-        - Yes I have
-      type: picklist
-    - id: testSelect
-      name: What's the scale you liked most?
-      placeholder: |-
-        Select mood here
-      values:
-        - major
-        - minor
-      type: picklist
 prerequisites: []
 visibleAtAge: 0
 
