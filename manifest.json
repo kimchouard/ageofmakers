@@ -33,8 +33,7 @@
         "https://www.globalgoals.org/*",
         "https://worldslargestlesson.globalgoals.org/*",
         "https://www.bandlab.com/*",
-        "https://www.npr.org/*",
-        "https://*/*"
+        "https://www.npr.org/*"
       ],
       "css": [],
       "js": ["content.js"]
