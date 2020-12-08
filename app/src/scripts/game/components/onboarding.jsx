@@ -115,10 +115,12 @@ class Onboarding extends Component {
               className="player-name form-control"
               required
               />
-              { this.renderCancelButton() }
+            <div className="legalTerms">By continuing, you agree to Age of Makers’ <a href="" target="_blank">Terms of Use</a> and <a href="" target="_blank">Privacy Policy</a>.<br />
+            </div>
+            { this.renderCancelButton() }
             <input type="submit" className="btn btn-primary btn-login" value="Let's do it!" onClick={(e) => { return this.startNewUserCreation(e); }}/>
             <div className="clear-both"></div>
-          </form>;
+          </form>
         }
         else if (this.props.activePlayerData && !this.props.activePlayerData.journey) {
           return <div>
