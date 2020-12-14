@@ -65,7 +65,7 @@ body {
     line-height: 4rem;
 }
 
-@media screen and (max-width:48em) {
+@media screen and (max-width:47em) {
     .main {
         padding-top: 20%;
     }
@@ -81,7 +81,7 @@ body {
 }
 
 .cta .btn {
-    margin: 0 auto 130px;
+    margin: 0 auto 115px;
     padding: 12px 35px;
 }
 
@@ -107,7 +107,7 @@ body {
     background-color: #F7F7F7;
     color: #16325C;
     padding: 2rem;
-    padding-bottom: 5rem;
+    padding-bottom: 3.5rem;
     position: relative;
     z-index: 50;
     flex-shrink: 0;
