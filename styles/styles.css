@@ -35,63 +35,13 @@ body {
 
 .header {
     padding-top: 20px;
+    position: relative;
+    z-index: 60;
 }
 
 .logo {
     max-width: 100%;
     padding: 0 40px;
-}
-
-/* ==============================
-        FOOTER
-============================== */
-
-.footer {
-    background-color: #F7F7F7;
-    color: #16325C;
-    padding: 2rem;
-    padding-bottom: 5rem;
-    position: relative;
-    z-index: 50;
-    flex-shrink: 0;
-}
-
-.footer-sfdc-logo {
-    margin-bottom: 20px;
-}
-
-.copyrights {
-    font-size: 0.9rem;
-}
-
-.footer h4 {
-    font-size: 1.2rem;
-    margin-top: 0;
-    margin-bottom: 24px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-dl, ol, ul {
-    list-style: none;
-    margin-top: 0;
-    padding-left: 0
-}
-
-.footer li {
-    list-style: none;
-    margin: 0;
-}
-
-.footer li a {
-    color: #707070;
-    font-size: 1.1rem;
-}
-
-.footer li a:hover {
-    color: #02a0e0;
-    background: #def1fa;
-    text-decoration: none;
 }
 
 /* ==============================
@@ -115,19 +65,90 @@ dl, ol, ul {
     line-height: 4rem;
 }
 
+@media screen and (max-width:48em) {
+    .main {
+        padding-top: 20%;
+    }
+
+    .welcome {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+    }
+
+    .punchline {
+        font-size: 1.2rem;
+    }
+}
+
+.cta .btn {
+    margin: 0 auto 130px;
+    padding: 12px 35px;
+}
+
 .btn-beta {
     background-color: #D35446;
-    margin: 0 auto 40px;
 }
 
 .btn-beta-soon {
     background-color: #8A8A8A;
-    margin: 0 auto 40px;
-    padding: 12px 35px;
     color: white;
     cursor: wait !important;
 }
 
 .btn-beta-soon:hover {
     color: white;
+}
+
+/* ==============================
+        FOOTER
+============================== */
+
+.footer {
+    background-color: #F7F7F7;
+    color: #16325C;
+    padding: 2rem;
+    padding-bottom: 5rem;
+    position: relative;
+    z-index: 50;
+    flex-shrink: 0;
+}
+
+.footer-sfdc-logo {
+    margin-bottom: 20px;
+}
+
+.copyrights {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+.footer h4 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+dl, ol, ul {
+    list-style: none;
+    margin-top: 0;
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+
+.footer li {
+    list-style: none;
+    margin: 0;
+}
+
+.footer li a {
+    color: #707070;
+    font-size: 1.1rem;
+}
+
+.footer li a:hover {
+    color: #02a0e0;
+    background: #def1fa;
+    text-decoration: none;
 }
