@@ -1,41 +1,108 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap');
 
-html {
+html, body {
     width: 100%;
     height: 100%;
-    background: #222;
-}
-
-html, body {
+    background: #000;
     font-family: 'Open Sans', sans-serif;
     padding: 0;
     margin: 0;
-    color: #464646;
+    color: #fff;
 }
 
 body {
-    background: #eee7c8;
+  display: flex;
+  flex-direction: column;
 }
 
-.footer {
-    background-color: #222;
-    text-align: center;
-    color: white;
-    padding-top: 1rem;
+.background-map {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    bottom: 0;
+    background:url('../images/map-music-0.png') center center no-repeat;
+    filter: blur(5px);
+
 }
 
-.btn-beta {
-    background-color: #D35446;
-    margin: 0 auto 40px;
-}
+/* ==============================
+        HEADER
+============================== */
 
-.main {
-    padding-top: 5%;
+.header {
+    padding-top: 20px;
 }
 
 .logo {
     max-width: 100%;
     padding: 0 40px;
+}
+
+/* ==============================
+        FOOTER
+============================== */
+
+.footer {
+    background-color: #F7F7F7;
+    color: #16325C;
+    padding: 2rem;
+    padding-bottom: 5rem;
+    position: relative;
+    z-index: 50;
+    flex-shrink: 0;
+}
+
+.footer-sfdc-logo {
+    margin-bottom: 20px;
+}
+
+.copyrights {
+    font-size: 0.9rem;
+}
+
+.footer h4 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+dl, ol, ul {
+    list-style: none;
+    margin-top: 0;
+    padding-left: 0
+}
+
+.footer li {
+    list-style: none;
+    margin: 0;
+}
+
+.footer li a {
+    color: #707070;
+    font-size: 1.1rem;
+}
+
+.footer li a:hover {
+    color: #02a0e0;
+    background: #def1fa;
+    text-decoration: none;
+}
+
+/* ==============================
+        MAIN
+============================== */
+
+.main {
+    flex: 1 0 auto;
+    padding-top: 10%;
+    position: relative;
+    z-index: 40;
 }
 
 .punchline {
@@ -44,29 +111,23 @@ body {
     font-size: 1.5rem;
 }
 
-.showcase {
-    /* position: fixed;
-    bottom: 0; */
-    width: 100%;
+.welcome {
+    line-height: 4rem;
 }
 
-.still, .animated {
-    position: absolute;
-    max-height: 84%;
-    top: 8%;
-    left: 14%;
+.btn-beta {
+    background-color: #D35446;
+    margin: 0 auto 40px;
 }
 
-.mbp {
-    width: 100%;
-    position: relative;
-    z-index: 15;
+.btn-beta-soon {
+    background-color: #8A8A8A;
+    margin: 0 auto 40px;
+    padding: 12px 35px;
+    color: white;
+    cursor: wait !important;
 }
 
-.still {
-    z-index: 5;
-}
-
-.animated {
-    z-index: 10;
+.btn-beta-soon:hover {
+    color: white;
 }

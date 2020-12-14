@@ -11,8 +11,8 @@
 
     <meta property="og:title" content="Age of Makers - Become an Independent Learner">
     <meta property="og:image" content="://ageofmakers.com/images/Game_UI_Showcase.png">
-    <meta property="og:description" content="Become an independent learner with the Age of Makers game, using music or new technologies as a force for positive change.">
-    <meta name="description" content="Become an independent learner with the Age of Makers game, using music or new technologies as a force for positive change.">
+    <meta property="og:description" content="Become an independent learner with the Age of Makers game, solving the world’s biggest challenges using arts & technology.">
+    <meta name="description" content="Become an independent learner with the Age of Makers game, solving the world’s biggest challenges using arts & technology.">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -20,43 +20,59 @@
     <link rel="manifest" href="/site.webmanifest">
   </head>
   <body>
-    <div class="container main">
+    <header class="container header">
         <div class="row justify-content-md-center">
-            <div class="col-lg-6">
-                <img class="logo" src="images/aom-logo.png" alt="Age of Makers Logo" />
+            <div class="col-lg-6 text-center">
+                <img class="logo" src="images/Age of Makers White Logo.svg" alt="Age of Makers Logo" />
             </div>
         </div> 
+    </header>
+
+    <div class="container main">
         <div class="row justify-content-md-center">
-            <div class="col-md-8">
+            <div class="col-md">
+                <h1 class="welcome text-center">Hi! 👋 <br />
+                Welcome to your new adventure 🚀</h1>
+
                 <p class="punchline">
-                    Become an <strong>independent learner</strong><br/>
-                    solving the <strong>world’s biggest challenges</strong><br/>
-                    using <strong>arts & technology</strong>.
+                    Become an independent learner with the Age of Makers game,<br/>
+                    solving the <strong>world’s biggest challenges</strong> using <strong>arts & technology</strong>.
                 </p>
             </div>
         </div> 
         <div class="row justify-content-md-center">
-            <a class="btn btn-lg btn-danger btn-beta" href="http://bit.ly/aom-game" target="_blank">Try the beta version!</a>
+            <a class="btn btn-lg btn-disabled btn-beta-soon" disabled>βeta coming soon!</a>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-lg-6">
-                <div class="showcase">
-                    <img class="animated" src="images/mfc_demo_screenonly.gif" alt="Age of Makers Animated Showcase" />
-                    <img class="still" src="images/Game_UI_Showcase.png" alt="Age of Makers Still Showcase" />
-                    <img class="mbp" src="images/Laptop.png" alt="Macbook Pro Showcase" />
+    <div class="footer container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md copyrights">
+                    <img src="/images/Salesforce-logo.svg" alt="Salesforce logo" class="footer-sfdc-logo">
+                    <p>Copyright © 2020 Salesforce.com, Inc.</p>
+                </div>
+                <div class="col-md-3 footer-links">
+                    <h4 class="footer-links-category">Age of Makers</h4>
+                    <ul>
+                        <li>
+                            <a href="mailto:ageofmakers@salesforce.com" rel="noopener">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-links">
+                    <h4 class="footer-links-category">Salesforce</h4>
+                    <ul>
+                        <li>
+                            <a href="https://www.salesforce.com/company/philanthropy/overview/" target="_blank" rel="noopener">Philanthropy</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid footer">
-        <div class="container">
-            <p>Age of Makers is an open-source project led by <a href="https://salesforce.com" target="_blank">Salesforce</a>.</p>
-        </div>
-    </div>
+    <div class="background-map"></div>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
