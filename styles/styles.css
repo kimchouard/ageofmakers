@@ -89,10 +89,12 @@ body {
     background-color: #D35446;
 }
 
-.btn-beta-soon {
+a.btn.btn-beta-soon {
     background-color: #8A8A8A;
     color: white;
-    cursor: wait !important;
+    /* cursor: wait !important; */
+    cursor: url("https://ageofmakers.herokuapp.com/images/eyes-facebook.png"), wait;
+    pointer-events:all;
 }
 
 .btn-beta-soon:hover {
