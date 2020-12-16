@@ -308,7 +308,7 @@ visibleAtAge: 0
 # Explore_the_world
 ---
 id: explore_the_world
-name: Explore Songs From Other Students
+name: Explore Songs From  SF Bay Area Students
 valley: changemaker
 content: |-
   In this quest, you'll find other students' songs that, like you, have gone through the game.
@@ -321,12 +321,12 @@ CTA: Listen to the Songs 🎧
 positionLeft: 68.5
 positionTop: 81.5
 stages:
-- name: Songs Artist Like You Have Created 
+- name: Songs From SF Bay Area Students 
   content: |-
 
   type: musicShowcase
   order: 0
-  requiredShowcaseViews: 2
+  requiredShowcaseViews: 0
   quiz:
     questions:
       - id: themes
@@ -350,8 +350,8 @@ stages:
   - name: Code switching
     artist: Lil Jerm
     location: Richmond, CA, USA
-    startUrl: https://soundcloud.com/kimik-by-night/jeremy-samuel-code-switching/s-CJeIIv97uH9?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
-    imageUrl: data/music/images/genius/Jeremy_Samuel.jpg
+    songId: 6dbf9ca1-b922-eb11-9fb4-501ac5b31de6
+    noActionBtn: true
     content: |-
       Bio: In the fall I am going to be a freshman at the University of Loyola in
       Maryland studying Computer Science. throughout my life I have played many
@@ -363,8 +363,8 @@ stages:
   - name: Embrace
     artist: Usean Redic
     location: Richmond, CA, USA
-    startUrl: https://soundcloud.com/kimik-by-night/usean-redic-embrace/s-WeEIH8wDoRT?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
-    imageUrl: data/music/images/genius/1 Usean Redic.jpg
+    songId: a13d9415-b922-eb11-9fb4-501ac5b31de6
+    noActionBtn: true
     content: |-
       Bio: My name is Usean Redic and I am 19 years old. I attend the University of
       California, Irvine, and I major in biological sciences/neurobiology and plan to
@@ -374,22 +374,11 @@ stages:
     instructions: |-
       Listen or read this article.
     order: 1
-  - name: Like This
-    artist: Brylan L
-    location: Oakland, CA, USA
-    startUrl: https://soundcloud.com/kimik-by-night/brylan-lundy-like-this/s-rBfIDCYbTz8
-    imageUrl: data/music/images/genius/5 Brylan.jpeg
-    content: |-
-        Bio: This is my first go round with making music. I feel pretty confident in this
-        song.
-    instructions: |-
-      Listen or read this article.
-    order: 2
   - name: Elevator Pitch
     artist: Elijah Hynson
     location: Oakland, CA, USA
-    startUrl: https://soundcloud.com/kimik-by-night/elijah-hynson-elevator-pitch/s-fp59gh8ttLg?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
-    imageUrl: data/music/images/genius/6 Elijah.jpg
+    songId: 656b75c6-b922-eb11-9fb4-501ac5b31de6
+    noActionBtn: true
     content: |-
       Bio: Interested in all aspects of multimedia art, whether it be music, drawing or
       writing, Elijah Hynson is a man who likes to dabble in things. Mainly wanting to
@@ -398,24 +387,35 @@ stages:
       may be, as a platform to both engage and educate his audience.
     instructions: |-
       Listen or read this article.
-    order: 3
+    order: 2
   - name: N/A
     artist: Reezusls
     location: Oakland, CA, USA
-    startUrl: https://soundcloud.com/kimik-by-night/reezusls-real-you/s-bYoLWTupfdg?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
-    imageUrl: data/music/images/genius/7 Reezusls.jpg
+    songId: 592d3028-ba22-eb11-9fb4-501ac5b31de6
+    noActionBtn: true
     content: |-
       Bio: My name is Reginald aka Reezus Lost Star. I've been messing with music for
       as long as I can remember and started taking it serious about 5 years ago. I hope
       to change the world through art.
     instructions: |-
       Listen or read this article.
+    order: 3
+  - name: Like This
+    artist: Brylan L
+    location: Oakland, CA, USA
+    songId: 798e38b4-ba22-eb11-9fb4-501ac5b31de6
+    noActionBtn: true
+    content: |-
+        Bio: This is my first go round with making music. I feel pretty confident in this
+        song.
+    instructions: |-
+      Listen or read this article.
     order: 4
   - name: Nothing Gonna Stop Us Now
     artist: Sonny B
     location: Oakland, CA, USA
-    startUrl: https://soundcloud.com/kimik-by-night/sonny-nothing-gonna-stop-us/s-sl6Qh5f37fv?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
-    imageUrl: data/music/images/genius/2 - Sonny.jpeg
+    songId: 37c80c71-ba22-eb11-9fb4-501ac5b31de6
+    noActionBtn: true
     content: |-
       Bio: My name is Usean Redic and I am 19 years old. I attend the University of
       California, Irvine, and I major in biological sciences/neurobiology and plan to
@@ -428,8 +428,8 @@ stages:
   - name: Fight For Us
     artist: Zaire
     location: Richmond, CA, USA
-    startUrl: https://soundcloud.com/kimik-by-night/zaire-garza-fight-for-us/s-o3ZnmpqzSmL?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
-    imageUrl: data/music/images/genius/4 Zaire.JPG
+    songId: 89be7295-ba22-eb11-9fb4-501ac5b31de6
+    noActionBtn: true
     content: |-
       Bio: I am an aspiring music artist and producer. I like to make my own beats and
       apply lyrics to it to create my own songs.
