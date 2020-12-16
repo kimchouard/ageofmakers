@@ -17,7 +17,6 @@ import Kanban from './kanban';
 import Video from './video';
 import Quiz from './quiz';
 import Markdown from './markdown';
-import AnalyticsProvider from './analyticsProvider';
 
 class List extends Component {
   constructor(props) {
@@ -209,7 +208,6 @@ class List extends Component {
           { this.renderQuestList() } 
         </div>
       </div>
-      <AnalyticsProvider />
     </div>
   }
 }

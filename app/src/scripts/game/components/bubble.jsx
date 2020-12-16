@@ -47,18 +47,6 @@ class Bubble extends Component {
   }
 
   startQuestBt(viewOrderId) {
-    // TODO: Send events to Google Analytics
-    // ga('send', {
-    //   hitType: 'event',
-    //   eventCategory: 'Quest',
-    //   eventAction: 'start',
-    //   eventLabel: this.props.activeQuestData.id,
-    //   hitCallback: () => {
-    //     console.log('Event sent to Google Analytics!');
-    //   }
-    // });
-    // _gaq.push(['_trackEvent', 'Quest', 'start']);
-
     this.setState({
       loading: true,
     });
