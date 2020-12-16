@@ -59,6 +59,19 @@ class Quiz extends Component {
     }
   }
 
+  musicQuizCompleted(questionId) {
+    if (questionId) {
+      let newQuestions = this.state.questions;
+      newQuestions[questionId] = true;
+      this.setState({
+        questions: newQuestions,
+      });
+    }
+    else {
+      console.error('Invalid event for onChange form', e);
+    }
+  }
+
   hasQuizResult() {
     // If the results are in the quiz data or passed directly in the quizResults parameter
     return this.props.quizData.results || this.props.quizResults;
@@ -162,7 +175,7 @@ class Quiz extends Component {
       return <form name="quiz" className={`form-group quizForm col-${ (this.needToRenderHelpers()) ? '8' : '12' }`} onSubmit={(e) => { this.submitQuestion(e); }}>
         { this.props.quizData.questions.map((question) => {
           if (question.type === quizAnswerTypes.MUSICTHEORY) {
-            return <MusicTheoryQuiz question={question} />
+            return <MusicTheoryQuiz question={question} musicQuizCompleted={() => { this.musicQuizCompleted(question.id) }} />
           } 
           else {
             let quizResult;
