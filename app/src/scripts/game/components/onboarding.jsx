@@ -80,9 +80,9 @@ class Onboarding extends Component {
       if (journey === 'music') {
         this.props.setActivePlayerJourney(journeyIds.JOURNEY_MUSIC);
       }
-      else if (journey === 'ftc') {
-        this.props.setActivePlayerJourney(journeyIds.JOURNEY_FTC);
-      }
+      // else if (journey === 'ftc') {
+      //   this.props.setActivePlayerJourney(journeyIds.JOURNEY_FTC);
+      // }
     }
 
     renderOnboarding() {
