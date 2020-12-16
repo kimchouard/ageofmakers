@@ -23,3 +23,5 @@ gulp watch # re-run the build as you're developing on the game and saving file c
 3. Click **Load unpacked**
 
 4. Select the "build" folder that gets build from gulp in your local github repo.
+
+5. Click on the puzzle icon and the Age of Maker Game will be available there!

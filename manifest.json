@@ -1,7 +1,7 @@
 {
   "name": "Age of Makers",
   "description": "Become an independent learner, using music or new technologies as a force for positive change.",
-  "version": "1.6.2.0",
+  "version": "1.6.2.1",
   "background": {
     "scripts": [
       "event.js"
@@ -14,7 +14,7 @@
     "default_title": "Age of Makers"
   },
 
-  "content_security_policy": "script-src 'self' https://unpkg.com/leaflet@1.3.0/dist/leaflet.js https://ssl.google-analytics.com https://www.youtube.com/iframe_api https://s.ytimg.com/; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://unpkg.com/leaflet@1.3.0/dist/leaflet.js https://ssl.google-analytics.com https://www.youtube.com/ https://s.ytimg.com/; object-src 'self'",
 
   "content_scripts": [
     {
@@ -33,8 +33,7 @@
         "https://www.globalgoals.org/*",
         "https://worldslargestlesson.globalgoals.org/*",
         "https://www.bandlab.com/*",
-        "https://www.npr.org/*",
-        "https://*/*"
+        "https://www.npr.org/*"
       ],
       "css": [],
       "js": ["content.js"]

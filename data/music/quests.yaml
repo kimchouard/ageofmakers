@@ -91,7 +91,7 @@ stages:
     startUrl: https://www.npr.org/2019/08/26/753511135/kendrick-lamar-alright-american-anthem-party-protest
     content: |-
       Both Party And Protest, 'Alright' Is The Sound Of Black Life's Duality.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/08/22/gettyimages-478920136_custom-246236ac58056dd18e0ae106f108c5c71c44101e-s1100-c15.jpg
     historicalContext: Released on June 30, 2015.
     instructions: |-
       Listen or read this article.
@@ -101,7 +101,7 @@ stages:
     startUrl: https://www.npr.org/2019/01/30/687683804/lady-gaga-born-this-way-lgbt-american-anthem
     content: |-
       How 'Born This Way' Was Born: An LGBT Anthem's Pedigree.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/01/29/gettyimages-144943113_custom-0ffe2f0ac0e41266cbc2b544d478cbf42e4431b8-s1600-c85.jpg
     historicalContext: 2011
     instructions: |-
       Listen or read this article.
@@ -111,7 +111,7 @@ stages:
     startUrl: https://www.npr.org/2019/09/24/763518201/gloria-gaynor-i-will-survive-american-anthem
     content: |-
       'I Will Survive' Saves Marginalized People A Spot On The Dance Floor
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/09/24/gettyimages-74272076_custom-583e50d2d4c5b3d25113aac79b8920da64893735-s1600-c85.jpg
     historicalContext: October 1978
     instructions: |-
       Listen or read this article.
@@ -121,7 +121,7 @@ stages:
     startUrl: https://www.npr.org/2018/08/16/638324920/american-anthem-lift-every-voice-and-sing-black-national-anthem
     content: |-
       Till Victory Is Won: The Staying Power Of 'Lift Every Voice And Sing'.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2018/08/15/gettyimages-946418390_custom-48637fdac841dc840fb98d734deaf55098ac1a65-s1600-c85.jpg
     historicalContext: Originally written by James Weldon Johnson in 1905.
       Covered by Beyonce at Coachela in 2018.
     instructions: |-
@@ -132,7 +132,7 @@ stages:
     startUrl: https://www.npr.org/2018/09/24/650548856/american-anthem-the-times-they-are-a-changin
     content: |-
       The Times They Are 'A-Changin'" Still Speaks To Our Changing Times
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2018/09/21/gettyimages-937434702_custom-055f02803840dce94bb792c973fcabcbd41e5979-s1600-c85.jpg
     historicalContext: Originally released in 1963, but sang many times since then.
     instructions: |-
       Listen or read this article.
@@ -142,7 +142,7 @@ stages:
     startUrl: https://www.npr.org/2019/01/08/683021559/nina-simone-to-be-young-gifted-and-black-american-anthem
     content: |-
       Nina Simone's 'Lovely, Precious Dream' For Black Children.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/01/07/gettyimages-84881616-03ab633d81b595ec59f2e87bea1953cd65cd2520-s1600-c85.jpg
     historicalContext: 1969
     instructions: |-
       Listen or read this article.
@@ -152,7 +152,7 @@ stages:
     startUrl: https://www.npr.org/2019/03/14/702792467/woody-guthrie-this-land-is-your-land-american-anthem
     content: |-
       How 'This Land Is Your Land' Roamed And Rambled Into American Life.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/03/14/woodyguthrie_3_photobyalaumuller_courtesyofwoodyguthriearchives_wide-a1ea68e46e795097052ff2a9da6f81182f1249f4-s1600-c85.jpg
     historicalContext: 1940
     instructions: |-
       Listen or read this article.
@@ -162,7 +162,7 @@ stages:
     startUrl: https://www.npr.org/2018/10/14/655833317/la-bamba-american-anthem-ritchie-valens-los-lobos-survival
     content: |-
       Through Slavery, Segregation And More, 'La Bamba' Has Been The Sound Of Survival.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2018/10/12/c5d_7563_custom-821af65120b087dd6b116392fa10e8a73df9b923-s1600-c85.jpg
     historicalContext: 1987
     instructions: |-
       Listen or read this article.
@@ -172,7 +172,7 @@ stages:
     startUrl: https://www.npr.org/2018/10/24/651795560/i-am-woman-helen-reddy-american-anthem-hear-them-roar
     content: |-
       You're Gonna Hear Them Roar: 'I Am Woman' Is An Anthem Beyond Its Era.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2018/10/23/gettyimages-85047795_custom-8fa53d106f10115cfc51ae344183570447be08a6-s1600-c85.jpg
     historicalContext: 1970
     instructions: |-
       Listen or read this article.
@@ -182,7 +182,7 @@ stages:
     startUrl: https://www.npr.org/2018/10/08/651794925/sylvester-you-make-me-feel-mighty-real-american-anthem-disco-celebration
     content: |-
       Bigger Than Disco, 'You Make Me Feel (Mighty Real)' Is A Celebration Of Self.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2018/09/26/gettyimages-150003193-eeb5e7c874155489cba01a7fe6866fe102830975-s1600-c85.jpg
     historicalContext: 1978
     instructions: |-
       Listen or read this article.
@@ -192,7 +192,7 @@ stages:
     startUrl: https://www.npr.org/2018/11/29/671688096/the-story-of-whittier-blvd-a-song-and-place-where-latino-youth-found-each-other
     content: |-
       The Story Of 'Whittier Blvd.,' A Song And Place Where Latino Youth Found Each Other.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2018/11/28/2_custom-1158eedbaeabe283173983118188de15f586fc91-s1600-c85.jpg
     historicalContext: 1965
     instructions: |-
       Listen or read this article.
@@ -202,7 +202,7 @@ stages:
     startUrl: https://www.npr.org/2019/01/14/683694934/milck-quiet-womens-march-american-anthem
     content: |-
       A Song Called 'Quiet' Struck A Chord With Women. Two Years Later, It's Still Ringing.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/01/14/20170206-2331choirchoirchoir-pheonix-andrewwilliamson9723_custom-cd09488d0503de69774f057cdaadcb562247bd5c-s1600-c85.jpg
     historicalContext: 2015
     instructions: |-
       Listen or read this article.
@@ -212,7 +212,7 @@ stages:
     startUrl: https://www.npr.org/2019/02/01/689703447/tlc-no-scrubs-20-years-american-anthem.
     content: |-
       Oh Yes Son, They're Talking To You: 20 Years Of 'No Scrubs'.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/01/31/gettyimages-51688859-534fd7fb6dd6eaada18243d8d0e219cecadc4021-s1600-c85.jpg
     historicalContext: 1999
     instructions: |-
       Listen or read this article.
@@ -222,7 +222,7 @@ stages:
     startUrl: https://www.npr.org/2019/02/20/693790065/buffalo-springfield-for-what-its-worth-american-anthem
     content: |-
       A Thousand People In The Street: 'For What It's Worth' Captured Youth In Revolt and Became iconic Vietnam War Protest Anthem.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/02/19/gettyimages-166749669-7c2a520ac43dce6dbd0850863d165751bd9ebda2-s1600-c85.jpg
     historicalContext: 1967
     instructions: |-
       Listen or read this article.
@@ -232,7 +232,7 @@ stages:
     startUrl: https://www.npr.org/2019/02/22/697075534/a-sprawling-blueprint-for-protest-music-courtesy-of-the-jazz-duke
     content: |-
       A Sprawling Blueprint For Protest Music, Courtesy Of The Jazz Duke.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/02/22/gettyimages-3171146-bf74690fc44f6cab8857791e31b98329741e7dbd-s1600-c85.jpg
     historicalContext: 1943
     instructions: |-
       Listen or read this article.
@@ -242,7 +242,7 @@ stages:
     startUrl: https://www.npr.org/2019/03/26/706566556/bruce-springsteen-born-in-the-usa-american-anthem
     content: |-
       What Does 'Born In The U.S.A.' Really Mean?.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/03/25/gettyimages-593364063_custom-600a4b27fa8548fb075bf573c2ba51d3d443d193-s1600-c85.jpg
     historicalContext: 1984
     instructions: |-
       Listen or read this article.
@@ -252,7 +252,7 @@ stages:
     startUrl: https://www.npr.org/2019/05/29/726615663/geto-boys-mind-playing-tricks-on-me-anxiety-american-anthem
     content: |-
       Stressed Out: How 'Mind Playing Tricks On Me' Gave Anxiety A Home In Hip-Hop.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/05/28/gettyimages-476887526_custom-55e97f121984ab5df0f98c278b310a3ce442e55d-s1600-c85.jpg
     historicalContext: 1991
     instructions: |-
       Listen or read this article.
@@ -262,7 +262,7 @@ stages:
     startUrl: https://www.npr.org/2019/08/12/749456007/kathleen-hanna-bikini-kill-rebel-girl-rock-camp-american-anthem
     content: |-
       Fascination, Friendship And Desire: Kathleen Hanna On The Reign Of 'Rebel Girl'
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/08/08/180907_kathleen_hanna_007-copy-c1da7b37267cc0703fe18e26e000f5897a761e1b-s1600-c85.jpg
     historicalContext: 1993
     instructions: |-
       Listen or read this article.
@@ -272,7 +272,7 @@ stages:
     startUrl: https://www.npr.org/2019/08/02/745375571/curtis-mayfield-the-impressions-were-a-winner-american-anthem
     content: |-
       'We're A Winner' Married Black Pride To An Irresistible Beat.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2019/07/25/gettyimages-85355926-56b9b01913cac5783647ff6a2bd1f05a157e1a53-s1600-c85.jpg
     historicalContext: 1967
     instructions: |-
       Listen or read this article.
@@ -282,7 +282,7 @@ stages:
     startUrl: https://www.npr.org/2018/12/07/673845242/fight-the-power-american-anthem-public-enemy-isley-brothers
     content: |-
       A Tale Of 2 Anthems (With The Same Name).
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://i.ytimg.com/vi/bScwXhbY5VM/maxresdefault.jpg
     historicalContext: The Isley Brothers (1975) & Public Enemy (1989)
     instructions: |-
       Listen or read this article.
@@ -292,7 +292,7 @@ stages:
     startUrl: https://www.npr.org/2013/02/06/171182973/how-detroits-sugar-man-became-south-africas-superstar
     content: |-
       How A Detroit Flop Became South Africa's Superstar.
-    imageUrl: data/music/images/audio_article_banner.png
+    imageUrl: https://media.npr.org/assets/img/2013/02/06/sugarman-b7035891e9338b333ce66b1d430708f9c1d39a35-s600-c85.jpg
     historicalContext: 1970, during the South Africa's social movements.
     instructions: |-
       Listen or read this article.
@@ -300,6 +300,146 @@ stages:
 prerequisites: 
 - welcome_quest
 visibleAtAge: 0
+
+
+
+# -------------------------------------------------------
+# Explore the world of artist like you
+# Explore_the_world
+---
+id: explore_the_world
+name: Explore Songs From Other Students
+valley: changemaker
+content: |-
+  In this quest, you'll find other students' songs that, like you, have gone through the game.
+  
+  The songs featured in this quest are made from alumni of the Hidden Genius Project, in the **California Bay Area**.
+
+  Spend some time listening and figuring out what social justice movements each covers. These songs should give you an idea of what your songs could look like at the end of the game! (but yours can also be much different ;) 
+type: embedded
+CTA: Listen to the Songs 🎧
+positionLeft: 68.5
+positionTop: 81.5
+stages:
+- name: Songs Artist Like You Have Created 
+  content: |-
+
+  type: musicShowcase
+  order: 0
+  requiredShowcaseViews: 2
+  quiz:
+    questions:
+      - id: themes
+        name: What injustice(s) did the song help shine a light on?
+        placeholder: |-
+          Examples: Racial Injustice, LGBT rights, police brutality, Environmental Justice, Colorism...
+        examples: |-
+            **Notes:** In many cases, a song might be used to aid social movement even if it wasn’t part of the original intention of the artist.
+        type: freetext
+      - id: message
+        name: What is one “take home message” you think the artist wanted people to understand from this song?
+        placeholder: |-
+          Example: Despite how though it is and all the barriers, we’re going to be alright.
+        type: freetext
+      - id: action
+        name: What *feeling(s)* do you think the artist wanted the audience to have?
+        placeholder: |-
+          Examples: Anger, Happiness, Hopeful...
+        type: freetext
+  showcaseItems:
+  - name: Code switching
+    artist: Lil Jerm
+    location: Richmond, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/jeremy-samuel-code-switching/s-CJeIIv97uH9?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/Jeremy_Samuel.jpg
+    content: |-
+      Bio: In the fall I am going to be a freshman at the University of Loyola in
+      Maryland studying Computer Science. throughout my life I have played many
+      instruments including drums, trumpet, piano, and bass guitar. During Highschool I
+      lead my schools pep band and also played drums in the jazz band.
+    instructions: |-
+      Listen or read this article.
+    order: 0
+  - name: Embrace
+    artist: Usean Redic
+    location: Richmond, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/usean-redic-embrace/s-WeEIH8wDoRT?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/1 Usean Redic.jpg
+    content: |-
+      Bio: My name is Usean Redic and I am 19 years old. I attend the University of
+      California, Irvine, and I major in biological sciences/neurobiology and plan to
+      minor in music composition. I have played trumpet for many years but I now
+      mainly play piano, and a little bass. I went to a performing arts center for 5 years
+      where I was taught music theory and played in ensembles.
+    instructions: |-
+      Listen or read this article.
+    order: 1
+  - name: Like This
+    artist: Brylan L
+    location: Oakland, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/brylan-lundy-like-this/s-rBfIDCYbTz8
+    imageUrl: data/music/images/genius/5 Brylan.jpeg
+    content: |-
+        Bio: This is my first go round with making music. I feel pretty confident in this
+        song.
+    instructions: |-
+      Listen or read this article.
+    order: 2
+  - name: Elevator Pitch
+    artist: Elijah Hynson
+    location: Oakland, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/elijah-hynson-elevator-pitch/s-fp59gh8ttLg?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/6 Elijah.jpg
+    content: |-
+      Bio: Interested in all aspects of multimedia art, whether it be music, drawing or
+      writing, Elijah Hynson is a man who likes to dabble in things. Mainly wanting to
+      become a game designer, Elijah produces music as a hobby and the song,
+      "Elevator Pitch" is his first real project. His goal is to use his art, whatever form it
+      may be, as a platform to both engage and educate his audience.
+    instructions: |-
+      Listen or read this article.
+    order: 3
+  - name: N/A
+    artist: Reezusls
+    location: Oakland, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/reezusls-real-you/s-bYoLWTupfdg?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/7 Reezusls.jpg
+    content: |-
+      Bio: My name is Reginald aka Reezus Lost Star. I've been messing with music for
+      as long as I can remember and started taking it serious about 5 years ago. I hope
+      to change the world through art.
+    instructions: |-
+      Listen or read this article.
+    order: 4
+  - name: Nothing Gonna Stop Us Now
+    artist: Sonny B
+    location: Oakland, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/sonny-nothing-gonna-stop-us/s-sl6Qh5f37fv?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/2 - Sonny.jpeg
+    content: |-
+      Bio: My name is Usean Redic and I am 19 years old. I attend the University of
+      California, Irvine, and I major in biological sciences/neurobiology and plan to
+      minor in music composition. I have played trumpet for many years but I now
+      mainly play piano, and a little bass. I went to a performing arts center for 5 years
+      where I was taught music theory and played in ensembles.
+    instructions: |-
+      Listen or read this article.
+    order: 5
+  - name: Fight For Us
+    artist: Zaire
+    location: Richmond, CA, USA
+    startUrl: https://soundcloud.com/kimik-by-night/zaire-garza-fight-for-us/s-o3ZnmpqzSmL?in=kimik-by-night/sets/music-for-change-summer-20-hidden-genius-project-finalist/s-o1tCwRRPRr7
+    imageUrl: data/music/images/genius/4 Zaire.JPG
+    content: |-
+      Bio: I am an aspiring music artist and producer. I like to make my own beats and
+      apply lyrics to it to create my own songs.
+    instructions: |-
+      Listen or read this article.
+    order: 6
+prerequisites: 
+- welcome_quest
+visibleAtAge: 1
+
 
 
 
@@ -623,6 +763,28 @@ stages:
     icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
     youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
   order: 0
+quiz:
+  name: Practice Finding a Scale
+  subtitle: |-
+    Practice your new music theory knowledge based on the video you just watched!
+  questions:
+    - id: notesinscale
+      name: How many notes is there in a scale?
+      placeholder: |-
+        Type a number here
+      type: number
+    - id: testSelect
+      name: What's the scale you liked most?
+      placeholder: |-
+        Select mood here
+      values:
+        - major
+        - minor
+      type: picklist
+      # TODO ==> ubild a select more for quiz
+    - id: scale
+      name: Find all the notes in the minor & major scales using 3 different keys
+      type: musictheory
 visibleAtAge: 2
 prerequisites:
 - music_theory_intro
@@ -1398,7 +1560,7 @@ prerequisites:
 # lyrics_free_writing
 --- 
 id: lyrics_free_writing
-name: What's On Your Mind?
+name: Free Write Your Thoughts
 valley: lyrics
 content: |-
   Time to put words to your vision!

@@ -91,12 +91,23 @@
             border-bottom: 2px solid $grey-light;
             text-align: center;
             font-size: 24px;
-            margin: 20px 0 15px;
+            margin: 20px 0 10px;
             padding: 8px 0 5px;
             color: $grey;
 
             &:focus {
               outline: none;
+            }
+          }
+
+          .legalTerms {
+            padding: 0px 0 20px;
+            color: $grey-light;
+            font-size: 0.9rem;
+
+            a {
+              color: $grey-light;
+              font-weight: bold;
             }
           }
         }

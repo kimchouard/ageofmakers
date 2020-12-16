@@ -11,6 +11,7 @@ import { bindActionCreators } from 'redux';
 import { } from '../../../actions/index';
 import { quizAnswerTypes } from '../../_utils';
 import Markdown from './markdown';
+import MusicTheoryQuiz from './musicTheoryQuiz';
 
 class Quiz extends Component {
   constructor(props) {
@@ -160,57 +161,86 @@ class Quiz extends Component {
     if (this.props.quizData.questions) {
       return <form name="quiz" className={`form-group quizForm col-${ (this.needToRenderHelpers()) ? '8' : '12' }`} onSubmit={(e) => { this.submitQuestion(e); }}>
         { this.props.quizData.questions.map((question) => {
-          let quizResult;
-          if (this.hasQuizResult()) {
-            quizResult = this.getQuizResults(question.id);
-          }
+          if (question.type === quizAnswerTypes.MUSICTHEORY) {
+            return <MusicTheoryQuiz question={question} />
+          } 
+          else {
+            let quizResult;
+            if (this.hasQuizResult()) {
+              quizResult = this.getQuizResults(question.id);
+            }
 
-          let inputHtml;
-          if (question.type === quizAnswerTypes.FREETEXT || question.type === quizAnswerTypes.FREETEXTLONG) {
-            inputHtml = <textarea 
-              placeholder={question.placeholder}
-              id={question.id}
-              className="form-control"
-              required={ !question.optional }
-              value={ this.getQuizValue(question.id, quizResult) } 
-              onChange={ (e) => { this.handleFormChange(e); } }
-              rows={ (this.props.inline) ? (question.type === quizAnswerTypes.FREETEXTLONG) ? "10" : "3" : (question.type === quizAnswerTypes.FREETEXTLONG) ? "20" : "5" }
-              disabled={ this.isDisabled(quizResult) }
-            />
-          }
-          else if (question.type === quizAnswerTypes.SMALLTEXT || question.type === quizAnswerTypes.URL) {
-            inputHtml = <input 
-              placeholder={question.placeholder}
-              id={question.id}
-              className="form-control"
-              required={ !question.optional }
-              value={ this.getQuizValue(question.id, quizResult) } 
-              onChange={ (e) => { this.handleFormChange(e); } }
-              type={ (question.type === quizAnswerTypes.URL) ? 'url' : 'text' }
-              disabled={ this.isDisabled(quizResult) }
-            />
-          }
+            let inputHtml;
+            if (question.type === quizAnswerTypes.FREETEXT || question.type === quizAnswerTypes.FREETEXTLONG) {
+              inputHtml = <textarea 
+                placeholder={question.placeholder}
+                id={question.id}
+                className="form-control"
+                required={ !question.optional }
+                value={ this.getQuizValue(question.id, quizResult) } 
+                onChange={ (e) => { this.handleFormChange(e); } }
+                rows={ (this.props.inline) ? (question.type === quizAnswerTypes.FREETEXTLONG) ? "10" : "3" : (question.type === quizAnswerTypes.FREETEXTLONG) ? "20" : "5" }
+                disabled={ this.isDisabled(quizResult) }
+              />
+            }
+            else if (question.type === quizAnswerTypes.SMALLTEXT || question.type === quizAnswerTypes.NUMBER || question.type === quizAnswerTypes.URL) {
+              inputHtml = <input 
+                placeholder={question.placeholder}
+                id={question.id}
+                className="form-control"
+                required={ !question.optional }
+                value={ this.getQuizValue(question.id, quizResult) } 
+                onChange={ (e) => { this.handleFormChange(e); } }
+                type={ (question.type === quizAnswerTypes.URL) ? 'url' : (question.type === quizAnswerTypes.NUMBER) ? 'number' : 'text' }
+                disabled={ this.isDisabled(quizResult) }
+              />
+            }
+            else if (question.type === quizAnswerTypes.PICKLIST) {
+              inputHtml = <input 
+                placeholder={question.placeholder}
+                id={question.id}
+                className="form-control"
+                required={ !question.optional }
+                value={ this.getQuizValue(question.id, quizResult) } 
+                onChange={ (e) => { this.handleFormChange(e); } }
+                type={ (question.type === quizAnswerTypes.URL) ? 'url' : 'text' }
+                disabled={ this.isDisabled(quizResult) }
+              />
+              inputHtml = <select 
+                id={question.id}
+                className="form-control"
+                required={ !question.optional }
+                value={ this.getQuizValue(question.id, quizResult) }
+                onChange={ (e) => { this.handleFormChange(e); } }
+                disabled={ this.isDisabled(quizResult) }
+              >
+                { question.values.map((value) => {
+                  return <option value={value}>{value}</option>
+                }) }
+              </select>
+            }
 
-          return <div className="form-group question row" key={question.id}>
-            <label
-              htmlFor={question.id}
-              className={
-                `col-md-${(this.props.inline || question.type === quizAnswerTypes.FREETEXTLONG) ? '12': '3'}
-                ${ (question.type === quizAnswerTypes.FREETEXTLONG) ? 'text-left' : '' }
-                col-form-label
-                ${ (question.optional) ? '' : 'required' }`
-              }
-              title={question.name}
-            >
-              <Markdown mdContent={question.name} />
-            </label>
-            <div className={ `col-md-${(this.props.inline || question.type === quizAnswerTypes.FREETEXTLONG) ? '12': '9'}` }>
-              { this.renderContentHelp(question.instructions) }
-              { inputHtml }
-              { this.renderContentHelp(question.examples) }
-              { this.renderQuestionHelpers(question) }
+            return <div className="form-group question row" key={question.id}>
+              <label
+                htmlFor={question.id}
+                className={
+                  `col-md-${(this.props.inline || question.type === quizAnswerTypes.FREETEXTLONG) ? '12': '3'}
+                  ${ (question.type === quizAnswerTypes.FREETEXTLONG) ? 'text-left' : '' }
+                  col-form-label
+                  ${ (question.optional) ? '' : 'required' }`
+                }
+                title={question.name}
+              >
+                <Markdown mdContent={question.name} />
+              </label>
+              <div className={ `col-md-${(this.props.inline || question.type === quizAnswerTypes.FREETEXTLONG) ? '12': '9'}` }>
+                { this.renderContentHelp(question.instructions) }
+                { inputHtml }
+                { this.renderContentHelp(question.examples) }
+                { this.renderQuestionHelpers(question) }
+              </div>
             </div>
-          </div>
+          }
         }) }
 
         { this.renderSubmitBtn() }
@@ -231,7 +261,7 @@ class Quiz extends Component {
   }
   render() {
     if (this.props.quizData) {
-      return <div className={ `row quizWrapper ${(this.props.inline) ? 'inline': 'embedded'} ${ (this.hasQuizResult()) ? 'quizResults' : ''}`}>
+      return <div className={ `col-12 quizWrapper ${(this.props.inline) ? 'inline': 'embedded'} ${ (this.hasQuizResult()) ? 'quizResults' : ''}`}>
         { (this.props.inline && !this.hasQuizResult()) ? <div className="quizHeader col-12">Answer these questions to complete the quest.</div> : ''}
         { this.renderQuestions() }
         { this.renderHelpers() }
