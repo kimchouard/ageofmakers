@@ -327,7 +327,7 @@ export const getQuestUrl = (activeQuestData, journey) => {
       return targetQuestData.quiz.results[activeQuestData.startUrl.questionId] || activeQuestData.startUrl.fallbackUrl;
     }
     else {
-      console.error('Can not find related quest & question', activeQuestData.startUrl, questData);
+      console.error('Can not find related quest & question', activeQuestData.startUrl);
     }
 
     // If anything else fails, go to the fallback url
