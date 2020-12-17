@@ -1,8 +1,10 @@
-![Age of Makers Logo](https://raw.githubusercontent.com/salesforce/ageofmakers/master/images/Age_of_Makers_full_m.png?token=AAVZPWYZWN2LP52QOKS4N626VB62E)
+![Age of Makers Logo](https://github.com/salesforce/ageofmakers/blob/master/images/Age_of_Makers_spaced.png?raw=true)
 
 # Age of Makers (AoM)
 
 Become an independent learner, solving the world’s biggest challenges using 3D printing, coding & electronics.
+
+![Age of Makers Demo](https://github.com/salesforce/ageofmakers/blob/master/Music%20for%20Change%20Full%20Demo.gif?raw=true)
 
 ## Building the Age of Makers game locally
 
