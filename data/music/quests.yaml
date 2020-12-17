@@ -863,7 +863,7 @@ stages:
   subtitle: |-
     Listen to Usean as he plays different chords and shows you how some are sad and other happy.
   type: video
-  youtubeVideoId: https://youtu.be/2iW0qir_-DA
+  youtubeVideoId: 2iW0qir_-DA
   order: 0
 visibleAtAge: 2
 prerequisites:
