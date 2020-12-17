@@ -29,19 +29,3 @@ chrome.browserAction.onClicked.addListener((tab) => {
     chrome.tabs.create({url: gameUrl});
   }
 });
-
-(function() {
-  // Google Analytics in the background script
-  var ga = document.createElement('script');
-  ga.type = 'text/javascript';
-  ga.async = true;
-  ga.src = 'https://ssl.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0];
-  s.parentNode.insertBefore(ga, s);
-  
-  setTimeout(() => {
-    const gaPlugin = _gaq || [];
-    gaPlugin.push(['_setAccount', 'UA-173708168-1']);
-    gaPlugin.push(['_trackPageview']);
-  }, 2000);
-});

@@ -19,7 +19,6 @@ import Walkthrough from './walkthrough';
 import Onboarding from './onboarding';
 import LeafletMap from './leafletMap';
 import AgeTree from './ageTree';
-import AnalyticsProvider from './analyticsProvider';
 
 class Game extends Component {
   constructor(props) {
@@ -38,7 +37,6 @@ class Game extends Component {
         <AgeTree />
         { (this.props.activeQuest) ? <Bubble embed={false} /> : null }
         { (isLoggedInAndLoaded(this.props)) ? <Walkthrough /> : null }
-        <AnalyticsProvider />
       </div>
     );
   }

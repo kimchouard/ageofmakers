@@ -14,7 +14,7 @@
     "default_title": "Age of Makers"
   },
 
-  "content_security_policy": "script-src 'self' https://unpkg.com/leaflet@1.3.0/dist/leaflet.js https://ssl.google-analytics.com https://www.youtube.com/ https://s.ytimg.com/; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://unpkg.com/leaflet@1.3.0/dist/leaflet.js https://www.youtube.com/ https://s.ytimg.com/; object-src 'self'",
 
   "content_scripts": [
     {

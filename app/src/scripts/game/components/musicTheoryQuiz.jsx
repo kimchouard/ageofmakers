@@ -18,6 +18,7 @@ class MusicTheoryQuiz extends Component {
     super(props);
 
     this.state = {
+      pianoUsed: false,
       lastNotePlayed: null,
       noteInScale: null,
       selectedKey: 48,
@@ -163,6 +164,11 @@ class MusicTheoryQuiz extends Component {
       let scaleResult = this.state.scaleNotes.find((note) => {
         return note === midiNote;
       });
+
+      // If it's the first time we use the piano, we mark this question as completed.
+      if (!this.pianoUsed) {
+        this.props.musicQuizCompleted();
+      }
   
       if (scaleResult !== undefined) {
         console.log("The note is in the scale", midiNote);
@@ -170,6 +176,7 @@ class MusicTheoryQuiz extends Component {
         this.setState({
           lastNotePlayed: midiNote,
           noteInScale: true,
+          pianoUsed: true,
         });
       }
       else {
@@ -178,6 +185,7 @@ class MusicTheoryQuiz extends Component {
         this.setState({
           lastNotePlayed: midiNote,
           noteInScale: false,
+          pianoUsed: true,
         });
       }
     }

@@ -55,7 +55,7 @@ class MusicShowcase extends Component {
   }
 
   renderActionBtn(showcaseItem) {
-    if (!this.props.viewOnly) {
+    if (!this.props.viewOnly && !showcaseItem.noActionBtn) {
       if (showcaseItem.status === stageStatus.STATUS_COMPLETE) {
         let quizDiv;
 
@@ -78,40 +78,52 @@ class MusicShowcase extends Component {
           </div>
         }
 
-        return <div>
+        return <div className="card-footer actions">
           { quizDiv }
           <button className={ `btn btn-success ${ (this.isShowcaseItemLoading(showcaseItem)) ? 'loader' : '' }` } onClick={ () => { this.startShowcaseBt(showcaseItem); } }>▶ Review the story</button>
         </div>
       }
       else {
-        return <button className={ `btn btn-dark btn-action ${ (this.isShowcaseItemLoading(showcaseItem)) ? 'loader' : '' }` } onClick={ () => { this.startShowcaseBt(showcaseItem); } }>{ (!this.isShowcaseItemLoading(showcaseItem)) ? 'Listen to the story' : '' }</button>
+        return <div className="card-footer actions">
+          <button className={ `btn btn-dark btn-action ${ (this.isShowcaseItemLoading(showcaseItem)) ? 'loader' : '' }` } onClick={ () => { this.startShowcaseBt(showcaseItem); } }>{ (!this.isShowcaseItemLoading(showcaseItem)) ? 'Listen to the story' : '' }</button>
+        </div>
       }
     }
-    else {
-      return <div>
-        <a href={ showcaseItem.startUrl } target="_blank" className="btn btn-primary btn-action">Listen to the story</a>
+    else if (showcaseItem.startUrl) {
+      return <div className="card-footer actions">
+        <a href={ showcaseItem.startUrl } target="_blank" className="btn btn-dark btn-action">Listen to the story</a>
         <p><strong>Story's Full Url:</strong> { showcaseItem.startUrl }</p>
       </div>
+    }
+  }
+
+  renderShowcaseImageOrSong(song) {
+    if (song.imageUrl) {
+      let imgParsedUrl;
+      if (song.imageUrl) {
+        try {
+          imgParsedUrl = new URL(song.imageUrl);
+        }
+        catch(err) {
+          console.error('Error while parsing url', song.imageUrl, err);
+        }
+      }
+
+      return <div className="imgWrapper" style={ { backgroundImage: `url('${(song.imageUrl) ? song.imageUrl : '/data/music/images/audio_article_banner.png'}')` } }>
+        { (song.imageUrl && imgParsedUrl) ? <p className="card-text card-source"><em>Source: </em> { imgParsedUrl.host }</p> : '' }
+      </div>
+    }
+    else if (song.songId) { 
+      return <iframe className="playerWrapper" src={`https://www.bandlab.com/embed/?blur=false&id=${song.songId}`} frameborder="0" allowfullscreen></iframe>
     }
   }
 
   renderShowcaseItems() {
     if (this.props.activeStageData.showcaseItems) {
       return this.props.activeStageData.showcaseItems.map((song) => {
-        let imgParsedUrl;
-        if (song.imageUrl) {
-          try {
-            imgParsedUrl = new URL(song.imageUrl);
-          }
-          catch(err) {
-            console.error('Error while parsing url', song.imageUrl, err);
-          }
-        }
         return <div className={ `col mb-4` } key={song.order}>
           <div className={ `card bg-${ (this.props.viewOnly) ? 'light' : 'secondary' } h-100 ${ (song.status === stageStatus.STATUS_COMPLETE) ? 'border-success' : ''}` }>
-            <div className="imgWrapper" style={ { backgroundImage: `url('${(song.imageUrl) ? song.imageUrl : '/data/music/images/audio_article_banner.png'}')` } }>
-              { (song.imageUrl && imgParsedUrl) ? <p className="card-text card-source"><em>Source: </em> { imgParsedUrl.host }</p> : '' }
-            </div>
+            { this.renderShowcaseImageOrSong(song) }
             <div className="card-body">
               <h5 className="card-title">{song.name} by {song.artist}</h5>
               { (song.location) ? <p className="card-text"><strong>📍 Location: </strong> {song.location}</p> : '' }
@@ -120,9 +132,7 @@ class MusicShowcase extends Component {
               </div>
               { (song.historicalContext) ? <p className="card-text"><strong>📆 Historical Context: </strong> {song.historicalContext}</p> : '' }
             </div>
-            <div className="card-footer actions">
-              { this.renderActionBtn(song) }
-            </div>
+            { this.renderActionBtn(song) }
           </div>
         </div>
       });
@@ -142,7 +152,7 @@ class MusicShowcase extends Component {
   }
 
   renderNextButton() {
-    if (!this.props.viewOnly) {
+    if (!this.props.viewOnly && this.props.activeStageData.requiredShowcaseViews >= 0) {
       let countVisitedShowcaseItem = 0;
       this.props.activeStageData.showcaseItems.forEach((showcaseItem) => {
         if (showcaseItem.status === stageStatus.STATUS_COMPLETE) {
@@ -150,14 +160,18 @@ class MusicShowcase extends Component {
         }
       })
 
-      // Only disable the next button if the player visited enough showcase items
-      return <button
-        className={`btn btn-primary btn-lg btn-next ${ (this.state.loading) ? 'loader' : ''}`}
-        onClick={() => { this.triggerNextStage(countVisitedShowcaseItem) } }
-        disabled={ (countVisitedShowcaseItem < this.props.activeStageData.requiredShowcaseViews) }
-      >
-        { (!this.state.loading) ? 'NEXT' : ''}
-      </button>;
+      return <div>
+        {/* Only disable the next button if the player visited enough showcase items */}
+        <button
+          className={`btn btn-primary btn-lg btn-next ${ (this.state.loading) ? 'loader' : ''}`}
+          onClick={() => { this.triggerNextStage(countVisitedShowcaseItem) } }
+          disabled={ (countVisitedShowcaseItem < this.props.activeStageData.requiredShowcaseViews) }
+        >
+          { (!this.state.loading) ? 'NEXT' : ''}
+        </button>
+        
+        { (this.props.activeStageData.requiredShowcaseViews > 0) ? <p className="instructions">Explore at least <strong>{this.props.activeStageData.requiredShowcaseViews} examples</strong> below and click NEXT to complete the quest.</p> : '' }
+      </div>;
     }
     else {
       return <div>
@@ -173,7 +187,6 @@ class MusicShowcase extends Component {
         <div className="text-center">
           { this.renderNextButton() }
         </div>
-        <p className="instructions">Explore at least <strong>{this.props.activeStageData.requiredShowcaseViews} examples</strong> below and click NEXT to complete the quest.</p>
 
         <div className={ `row songs ${ (this.props.viewOnly) ? 'row-cols-1' : 'row-cols-2 row-cols-md-3' }`}>
           { this.renderShowcaseItems() }
