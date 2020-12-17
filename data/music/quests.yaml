@@ -711,9 +711,9 @@ id: music_theory_intro
 name: What is Music Theory?
 valley: musiccity
 content: |-
-  Meet your awesome instructor, [Andrew Huang](https://www.youtube.com/channel/UCdcemy56JtVTrsFIOoqvV8g), and get a sneek peak at the magic behind Music Theory. 
+  Meet your awesome instructor, Usean Redic, and get a sneek peak at the magic behind Music Theory. 
 
-  In less than 30 minutes of video, you'll know the major things you have to know about music theory.
+  In just a few videeos, you'll know the major things you have to know about music theory and apply them to your song.
 
   *Hint:* It doesn't have to be boring, and it'll actually be pretty interactive! 😎
 # startUrl: https://www.tinkercad.com/login 
@@ -726,11 +726,7 @@ stages:
   subtitle: |-
     And why is it so powerful?
   type: video
-  youtubeVideoId: QG2GAYKZVHc
-  featuredChannel:
-    name: ANDREW HUANG
-    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
-    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
+  youtubeVideoId: nghrVe0aPBQ
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -757,31 +753,27 @@ stages:
   subtitle: |-
     Wonder what's the most used sound in modern music?
   type: video
-  youtubeVideoId: hHGjP3zOcvQ
-  featuredChannel:
-    name: ANDREW HUANG
-    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
-    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
+  youtubeVideoId: HI6oG63iryA
   order: 0
 quiz:
   name: Practice Finding a Scale
   subtitle: |-
     Practice your new music theory knowledge based on the video you just watched!
   questions:
-    - id: notesinscale
-      name: How many notes is there in a scale?
-      placeholder: |-
-        Type a number here
-      type: number
-    - id: testSelect
-      name: What's the scale you liked most?
-      placeholder: |-
-        Select mood here
-      values:
-        - major
-        - minor
-      type: picklist
-      # TODO ==> ubild a select more for quiz
+    # - id: notesinscale
+    #   name: How many notes is there in a scale?
+    #   placeholder: |-
+    #     Type a number here
+    #   type: number
+    # - id: testSelect
+    #   name: What's the scale you liked most?
+    #   placeholder: |-
+    #     Select mood here
+    #   values:
+    #     - major
+    #     - minor
+    #   type: picklist
+    #   # TODO ==> ubild a select more for quiz
     - id: scale
       name: Find all the notes in the minor & major scales using 3 different keys
       type: musictheory
@@ -869,13 +861,9 @@ type: embedded
 stages:
 - name: Learn About Chords
   subtitle: |-
-    Listen to Andrew as he plays different chords and shows you how some are sad and other happy.
+    Listen to Usean as he plays different chords and shows you how some are sad and other happy.
   type: video
-  youtubeVideoId: qnetRvkxfOo
-  featuredChannel:
-    name: ANDREW HUANG
-    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
-    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
+  youtubeVideoId: https://youtu.be/2iW0qir_-DA
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -950,13 +938,9 @@ type: embedded
 stages:
 - name: The Notation System
   subtitle: |-
-    Andrew walks you through how to use roman numerals to reference chords, irrespective of the key.
+    Usean walks you through how to use roman numerals to reference chords, irrespective of the key.
   type: video
-  youtubeVideoId: AyI9ZO6PuiY
-  featuredChannel:
-    name: ANDREW HUANG
-    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
-    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
+  youtubeVideoId: v4pgUW58Ss0
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -992,7 +976,7 @@ stages:
     ☝️  You can also look up the chords to a song you like and try to work out what key it's in and what degree of the major scale fits each chord.
 
     ```info
-    Here's a quick cheat-sheet from Andrew's lesson:
+    Here's a quick cheat-sheet from Usean's lesson:
 
     **TODO!!**
     ```
@@ -1024,11 +1008,7 @@ stages:
   subtitle: |-
     Use the same triad concept but move some notes around. 🎶✨
   type: video
-  youtubeVideoId: DBmcbO53Ulk
-  featuredChannel:
-    name: ANDREW HUANG
-    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
-    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
+  youtubeVideoId: v4pgUW58Ss0
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -1054,13 +1034,9 @@ type: embedded
 stages:
 - name: Melodies
   subtitle: |-
-    Listen to Andrew as he give you some tips on coming up with your melody
+    Listen to Usean as he give you some tips on coming up with your melody
   type: video
-  youtubeVideoId: UAHZ8sTDTCc
-  featuredChannel:
-    name: ANDREW HUANG
-    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
-    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
+  youtubeVideoId: v4pgUW58Ss0
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -1075,7 +1051,7 @@ id: find_chords
 name: Coming Up With Your Chords
 valley: musiccity
 content: |-
-  See how Kim uses Andrew's knowledge to find chords that fits his song's vision.
+  See how Kim uses Usean's knowledge to find chords that fits his song's vision.
 # startUrl: https://www.tinkercad.com/login 
 positionLeft: 60
 positionTop: 48.5
@@ -1101,7 +1077,7 @@ id: first_chords
 name: Find Your Music's Chords
 valley: musiccity
 content: |-
-  Andrew showed you the theory, Kim gave you a walkthrough on how to use your vision for your song and find your chords... Time to put all this knowledge to work! 
+  Usean showed you the theory, Kim gave you a walkthrough on how to use your vision for your song and find your chords... Time to put all this knowledge to work! 
 
   Whether you're starting from scratch or using a base track, try to see if you can come up with your own chords.
 startUrl: 
@@ -1146,7 +1122,7 @@ id: find_melody
 name: How To Get Your Melody?
 valley: musiccity
 content: |-
-  See how Kim uses Andrew's knowledge to get cool melodies for his track.
+  See how Kim uses Usean's knowledge to get cool melodies for his track.
 # startUrl: https://www.tinkercad.com/login 
 positionLeft: 60
 positionTop: 36.5
@@ -1155,7 +1131,7 @@ type: embedded
 stages:
 - name: How To Get Your Melody?
   subtitle: |-
-    See how Kim uses Andrew's knowledge to get cool melodies for his track.
+    See how Kim uses Usean's knowledge to get cool melodies for his track.
   type: video
   youtubeVideoId: 1X7Goyy5e20
   order: 0
@@ -1297,11 +1273,7 @@ stages:
   subtitle: |-
     Understand how to make a beat it pump. 😎
   type: video
-  youtubeVideoId: zDfnina4JHw
-  featuredChannel:
-    name: ANDREW HUANG
-    icon: https://yt3.ggpht.com/a/AATXAJxXeiPwW3CsPtgHsSLKzvwxke43gLjJ89kYBbt2=s288-c-k-c0xffffffff-no-rj-mo
-    youtubeChannelId: UCdcemy56JtVTrsFIOoqvV8g
+  youtubeVideoId: v4pgUW58Ss0
   order: 0
 visibleAtAge: 1
 prerequisites:
@@ -1365,7 +1337,7 @@ stages:
     **Option 2: You've started from scratch**
     
     - You'll then have full freedom in what BPM you can use! Try to look for songs you liked and want to inspire yourself from, and search their BPM online.
-    - See if you can use Andrew's tips to note down a rhythm and add it to your track.
+    - See if you can use Usean's tips to note down a rhythm and add it to your track.
 
     Have fun with it! 😎
   order: 0
