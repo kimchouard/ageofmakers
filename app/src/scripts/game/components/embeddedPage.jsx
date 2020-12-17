@@ -79,8 +79,8 @@ class EmbeddedPage extends Component {
     }
     // If open but no active quests, it's for credits!
     else if (this.props.embeddedPage.open && this.props.embeddedPage.type === 'credits' && this.props.journey && this.props.journey.credits) {
-      return <div className="row creditsWrapper">
-        <div className="col-md-6 offset-md-3">
+      return <div className="container creditsWrapper">
+        <div className="col">
           <h1>Credits</h1>
          <Markdown mdContent={this.props.journey.credits.credits}/>
         </div>
