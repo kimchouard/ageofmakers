@@ -224,7 +224,7 @@ class Quiz extends Component {
               <label
                 htmlFor={question.id}
                 className={
-                  `col-md-${(this.props.inline || question.type === quizAnswerTypes.FREETEXTLONG) ? '12': '3'}
+                  `${(this.props.inline || question.type === quizAnswerTypes.FREETEXTLONG) ? '': 'col-md-3'}
                   ${ (question.type === quizAnswerTypes.FREETEXTLONG) ? 'text-left' : '' }
                   col-form-label
                   ${ (question.optional) ? '' : 'required' }`
@@ -261,8 +261,8 @@ class Quiz extends Component {
   }
   render() {
     if (this.props.quizData) {
-      return <div className={ `col-12 quizWrapper ${(this.props.inline) ? 'inline': 'embedded'} ${ (this.hasQuizResult()) ? 'quizResults' : ''}`}>
-        { (this.props.inline && !this.hasQuizResult()) ? <div className="quizHeader col-12">Answer these questions to complete the quest.</div> : ''}
+      return <div className={ `quizWrapper ${(this.props.inline) ? 'inline': 'embedded'} ${ (this.hasQuizResult()) ? 'quizResults' : ''}`}>
+        { (this.props.inline && !this.hasQuizResult()) ? <div className="quizHeader">Answer these questions to complete the quest.</div> : ''}
         { this.renderQuestions() }
         { this.renderHelpers() }
       </div>
