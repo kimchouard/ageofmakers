@@ -150,7 +150,8 @@ a.btn.btn-beta-soon {
     background-color: #F7F7F7;
     color: #032d60;
     padding: 2rem;
-    padding-bottom: 3.5rem;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
     position: relative;
     z-index: 50;
     flex-shrink: 0;
