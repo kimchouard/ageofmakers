@@ -20,13 +20,38 @@
     <link rel="manifest" href="/site.webmanifest">
   </head>
   <body>
-    <header class="container header">
-        <div class="row justify-content-md-center">
-            <a class="logoWrapper col-lg-6 text-center" href="/">
+    <nav class="header navbar navbar-expand-md navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand logoWrapper" href="/">
                 <img class="logo" src="images/Age of Makers White Logo.svg" alt="Age of Makers Logo" />
             </a>
-        </div> 
-    </header>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><!-- active -->
+                        <a class="nav-link" href="get-started.html">Get Started</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-block d-md-none">
+                        <a class="nav-link" href="https://github.com/salesforce/ageofmakers" target="_blank" >Github</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="https://github.com/salesforce/lwc" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener">
+            <svg width="63" height="64" viewBox="0 0 80 82" aria-hidden="true" color="#fff">
+                <path d="M0.00703842 80.2132L80.2202 80.2132L80.2202 0L56.566 0L0.00703842 80.2132Z" fill="black"/>
+                <path d="M75.5328 65.133C73.5511 72.9263 68.2032 72.1654 68.2032 72.1654C64.5362 71.862 62.8562 72.9325 62.8562 72.9325C59.9544 74.9204 61.1753 72.4751 61.1753 72.4751C62.8544 69.8768 65.757 69.4167 65.757 69.4167C71.2571 69.108 71.8658 64.8296 71.8649 63.3018" fill="white" class="octo-arm"/>
+                <path d="M80.2708 70.1725C80.2708 70.1725 80.5752 68.0334 79.5056 67.8812L71.4054 63.4552C69.5714 62.5395 68.654 61.3178 68.8062 60.2482C64.9897 65.5979 59.4922 70.4902 49.7111 65.6068C46.6545 64.0808 44.9728 62.0955 44.0544 59.3459C43.1379 59.652 40.3874 59.0425 37.3299 55.9886C37.3299 55.9886 37.9395 53.2381 43.4378 49.8736C44.5524 45.0176 46.9203 40.5385 50.3055 36.8829C49.0793 30.161 51.0645 28.4792 51.0645 28.4792C55.1898 28.6296 57.4829 30.92 58.2473 31.6835C60.5386 30.9183 63.5943 30.9165 66.6509 32.4425C76.432 37.326 75.8252 44.66 73.2313 50.6201C74.6061 50.161 76.5922 50.007 79.0375 51.2279L86.3733 54.8905C86.9847 55.1957 88.5116 53.6669 88.5116 53.6669L80.2708 70.1725Z" fill="white"/>
+            </svg>
+        </a>
+    </nav>
 
     <div class="container-fluid main">
         <div class="container">
@@ -117,7 +142,7 @@
                 </div>
                 <div class="col-lg-4 order-lg-1 copyrights">
                     <img src="/images/Salesforce-logo.svg" alt="Salesforce logo" class="footer-sfdc-logo">
-                    <p>Copyright © 2020 Salesforce.com, Inc.</p>
+                    <p>Copyright © 2021 Salesforce.com, Inc.</p>
                     <p>Source code licensed under <a href="https://github.com/salesforce/ageofmakers/blob/master/LICENSE" target="_blank">MIT License</a></p>
                 </div>
             </div>

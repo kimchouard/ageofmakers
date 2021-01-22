@@ -44,6 +44,7 @@ a.disabled {
 .header {
     padding: 10px;
     z-index: 60;
+    background: black;
 }
 
 .logo {
@@ -51,19 +52,17 @@ a.disabled {
     padding: 0 40px;
 }
 
-.nav-item {
-    padding-right: 40px;
-}
-
 .nav-link {
+    margin-right: 40px;
+    color: #f7f7f7;
     padding: 2px 5px !important;
     text-align: center;
-    border-bottom: 2px solid #f7f7f7;
+    border-bottom: 2px solid #000;
 }
 
 .nav-item.active .nav-link, .nav-item:hover .nav-link {
-    color: #222222 !important;
-    /* border-bottom: 2px solid black; */
+    color: #fff !important;
+    border-bottom: 2px solid #fff;
 }
 
 .nav-item.active .nav-link {
@@ -100,6 +99,11 @@ a.disabled {
 .hero {
     background: #f8f9fa;
     color: black;
+}
+
+.hero-ftc {
+    background: url('../images/Future_TrailblazeR_Challenge-Students_Celebrate.jpg') center top no-repeat;
+    background-size: cover;
 }
 
 .main {
@@ -145,6 +149,7 @@ hr {
     color: #666;
     padding: 10px 5px 3px;
     cursor: pointer;
+    font-size: 1.2rem;
 }
 
 .adventure-select:hover, .adventure-select.active {
@@ -292,6 +297,11 @@ a.btn.btn-beta-soon {
     font-size: 1.1rem;
 }
 
+.about-punchline {
+    margin: 50px 0 400px;
+    text-align:center;
+}
+
 /* ==============================
         FOOTER
 ============================== */
@@ -364,7 +374,9 @@ a.btn.btn-beta-soon {
         font-size: 1.8rem;
         line-height: 2.5rem;
     }
-
+    .hero-ftc { background-position-y: 100px; }
+    .about-punchline { margin: 30px 0 150px; }
+    .about-punchline h1 { font-size: 2rem; }
     .logo { padding: 0 0 0 10px; }
     .demo { padding-top: 20%; }
     .punchline { font-size: 1.2rem; }
