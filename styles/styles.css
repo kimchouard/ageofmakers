@@ -20,33 +20,78 @@ body {
     width: 100%;
     padding: 0;
     margin: 0;
-    position: absolute;
+    position: fixed;
     z-index: 0;
     top: 0;
     bottom: 0;
-    background:url('../images/map-music-0.png') center center no-repeat;
+    background:url('../images/map-music-0.png') center 200px no-repeat;
     filter: blur(5px);
 
 }
+
+a.disabled {
+    color: gray;
+    font-style: italic;
+    font-weight: bold;
+    cursor:wait;
+  }
+
 
 /* ==============================
         HEADER
 ============================== */
 
 .header {
-    padding: 20px;
-    position: relative;
+    padding: 10px;
     z-index: 60;
-}
-
-.logoWrapper {
-    display: block;
 }
 
 .logo {
     max-width: 100%;
     padding: 0 40px;
 }
+
+.nav-item {
+    padding-right: 40px;
+}
+
+.nav-link {
+    padding: 2px 5px !important;
+    text-align: center;
+    border-bottom: 2px solid white;
+}
+
+.nav-item.active .nav-link, .nav-item:hover .nav-link {
+    color: black !important;
+    /* border-bottom: 2px solid black; */
+}
+
+.nav-item.active .nav-link {
+    font-weight: bold;
+}
+
+.github-corner {
+    display: none;  
+}
+
+.github-corner {
+    position:absolute;
+    top:0;
+    border:0;
+    right:0;
+    z-index: 99;
+}
+
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 800ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+    0%,100% { transform:rotateX(0) }
+    20%,60% { transform:rotateX(-18deg) }
+    40%,80% { transform:rotateX(15deg) }
+}
+
 
 /* ==============================
         Main
@@ -55,8 +100,12 @@ body {
 .main {
     background: #fff;
     color: #59575c;
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 70px;
+}
+
+.main-grey {
+    background: #F7F7F7;
 }
 
 .main h1, .main h2, .main h3, .main h4 {
@@ -85,15 +134,54 @@ hr {
     text-decoration: underline;
 }
 
+.feature {
+    margin: 30px 0 60px;
+}
+
+.feature-hero {
+    background-color: #F7F7F7;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-text {
+    width: 50%;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.feature-text img {
+    max-width: 60%;
+    margin: 0 auto;
+    display: block;
+}
+
+.feature-img {
+    position: relative;
+    left: 50%;
+    width: 50%;
+    overflow: hidden;
+}
+
 /* ==============================
         DEMO
 ============================== */
 
-.demo {
+.demo, .demo-inline {
     flex: 1 0 auto;
-    padding-top: 10%;
     position: relative;
     z-index: 40;
+}
+
+.demo {
+    padding-top: 10%;
+}
+
+.demo-inline {
+    padding-top: 50px;
 }
 
 .punchline {
@@ -106,25 +194,14 @@ hr {
     line-height: 4rem;
 }
 
-@media screen and (max-width:47em) {
-    .main {
-        padding-top: 20%;
-    }
-
-    .welcome {
-        font-size: 1.8rem;
-        line-height: 2.5rem;
-    }
-
-    .punchline {
-        font-size: 1.2rem;
-    }
-}
-
 .cta .btn {
-    margin: 0 auto 115px;
+    margin: 20px auto;
     padding: 12px 35px;
     color: white;
+}
+
+.cta .btn-beta-home {
+    margin: 0 auto 115px;
 }
 
 .btn-beta {
@@ -140,6 +217,26 @@ a.btn.btn-beta-soon {
 
 .btn-beta-soon:hover {
     color: white;
+}
+
+.getstarted-punchlineWrapper {
+    position: relative;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.getstarted-punchline {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.getstarted-punchline h1 {
+    font-size: 2.2rem;
+}
+
+.getstarted-punchline p {
+    font-size: 1.1rem;
 }
 
 /* ==============================
@@ -196,4 +293,36 @@ a.btn.btn-beta-soon {
     color: #02a0e0;
     background: #def1fa;
     text-decoration: none;
+}
+
+
+/* ==============================
+        Responsive
+============================== */
+
+/* NOT Small Screen */
+@media screen and (min-width:48em) {
+    .github-corner { display: block; }
+}
+
+/* Small Screen */
+@media (max-width:48em) {
+    .welcome {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+    }
+
+    .logo { padding: 0 0 0 10px; }
+    .demo { padding-top: 20%; }
+    .punchline { font-size: 1.2rem; }
+    .navbar-collapse { padding: 10px 40px; }
+    .laptop-demo { overflow: hidden; }
+    .laptop-demo img {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);}
+    .getstarted-punchline { position: relative; padding: 20px 0; text-align: center; }
+    .laptop-demo img {
+        max-width: 130%;
+    }
 }
