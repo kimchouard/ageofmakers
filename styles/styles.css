@@ -58,11 +58,11 @@ a.disabled {
 .nav-link {
     padding: 2px 5px !important;
     text-align: center;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #f7f7f7;
 }
 
 .nav-item.active .nav-link, .nav-item:hover .nav-link {
-    color: black !important;
+    color: #222222 !important;
     /* border-bottom: 2px solid black; */
 }
 
@@ -97,6 +97,11 @@ a.disabled {
         Main
 ============================== */
 
+.hero {
+    background: #f8f9fa;
+    color: black;
+}
+
 .main {
     background: #fff;
     color: #59575c;
@@ -109,7 +114,7 @@ a.disabled {
 }
 
 .main h1, .main h2, .main h3, .main h4 {
-    color: #032d60;
+    color: #222222;
 }
 
 .main h1, .main h2 {
@@ -134,8 +139,42 @@ hr {
     text-decoration: underline;
 }
 
+.adventure-select {
+    display: inline-block;
+    text-decoration: none;
+    color: #666;
+    padding: 10px 5px 3px;
+    cursor: pointer;
+}
+
+.adventure-select:hover, .adventure-select.active {
+    color: #222222;
+    text-decoration: none;
+}
+
+.adventures {
+    margin-top: 20px;
+}
+
+.adventure-select.active {
+    border-bottom: 2px #032d60 solid;
+}
+
+.adventure-select:after {
+    content: "-";
+    display: block;
+    position: absolute;
+    right: -5px;
+    top: 10px;
+}
+.adventures .col-sm:last-child .adventure-select:after { content: ''; }
+
 .feature {
     margin: 30px 0 60px;
+}
+
+#ftc {
+    display: none;
 }
 
 .feature-hero {
@@ -154,8 +193,7 @@ hr {
 }
 
 .feature-text img {
-    max-width: 60%;
-    margin: 0 auto;
+    margin: 0 auto 15px;
     display: block;
 }
 
@@ -164,6 +202,10 @@ hr {
     left: 50%;
     width: 50%;
     overflow: hidden;
+}
+
+.feature h4 {
+    font-size: 1.3rem;
 }
 
 /* ==============================
@@ -208,6 +250,12 @@ hr {
     background-color: #FF5335;
 }
 
+.cta .btn-oss {
+    background: #222222 url(../images/github-character.svg) no-repeat 15px -9px;
+    text-indent: 40px;
+    padding-left: 55px;
+}
+
 a.btn.btn-beta-soon {
     background-color: #8A8A8A;
     /* cursor: wait !important; */
@@ -231,7 +279,12 @@ a.btn.btn-beta-soon {
     transform: translateY(-50%);
 }
 
+.getstarted-punchline .cta .btn-beta {
+    background-color: #222222;
+}
+
 .getstarted-punchline h1 {
+    color: #222;
     font-size: 2.2rem;
 }
 
@@ -325,4 +378,9 @@ a.btn.btn-beta-soon {
     .laptop-demo img {
         max-width: 130%;
     }
+    .feature-text { width: 100%; position: relative; transform: none; top: 0; }
+    .feature-img { width: 100%; left: 0; }
+    .feature-img img { width: 100%; }
+    .adventures .col-sm { text-align: center !important; }
+    .adventure-select:after { content: none; }
 }

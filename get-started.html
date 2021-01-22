@@ -53,24 +53,26 @@
             </a>
         </nav>
 
-
-        <div class="container demo-inline">
-            <div class="row justify-content-md-center">
-                <div class="col-md-6 getstarted-punchlineWrapper">
-                    <div class="getstarted-punchline">
-                        <h1>Personalized adventures for <strong>all</strong> your students, <strong>everywhere</strong>.</h1>
-                        <p>A gamified curriculum for youth globally to learn how to impact the world around them through music and technology.</p>
-                        <div class="cta">
-                            <a class="btn btn-lg btn-beta" href="https://sfdc.co/aom" target="_blank">Try out the βeta!</a>
+        <div class="container-fluid hero">   
+            <div class="container demo-inline">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-6 getstarted-punchlineWrapper">
+                        <div class="getstarted-punchline">
+                            <h1>Personalized adventures for <strong>all</strong> your students, <strong>everywhere</strong>.</h1>
+                            <p>A gamified curriculum for youth globally to learn how to impact the world around them through music and technology.</p>
+                            <div class="cta">
+                                <a class="btn btn-lg btn-beta" href="https://sfdc.co/aom" target="_blank">Try out the βeta!</a>
+                            </div>
                         </div>
+                        
                     </div>
-                    
-                </div>
-                <div class="col-md-6 laptop-demo">
-                    <img src="images/mfc_demo_black.gif" alt="" />
+                    <div class="col-md-6 laptop-demo">
+                        <img src="images/mfc_demo_f8f9fa.gif" alt="" />
+                    </div>
                 </div>
             </div>
         </div>
+        
 
 
         <div class="container-fluid main">
@@ -81,17 +83,24 @@
                         <h5 class="col-md-10 offset-md-1">The game covers multiples topics, from music-making to 3D printing. For all of them, students are learning these skills to solve the challenges they care about.</h5>
                     </div>
                 </div>
+                
+                <div class="row adventures">
+                    <div class="col-sm text-right">
+                        <a class="adventure-select active" id="select-mfc" onclick="showAdventure('mfc', 'ftc')">Music for Change</a>
+                    </div>
+                    <div class="col-sm text-left">
+                        <a class="adventure-select" id="select-ftc" onclick="showAdventure('ftc', 'mfc')">Future Trailblazer Challenge</a>
+                    </div>
+                </div>
 
-                <hr />
-
-                <div class="feature">
+                <div class="feature" id="mfc">
                     <div class="row feature-hero">
                         <div class="feature-text">
-                            <img src="images/music-for-change-logo.svg" alt="" />
+                            <img src="images/music-for-change-logo.svg" alt="Music for Change Logo" width="60%" />
                             <p>Music for Change is a social impact, music production, and digital literacy curriculum that provides young people from around the world a voice on issues of social justice.</p>
                         </div>
                         <div class="feature-img">
-                            <img src="images/Mic-Spark_Credits-Kim-Chouard.png" alt="" />
+                            <img src="images/Mic-Spark_Credits-Kim-Chouard.png" alt="Microphone under the sun" />
                         </div>
                     </div>
                     <div class="row">
@@ -113,27 +122,25 @@
                     </div>  
                 </div>
 
-                <hr />
-
-                <div class="feature">
+                <div class="feature" id="ftc">
                     <div class="row feature-hero">
                         <div class="feature-text">
-                            <img src="images/Future-Trailblazer-Challenge-horizontal.svg" alt="" />
-                            <p>The Future Trailblazer Challenge is a Maker curriculum for students to come up with a proposal to solve one of the Sustainable Development Goals (SDGs) using cutting-edge technologies, like 3D printing or micro:bits (small programmable electronic devices), as part of their solution.</p>
+                            <img src="images/Future-Trailblazer-Challenge-horizontal.svg" alt="Future Trailblazer Challenge Logo" width="80%" />
+                            <p>The Future Trailblazer Challenge is a Maker curriculum for students to come up with a proposal to solve one of the <a href="http://globalgoals.org/" target="_blank">Sustainable Development Goals (SDGs)</a> using cutting-edge technologies, like 3D printing or <a href="https://microbit.org/" target="_blank">micro:bits</a> (small programmable electronic devices), as part of their solution.</p>
                         </div>
                         <div class="feature-img">
-                            <img src="images/salesforce-volunteers-with-students.png" alt="" />
+                            <img src="images/salesforce-volunteers-with-students.png" alt="Salesforce Volunteers with Students" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md details">
                             <h4>1. See it in action 👀</h4>
-                            <p>Watch the Music for Change finale to hear the finalist songs from students around the world pitched a prestigious jury.</p>
-                            <a href="https://www.salesforce.com/video/15545093/" target="_blank" class="cta">Watch the Music for Change Finale ></a>
+                            <p>Watch the Future Trailblazer Pitchfest recap to get a sense of what students have created to solve for the SDGs.</p>
+                            <a href="https://www.youtube.com/watch?v=KONFpj8a9wk" target="_blank" class="cta">Watch the Pitchfest Recap ></a>
                         </div>
                         <div class="col-md details">
                             <h4>2. Try it out for yourself 🕹</h4>
-                            <p>Install the Age of Makers Chrome extension and start the “Music for Change” adventure to see how it works!</p>
+                            <p>Install the Age of Makers Chrome extension to see how it works.</p>
                             <a disabled class="disabled cta">Coming soon !</a>
                         </div>
                         <div class="col-md details">
@@ -142,6 +149,20 @@
                             <a href="https://trailhead.salesforce.com/content/learn/modules/future-trailblazer-challenge?trail_id=learn-about-the-uns-global-goals" target="_blank" class="cta">Read the Trailhead Guide ></a>
                         </div>
                     </div>  
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>Join the mouvement</h2>
+                        <p class="col-md-10 offset-md-1">Age of Makers comes from the hard work of educators, volunteers and students coming together to imagine a new pedagogic approach to inspire the next generation of changemakers.</p>
+
+                        <p class="col-md-10 offset-md-1">All the source-code and curriculum content is Open-Sourced on <a href="https://github.com/salesforce/ageofmakers" target="_blank" rel="noopener">GitHub</a> and we’re never short of fun things to do, so we’d love for you to join the Age of Makers open source community!</p>
+
+                        <div class="cta">
+                            <a class="btn btn-lg btn-oss" href="https://github.com/salesforce/ageofmakers" target="_blank">Get Involved</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -184,4 +205,14 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        $(() => {
+            showAdventure = (show, hide) => {
+                $(`#${hide}`).hide();
+                $(`#${show}`).show();
+                $('.active').removeClass('active');
+                $(`#select-${show}`).addClass('active'); 
+            };
+        });
+    </script>
 </html>
