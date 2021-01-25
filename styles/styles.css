@@ -382,6 +382,8 @@ a.btn.btn-beta-soon {
 
 /* Small Screen */
 @media (max-width:48em) {
+    body { margin-top: 60px; }
+    .sticky-top { position: fixed; width: 100%; }
     .welcome {
         font-size: 1.8rem;
         line-height: 2.5rem;
