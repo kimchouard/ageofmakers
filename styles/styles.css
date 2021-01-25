@@ -99,6 +99,7 @@ a.disabled {
 .hero {
     background: #f8f9fa;
     color: black;
+    position: relative;
 }
 
 .hero-ftc {
@@ -231,11 +232,11 @@ hr {
 
 .demo, .demo-inline {
     flex: 1 0 auto;
-    position: relative;
     z-index: 40;
 }
 
 .demo {
+    position: relative;
     padding-top: 10%;
 }
 
@@ -291,9 +292,7 @@ a.btn.btn-beta-soon {
 }
 
 .getstarted-punchline {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    padding: 30px 0;
 }
 
 .getstarted-punchline .cta .btn-beta {
@@ -312,6 +311,24 @@ a.btn.btn-beta-soon {
 .about-punchline {
     margin: 50px 0 400px;
     text-align:center;
+}
+
+.laptop-demo {
+    position: unset;
+}
+
+.laptop-wrapper {
+    position: absolute;
+    left: 50%;
+    right: 0; 
+    bottom: 0;
+    overflow: hidden;
+    height: 100%;
+    padding-top: 50px;
+}
+
+.laptop-wrapper img {
+    height: 100%;
 }
 
 /* ==============================
@@ -384,6 +401,7 @@ a.btn.btn-beta-soon {
 @media (max-width:48em) {
     body { margin-top: 60px; }
     .sticky-top { position: fixed; width: 100%; }
+    .nav-link { width: fit-content; margin: 5px auto; }
     .welcome {
         font-size: 1.8rem;
         line-height: 2.5rem;
@@ -396,7 +414,7 @@ a.btn.btn-beta-soon {
     .punchline { font-size: 1.2rem; }
     .navbar-collapse { padding: 10px 40px; }
     .laptop-demo { overflow: hidden; }
-    .laptop-demo img {
+    .laptop-wrapper {
         position: relative;
         left: 50%;
         transform: translateX(-50%);
@@ -405,6 +423,7 @@ a.btn.btn-beta-soon {
     .getstarted-punchline { position: relative; padding: 20px 0; text-align: center; }
     .laptop-demo img {
         max-width: 100%;
+        height: auto;
     }
     .feature-text { width: 100%; position: relative; transform: none; top: 0; }
     .feature-img { width: 100%; left: 0; }
