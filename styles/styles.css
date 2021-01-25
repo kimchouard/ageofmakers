@@ -102,7 +102,7 @@ a.disabled {
 }
 
 .hero-ftc {
-    background: url('../images/Future_TrailblazeR_Challenge-Students_Celebrate.jpg') center top no-repeat;
+    background: url('../images/Future_TrailblazeR_Challenge-Students_Celebrate.jpg') center -20px no-repeat;
     background-size: cover;
 }
 
@@ -211,6 +211,18 @@ hr {
 
 .feature h4 {
     font-size: 1.3rem;
+}
+
+.detailsWrapper {
+    margin-bottom: 30px;
+}
+
+.game-feature {
+    margin: 50px 0;
+}
+
+.game-feature img {
+    max-width: 100%;
 }
 
 /* ==============================
@@ -385,10 +397,12 @@ a.btn.btn-beta-soon {
     .laptop-demo img {
         position: relative;
         left: 50%;
-        transform: translateX(-50%);}
+        transform: translateX(-50%);
+        padding: 0;
+    }
     .getstarted-punchline { position: relative; padding: 20px 0; text-align: center; }
     .laptop-demo img {
-        max-width: 130%;
+        max-width: 100%;
     }
     .feature-text { width: 100%; position: relative; transform: none; top: 0; }
     .feature-img { width: 100%; left: 0; }
