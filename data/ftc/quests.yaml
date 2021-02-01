@@ -82,7 +82,7 @@ stages:
 visibleAtAge: 0
 prerequisites: 
 - age: 1
-- welcome_quest
+- students_showcase
 
 
 # -------------------------------------------------------
@@ -546,7 +546,7 @@ stages:
   order: 0
 prerequisites: 
 - age: 1
-- welcome_quest
+- students_showcase
 visibleAtAge: 0
 
 
@@ -858,7 +858,7 @@ stages:
   order: 1
 prerequisites: 
 - age: 1
-- welcome_quest
+- students_showcase
 visibleAtAge: 0
 
 
@@ -1375,33 +1375,33 @@ visibleAtAge: 1
 # -------------------------------------------------------
 # Global Goal Advocacy Project
 # welcome
----
-id: welcome_quest
-name: Welcome to Your New Adventure!
-valley: MakerMount
-content: |-
-  Welcome to the **Age of Makers**. 👋🏻 
+# ---
+# id: welcome_quest
+# name: Welcome to Your New Adventure!
+# valley: MakerMount
+# content: |-
+#   Welcome to the **Age of Makers**. 👋🏻 
   
-  You're about to hop on an exciting adventure. 🎒😎🚀✨
+#   You're about to hop on an exciting adventure. 🎒😎🚀✨
     
-  ![FTC Winners Celebrating](data/music/images/Future%20Trailblazer%20Challenge%20-%20Students%20Celebrate_min.jpg)
+#   ![FTC Winners Celebrating](data/music/images/Future%20Trailblazer%20Challenge%20-%20Students%20Celebrate_min.jpg)
   
-  In this game, you'll learn how to use new technologies to solve the world's biggest problems, also known as the [Global Goals](https://www.globalgoals.org/).
+#   In this game, you'll learn how to use new technologies to solve the world's biggest problems, also known as the [Global Goals](https://www.globalgoals.org/).
 
-  Wonder what that means? Click **Start Your Journey** below to get started!
-type: embedded
-CTA: Start Your Journey 🏞
-positionLeft: 35
-positionTop: 35
-stages:
-- name: Music for Change
-  content: |-
-    Look at this video to know what's coming up for you. 🧐
-  type: video
-  youtubeVideoId: MPSr4XoyOfQ
-  order: 0
-prerequisites: []
-visibleAtAge: 0
+#   Wonder what that means? Click **Start Your Journey** below to get started!
+# type: embedded
+# CTA: Start Your Journey 🏞
+# positionLeft: 35
+# positionTop: 35
+# stages:
+# - name: Future Traillazer Challenge
+#   content: |-
+#     Look at this video to know what's coming up for you. 🧐
+#   type: video
+#   youtubeVideoId: MPSr4XoyOfQ
+#   order: 0
+# prerequisites: []
+# visibleAtAge: 0
 
 
 # -------------------------------------------------------
@@ -1539,8 +1539,8 @@ stages:
     using:
       - mobile
     order: 10
-prerequisites:
-  - welcome_quest
+prerequisites: []
+  # - welcome_quest
 visibleAtAge: 0
 
 

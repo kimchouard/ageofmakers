@@ -38,17 +38,18 @@ class FTCShowcase extends Component {
         return <div className={ `col-md-${(this.props.viewOnly) ? '12' : '4' }` } key={project.order}>
           <div className="project">
             <div className="row title">
-              <img className="SDG" src={`data/ftc/images/SDGs/TheGlobalGoals_Icons_Color_Goal_${project.SDG}.png`} alt={`SDG ${project.SDG}`}/>
+              {/* <img className="SDG" src={`data/ftc/images/SDGs/TheGlobalGoals_Icons_Color_Goal_${project.SDG}.png`} alt={`SDG ${project.SDG}`}/> */}
               <div className="name">{project.name}</div>
             </div>
             <div className="desc">
               <Markdown mdContent={project.content} />
 
               <div className="from"><strong>From: </strong> {project.from}</div>
+              <div className="from"><strong>SDG: </strong> #{project.SDG}</div>
             </div>
-            <div className="row using">
+            {/* <div className="row using">
               { this.renderTools(project) }
-            </div>
+            </div> */}
           </div>
         </div>
       });
@@ -103,10 +104,10 @@ class FTCShowcase extends Component {
       // }
       // else {
         return <div className="row ftcShowcase">
+            { (!this.props.viewOnly) ? <div className={`btn btn-danger ${ (this.props.embeddedPage.open) ? 'btn-next' : ''}`} onClick={() => { this.props.goToNextStage(this.props.activeStageData) }}>NEXT</div> : '' }
             <div className="row">
               { this.renderShowcaseItems() }
             </div>
-            { (!this.props.viewOnly) ? <div className={`btn btn-danger ${ (this.props.embeddedPage.open) ? 'btn-next' : ''}`} onClick={() => { this.props.goToNextStage(this.props.activeStageData) }}>NEXT</div> : '' }
         </div>
       // }
     }

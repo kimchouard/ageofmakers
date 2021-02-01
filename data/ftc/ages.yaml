@@ -5,7 +5,7 @@
 
 - index: 0
   name: Discovery
-  image: data/music/images/map-ftc-0.jpg
+  image: data/ftc/images/map-ftc-0.jpg
   position:
   - 58
   - 41
@@ -13,7 +13,7 @@
     MakerMount: 1
 - index: 1
   name: Exploration
-  image: data/music/images/map-ftc-1.jpg
+  image: data/ftc/images/map-ftc-1.jpg
   position:
   - 45
   - 50
@@ -24,12 +24,12 @@
     total: 8
 - index: 2
   name: Making
-  image: data/music/images/map-ftc-2.jpg
+  image: data/ftc/images/map-ftc-2.jpg
   requirements:
     MakerMount: all
 - index: 3
   name: Sharing
-  image: data/music/images/map-ftc-all.jpg
+  image: data/ftc/images/map-ftc-all.jpg
   requirements:
     total: all
 - index: 4
