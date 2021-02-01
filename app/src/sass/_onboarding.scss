@@ -149,21 +149,24 @@
               }
             }
 
-            &.disabled {
-              cursor: no-drop;
-
+            &.coming, &.beta {
               .journey-icon::after {
-                content: "COMING SOON";
                 font-weight: bold;
                 color: white;
                 background: #D35446;
                 position: absolute;
                 top: 3px;
-                right: -18px;
                 transform: rotate(32deg);
                 border-radius: 9px;
                 padding: 9px 10px;
               }
+
+              &.coming .journey-icon::after { content: "COMING SOON"; right: -18px; }
+              &.beta .journey-icon::after { content: "BETA"; right: 8px; }
+            }
+
+            &.coming {
+              cursor: no-drop;
 
               .journey-details {
                 background: $journey-grey;

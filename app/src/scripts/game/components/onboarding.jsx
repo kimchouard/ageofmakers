@@ -19,12 +19,24 @@ class Onboarding extends Component {
           userName: '',
           newUserUi: false,
           userIdToLogin: null,
+          ftcBeta: false,
         }
     }
 
     componentDidMount() {
       if (!this.props.players || (this.props.players && Object.keys(this.props.players) && Object.keys(this.props.players).length === 0)) {
         this.props.getPlayers();
+      }
+
+      document.addEventListener("keydown", (e) => { this.keyPressed(e); }, false);
+    }
+
+    keyPressed(e) {
+      if(e.keyCode === 13) {
+        console.log('Welcome to the beta of the Future Trailblazer Challenge!');
+        this.setState({
+          ftcBeta: true,
+        })
       }
     }
 
@@ -80,9 +92,9 @@ class Onboarding extends Component {
       if (journey === 'music') {
         this.props.setActivePlayerJourney(journeyIds.JOURNEY_MUSIC);
       }
-      // else if (journey === 'ftc') {
-      //   this.props.setActivePlayerJourney(journeyIds.JOURNEY_FTC);
-      // }
+      else if (journey === 'ftc' && this.state.ftcBeta === true) {
+        this.props.setActivePlayerJourney(journeyIds.JOURNEY_FTC);
+      }
     }
 
     renderOnboarding() {
@@ -159,9 +171,9 @@ class Onboarding extends Component {
                 <div className="journey-description">Write and produce your first song to advocate for a more equitable and diverse world.</div>
               </div>
             </div>
-            <div className="journey disabled" onClick={ (e) => { this.selectPlayerJourney('ftc'); } }>
+            <div className={`journey ${(this.state.ftcBeta) ? 'beta' : 'coming'}`} onClick={ (e) => { this.selectPlayerJourney('ftc'); } }>
               <div className="journey-icon">
-                <img src="images/ftc-logo.png" alt="Future Trailblazer Challenge"/>
+                <img src={`images/ftc-logo${(this.state.ftcBeta === false) ? '_disabled' : ''}.png`} alt="Future Trailblazer Challenge"/>
               </div>
               <div className="journey-details">
                 <div className="journey-title">Future Trailblazer Challenge</div>
