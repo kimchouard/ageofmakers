@@ -10,7 +10,7 @@
   "dependencies": {
     "@lourenci/react-kanban": "^1.1.1",
     "babel-loader": "^8.1.0",
-    "js-yaml": "^3.13.1",
+    "js-yaml": "^4.0.0",
     "leaflet": "^1.6.0",
     "normalize-scss": "^6.0.0",
     "prop-types": "^15.7.2",
@@ -21,7 +21,7 @@
     "react-dom": "^16.3.0",
     "react-joyride": "^2.0.0-11",
     "react-leaflet": "^2.1.3",
-    "react-markdown": "^4.3.1",
+    "react-markdown": "^5.0.3",
     "react-piano": "^3.1.3",
     "react-redux": "^5.0.4",
     "react-youtube": "^7.11.3",
@@ -37,17 +37,17 @@
     "@babel/register": "^7.9.0",
     "bootstrap": "^4.5.0",
     "compass-mixins": "^0.12.10",
-    "css-loader": "^3.4.2",
+    "css-loader": "^5.2.0",
     "del": "^5.1.0",
-    "file-loader": "^5.1.0",
+    "file-loader": "^6.2.0",
     "font-awesome": "^4.7.0",
     "gulp": "^4.0.2",
     "gulp-load-plugins": "^2.0.3",
     "gulp-rename": "^2.0.0",
     "gulp-util": "^3.0.8",
-    "node-sass": "^4.14.0",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^0.13.1",
-    "webpack": "^4.43.0"
+    "node-sass": "^5.0.0",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.28.0"
   }
 }

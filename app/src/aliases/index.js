@@ -223,7 +223,7 @@ const loadQuests = (journeyId, resolve) => {
       // Examine the text in the questsResponse
       questsResponse.text().then((questsData) => {
         // console.log('Yaml data', questsData);
-        let questsArray = yaml.safeLoadAll(questsData);
+        let questsArray = yaml.loadAll(questsData);
         let quests = {};
         for (const quest of questsArray) {
           quests[quest.id] = quest;
@@ -239,7 +239,7 @@ const loadQuests = (journeyId, resolve) => {
           // Examine the text in the agesResponse
           agesResponse.text().then((agesData) => {
             // console.log('Yaml quest data', agesData);
-            let ages = yaml.safeLoadAll(agesData)[0];
+            let ages = yaml.loadAll(agesData)[0];
 
             fetch(areasUrl)
             .then((areasResponse) => {
@@ -251,7 +251,7 @@ const loadQuests = (journeyId, resolve) => {
               // Examine the text in the areasResponse
               areasResponse.text().then((areasData) => {
                 // console.log('Yaml quest data', areasData);
-                let areas = yaml.safeLoadAll(areasData)[0];
+                let areas = yaml.loadAll(areasData)[0];
 
                 fetch(creditsUrl)
                 .then((creditsResponse) => {
@@ -263,7 +263,7 @@ const loadQuests = (journeyId, resolve) => {
                   // Examine the text in the creditsResponse
                   creditsResponse.text().then((creditsData) => {
                     // console.log('Yaml quest data', creditsData);
-                    let credits = yaml.safeLoadAll(creditsData)[0];
+                    let credits = yaml.loadAll(creditsData)[0];
 
                     chrome.storage.local.set({ quests, ages, areas, credits }, () => {
                       console.log('Quests, Ages, Areas & Credits saved!', quests, ages, areas, credits);

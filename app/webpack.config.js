@@ -12,20 +12,9 @@ export default (scriptName, isBgScript) => {
   let rules = [
     {
       test: (isBgScript) ? /\.(js)?$/ : /\.(jsx|js)?$/,
-      loader: 'babel-loader',
+      use: ['babel-loader'],
       exclude: /(node_modules)/,
-      include: path.join(__dirname, 'src'),
-      query: {
-        presets: [
-          '@babel/preset-env', 
-          '@babel/preset-react',
-          {
-            "plugins": [
-              "@babel/plugin-proposal-class-properties"
-            ]
-          }
-        ]
-      }
+      include: path.join(__dirname, 'src')
     },
   ]
 
@@ -50,10 +39,10 @@ export default (scriptName, isBgScript) => {
           },
         ]
       },
-      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=image/svg+xml'},
-      {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?mimetype=application/font-woff"},
-      {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?mimetype=application/font-woff"},
-      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?mimetype=application/octet-stream"},
+      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'},
+      {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader"},
+      {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader"},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader"},
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader"}
     );
   }
