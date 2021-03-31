@@ -6,6 +6,7 @@
  */
 
 import React, { Component } from 'react';
+import 'bootstrap';
 import {connect} from 'react-redux';
 import { questUnlocked, addComplete, getAge, getRomanAge, isLoggedInAndLoaded, getActivePlayerData, isLoggedIn, isQuestsLoaded, getAreaIconUrl } from '../../_utils';
 import { getQuests, reloadQuests, logOut, startWalkthrough, stopWalkthrough, openTree, unselectQuest, resetQuests, resetActivePlayerJourney, openEmbeddedCredits, closeEmbeddedPage } from '../../../actions/index';
@@ -97,12 +98,12 @@ class Header extends Component {
     } else {
       let areaData = this.props.journey.areas[valleyName];
       return (
-        <div className="col-md-2 col-sm-3 score" key={valleyName} data-helper={`GOAL: Complete ${this.getQuestsNumber(ageData, valleyName)} quests from ${areaData.name}`}>
+        <li className="nav-item score" key={valleyName} data-helper={`GOAL: Complete ${this.getQuestsNumber(ageData, valleyName)} quests from ${areaData.name}`}>
           <div className={"icon"} style={ {
             backgroundImage: `url('${ (areaData) ? areaData.image : '/images/Locked_grey.svg'}')`,
           } }></div>
           <p className="value">{addComplete(this.props.journey.quests, valleyName)} / { this.getQuestsNumber(ageData, valleyName) }</p>
-        </div> 
+        </li> 
       )
     }
   }
@@ -127,13 +128,14 @@ class Header extends Component {
   renderContent() {
     if (isLoggedInAndLoaded(this.props)) {
       let ageData = getAge(this.props.journey);
-      return <div className="row">
-        <div className="badgeTrackersHeader col-sm-5">
-          <div className="row">
+      return <div className="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             {this.renderRequirementsDisplay(ageData)}
-          </div>
+          </ul>
         </div>
-        <div className="age"> { /* onClick={ this.props.openTree  } */ }
+        
+        <div className="navbar-brand age"> { /* onClick={ this.props.openTree  } */ }
           <div className="roman">
             <div className="age-text">AGE</div>
             <div className="number">{getRomanAge(ageData)}</div>
@@ -141,25 +143,28 @@ class Header extends Component {
           <div className="name">{ageData.name}</div>
         </div>
 
-        <div className="col-sm-2 offset-sm-3">
-          <div className="row">
-            <div className="col-sm-11 user">
-              {/* <a className={`action user-sdg sdg${this.props.activePlayerData.sdg}`} >{this.getPlayerSDG()}</a>  */}
-              <p className="name">{this.props.activePlayerData.name}</p>
-              <a className="action settings" onClick={ () => this.setState({ settings: !this.state.settings }) }></a>
-            </div>
-          </div>
-        </div>
-        <div className={`col-sm-2 dropdown ${(this.state.settings) ? 'visible': ''}`}>
-          <div className="section-title">Settings</div>
-          <div className="dropdown-action journey" onClick={ () => this.resetActivePlayerJourney() }>Change Your Journey</div>
-          <div className="dropdown-action logout" onClick={ () => this.logOutActivePlayer() }>Log Out</div>
-          <div className="dropdown-action reload" onClick={ () => this.props.reloadQuests(this.props.activePlayerData.journey) }>Reload Quests</div>
-          <div className="section-title">Help</div>
-          <div className="dropdown-action help" onClick={ () => this.startDefaultWelcomeWalkthrough() }>Getting Started</div>
-          <a className="dropdown-action help" href={ chrome.extension.getURL('list.html') } target="_blank">Download Quests in PDF</a>
-          <div className="dropdown-action help" onClick={ () => this.openCredits() }>Credits</div>
-          <div className="dropdown-action help disabled">FAQs</div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle settings" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {this.props.activePlayerData.name}
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item journey" onClick={ () => this.resetActivePlayerJourney() }>Change Your Journey</a></li>
+                <li><a class="dropdown-item logout"  onClick={ () => this.logOutActivePlayer() }>Log Out</a></li>
+                <li><a class="dropdown-item reload" onClick={ () => this.props.reloadQuests(this.props.activePlayerData.journey) }>Reload Quests</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item help" onClick={ () => this.startDefaultWelcomeWalkthrough() }>Getting Started</a></li>
+                <li><a class="dropdown-item help" href={ chrome.extension.getURL('list.html') } target="_blank">Download Quests in PDF</a></li>
+                <li><a class="dropdown-item help" onClick={ () => this.openCredits() }>Credits</a></li>
+                <li><a class="dropdown-item help disabled">FAQs</a></li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>;
     }
@@ -174,11 +179,9 @@ class Header extends Component {
   
   render() {
     return (
-    <header className={`controls ${(isLoggedInAndLoaded(this.props)) ? '' : 'noBg'}`}>
-        <div className="container-fluid">
-          { this.renderContent() }
-        </div>
-      </header>
+    <nav className={`navbar navbar-expand-lg navbar-dark bg-dark game-header ${(isLoggedInAndLoaded(this.props)) ? '' : 'noBg'}`}>
+      { this.renderContent() }
+    </nav>
     );
   }
 }
