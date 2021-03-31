@@ -7,7 +7,7 @@
 
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Map, Marker, ImageOverlay } from 'react-leaflet';
+import { MapContainer, Marker, ImageOverlay } from 'react-leaflet';
 import {CRS, Icon, divIcon} from 'leaflet';
 import { bindActionCreators } from 'redux';
 import { questUnlocked, getAge, isLoggedInAndLoaded, getActivePlayerData, getAreaIconUrl } from '../../_utils';
@@ -20,6 +20,7 @@ class Leaflet extends Component {
             lat: 18,
             lng: 45,
             zoom: 4.25,
+            leafletMap: null,
         }
     }
 
@@ -29,7 +30,16 @@ class Leaflet extends Component {
       // }
     }
 
+    componentDidUpdate() {
+      // If the leafletMap was already initialized
+      if (this.state && this.state.leafletMap) {
+        // We move the map with a nice animation
+        this.state.leafletMap.flyTo(this.getPosition(), this.state.zoom);
+      }
+    }
+
     openQuest(questKey) {
+      console.log('Quest clicked');
       this.props.toggleBubble(false);
       this.props.selectQuest(questKey);
     }
@@ -55,8 +65,10 @@ class Leaflet extends Component {
               return <Marker
                 key={questKey}
                 icon={iconImg}
-                position={position} 
-                onClick={() => this.openQuest(questKey)}
+                position={position}
+                eventHandlers={{
+                  click: () => this.openQuest(questKey)
+                }}
                 />
             }
             else {
@@ -81,7 +93,9 @@ class Leaflet extends Component {
             })
           }
           position={[57,35]}
-          onClick={this.props.openTree /*openProfile*/ }
+          eventHandlers={{
+            click: () => this.props.openTree() /*openProfile*/ 
+          }}
           />;
       }
     }
@@ -103,34 +117,46 @@ class Leaflet extends Component {
       }
     }
 
-    render() {
-        let position = [this.state.lat, this.state.lng];
-        if(isLoggedInAndLoaded(this.props)) {
-          let currentAge = getAge(this.props.journey);
-          if (currentAge.position) {
-            position = currentAge.position
-          }
+    getPosition() {
+      let position = [this.state.lat, this.state.lng];
+
+      if(isLoggedInAndLoaded(this.props)) {
+        let currentAge = getAge(this.props.journey);
+        if (currentAge.position) {
+          position = currentAge.position
         }
-        
+      }
+
+      return position;
+    }
+
+    render() {
         return (
-          <Map
+          <MapContainer
             classname={`leafletMap`}
             style={ { height: `${100*((window.outerHeight - 50)/window.outerHeight)}%`, }}
-            center={position}
+            center={this.getPosition()}
             zoom={this.state.zoom}
             crs={CRS.Simple}
             attributionControl={false}
             minZoom='3.5'
             maxZoom='5.5'
             zoomSnap='0.25'
-            zoomDelta='0.25'>
+            zoomDelta='0.25'
+            whenReady={(map) => {
+              // Store the reference to the leaflet map object in the state
+              this.setState({
+                leafletMap: map.target
+              })
+            }}
+            >
               <ImageOverlay
                 bounds={[[0,0], [100,100]]}
                 url={ this.getMapImageUrl() }
               />
               {/* { this.renderTent() } */}
               { this.renderPins() }
-          </Map>
+          </MapContainer>
         )
     }
 }
