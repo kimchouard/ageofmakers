@@ -129,7 +129,7 @@ class Header extends Component {
     if (isLoggedInAndLoaded(this.props)) {
       let ageData = getAge(this.props.journey);
       return <div className="container-fluid">
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse badgeTrackersHeader" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {this.renderRequirementsDisplay(ageData)}
           </ul>
