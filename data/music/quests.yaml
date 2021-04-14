@@ -726,7 +726,7 @@ stages:
   subtitle: |-
     And why is it so powerful?
   type: video
-  youtubeVideoId: nghrVe0aPBQ
+  youtubeVideoId: g8oDxc1vOiw
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -753,7 +753,7 @@ stages:
   subtitle: |-
     Wonder what's the most used sound in modern music?
   type: video
-  youtubeVideoId: HI6oG63iryA
+  youtubeVideoId: _gAbEeu_ACI
   order: 0
 quiz:
   name: Practice Finding a Scale
@@ -790,7 +790,7 @@ id: scales_practice
 name: Practice Finding Scales
 valley: musiccity
 content: |-
-  Time to put Andrew's lesson on Notes & Scale to practice.
+  Time to put Usean's lesson on Notes & Scale to practice.
   
   You'll spend some time finding the notes in the scale from different keys.
 # TODO --> ability to start from the quest quiz response + default start url as a fallback
@@ -822,7 +822,7 @@ stages:
     ☝️ As you use the notes, practice getting familiar with their letter names, as well as what number degree they are within th emajor scale (the root is always 1).
 
     ```info
-    Here's a quick cheat-sheet from Andrew's lesson:
+    Here's a quick cheat-sheet from Usean's lesson:
 
     **TODO!!**
     ```
@@ -863,7 +863,7 @@ stages:
   subtitle: |-
     Listen to Usean as he plays different chords and shows you how some are sad and other happy.
   type: video
-  youtubeVideoId: 2iW0qir_-DA
+  youtubeVideoId: kdANs8Yea2E
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -897,7 +897,7 @@ stages:
     - Is it major or minor?
 
     ```info
-    Here's a quick cheat-sheet from Andrew's lesson:
+    Here's a quick cheat-sheet from Usean's lesson:
 
     **TODO!!**
     ```
@@ -924,10 +924,10 @@ visibleAtAge: 2
 # notation_system
 --- 
 id: notation_system
-name: The Notation System
+name: The Number System
 valley: musiccity
 content: |-
-  Learn how to use roman numerals to reference chords and use this notation system to build chord progressions. 🧐
+  Learn how to use roman numerals to reference chords and use this Number system to build chord progressions. 🧐
 
   The cool thing with that? You can inspire yourself from songs you like and make it yours by changing the key of the song. 🤯
 # startUrl: https://www.tinkercad.com/login 
@@ -936,11 +936,11 @@ positionTop: 47
 type: embedded
 # CTA:
 stages:
-- name: The Notation System
+- name: The Number System
   subtitle: |-
     Usean walks you through how to use roman numerals to reference chords, irrespective of the key.
   type: video
-  youtubeVideoId: v4pgUW58Ss0
+  youtubeVideoId: r8iyzQsRYgo
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -952,7 +952,7 @@ prerequisites:
 # chords_practice
 ---
 id: notation_practice
-name: Practice the Notation System
+name: Practice the Number System
 valley: musiccity
 content: |-
   Put your new skill to practice by going from numbers to music, and see if you can inspire yourself from songs you know.
@@ -961,7 +961,7 @@ startUrl: https://edu.bandlab.com/library/projects
 positionLeft: 53
 positionTop: 46.5
 stages:
-- name: Practice the Notation System
+- name: Practice the Number System
   content: |-
     On the same track that your used for the scales, practice making chord progressions based on numbers.
 
@@ -1036,7 +1036,7 @@ stages:
   subtitle: |-
     Listen to Usean as he give you some tips on coming up with your melody
   type: video
-  youtubeVideoId: v4pgUW58Ss0
+  youtubeVideoId: TFuAoV_LhIM
   order: 0
 visibleAtAge: 2
 prerequisites:
@@ -1060,7 +1060,7 @@ type: embedded
 stages:
 - name: Coming Up With Your Chords
   subtitle: |-
-    See how Kim uses Andrew's knowledge to find chords for his song!
+    See how Kim uses Usean's knowledge to find chords for his song!
   type: video
   youtubeVideoId: lEo859uO--U
   order: 0
@@ -1261,9 +1261,9 @@ id: rhythm_basics
 name: Let's Stay in Tempo
 valley: beats
 content: |-
-  Introduction to rhythm and how it's counted, shared and used. 
+  Usean gives you an introduction to rhythm and how it's counted, shared and used.
   
-  This also walks you through the 3 most basic elements of rhythm: Kick, Snare & Hit-hat.
+  Ready to be in tempo?
 positionLeft: 70
 positionTop: 56.5
 type: embedded
@@ -1273,7 +1273,7 @@ stages:
   subtitle: |-
     Understand how to make a beat it pump. 😎
   type: video
-  youtubeVideoId: v4pgUW58Ss0
+  youtubeVideoId: t416TveFrV0
   order: 0
 visibleAtAge: 1
 prerequisites:
@@ -1288,7 +1288,7 @@ id: find_drums
 name: How to Build Drums in Bandlab?
 valley: beats
 content: |-
-  Follow this walkthrough of how you can add drums in Bandlab.
+  Follow this walkthrough of how you can add drums in Bandlab with the 3 most basic elements of rhythm: Kick, Snare & Hit-hat..
 
   Kim will also show how he comes up with the drum for his own song.
 positionLeft: 74.5
