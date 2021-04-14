@@ -83,7 +83,7 @@ class Leaflet extends Component {
       if (isLoggedInAndLoaded(this.props)) {
         let ageData = getAge(this.props.journey);
         return <Marker
-          class='tent'
+          className='tent'
           icon={
             new Icon({
               className:'tent',

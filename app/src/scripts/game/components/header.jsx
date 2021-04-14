@@ -129,8 +129,8 @@ class Header extends Component {
     if (isLoggedInAndLoaded(this.props)) {
       let ageData = getAge(this.props.journey);
       return <div className="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {this.renderRequirementsDisplay(ageData)}
           </ul>
         </div>
@@ -143,25 +143,25 @@ class Header extends Component {
           <div className="name">{ageData.name}</div>
         </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle settings" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle settings" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {this.props.activePlayerData.name}
               </a>
-              <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item journey" onClick={ () => this.resetActivePlayerJourney() }>Change Your Journey</a></li>
-                <li><a class="dropdown-item logout"  onClick={ () => this.logOutActivePlayer() }>Log Out</a></li>
-                <li><a class="dropdown-item reload" onClick={ () => this.props.reloadQuests(this.props.activePlayerData.journey) }>Reload Quests</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item help" onClick={ () => this.startDefaultWelcomeWalkthrough() }>Getting Started</a></li>
-                <li><a class="dropdown-item help" href={ chrome.extension.getURL('list.html') } target="_blank">Download Quests in PDF</a></li>
-                <li><a class="dropdown-item help" onClick={ () => this.openCredits() }>Credits</a></li>
-                <li><a class="dropdown-item help disabled">FAQs</a></li>
+              <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+                <li><a className="dropdown-item journey" onClick={ () => this.resetActivePlayerJourney() }>Change Your Journey</a></li>
+                <li><a className="dropdown-item logout"  onClick={ () => this.logOutActivePlayer() }>Log Out</a></li>
+                <li><a className="dropdown-item reload" onClick={ () => this.props.reloadQuests(this.props.activePlayerData.journey) }>Reload Quests</a></li>
+                <li><hr className="dropdown-divider" /></li>
+                <li><a className="dropdown-item help" onClick={ () => this.startDefaultWelcomeWalkthrough() }>Getting Started</a></li>
+                <li><a className="dropdown-item help" href={ chrome.extension.getURL('list.html') } target="_blank">Download Quests in PDF</a></li>
+                <li><a className="dropdown-item help" onClick={ () => this.openCredits() }>Credits</a></li>
+                <li><a className="dropdown-item help disabled">FAQs</a></li>
               </ul>
             </li>
           </ul>

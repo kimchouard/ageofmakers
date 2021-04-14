@@ -82,10 +82,10 @@
 		display: none;
 	}
 
-	button, .button {
+	button, .button, .btn {
 		padding: 10px 20px;
 		border-radius: 10px;
-		color: white;
+		color: white !important;
 		display: inline-block;
 		cursor: pointer;
 
@@ -294,6 +294,7 @@
 		}
 
 		.aom-warning, .aom-info {
+			margin-bottom: 16px;
 			p { display: inline; }
 		}
 

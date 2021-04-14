@@ -162,7 +162,7 @@ class EmbeddedPage extends Component {
         <div className="wrapper">
           { this.renderEmbbededQuestContent() }
           
-          <a className="btn btn-dark btn-close" onClick={() => this.props.closeEmbeddedPage()}>Close</a>
+          <a className="btn btn-dark btn-close-embedded" onClick={() => this.props.closeEmbeddedPage()}>Close</a>
         </div>
       </div>
     );
