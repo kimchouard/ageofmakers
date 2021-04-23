@@ -34,15 +34,31 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="get-started.html">Get Started</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Journeys
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="music-for-change.html">Music for Change</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="future-trailblazer-challenge.html">Future Trailblazer Challenge</a>
+                            </div>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.html">About</a>
                         </li>
-                        <li class="nav-item d-none d-sm-block d-md-none">
+
+                        <li class="nav-item d-sm-block d-md-none">
                             <a class="nav-link" href="https://github.com/salesforce/ageofmakers" target="_blank" >Github</a>
+                        </li>
+                        <li class="nav-item d-sm-block d-md-none">
+                            <a class="btn btn-outline-danger btn-cta-game" href="http://bit.ly/aom-game" target="_blank">Download the Game</a>
                         </li>
                     </ul>
                 </div>
             </div>
+
+            <a class="btn btn-outline-danger btn-cta-game btn-header" href="http://bit.ly/aom-game" target="_blank">Download the Game</a>
 
             <a href="https://github.com/salesforce/ageofmakers" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener">
                 <svg width="63" height="64" viewBox="0 0 80 82" aria-hidden="true" color="#fff">
@@ -61,7 +77,7 @@
                             <h1>Personalized adventures for <strong>all</strong> your students, <strong>anywhere</strong>.</h1>
                             <p>A gamified curriculum for youth globally to learn how to impact the world around them through music and technology.</p>
                             <div class="cta">
-                                <a class="btn btn-lg btn-beta" href="https://sfdc.co/aom" target="_blank">Try out the βeta!</a>
+                                <a class="btn btn-lg btn-beta" href="https://sfdc.co/aom" target="_blank">Download the Game</a>
                             </div>
                         </div>
                         
@@ -82,81 +98,41 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <h2>Explore the Journeys</h2>
-                        <h5 class="col-md-10 offset-md-1">Dive deeper into the 2 main journeys available in the game, from music-making to 3D printing & coding. Each journey empowers the students to build solutions for the challenges <em>they</em> care about.</h5>
-                    </div>
-                </div>
-                
-                <div class="row adventures">
-                    <div class="col-sm text-right">
-                        <a class="adventure-select active" id="select-mfc" onclick="showAdventure('mfc', 'ftc')">Music for Change</a>
-                    </div>
-                    <div class="col-sm text-left">
-                        <a class="adventure-select" id="select-ftc" onclick="showAdventure('ftc', 'mfc')">Future Trailblazer Challenge</a>
+                        <h5 class="col-md-10 offset-md-1">Dive deeper into the main journeys available in the game, from music-making to 3D printing & coding. Each journey empowers the students to build solutions for the challenges <em>they</em> care about.</h5>
                     </div>
                 </div>
 
-                <div class="feature" id="mfc">
+                <div class="feature-right" id="mfc">
                     <div class="row feature-hero">
-                        <div class="feature-text">
-                            <img src="images/music-for-change-logo.svg" alt="Music for Change Logo" width="60%" />
-                            <p>Music for Change is a <strong>social impact</strong>, <strong>music production</strong>, and <strong>digital literacy</strong> curriculum that provides young people from around the world a <strong>voice on social justice</strong>.</p>
-                        </div>
                         <div class="feature-img">
                             <img src="images/Mic-Spark_Credits-Kim-Chouard.png" alt="Microphone under the sun" />
                         </div>
+                        <div class="feature-text">
+                            <img src="images/music-for-change-logo.svg" alt="Music for Change Logo" width="60%" />
+                            <p>Music for Change is a <strong>social impact</strong>, <strong>music production</strong>, and <strong>digital literacy</strong> curriculum that provides young people from around the world a <strong>voice on social justice</strong>.</p>
+
+                            <div class="cta">
+                                <a class="btn btn-dark" href="music-for-change.html">Music for Change Resources</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md details">
-                            <h4>1. See it in action 👀</h4>
-                            <p>Watch the Music for Change finale to hear the finalist songs from students around the world pitched a prestigious jury.</p>
-                            <a href="https://www.salesforce.com/video/15545093/" target="_blank" class="cta">Watch the Music for Change Finale ></a>
-                        </div>
-                        <div class="col-md details">
-                            <h4>2. Try it out for yourself 🕹</h4>
-                            <p>Install the Age of Makers Chrome extension and start the “Music for Change” journey to see how it works!</p>
-                            <a href="http://bit.ly/aom-game" target="_blank" class="cta">Download the Age of Makers βeta ></a>
-                        </div>
-                        <div class="col-md details">
-                            <h4>3. Follow the guide 🏞</h4>
-                            <p>Check out the instructions on Trailhead for an in-depth Educator and Volunteers guide on how to run this program locally.</p>
-                            <a disabled class="disabled cta">Coming soon!</a>
-                        </div>
-                    </div>  
                 </div>
 
-                <div class="feature" id="ftc">
+                <div class="feature-left" id="ftc">
                     <div class="row feature-hero">
-                        <div class="feature-text">
-                            <img src="images/Future-Trailblazer-Challenge-horizontal.svg" alt="Future Trailblazer Challenge Logo" width="80%" />
-                            <p>The Future Trailblazer Challenge is a Maker curriculum for students to come up with a proposal to solve one of the <a href="http://globalgoals.org/" target="_blank">Sustainable Development Goals (SDGs)</a> using cutting-edge technologies, like 3D printing or <a href="https://microbit.org/" target="_blank">micro:bits</a> (small programmable electronic devices), as part of their solution.</p>
-                        </div>
                         <div class="feature-img">
                             <img src="images/salesforce-volunteers-with-students.png" alt="Salesforce Volunteers with Students" />
                         </div>
+                        <div class="feature-text">
+                            <img src="images/Future-Trailblazer-Challenge-horizontal.svg" alt="Future Trailblazer Challenge Logo" width="80%" />
+                            <p>The Future Trailblazer Challenge is a Maker curriculum for students to come up with a proposal to solve one of the <a href="http://globalgoals.org/" target="_blank">Sustainable Development Goals (SDGs)</a> using cutting-edge technologies, like 3D printing or <a href="https://microbit.org/" target="_blank">micro:bits</a> (small programmable electronic devices), as part of their solution.</p>
+                        
+                            <div class="cta">
+                                <a class="btn btn-dark" href="future-trailblazer-challenge.html">Future Trailblazer Challenge Resources</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md details">
-                            <h4>1. See it in action 👀</h4>
-                            <p>Watch the Future Trailblazer Pitchfest recap to get a sense of what students have created to solve for the SDGs.</p>
-                            <a href="https://www.youtube.com/watch?v=KONFpj8a9wk" target="_blank" class="cta">Watch the Pitchfest Recap ></a>
-                        </div>
-                        <div class="col-md details">
-                            <h4>2. Try it out for yourself 🕹</h4>
-                            <p>Install the Age of Makers Chrome extension to see how it works.</p>
-                            <a disabled class="disabled cta">Coming soon !</a>
-                        </div>
-                        <div class="col-md details">
-                            <h4>3. Follow the guide 🏞</h4>
-                            <p>Check out the instructions on Trailhead for an in-depth Educator and Volunteers guide on how to run this program locally.</p>
-                            <a href="https://trailhead.salesforce.com/content/learn/modules/future-trailblazer-challenge?trail_id=learn-about-the-uns-global-goals" target="_blank" class="cta">Read the Trailhead Guide ></a>
-                        </div>
-                    </div>  
                 </div>
-
-                <div class="row justify-content-md-center cta">
-                    <a class="btn btn-lg btn-beta" href="about.html">Learn more about the game</a>
-                </div>
-
 
                 <div class="row">
                     <div class="col-12 text-center">

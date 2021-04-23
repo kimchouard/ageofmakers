@@ -65,7 +65,52 @@ a.disabled {
     border-bottom: 2px solid #fff;
 }
 
+.nav-item .nav-link.dropdown-toggle {
+    border-bottom: none;
+}
+
 .nav-item.active .nav-link {
+    font-weight: bold;
+}
+
+.btn-header {
+    display: none; 
+    position: absolute;
+    right: 60px 
+}
+
+.btn-cta-game {
+    border-color: #FF5335;
+    border-width: 2px;
+    color: #FF5335;
+}
+
+.btn-cta-game:hover {
+    background-color: #FF5335;
+}
+
+.btn-cta-game:not(:disabled):not(.disabled):active {
+    background-color: #e04b31;
+}
+
+.btn-cta-game:focus {
+    box-shadow: 0 0 0 0.2rem rgb(255 83 53 / 50%);
+}
+
+/* Adapt the responsive designs, i.e. when in the menu bar */
+.nav-item .btn-cta-game {
+    margin: 10px auto 5px;
+    width: fit-content;
+    display: block;
+}
+
+.dropdown-menu {
+    margin-top: 16px;
+    border-radius: 0;
+}
+.dropdown-item.active, .dropdown-item:active {
+    background: none;
+    color: #212529;
     font-weight: bold;
 }
 
@@ -135,6 +180,11 @@ hr {
     margin-top: 40px;
 }
 
+a.btn.disabled {
+    cursor: no-drop;
+    pointer-events: auto;
+}
+
 .effective-date {
     margin-top: 20px;
     text-align: center;
@@ -144,43 +194,8 @@ hr {
     text-decoration: underline;
 }
 
-.adventure-select {
-    display: inline-block;
-    text-decoration: none;
-    color: #666;
-    padding: 10px 5px 3px;
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-
-.adventure-select:hover, .adventure-select.active {
-    color: #222222;
-    text-decoration: none;
-}
-
-.adventures {
-    margin-top: 20px;
-}
-
-.adventure-select.active {
-    border-bottom: 2px #032d60 solid;
-}
-
-.adventure-select:after {
-    content: "-";
-    display: block;
-    position: absolute;
-    right: -5px;
-    top: 10px;
-}
-.adventures .col-sm:last-child .adventure-select:after { content: ''; }
-
-.feature {
+.feature-left, .feature-right {
     margin: 30px 0 60px;
-}
-
-#ftc {
-    display: none;
 }
 
 .feature-hero {
@@ -193,24 +208,45 @@ hr {
 .feature-text {
     width: 50%;
     padding: 30px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
+    float: left;
 }
 
-.feature-text img {
+.feature-left .feature-text {
+    left: 50%;
+}
+
+.feature-text img, .getstarted-punchline img {
     margin: 0 auto 15px;
     display: block;
 }
 
+.feature-text .btn {
+    margin: 10px auto;
+    display: block;
+    width: fit-content;
+}
+
 .feature-img {
-    position: relative;
-    left: 50%;
+    position: absolute;
     width: 50%;
+    height: 100%;
     overflow: hidden;
 }
 
-.feature h4 {
+.feature-img img {
+    height: 100%;
+}
+
+.feature-left .feature-img {
+    left: 0;
+}
+
+.feature-right .feature-img {
+    left: 50%;
+}
+
+.feature-left h4, .feature-right h4 {
     font-size: 1.3rem;
 }
 
@@ -224,6 +260,69 @@ hr {
 
 .game-feature img {
     max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+}
+
+#extra-testimonials.hide {
+    display: none;
+}
+
+.testimonial {
+    margin: 40px 0;
+}
+
+.testimonial .quote {
+    text-align: justify;
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.testimonial .quote::before, .testimonial .quote::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background: url('../images/testimonials/quotes.png') center center no-repeat;
+}
+
+.testimonial .quote::before {
+    top: -20px;
+    left: -45px;
+}
+
+.testimonial .quote::after {
+    bottom: -20px;
+    right: -45px;
+    transform: rotate(180deg);
+}
+
+.testimonial .author {
+    margin-top: 40px;
+}
+
+.testimonial .author .details {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.testimonial .author .details .name {
+    font-weight: bold;
+}
+
+.testimonial .author .photoshoot {
+    overflow: hidden;
+    border-radius: 100px;
+    padding: 0;
+}
+
+.testimonial .author .photoshoot img {
+    height: auto;
+    width: 100%;
 }
 
 /* ==============================
@@ -293,10 +392,6 @@ a.btn.btn-beta-soon {
 
 .getstarted-punchline {
     padding: 30px 0;
-}
-
-.getstarted-punchline .cta .btn-beta {
-    background-color: #222222;
 }
 
 .getstarted-punchline h1 {
@@ -394,7 +489,7 @@ a.btn.btn-beta-soon {
 
 /* NOT Small Screen */
 @media screen and (min-width:48em) {
-    .github-corner { display: block; }
+    .github-corner, .btn-header { display: block; }
 }
 
 /* Small Screen */
@@ -425,9 +520,9 @@ a.btn.btn-beta-soon {
         max-width: 100%;
         height: auto;
     }
-    .feature-text { width: 100%; position: relative; transform: none; top: 0; }
-    .feature-img { width: 100%; left: 0; }
-    .feature-img img { width: 100%; }
+    .feature-text { width: 100%; float: none; left: 0 !important; }
+    .feature-img { width: 100%; position: relative; left: 0 !important; }
+    .feature-img img { height: auto; width: 100%; }
     .adventures .col-sm { text-align: center !important; }
     .adventure-select:after { content: none; }
 }
