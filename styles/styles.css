@@ -307,7 +307,7 @@ a.btn.disabled {
 
 .testimonial .author .details {
     text-align: right;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 .testimonial .author .details .name {
@@ -316,7 +316,7 @@ a.btn.disabled {
 
 .testimonial .author .photoshoot {
     overflow: hidden;
-    border-radius: 100px;
+    border-radius: 1000px;
     padding: 0;
 }
 
