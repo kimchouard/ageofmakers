@@ -1,8 +1,8 @@
-![Age of Makers Logo](https://github.com/salesforce/ageofmakers/blob/master/images/Age_of_Makers_spaced.png?raw=true)
+![Age of Makers Logo](https://github.com/salesforce/ageofmakers/blob/master/images/AoM_Github_Banner.png?raw=true)
 
 # Age of Makers (AoM)
 
-Become an independent learner, solving the world’s biggest challenges using 3D printing, coding & electronics.
+Age of Makers is a gamified curriculum empowering educators around the world to inspire youth to become independent learners. Instead of starting with a specific topic, [students are first see the bigger picture. Purpose-based pedagogy.]
 
 ![Age of Makers Demo](https://github.com/salesforce/ageofmakers/blob/master/Music%20for%20Change%20Full%20Demo.gif?raw=true)
 
